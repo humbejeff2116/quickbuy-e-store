@@ -1,0 +1,16 @@
+
+
+
+
+
+
+
+
+
+
+export const C = {
+ ADD_LATEST_DEALS: 'ADD_LATEST_DEALS',
+ REMOVE_LATEST_DEALS:'REMOVE_LATEST_DEALS',
+ 
+
+}

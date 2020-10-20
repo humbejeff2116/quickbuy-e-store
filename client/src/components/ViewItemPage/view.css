@@ -1,0 +1,128 @@
+
+
+
+
+
+
+
+.view-container{
+    background-color:#ffffff;
+    margin:8px;
+    border-radius:4px;
+}
+
+
+
+.view-item-container{
+    width:60%;
+    height:600px;
+    margin-left:auto;
+    margin-right: auto;
+    display:flex;
+    flex-direction: column;
+    /* border:1px solid black; */
+
+}
+.view-main{
+    display:flex;
+    flex-direction:row;
+    background-color:#ccc;
+    flex-wrap:wrap;
+    margin:4px;
+    /* border:1px solid black; */
+    height:400px;
+  
+
+}
+.view-image{
+    margin:2px;
+    /* border:1px solid black; */
+    width:40%;
+    background-color:#ffffff;
+
+}
+.view-image img{
+  
+  position:relative;
+  left:10%;
+  top:5%;
+}
+.view-content{
+    width:59.2%;
+    display:flex;
+    flex-direction:column;
+    /* justify-content: space-around; */
+    margin-top:2px;
+    margin-bottom: 2px;
+    /* border:1px solid black; */
+    background-color:#ffffff;
+
+
+}
+.view-content p{
+    font-weight:bold;
+    text-align:center;
+    color:rgb(218, 152, 218);
+}
+.view-button{
+    display:flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+.view-button button{
+    width:200px;
+    position:relative;
+    left:75px;
+    top:160px;
+    background-color:rgb(218, 152, 218);
+    transition:all 0.3s ease-in-out;
+    border:none;
+    color:#ffffff;
+    font-weight: bold;
+   
+}
+.view-button button:hover{
+  
+    background-color:rgb(218, 152, 218);
+    cursor:pointer;
+   
+   
+}
+.view-button input{
+    left:75px;
+    top:160px;
+    position: relative;
+    width:80px;
+    height:45px;
+    /* transition:all 0.3s ease-in-out; */
+    
+  
+}
+.view-button input:focus{
+    border:2px solid rgb(218, 152, 218);
+}
+.view-button input:hover{
+    border:2px solid rgb(218, 152, 218);
+}
+.view-foot{
+    height:200px;
+    border:1px solid black;
+    margin:4px;
+
+}
+.item-name{
+    position:relative;
+    top:40px;
+
+}
+.item-price{
+    position:relative;
+    top:60px;
+
+}
+.item-error p{
+    color:red;
+    position:relative;
+    top:90px;
+    font-weight: normal;
+}

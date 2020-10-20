@@ -1,0 +1,22 @@
+
+
+
+
+
+
+
+.banner{
+    /* height:250px; */
+    background-color: #ffffff;
+    margin:9px;
+    border-radius:4px;
+}
+.banner img{
+    width: 100%;
+    height: auto;
+}
+@media only screen  and (max-width:400px){
+    .banner{
+        display:none;
+    }
+}

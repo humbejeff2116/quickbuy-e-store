@@ -1,0 +1,71 @@
+
+
+
+
+.latest-deals-items{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .latest-deals-items-header{
+ 
+    display:flex;
+    flex:1;
+    justify-content:center;
+    border-bottom:2px solid grey;
+    background-color:#ffffff;
+    color:black;
+    margin-bottom:2px;
+  
+  
+}
+  
+  .latest-deals-items-container{
+    margin-left:auto;
+    margin-right:auto;
+    width:98%;
+    display:flex;
+    flex-direction: column;
+    /* height:100vh; */
+    background-color: #ffffff;
+   
+  
+  }
+  
+  .latest-deals-items{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* border:1px solid black; */
+  
+  }
+
+.pagination {
+   /* border:1px solid black; */
+   padding:4px;
+   width:80%;
+   margin-left: auto;
+   margin-right: auto;
+   display:flex; 
+   justify-content: center;
+
+}  
+
+.pagination li {
+  
+    border:1px solid grey;
+    display: inline-block;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top:4px;
+    padding-bottom:4px;
+    color:grey;
+    cursor:pointer;
+
+} 
+
+.active{
+  border:1px solid black;
+}
+
+

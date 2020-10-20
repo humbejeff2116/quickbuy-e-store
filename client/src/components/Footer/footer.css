@@ -1,0 +1,124 @@
+
+footer{
+    display:flex;
+    flex-direction: column;
+    background-color:#242729;
+    min-height: 70vh;
+     /* border: 2px solid  rgb(218, 152, 218); */
+     z-index:1;
+
+}
+
+footer a {
+    text-decoration: none;
+    color: #dddddd;
+    font-size:0.8em;
+}
+ footer a:hover {
+    text-decoration: underline;
+    color:white;
+}
+footer li{
+    list-style-type: none;
+
+}
+.ft-title{
+    color: rgb(218, 152, 218);
+/*    
+    -webkit-text-stroke-width:1.3px black;
+    text-shadow: 
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; */
+
+
+  
+}
+.footer-main{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    margin:2px;
+    /* border-top:2px solid rgb(218, 152, 218); */
+   
+    /* border:1px solid black; */
+ 
+}
+/* .footer-main-item{
+  
+} */
+.footer-legal{
+    margin-top:70px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    /* border:1px solid black; */
+    background-color: rgb(73, 73, 73);
+  
+
+}
+.footer-legal-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+.footer-main-content{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: rgb(73, 73, 73);
+    margin:0;
+    color:white;
+    height:20vh;
+  
+
+
+}
+.footer-form{
+    margin-right:4px;
+}
+
+.footer-form input[type="email"] {
+    border: 0;
+    padding: 0.625rem;
+    margin-top: 0.3125rem;
+    /* margin-right:0.422rem; */
+    /* border: 1px solid black; */
+    width:250px;
+    height:40px;
+    /* border-radius: 4px  0px 0px 4px; */
+    background-color:#e0e0e0;
+    transition:all 0.3s ease-in-out;
+    font-weight:bold;
+}
+
+.footer-form input[type="email"]:focus {
+    background-color:white;
+
+
+}
+.footer-form input[type="submit"] {
+    height:40px;
+    background-color: rgb(218, 152, 218);
+    color: black;
+    cursor: pointer;
+    border:0px;
+    padding: 8px;
+    margin-top: 0.3125rem;
+    transition:all 0.4s ease-in-out;
+    font-weight:bold;
+    margin-left:-4px;
+}
+.footer-form input[type="submit"]:hover{
+    transform:scale(1.05) ;
+    /* text-decoration: underline; */
+    background-color:white;
+    font-weight:bold;
+   
+    color:rgb(190, 87, 190);
+    /* font-size: 0.8em; */
+}

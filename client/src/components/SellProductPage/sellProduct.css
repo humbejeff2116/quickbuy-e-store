@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+
+
+.sell-product-container{
+    margin:2px;
+    display: flex;
+    flex-direction: column;
+    padding:2px;
+}
+
+.sell-product-header{
+    border:1px solid black;
+    padding:4px;
+}
+
+.sell-product-body{
+    display:flex;
+    flex-direction:column;
+    padding:4px;
+}

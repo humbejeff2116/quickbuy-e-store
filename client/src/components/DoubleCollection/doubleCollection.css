@@ -1,0 +1,46 @@
+
+
+
+
+
+
+.view-six{
+    /* border:1px solid black; */
+   
+    width:100%; 
+    position: relative; 
+    margin-right: auto;
+    margin-left: auto;
+    bottom: 2px;
+    /* background-color:rgb(218, 152, 218); */
+
+}
+
+.view-six button{
+    background-color:rgb(218, 152, 218);
+    border:0;
+    width:170px;  
+    height: 40px;
+    margin-bottom: 9px;
+    cursor:pointer;
+    font-weight: bold;
+    transition:all 0.3s ease-in-out;
+}
+.view-six button:hover{
+    background-color: rgb(212, 108, 212);
+}
+.items-six-details{
+     /* border:1px solid black; */
+    margin-top: 4px;
+    width:180px;  
+    margin-right: auto;
+    margin-left: auto;
+
+}
+@media only screen  and (max-width:414px){
+    .view-six button{     
+        width:100%; 
+        margin-bottom: -2px; 
+    }
+
+}

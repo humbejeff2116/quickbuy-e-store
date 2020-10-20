@@ -1,0 +1,38 @@
+
+
+
+
+.men-collections-items{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .men-collections-items-header{
+   
+    display:flex;
+    flex:1;
+    justify-content:center;
+    border-bottom:2px solid grey;
+    background-color:#ffffff;
+    color:black;
+    margin-bottom:2px;
+  
+  
+}
+  
+  .men-collections-items-container{
+    margin-left:auto;
+    margin-right:auto;
+    width:98%;
+    display:flex;
+    flex-direction: column;
+    background-color:#ffffff;
+  
+  }
+  
+  .men-collections-items{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* border:1px solid black; */
+  }

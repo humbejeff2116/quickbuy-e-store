@@ -1,0 +1,117 @@
+
+
+
+
+
+
+
+
+
+.signup-form-container{
+    margin:4px;
+    background-color:#ffffff;
+    padding:4px;
+    min-height: 130vh;
+}
+.signup-form-panel{
+    display:flex;
+    flex-direction:column;
+    width:50%;
+    height:550px;
+    margin-left:auto;
+    margin-right: auto;
+    position:relative;
+    top:80px;
+    box-shadow:0 0 5px rgba(117, 116, 116, 0.6);
+    
+}
+.signup-form-panel-head{
+    margin-bottom:2px;
+    /* border:1px solid black; */
+    background-color:#ffffff;
+    text-align: center;
+    color:rgb(218, 152, 218);
+
+}
+.signup-form-panel-body{
+    margin:2px;
+    /* border:1px solid black; */
+    display:flex;
+    flex-direction:column;
+    background-color:#ffffff
+
+}
+.signup-form-group{
+    margin-top:15px;
+    /* border:1px solid black; */
+
+}
+
+.signup-form-group input{
+    width:70%;
+    height:45px;
+    /* border-radius: 3px; */
+    /* margin-left:auto;
+    margin-right:auto; */
+    font-weight: bold;
+    margin-left:94px; 
+   
+  
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom:1px solid rgb(160, 158, 158);
+    transition:all 0.3s ease-in-out;
+
+   
+
+}
+.signup-form-group input:focus{
+    outline:none;
+    border-bottom:2px solid rgb(218, 152, 218);
+
+}
+.signup-form-group input:hover{
+    border-bottom:2px solid rgb(218, 152, 218);
+
+}
+.signup-form-panel button{
+    width:70%;
+    height: 45px;
+    border:0;
+    background-color: rgb(218, 152, 218);
+    position: relative;
+    top:24px;  
+    left:94px; 
+    font-weight: bold;
+    transition:all 0.5s ease-in-out;
+}
+.signup-form-panel button:hover{
+    background-color: #f1f1f1;
+    color:rgb(218, 152, 218);
+    border:2px solid rgb(218, 152, 218);
+    cursor:pointer;
+    text-decoration:underline;
+
+}
+@media only screen  and (max-width:414px){
+    .signup-form-container{   
+        min-height: 100vh;       
+     }
+     .signup-form-panel{       
+         width:90%; 
+         top:30px;        
+     }
+     .signup-form-group input{
+         width:95%;
+         height:45px;  
+         margin-left:5px;       
+     }
+   
+     .signup-form-panel button{
+         width:100%;    
+        
+        left:0;     
+     }
+   
+}
