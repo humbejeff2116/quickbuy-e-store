@@ -67,8 +67,8 @@ const NavSearchBar =()=>{
             </div>
             <div className="search-bar">
                 <form className="search-bar-form">
-                    <input type="search" placeholder="search for clothing brands and collections" /><span><i></i></span>
-    <button><i className="fa fa-search fa-lg">{search}</i></button>
+                    <input type="search" placeholder="Search for clothing brands and collections" /><span><i></i></span>
+            <button><i className="fa fa-search fa-lg">{search}</i></button>
                 </form>
             </div>
             <div className="login">

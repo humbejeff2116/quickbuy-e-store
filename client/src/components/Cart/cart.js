@@ -137,11 +137,12 @@ export default class AppCart extends React.Component {
         <ErrorBoundary> 
             { (this.state.loading) && (<PageLoader/>) }     
         <div className=" cart-container">
+          <div className="cart">
           <div className="cart-header">
           <h3 className="cart-title">Shopping Cart</h3> 
           </div>
           <div className="cart-body">
-          <h3 className="cart-warning">No item in your cart</h3> 
+          <h2 className="cart-warning">No item in your cart</h2> 
          
           <div className="cart-img">
         <img width="200px" height="200px;" src={shopping_cart_PNG60} alt="logo" title="site logo" /> 
@@ -150,7 +151,8 @@ export default class AppCart extends React.Component {
         <button >Start Shoping </button> 
         </div>     
          
-          </div>     
+          </div> 
+          </div>    
         </div>   
       
           </ErrorBoundary>
@@ -167,6 +169,7 @@ export default class AppCart extends React.Component {
           { (this.state.loading) && <PageLoader/> }
 
       <div className=" cart-container">
+        <div className="cart">
 
         <h3 className="cart-title">Cart</h3> <hr/>
 
@@ -192,6 +195,7 @@ export default class AppCart extends React.Component {
 
         <button className="btn btn-danger float-right" onClick={this.clearCart} 
             style={{ marginRight: "10px" }} >Clear Cart</button><br/><br/><br/>
+            </div>
       </div>
       </ErrorBoundary>
       </PageTemplate>     

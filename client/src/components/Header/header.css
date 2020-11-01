@@ -162,7 +162,7 @@
     }
     .search-bar form input[type="search"]:focus{
       
-        background-color:white;
+        background-color:#ccc;
         border-radius:4px;
         color:black;
         font-family:'abel'
@@ -188,7 +188,7 @@
         /* text-decoration: underline; */
         transform:scale(1.05) ;
         /* background-color:white; */
-        /* border:1px solid rgb(218, 152, 218) ; */
+        border:2px solid rgb(218, 152, 218) ;
         /* color:rgb(218, 152, 218); */
      
     }
@@ -202,7 +202,7 @@
       
     }
     .login:hover{
-        background-color:white;
+        background-color:#ccc;      
         cursor:pointer;
       
     }
@@ -216,10 +216,9 @@
        
     }
     .login:hover a{
-        color:rgb(218, 152, 218);
+        color:#242729;
        
-      
-        
+            
     }
 
     .main-navigation{
@@ -246,7 +245,7 @@
         color:rgb(218, 152, 218);
     } */
     .main-navigation a:hover{
-        background-color: white;
+        background-color: #ccc;
         color:#242729;
     }
 

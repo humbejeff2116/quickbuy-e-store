@@ -21,8 +21,10 @@
     /* bottom: 9px; */
     cursor:pointer;
     position:relative;
+    font-size:1em;
     font-weight: bold;
     transition:all 0.3s ease-in-out;
+    font-family: 'acme';
 }
 .view button:hover{
     background-color: rgb(212, 108, 212);
@@ -30,7 +32,7 @@
 .items-details{
     /* border:1px solid black; */
     margin-top: 4px;
-    width:220px;  
+    width:180px;  
     margin-right: auto;
     margin-left: auto;
 

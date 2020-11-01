@@ -12,11 +12,13 @@ footer{
 footer a {
     text-decoration: none;
     color: rgb(218, 152, 218);
-    font-size:0.8em;
+    font-size:0.9em;
+    font-weight: bold;
+    font-family: 'acme';
 }
  footer a:hover {
     text-decoration: underline;
-    color:white;
+    /* color:white; */
 }
 footer li{
     list-style-type: none;
@@ -109,11 +111,15 @@ footer li{
     background-color: #242729;
     border: 2px solid #38393a;
     transition:all 0.5s ease-in-out;
+    font-size:0.9em;
     font-weight:bold;
+    font-family:'abel'
 }
 
 .footer-form input[type="email"]:focus {
-    background-color:white;
+    background-color:#ccc;
+    color:black;
+    font-family:'abel'
 
 
 }
@@ -133,10 +139,13 @@ footer li{
 }
 .footer-form input[type="submit"]:hover{
     transform:scale(1.05) ;
+    /* border:2px solid rgb(190, 87, 190); */
+    border:2px solid rgb(218, 152, 218);
     /* text-decoration: underline; */
-    background-color:white;
-    font-weight:bold;
+    /* background-color:#ccc; */
+    /* font-weight:bold; */
    
-    color:rgb(190, 87, 190);
+    /* color:rgb(190, 87, 190); */
+   
     /* font-size: 0.8em; */
 }

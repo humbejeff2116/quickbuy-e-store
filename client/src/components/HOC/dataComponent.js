@@ -2,8 +2,13 @@
 
 
 
+
+
+
+
 import React from 'react';
 import { PageLoader } from '../Loader/loader';
+// import axios from 'axios'
 
 let i = 0;
 let dataI = [
@@ -37,7 +42,7 @@ let dataI = [
         //     this.setState({
         //         loading:true
         //     })
-        // fetch(url)
+        // axios.get(url)
         //     .then(response=> response.data)
         //     .then(data=>{
         //         this.setState({

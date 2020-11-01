@@ -71,7 +71,7 @@ margin:6px;
 }
 .items-picture img{
   width: 80%;
-  max-width: 100%;
+  /* max-width: 100%; */
   height: auto;
   margin-left: 8px;
 }
@@ -122,13 +122,14 @@ margin:6px;
     color:#ffffff; */
   width:18%;
   text-align:center;
+  font-family:'acme';
   /* box-shadow:0 0 5px rgba(117, 116, 116, 0.6); */
 }
 
 
 .items-header a{
   text-decoration: none;
-  font-size:14px;
+  font-size:1.1em;
   margin-right:2px;
   padding:10px;
   color:rgb(190, 87, 190);

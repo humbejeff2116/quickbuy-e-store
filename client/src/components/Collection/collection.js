@@ -17,9 +17,11 @@ export class CollectionItem extends React.Component {
 
        
     view = (src,name,price,id,available) => {
+
       let item =[];
-        item.push({ src, name, price, id,available });
-       localStorage.setItem('view', JSON.stringify(item))
+      item.push({ src, name, price, id,available });
+       localStorage.setItem('view', JSON.stringify(item));
+
 
     }
   
@@ -30,12 +32,12 @@ export class CollectionItem extends React.Component {
     return (
       <ErrorBoundary>
   
-       <div className="items-picture"> 
-          <div className="items-details">    
-             <img src={logo} width="80%;" height="80%" alt="img" /><br />      
-           <span className="product-title"><small>name: {name}</small></span><br />
-           <span className="product-price"><small>price: ${price}</small></span><br />
-           </div> 
+            <div className="items-picture"> 
+            <div className="items-details">    
+            <img src={logo} width="80%;" height="80%" alt="img" /><br />      
+            <span className="product-title"><small>name: {name}</small></span><br />
+            <span className="product-price"><small>price: ${price}</small></span><br />
+            </div> 
           
            { 
               (available) ?

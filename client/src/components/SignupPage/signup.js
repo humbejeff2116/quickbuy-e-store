@@ -38,7 +38,7 @@ export default class Signup extends React.Component{
 
         signup(this.state)
         .then(response => {
-            if(response.status != 200){
+            if(response.status !== 200){
                return this.setState({
                     errMessage:response.message
                 })
@@ -92,7 +92,7 @@ export default class Signup extends React.Component{
 
                     <div className="signup-form-group">
                    
-                    <input type="email" placeholder="Email" className="form-control" name="email" onChange={this.handleInputChange}  />
+                    <input type="email" placeholder="Example@gmail.com" className="form-control" name="email" onChange={this.handleInputChange}  />
                     </div>
 
                     <div className="signup-form-group">
@@ -107,7 +107,7 @@ export default class Signup extends React.Component{
 
                     <div className="signup-form-group">
                    
-                    <input type="password" placeholder="Reapeat Password" className="form-control" name="password2" onChange={this.handleInputChange} />
+                    <input type="password" placeholder="Repeat Password" className="form-control" name="password2" onChange={this.handleInputChange} />
                     </div>
 
                     <button type="submit" className="btn btn-success"> Submit</button>

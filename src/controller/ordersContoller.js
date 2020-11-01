@@ -58,10 +58,7 @@ class OrderController{
       if(!orders){
          return  res.status(400).json({status:400, message:'order not found'})
       }
-      return res.status(200).json({status:200, data:orders, message:'retrieved orders successfully'});
-
-       
-
+      return res.status(200).json({status:200, data:orders, message:' Orders retrieved successfully'});
     }
 
 }

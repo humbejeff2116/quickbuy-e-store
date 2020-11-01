@@ -49,7 +49,7 @@ export default class Login extends React.Component{
 
        login(this.state)
        .then(response => {
-         if(response.status != 200){
+         if(response.status !== 200){
            return this.setState({
              errMessage: response.message
            })
@@ -103,14 +103,14 @@ export default class Login extends React.Component{
 
                   
 
-                     <input type="text" className="login-form-control" name="name" onChange={this.handleInputChange}placeholder="email or phone number"/>
+                     <input type="text" className="login-form-control" name="name" onChange={this.handleInputChange}placeholder="Email or phone number"/>
 
                    </div>
 
                    <div className="login-form-group">
 
                     
-                     <input type="password" placeholder="password" className="login-form-control" name="password" onChange={this.handleInputChange}/>
+                     <input type="password" placeholder="Password" className="login-form-control" name="password" onChange={this.handleInputChange}/>
 
                    </div>
                    <div className="login-forgot-pass">

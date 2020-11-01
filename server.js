@@ -66,8 +66,8 @@ app.use(morgan('dev'));
 app.use(cors(corsOptions))
 
 // set specifications for swagger with the options
-const specs = swaggerJsdoc( require('./src/documentation/options') );
-app.use("/api-docs",swaggerUi.serve, swaggerUi.setup(specs, {explorer: true}) );
+const specs = swaggerJsdoc( require('./src/documentation/options'));
+app.use("/api-docs",swaggerUi.serve, swaggerUi.setup(specs, {explorer: true}));
 // use body parser to collect form data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -75,9 +75,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookie(credentials.cookieSecret));
 // handle application sessions
 app.use(session({
+
     secret:credentials.sessionSecret,
     resave:true,
     saveUninitialized:true
+    
 }));
 
 // user routes start here
