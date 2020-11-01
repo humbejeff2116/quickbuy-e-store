@@ -40,7 +40,7 @@ const prodDbUri = config.db.prod
 // establish connection with database
 // let url = process.env.MONGODB_URI || `mongodb://localhost:27017/test`;
 mongoose.connect( prodDbUri || `mongodb://${host}:${dbPort}/${dbName}`,
-{ useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex:true,useFindAndModify:false  },
+{ useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex:true,useFindAndModify:false },
 (err,conn)=>{
     if(err){
         throw err

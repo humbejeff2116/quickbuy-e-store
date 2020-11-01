@@ -9,10 +9,24 @@ export const FooterFormComp =(props)=>
 //  Footer form 
     <section className="footer-main-content">
         <div>
-            ist footer content
+        <h2 className="ft-title"> quick buy</h2>
+        <ul>
+              <li><a href="/">Services</a></li>
+              <li><a href="/">Portfolio</a></li>
+              <li><a href="/">Pricing</a></li>
+              <li><a href="/">Customers</a></li>
+              <li><a href="/">Careers</a></li>
+        </ul>
         </div>
             <div>
-                second footer content
+               <h2 className="ft-title"> About </h2>
+            <ul>
+                <li><a href="/">Services</a></li>
+                <li><a href="/">Portfolio</a></li>
+                <li><a href="/">Pricing</a></li>
+                <li><a href="/">Customers</a></li>
+                <li><a href="/">Careers</a></li>
+            </ul>
             </div>
                 <div className="footer-form" >
                         <p>Subscribe to our newsletter to get  latest deals</p>
@@ -82,6 +96,6 @@ export const FooterLegalComp =()=>
             <li><a href="/term">Terms &amp; Conditions</a></li>
             <li><a href="/term">Privacy Policy</a></li>
             <li><a href="/term">Developed by Humbe Jeffrey</a></li>
-            <li>&copy; 2019 Copyright Huje Soft Inc.</li>
+            <li><a href='#'>&copy; 2019 Copyright Huje Soft Inc.</a></li>
         </ul>
     </section>

@@ -26,6 +26,7 @@ client/node_modules
 
 # production
 /build
+client/build
 
 # testing
 /coverage

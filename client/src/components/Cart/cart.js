@@ -155,8 +155,7 @@ export default class AppCart extends React.Component {
       
           </ErrorBoundary>
           </PageTemplate>     
-        
-
+          
       )
 
     }

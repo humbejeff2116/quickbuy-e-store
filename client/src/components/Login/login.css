@@ -64,9 +64,6 @@
     border-right:0;
     border-bottom:1px solid rgb(160, 158, 158);
     /* transition:all 0.3s ease-in-out; */
-
-   
-
 }
 .login-form-group input:focus{
     outline: none;

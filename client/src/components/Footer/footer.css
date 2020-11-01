@@ -3,7 +3,7 @@ footer{
     display:flex;
     flex-direction: column;
     background-color:#242729;
-    min-height: 70vh;
+    min-height: 85vh;
      /* border: 2px solid  rgb(218, 152, 218); */
      z-index:1;
 
@@ -11,7 +11,7 @@ footer{
 
 footer a {
     text-decoration: none;
-    color: #dddddd;
+    color: rgb(218, 152, 218);
     font-size:0.8em;
 }
  footer a:hover {
@@ -39,7 +39,7 @@ footer li{
 .footer-main{
     display:flex;
     flex-wrap:wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin:2px;
     /* border-top:2px solid rgb(218, 152, 218); */
    
@@ -50,12 +50,14 @@ footer li{
   
 } */
 .footer-legal{
-    margin-top:70px;
+    margin-top:140px;
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
-    /* border:1px solid black; */
-    background-color: rgb(73, 73, 73);
+    border-bottom:1px solid #2f3133;
+    border-top:1px solid #2f3133;
+    /* background-color: #2f3133; */
+    color: rgb(218, 152, 218);
   
 
 }
@@ -65,15 +67,22 @@ footer li{
     flex-wrap: wrap;
     justify-content:space-between;
 }
+
+.footer-legal-list a{
+    color: rgb(218, 152, 218);
+
+}
 .footer-main-content{
     display:flex;
     flex-direction:row;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
-    background-color: rgb(73, 73, 73);
+    background-color:#242729;
+    border-bottom:1px solid #38393a;
     margin:0;
     color:white;
-    height:20vh;
+    min-height:20vh;
+     
   
 
 
@@ -81,18 +90,25 @@ footer li{
 .footer-form{
     margin-right:4px;
 }
+.footer-form p{
+    color: rgb(218, 152, 218);
+    font-size: 0.9em;
+
+}
 
 .footer-form input[type="email"] {
     border: 0;
     padding: 0.625rem;
     margin-top: 0.3125rem;
     /* margin-right:0.422rem; */
-    /* border: 1px solid black; */
+    color: rgb(218, 152, 218);
+   
     width:250px;
     height:40px;
     /* border-radius: 4px  0px 0px 4px; */
-    background-color:#e0e0e0;
-    transition:all 0.3s ease-in-out;
+    background-color: #242729;
+    border: 1px solid #38393a;
+    transition:all 0.5s ease-in-out;
     font-weight:bold;
 }
 
@@ -103,8 +119,8 @@ footer li{
 }
 .footer-form input[type="submit"] {
     height:40px;
-    background-color: rgb(218, 152, 218);
-    color: black;
+    /* background-color: rgb(218, 152, 218); */
+    color: rgb(218, 152, 218);
     cursor: pointer;
     border:0px;
     padding: 8px;
@@ -112,6 +128,8 @@ footer li{
     transition:all 0.4s ease-in-out;
     font-weight:bold;
     margin-left:-4px;
+    background-color: #242729;
+    border: 1px solid #38393a;
 }
 .footer-form input[type="submit"]:hover{
     transform:scale(1.05) ;
