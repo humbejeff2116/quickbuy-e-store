@@ -117,7 +117,7 @@ class SeeAllController{
       
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);
-        await  ProductsModel.find({tags:"women collections"})
+        await  ProductsModel.find({tags:"popular collections"})
             .sort({createdate: 'descending'})
             .skip(skip)
             .limit(limit)
@@ -141,7 +141,7 @@ class SeeAllController{
             })
             .catch( err=>{
                 console.error(err.stack);
-                return res.status(500).json({status: 500,message:'failed to get latest deals products'});
+                return res.status(500).json({status: 500,message:'failed to get popular collections products'});
     
             });
            

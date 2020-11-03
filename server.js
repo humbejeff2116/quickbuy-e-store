@@ -9,43 +9,41 @@
 
 
 const express = require('express');
-// const domain = require('domain');
-// const cluster = require('cluster');
 const uncaughtExceptions = require('./src/exceptions/uncaughtExceptions');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookie = require('cookie-parser');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const apiRouter = require('./src/routes/api_routes')
+const apiRouter = require('./src/routes/api_routes');
 const http = require('http');
 const config = require('./src/config/config');
-const credentials = require('./src/config/credentials')
-const path = require('path')
-const cors = require('cors')
+const credentials = require('./src/config/credentials');
+const path = require('path');
+const cors = require('cors');
 const helmet = require('helmet');
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
+// const serverRender = require('../src/controller/renderHtmlController');
+// const  renderApp = require( '../dist-server/renderHtmlController')
+
 
 const app = express()
 app.use(helmet());
 //  application configuration variables;
 const port =  config.app.port;
-const host = config.db.host;
-const dbPort = config.db.port;
-const dbName = config.db.name;
 const prodDbUri = config.db.prod
+const devDbUri =  `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
+const dbOptions = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true, useFindAndModify:false }
 
 
 // establish connection with database
 // let url = process.env.MONGODB_URI || `mongodb://localhost:27017/test`;
-mongoose.connect( prodDbUri || `mongodb://${host}:${dbPort}/${dbName}`,
-{ useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex:true,useFindAndModify:false },
-(err,conn)=>{
+mongoose.connect( prodDbUri ||devDbUri,dbOptions,(err,conn)=>{
     if(err){
         throw err
     }
-    console.log(`connection to database established`)
+    console.log(`connection to database established`);
 })
 // set app view engine
 
@@ -53,6 +51,7 @@ app.set('views', path.join( __dirname, 'src', 'views'));
 app.set('view engine' , 'ejs');
 
 const corsOptions = {
+    
     origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 
   }
@@ -60,11 +59,11 @@ const corsOptions = {
 
 
 // set up application middleware
-app.use(uncaughtExceptions)
+app.use(uncaughtExceptions);
 app.use(morgan('dev'));
 
-app.use(cors(corsOptions))
-
+app.use(cors(corsOptions));
+// api documentation using swagger
 // set specifications for swagger with the options
 const specs = swaggerJsdoc( require('./src/documentation/options'));
 app.use("/api-docs",swaggerUi.serve, swaggerUi.setup(specs, {explorer: true}));
@@ -83,7 +82,9 @@ app.use(session({
 }));
 
 // user routes start here
-// serve static files from public folder
+// render react app from the server
+// app.use('*',renderApp);
+// serve static files from build folder
 app.use(express.static(path.join(__dirname ,'client','build')));
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'client','build','index.html'));

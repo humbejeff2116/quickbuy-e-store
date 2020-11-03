@@ -13,10 +13,10 @@
 const mongoose = require('mongoose');
 
 
-const SubscriptionsSchema = mongoose.Schema({
+const SubscriptionSchema = mongoose.Schema({
     email:{type:String , required:true},
     tags:[String]
 
 });
-const Subscription = mongoose.model('subscriptions',SubscriptionsSchema);
+const Subscription = mongoose.model('subscriptions',SubscriptionSchema);
 module.exports = Subscription;

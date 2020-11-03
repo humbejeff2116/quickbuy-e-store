@@ -8,15 +8,15 @@
 
 import React from 'react';
 import { PageLoader } from '../Loader/loader';
-// import axios from 'axios'
+import axios from 'axios'
 
-let i = 0;
-let dataI = [
-    {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'},
-    {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'},
-    {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'},
-    {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'}
-]
+// let i = 0;
+// let dataI = [
+//     {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'},
+//     {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'},
+//     {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'},
+//     {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'}
+// ]
 
 
 
@@ -36,29 +36,29 @@ let dataI = [
 
         }
         componentDidMount() {
+            // this.setState({
+            //     data:dataI
+            // })
             this.setState({
-                data:dataI
+                loading:true
             })
-        //     this.setState({
-        //         loading:true
-        //     })
-        // axios.get(url)
-        //     .then(response=> response.data)
-        //     .then(data=>{
-        //         this.setState({
-        //             loading:false,
-        //             data
-        //         })
-        //         console.log('returned data is',data)
-        //     })
-        //     .catch(err=>{
-        //         console.error(err);
-        //         this.setState({
-        //             fetchErrMssg: err
-        //         })
-        //     }
+        axios.get(url)
+            .then(response=> response.data)
+            .then(data=>{
+                this.setState({
+                    loading:false,
+                    data:data.data
+                })
+                console.log('returned data is',this.state.data)
+            })
+            .catch(err=>{
+                console.error(err);
+                this.setState({
+                    fetchErrMssg: err
+                })
+            }
                 
-        // )
+        )
         
         }
         

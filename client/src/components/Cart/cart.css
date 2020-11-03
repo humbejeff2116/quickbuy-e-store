@@ -21,11 +21,12 @@
 .cart{
     /* border:1px solid black; */
     min-height: 70vh;
-    width:80%;
+    width:40%;
     margin-left:auto;
     margin-right:auto;
     position: relative;
     top:45px;
+    box-shadow:0 0 5px rgba(117, 116, 116, 0.6);
 
 
 
@@ -63,11 +64,11 @@
     margin:6px;
     border-radius: 4px;
     padding:6px;
-    width:15%;
+    /* width:15%; */
     height:45px;
     margin-right: auto;
     margin-left:auto;
-    box-shadow:0px 2px 2px 2px rgba(117, 116, 116, 0.6);
+    /* box-shadow:0px 2px 2px 2px rgba(117, 116, 116, 0.6); */
 }
 
 
@@ -109,6 +110,14 @@
     /* text-decoration: underline; */
     background-color: rgb(212, 108, 212);
 
+}
+
+.cart-body button a{
+
+    text-decoration:none;
+    color:#ffffff;
+    font-family:'acme';
+    
 }
 .cart-img{
     /* border:1px solid black; */

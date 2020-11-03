@@ -10,8 +10,8 @@ const nodemailer = require('nodemailer');
 
 
 module.exports = function(credentails){
-    let mailTransport = nodemailer.createTransport('SMTP',{
-        service:'Gmail',
+    let mailTransport = nodemailer.createTransport({
+        service:'gmail',
         auth:{
             user:credentails.gmail.user,
             pass: credentails.gmail.password,

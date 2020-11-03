@@ -14,7 +14,7 @@ module.exports ={
     '/latest-deals': require("./paths/latestDeals") ,
     '/women-collections':require("./paths/womenCollections"),
     '/men-collections':require("./paths/menCollections"),
-    '/popular-collections':require("./paths/womenCollections"),
+    '/popular-collections':require("./paths/popularCollections"),
     '/accessories':require("./paths/accessories"),
     '/jewelries':require("./paths/jewelries"),
     '/users/signup':require("./paths/userSignup"),

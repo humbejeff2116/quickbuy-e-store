@@ -69,6 +69,10 @@ footer li{
     flex-wrap: wrap;
     justify-content:space-between;
 }
+.footer-legal-list :nth-last-child(1){
+  margin-right: 10px;
+
+}
 
 .footer-legal-list a{
     color: rgb(218, 152, 218);

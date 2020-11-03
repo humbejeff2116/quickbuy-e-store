@@ -36,19 +36,19 @@ const port = 4000;
 const LatestDeals = DataComponent( Collection, `http://${host}:${port}/api/v1/latest-deals?limit=${4}`)
 const WomenCollections = DataComponent( Collection,`http://${host}:${port}/api/v1/women-collections?limit=${4}`)
 const PopularCollections = DataComponent( DoubleCollection, `http://${host}:${port}/api/v1/popular-collections?limit=${12}`)
-const MenCollections = DataComponent( Collection, `http://${host}/${port}/api/v1/men-collections?limit=${4}`)
+const MenCollections = DataComponent( Collection, `http://${host}:${port}/api/v1/men-collections?limit=${4}`)
 // yet to be named 
 // const Unnamed = DataComponent( SingleCollection, "http://api/v1/unNamed")
 
 
-  export default function Products ( ) {
+  export default function HomePage ( ) {
     useEffect(()=>{
       window.scrollTo(0,0)
   })
 
       return(
           <PageTemplate>
-        <>       
+       
         {/* <ErrorBoundary>
             < Slider />
             </ErrorBoundary> */}
@@ -85,7 +85,7 @@ const MenCollections = DataComponent( Collection, `http://${host}/${port}/api/v1
         {/* < Article />   */}
         {/* </ErrorBoundary> */} 
        
-    </>
+  
     </PageTemplate>
 
       )

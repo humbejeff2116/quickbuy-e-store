@@ -10,6 +10,7 @@
 
 import React from 'react'
 import {signup} from '../../services/ecormerce.service'
+import {PageTemplate} from '../PageTemplate/pageTemplate'
 import './signup.css'
 // import {PageTemplate} from '../PageTemplate/pageTemplate'
 
@@ -64,6 +65,10 @@ export default class Signup extends React.Component{
     
     render(){
         return(
+            <PageTemplate>
+
+           
+
            
           
             <div className="signup-form-container">
@@ -73,7 +78,7 @@ export default class Signup extends React.Component{
             <div className = "signup-form-panel">
 
                 <div className="signup-form-panel-head">
-                    <h3>sign up</h3>
+                    <h2>sign up</h2>
                 </div>
 
                 <div className="signup-form-panel-body">
@@ -118,6 +123,7 @@ export default class Signup extends React.Component{
 
             </div>
             </div>
+            </PageTemplate>
            
           
         )

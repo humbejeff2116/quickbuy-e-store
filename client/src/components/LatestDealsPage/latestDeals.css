@@ -2,9 +2,10 @@
 
 
 
-.latest-deals-items{
+.latest-deals-container{
     display:flex;
     flex-direction:column;
+    /* border:1px solid black; */
   }
 
   .latest-deals-items-header{
@@ -12,7 +13,7 @@
     display:flex;
     flex:1;
     justify-content:center;
-    border-bottom:2px solid grey;
+    /* border-bottom:2px solid grey; */
     background-color:#ffffff;
     color:black;
     margin-bottom:2px;
@@ -28,6 +29,7 @@
     flex-direction: column;
     /* height:100vh; */
     background-color: #ffffff;
+    /* border:1px solid black; */
    
   
   }
@@ -36,6 +38,7 @@
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content:space-between;
     /* border:1px solid black; */
   
   }

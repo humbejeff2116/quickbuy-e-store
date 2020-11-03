@@ -12,7 +12,7 @@ const { ObjectId } = mongoose.Schema.Types;
 
 
 
-const ProductsSchema =  mongoose.Schema({
+const ProductSchema =  mongoose.Schema({
 
     id:{type: String, unique:true},
     name:{type: String , required:true},
@@ -25,13 +25,13 @@ const ProductsSchema =  mongoose.Schema({
     createdAt:{ type:Date , default: Date.now} 
 
 });
-ProductsSchema.index({
+ProductSchema.index({
     '$**':'text'
 
 })
 
 
-const Product  = mongoose.model('products' , ProductsSchema)
+const Product  = mongoose.model('products' , ProductSchema)
 module.exports = Product;
 
 

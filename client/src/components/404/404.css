@@ -5,19 +5,37 @@
 
 
 
+.container-not{
+    /* border:1px solid black; */
+    background-color:#ffffff;
+    min-height: 60vh;
+    margin:8px;
+
+
+}
 
 .not-found{
-    /* border:1px solid black; */
-    margin:4px;
-    background-color:white;
+  
+    position:relative;
+    top:14px;
+    background-color:#ffffff;
+    box-shadow:0 0 5px rgba(117, 116, 116, 0.6);
     min-height: 50vh;
-
+    width:40%;
+    margin-left:auto;
+    margin-right:auto;
+  
 }
 .not-found h2{
     text-align: center;
+    position:relative;
+    top:12px;
 
 }
 .not-found h3{
     text-align: center;
+  position:relative;
+  top:12px;
 
 }
+

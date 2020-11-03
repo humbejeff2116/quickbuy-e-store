@@ -68,12 +68,22 @@ module.exports = {
       User:{
         type: 'object',
         properties:{
-          name:{
+          firstname:{
             type: 'string' ,
-            description: 'The name of the user',
+            description: 'The first name of the user',
              required:true
             },
+            lastname:{
+              type: 'string' ,
+              description: 'The last name of the user',
+               required:true
+              },
             email:{
+              type: 'string', 
+              required: true, 
+              unique: true
+            },
+            phonenumber:{
               type: 'string', 
               required: true, 
               unique: true
@@ -83,21 +93,16 @@ module.exports = {
                required: true,
                description: 'The password of the user' 
               },
+            profileimage:{
+              type: 'string',
+              description: 'The users profile image'
+            },
+            
             createdAt:{ 
                 type: 'string',
                 format: 'date',
                 description: 'The date of user creation.'
-                },
-                
-            bio:{
-              type: 'string',
-              description: 'The brief bio about the user'
-            },
-            profileimage:{
-              type: 'string',
-              description: 'The users profile image'
-            }
-               
+                }  
         }
       },
       Users:{

@@ -18,10 +18,14 @@ const Woops404 =({location})=>{
 
 return(
     <PageTemplate>
+    <div className="container-not"  >
     <div className="not-found">
-<h2> Resource not found at </h2>
-<h3>the link you entered is either broken or incorrect</h3>
-</div>
+        <h2> Resource not found at  </h2>
+        <h3>the link you entered is either broken or incorrect</h3>
+    </div>
+
+    </div>
+    
 </PageTemplate>
 
 )

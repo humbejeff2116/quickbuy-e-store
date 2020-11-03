@@ -15,7 +15,7 @@ const credentails = require('../config/credentials')
 
 class UserController{
     // signup route
-    signUp = async (req,res,next)=>{
+    signUp = async (req,res,next) => {
         
     const errors = validationResult(req);
   
@@ -23,8 +23,8 @@ class UserController{
         return res.status(422).json({ status: 422, valErrors: errors.array() });
       }
 
-    let firstname = req.body.firstname ;
-    let lastname = req.body.lastname ;
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
     let email = req.body.email;
     let phonenumber = req.body.phonenumber;
     let password = req.body.password;  
@@ -33,7 +33,7 @@ class UserController{
 
  
       await  User.findOne({email:email} )
-        .then(user=>{
+        .then(user => {
             if(user){
                return res.status(400).json({status:400, message:' Email has already been registered on this site'})
             }
@@ -57,23 +57,24 @@ class UserController{
             let response = {status:200, data : userDetails, error : false, message : 'you are now registered', token: token };
             return res.status(200).json(response);                
         })
-        .catch(err=>{
+        .catch(err => {
             console.error(err.stack);
             return res.status(400).json({status:400, message:'an error occured while registering please try again'})
         })
   
     }
+
     // login route
     userLogin = async (req,res,next) => {
-        let email = req.body.email;
+        const email = req.body.email;
         const password = req.body.password
-        let phonenumber = req.body.phonenumber;
+        // const phonenumber = req.body.phonenumber;
 
       //  await models.usersModel.findOne({email:email})
      await  User.find({
          "$or":[
            {"email":email },
-           { "phoneNum":{"$gte":phonenumber } }
+           { "phonenumber":{"$gte":email } }
         ]
         })
         .then( user => {
@@ -90,7 +91,8 @@ class UserController{
                 }
                 let userDetails = {
                     id:user._id,
-                    name:user.name,
+                    firstname:user.name,
+                    lastname:user.lastname,
                     email:user.email,
                     profileimage:user.profileimage
                 }
@@ -101,7 +103,7 @@ class UserController{
                 return res.status(200).json(response);           
             });     
         })
-        .catch(err=>{
+        .catch(err => {
             console.error(err.stack)
             return res.status(400).json(({status:400,error:true, message:'error occured while trying to get your information please try again'}))
         });
@@ -112,7 +114,7 @@ class UserController{
     //   work on your integrate paypal here
     // the checkout route
 
-      userPay = (req,res,next)=>{
+      userPay = (req,res,next) => {
 
             
         return res.json("Payment Successful!");

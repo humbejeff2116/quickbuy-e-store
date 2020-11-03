@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {Link} from 'react-router-dom'
+import './doubleCollection.css';
 
 import { DoubleCollectionItem} from './doubleCollection'
 
@@ -23,7 +24,7 @@ import { DoubleCollectionItem} from './doubleCollection'
                 <Link to={href}>See All</Link>
     </div>
         {/* //  display of sales items   */}
-        <div className="sale-items">
+        <div className="six-sale-items">
         {
             data.map((product,i)=>
                 < DoubleCollectionItem key ={i} {...product} />

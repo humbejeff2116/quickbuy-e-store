@@ -28,6 +28,7 @@ import {AboutMenuDropdown} from '../DropdownMenu/aboutMenuDropdown'
 import {AllCategoriesDropdown} from '../DropdownMenu/allCategoriesDropdown'
 import{MenClothingsDropdown} from '../DropdownMenu/menClothingsDropdown'
 import {WomenClothingsDropdown} from '../DropdownMenu/womenClothingsDropdown'
+import { Redirect } from 'react-router-dom';
 
 
 // const facebook = <FontAwesomeIcon icon={['fab', 'facebook']} size="xl" />
@@ -56,8 +57,9 @@ const NavSearchBar =()=>{
         localStorage.removeItem('x-access-token');
    
       }
+      const auth = isAuthenticated();
 
-    const auth = isAuthenticated();
+
   
     return(
 
@@ -74,13 +76,17 @@ const NavSearchBar =()=>{
             <div className="login">
 
             { 
-                (auth) ? <Link className="nav-item nav-link" to="/checkout">Checkout</Link> : ''
+                (auth) && (<Link className="nav-item nav-link" to="/checkout">Checkout</Link>)
+            }
+            {
+                 (auth) && (<Link className="nav-item nav-link"  to="/users/dashboard">Dashboard</Link>) 
+
             }
 
             {   
                 ( auth ) ?  ( <a className="nav-item nav-link" href="/" onClick={()=>logOut()}>Logout</a>) : 
 
-                ( <Link className="nav-item nav-link float-right" to="/login">  <i className="fa fa-tshirt">{user}</i>Signup/Login</Link> )
+                ( <Link className="nav-item nav-link float-right" to="/login">  <i className="fa fa-user">{user}</i>Signup/Login</Link> )
             }
             </div>
               
@@ -106,7 +112,7 @@ const NavSearchBar =()=>{
          this.navContainer = React.createRef()
      }
     //  creates a drop down when about link is clicked
-     toggleAbout= ()=> {
+     toggleAbout= ( ) => {
       
         this.setState(prevState=>({
             toggle1:!prevState.toggle1,
@@ -117,7 +123,7 @@ const NavSearchBar =()=>{
         }))
     }
     // creates a dropdown when all categories link is clicked
-    toggleAllCategories = ( )=> {
+    toggleAllCategories = ( ) => {
        
          this.setState(prevState=>({
             toggle1:false,
@@ -127,7 +133,7 @@ const NavSearchBar =()=>{
         }))
     }
 
-   toggleMenClothings = ( )=> {
+   toggleMenClothings = ( ) => {
       
         this.setState(prevState=>({
             toggle1:false,
@@ -137,14 +143,15 @@ const NavSearchBar =()=>{
         }))     
     }
 
-   toggleWomenClothings = ( )=> {
+   toggleWomenClothings = ( ) => {
       
         this.setState(prevState=>({
             toggle1:false,
             toggle2:false,
             toggle3:false,
             toggle4:!prevState.toggle4,
-        }))
+        })) 
+
     }
 // opens the navigation panel when on mobile device
     openNav = (id)=> {
@@ -207,11 +214,11 @@ const NavSearchBar =()=>{
         <nav className="main-navigation" id="main-navigation" ref={this.navContainer} >
             {/* onClick ={closeNav()} */}           
             <Link className="navbar-brand" to="/"> 
-    <i className="fa fa-home fa-lg">{home}</i><span className="nav-text">Home</span>
+                <i className="fa fa-home fa-lg">{home}</i><span className="nav-text">Home</span>
             </Link>
             {/* link creates dropdown when clicked */}
-            <Link className="navbar-brand" id="drop" to={''}onClick={(e)=>{e.preventDefault();this.toggleAbout()}} > 
-    <i className="fa fa-home fa-lg">{about}</i><span className="nav-text">About</span>
+            <Link className="navbar-brand" id="drop" to={''} onClick={(e)=>{e.preventDefault();this.toggleAbout()}} > 
+                <i className="fa fa-home fa-lg">{about}</i><span className="nav-text">About</span>
             </Link>
             {/* about menu dropdown starts here */}
             { 
@@ -222,7 +229,7 @@ const NavSearchBar =()=>{
             <button className="closebtn" onClick={()=>this.closeNav('main-navigation')}>&times;</button>
 
             <Link className="nav-item nav-link" to={''}  onClick={(e)=>{e.preventDefault();this.toggleAllCategories()}} >
-            <i className="fa fa-home fa-lg"></i><span className="nav-text">All Categories</span>
+                <i className="fa fa-home fa-lg"></i><span className="nav-text">All Categories</span>
             </Link>
             { 
 
@@ -230,7 +237,7 @@ const NavSearchBar =()=>{
 
             }
             <Link className="nav-item nav-link" to={''} onClick={(e)=>{e.preventDefault();this.toggleWomenClothings()}} >
-        <i className="fa fa-tshirt">{female}</i><span className="nav-text">Women Clothings</span> 
+                <i className="fa fa-tshirt">{female}</i><span className="nav-text">Women Clothings</span> 
             </Link>
             { 
 
@@ -238,7 +245,7 @@ const NavSearchBar =()=>{
 
             }
             <Link className="nav-item nav-link" to={''} onClick={(e)=>{e.preventDefault();this.toggleMenClothings()}} >
-        <i className="fa fa-tshirt">{male}</i><span className="nav-text">Men Clothings</span>
+                <i className="fa fa-tshirt">{male}</i><span className="nav-text">Men Clothings</span>
             </Link>
             { 
 
@@ -246,19 +253,19 @@ const NavSearchBar =()=>{
 
             }
             <Link className="nav-item nav-link" to="/jewelries">
-        <i className="fa fa-tshirt">{jewelries}</i><span className="nav-text">Jewelries</span>
+                <i className="fa fa-tshirt">{jewelries}</i><span className="nav-text">Jewelries</span>
             </Link>
 
             <Link className="nav-item nav-link" to="/accessories">
-        <i className="fa fa-tshirt">{accessories}</i><span className="nav-text">Accesories</span>
+                <i className="fa fa-tshirt">{accessories}</i><span className="nav-text">Accesories</span>
             </Link>
 
             <Link className="nav-item nav-link" to="/cart">
-        <i className="fa fa-tshirt">{cart}</i><span className="nav-text">shopping cart </span>   
+                <i className="fa fa-tshirt">{cart}</i><span className="nav-text">shopping cart </span>   
             </Link>
 
-            <Link className="nav-item nav-link" to="/login">
-          <span href="" id="sign-up-link">Signup/Login</span>
+            <Link className="nav-item nav-link"  id="sign-up-link" to="/login">
+                <span href="/login">Signup/Login</span>
             </Link>
            
         </nav>

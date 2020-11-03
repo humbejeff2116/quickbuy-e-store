@@ -32,7 +32,7 @@ module.exports = function(req,res,next){
             }catch(err){
                 console.error('Express mechanism failed \n' ,err.stack);
                 res.statusCode = 500;
-                res.setHeader('content-type', 'text/plain');
+                res.setHeader('Content-Type', 'text/plain');
                 res.end('server error');
             }
         }catch(err){
@@ -42,6 +42,5 @@ module.exports = function(req,res,next){
     domain.add(req);
     domain.add(res);
     domain.run(next)
-
 
 }

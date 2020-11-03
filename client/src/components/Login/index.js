@@ -15,10 +15,11 @@
 
 
 import React from 'react'
-import { Route,} from 'react-router-dom'
+import { Route,Switch} from 'react-router-dom'
 import Login from './login'
-import Signup from '../SignupPage/signup'
+
 import {PageTemplate} from '../PageTemplate/pageTemplate'
+import Woops404 from './404/404';
 // import {Header} from '../Header/index'
 
 
@@ -34,8 +35,11 @@ import {PageTemplate} from '../PageTemplate/pageTemplate'
 
     <>
     {/* <Route component={Login}/>  */}
+    {/* <Switch> */}
     <Route exact path="/login" component={Login} />
-    <Route path="/login/signup" component={Signup}/>
+   
+    {/* <Route path="*"><Woops404 /></Route> */}
+    {/* </Switch> */}
     </>
     </PageTemplate>
 

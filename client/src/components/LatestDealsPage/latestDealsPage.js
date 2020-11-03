@@ -14,10 +14,11 @@ import ErrorBoundary from '../ErrorBoundary/errorBoundary'
 import {PageLoader} from '../Loader/loader'
 import {PageTemplate} from '../PageTemplate/pageTemplate'
 import ReactPaginate from 'react-paginate';
+import axios from 'axios';
 
 window.React = React;
 
-
+     
 
 const LatestDealsPage =(props)=>{
 
@@ -31,32 +32,42 @@ const LatestDealsPage =(props)=>{
      useEffect(()=>{
         window.scrollTo(0,0)
         setLoading(true);
+        // axios.get(`http://localhost:4000/api/v1/latest-deals?limit=${limit}&skip=${skip}`)
         getLatestDeals(limit,skip)
-        .then(response =>{
-            setPageCount( Math.ceil(response.productsLength / limit))
-            setProducts(response.data )     
+        .then(response=>response.data)
+        .then(data =>{
+            console.log(data.data)
+            setPageCount( Math.ceil(data.length / limit))
+            setProducts(data.data ) 
+            setLoading(false)
+           
         })  
         .catch(err => console.error(err));       
-         setLoading(false)
+        
      },[skip,limit]);
-
+// function for react paginate
     const handlePageClick = (data) => {
         let selected = data.selected;
         let offset = Math.ceil(selected * limit);
         setSkip(offset);
         setLoading(true);
         getLatestDeals(limit,skip)
-        .then(response=>response.data)
-        .then(products=>setProducts(products))
+        .then(response => response.data)
+        .then(products=>{
+            setProducts(products.data)
+             setLoading(false);
+        })
         .catch(err=>console.error(err));
-         setLoading(false);
-      };       
-        return(
+        
+      }; 
+      return(
+
+           
             <PageTemplate>              
             <ErrorBoundary>
             { (loading) && (<PageLoader/> )}
                 
-            <div className="latest-deals-items">
+            <div className="latest-deals-container">
            
             <div className="latest-deals-items-header">
                     <h3>Latest Deals</h3>          

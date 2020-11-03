@@ -17,6 +17,8 @@ import { PageLoader } from '../Loader/loader';
 
 
 
+
+
 export class View extends React.Component{
     constructor(props){
         super(props);

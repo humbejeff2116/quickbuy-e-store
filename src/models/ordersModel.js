@@ -10,7 +10,7 @@
 
 const moongose = require("mongoose");
 
-const odersSchema = moongose.Schema({
+const oderSchema = moongose.Schema({
 
     orderId:{type:String, unique:true},
     userId:{type:String , },
@@ -22,5 +22,5 @@ const odersSchema = moongose.Schema({
 
 })
 
-const Oder = moongose.model('oders', odersSchema);
+const Oder = moongose.model('oders', oderSchema);
 module.exports = Oder;

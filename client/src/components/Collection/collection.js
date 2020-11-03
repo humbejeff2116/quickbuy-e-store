@@ -34,7 +34,7 @@ export class CollectionItem extends React.Component {
   
             <div className="items-picture"> 
             <div className="items-details">    
-            <img src={logo} width="80%;" height="80%" alt="img" /><br />      
+            <img src={logo} width="80%" height="80%" alt="img" /><br />      
             <span className="product-title"><small>name: {name}</small></span><br />
             <span className="product-price"><small>price: ${price}</small></span><br />
             </div> 
@@ -52,7 +52,7 @@ export class CollectionItem extends React.Component {
               </button>
               </Link>
              
-                </div> :  <p className="text-danger"> product is out of stock </p>
+                </div> :  <p className="product-text-danger"> product is out of stock </p>
       
           } 
       </div>

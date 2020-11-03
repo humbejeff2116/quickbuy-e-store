@@ -19,6 +19,7 @@
    import ErrorBoundary from '../ErrorBoundary/errorBoundary'
    import { Link } from 'react-router-dom'
    import { login } from '../../services/ecormerce.service';
+   import {PageTemplate} from '../PageTemplate/pageTemplate'
    import './login.css'
   
 
@@ -80,6 +81,7 @@ export default class Login extends React.Component{
      render() {
 
         return (
+          <PageTemplate>
          
           <ErrorBoundary>
 
@@ -93,7 +95,7 @@ export default class Login extends React.Component{
 
              <div className="login-panel ">
 
-               <div className="login-panel-heading"><h3>Login </h3></div>
+               <div className="login-panel-heading"><h2>Login </h2></div>
 
                <div className="login-panel-body">
 
@@ -103,7 +105,7 @@ export default class Login extends React.Component{
 
                   
 
-                     <input type="text" className="login-form-control" name="name" onChange={this.handleInputChange}placeholder="Email or phone number"/>
+                     <input type="text" className="login-form-control" name="email" onChange={this.handleInputChange}placeholder="Email or phone number"/>
 
                    </div>
 
@@ -122,7 +124,7 @@ export default class Login extends React.Component{
 
                  </form>
                  <div className="signup-link">
-                   <p>dont have an account? <span><Link to="login/signup" > sign up </Link></span></p>
+                   <p>dont have an account? <span><Link to="/signup" > sign up </Link></span></p>
                  </div>
 
 
@@ -134,6 +136,7 @@ export default class Login extends React.Component{
 
          </div>
          </ErrorBoundary>
+         </PageTemplate>
         
 
        );

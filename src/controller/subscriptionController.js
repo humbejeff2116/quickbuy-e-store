@@ -27,7 +27,7 @@ class Subscription{
     .then(data=>{
        const body ='thank you for your supscription to quick buy service'
        emailService.send(email,'quickbuy products supscription',body)
-       return res.status(201).json({status:201, message:'subscription sucessful'});
+       return res.status(201).json({status:201, message:'subscription successful'});
       
 
     })

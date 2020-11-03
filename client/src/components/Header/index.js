@@ -22,7 +22,7 @@ import './header.css'
      const [scrolled, setScrolled] = React.useState(false);
      const handleScroll =()=>{
          const offset = window.scrollY;
-         if(offset>200){
+         if(offset>0){
              setScrolled(true)
          } else{
              setScrolled(false)

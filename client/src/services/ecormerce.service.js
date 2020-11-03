@@ -83,6 +83,7 @@ export function postOrders(payment,user,products,total){
  const order ={
 
         payment:payment,
+        user:user,
         products:products,
         total:total,
 

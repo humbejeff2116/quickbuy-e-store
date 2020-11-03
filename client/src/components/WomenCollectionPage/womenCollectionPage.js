@@ -6,48 +6,70 @@
 
 
 
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent'
 import './womenCollection.css'
 import {getWomenCollections} from '../../services/ecormerce.service'
 import ErrorBoundary from '../ErrorBoundary/errorBoundary'
 import {PageLoader} from '../Loader/loader'
 import {PageTemplate} from '../PageTemplate/pageTemplate'
+import ReactPaginate from 'react-paginate';
+
+
+window.React = React;
 
 
 
 
 
-export default class WomenCollectionsPage extends React.Component{
-    constructor(props){
-        super(props);
-        this.state ={
-            loading:false,
-           products:[]
-       }
-    }
-  
-   componentDidMount(){
+
+ const WomenCollectionsPage=(props)=>{
+
+    const [loading, setLoading] = useState(false);
+    const [products, setProducts] =useState([]);
+    const [skip,setSkip] = useState(0);
+    const [limit] = useState(20);
+    const [pageCount,setPageCount] = useState(1);
+
+    useEffect(() => {
         window.scrollTo(0,0)
-       this.setState({ loading:true});
-       getWomenCollections(20,5)
-       .then(response=> response.data)
-       .then(products=> this.setState({
-           loading:false,
-           products
-       }))    
-   }
-   componentDidUpdate(prevProps, prevState) {
-    window.scrollTo(0,0)
-}
+        setLoading(true);
+        getWomenCollections(limit,skip)
+        .then(response=> response.data)
+        .then(products=> {
+            setProducts(products.data);
+            setPageCount( Math.ceil(products.data.length / limit))
+            setLoading(false);
 
-    render(){
+        })
+        .catch(err=>{
+            console.error(err.stack);
+        })   
+       
+    }, [skip,limit])
+    
+    const handlePageClick = (data) => {
+        let selected = data.selected;
+        let offset = Math.ceil(selected * limit);
+        setSkip(offset);
+        setLoading(true);
+        getWomenCollections(limit,skip)
+        .then(response=>response.data)
+        .then(products=>{
+            setProducts(products.data)
+            setLoading(false);
+        })
+        .catch(err=>console.error(err));
+        
+      };       
+
+  
         return(
             <PageTemplate>
          
                
             <ErrorBoundary>
-                 { (this.state.loading) && (<PageLoader/>) }
+                 { (loading) && (<PageLoader/>) }
             <div className="women-collections-items">
 
             <div className="women-collections-items-header">
@@ -56,13 +78,26 @@ export default class WomenCollectionsPage extends React.Component{
             <div  className="women-collections-items-container">
                 <div className="women-collections-items">
                             { 
-                                this.state.products.map( (product,i)=>
+                                products.map( (product,i)=>
                                     < SeeAllComp  key ={i} {...product} />
 
                                     )
                                     
                             }
                     </div>
+                    <ReactPaginate
+                        previousLabel={'prev'}
+                        nextLabel={'next'}
+                        breakLabel={'...'}
+                        breakClassName={'break-me'}
+                        pageCount={pageCount}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={handlePageClick}
+                        containerClassName={'pagination'}
+                        subContainerClassName={'pages pagination'}
+                        activeClassName={'active'}
+                    />           
             
             </div>
             </div>
@@ -72,4 +107,5 @@ export default class WomenCollectionsPage extends React.Component{
             
         )
     }
-}
+
+export default WomenCollectionsPage

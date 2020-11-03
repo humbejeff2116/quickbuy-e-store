@@ -148,7 +148,7 @@ export default class AppCart extends React.Component {
         <img width="200px" height="200px;" src={shopping_cart_PNG60} alt="logo" title="site logo" /> 
         </div> 
         <div className="cart-button">
-        <button >Start Shoping </button> 
+        <button ><Link to="/">Start shoping</Link></button> 
         </div>     
          
           </div> 

@@ -4,6 +4,8 @@
 
 
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 // import PropTypes from 'prop-types'
 
 
@@ -47,7 +49,10 @@ import React from 'react';
   
         let buying_quantity = cart[id] + parseInt(this.state.quantity,10);
     
-         cart[id] = buying_quantity
+         cart[id] = buying_quantity;
+         this.setState({
+            err:null
+          })
         
         localStorage.setItem('cart', JSON.stringify(cart));
        
@@ -89,7 +94,7 @@ import React from 'react';
 
                         }
                         <div className="view-button">
-                        <button   onClick={()=>this.addToCart(id.toString())}>Add to cart</button>
+                    <button   onClick={()=>this.addToCart(id.toString())}><i>{cart}</i>Add to cart</button>
                         <input type="number" value={this.state.quantity} name="quantity" 
                         onChange={this.handleInputChange} className="float-right"  />
                         </div>

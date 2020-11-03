@@ -56,7 +56,7 @@ export class SingleCollectionItem extends React.Component {
               </button>
               </Link>
             
-            </div> : <p className="text-danger"> product is out of stock </p>
+            </div> : <p className="product-text-danger"> product is out of stock </p>
               
           }
                            

@@ -17,13 +17,13 @@ var bcrypt = require('bcryptjs');
 
 const UserSchema =  mongoose.Schema({
 
-    name:{type: String , required:true},
+    firtsname:{type: String , required:true},
+    lastname:{type: String , required:true},
     email:{type: String, required: true, unique: true},
+    phonenumber:{type: String , required: true, },
     password:{type: String , required: true, },
+    profileimage:{type: String},
     createdAt:{ type:Date , default: Date.now},
-    displayname:{type: String},
-    bio:{type: String},
-    profileimage:{type: String}
 });
 
 UserSchema.pre('save' , function (next){
@@ -60,7 +60,7 @@ UserSchema.methods.checkPassword = function(guess,done){
 
 
 UserSchema.methods.displayName = function() {
-    return this.displayname || this.name;
+    return this.displayname || `${this.firstname} ${this.lastname}`;
 } 
 
 const User = mongoose.model('users',UserSchema );
