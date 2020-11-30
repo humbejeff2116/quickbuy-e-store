@@ -14,6 +14,8 @@ const multer = require('multer');
 const upload1 = multer({dest :'public/uploads/users'});
 const uploadProduct = multer({dest :'public/uploads/products'});
 const {body, check, validationResult } = require('express-validator');
+const signupValidation = require('../validation/signupValidation');
+const loginValidation = require('../validation/loginValidation')
 const productsController = require('../controller/allProductsController');
 const seeAllControllers = require('../controller/seeAllControllers');
 const usersController = require('../controller/usersController');
@@ -24,22 +26,6 @@ const orderController = require('../controller/ordersContoller');
 
 let router = express.Router();
 
-const validation =[
-
-    check('name').notEmpty().withMessage('Name field is required'),
-    check('email').notEmpty().withMessage('email field is required'),
-    check('email').isEmail().withMessage(' email field should contain a valid email'),
-    check('phone').notEmpty().withMessage('phone number field is required'),
-    check('password' ).notEmpty().withMessage('password field is required')
-    .custom((value,{req})=>{
-        if(value !== req.body.password2){
-          throw new Error('password confirmation is incorrect')
-        } 
-        return value;
-    }),
-    check('password').isLength({ min: 5 }).withMessage( 'password should contain more than 4 characters' )
-    // body('password2').isLength({ min: 5 }).withMessage(' password should be more than 5 chars')
-]
 
 
 router.get('/all-Products', productsController.getAllProducts);
@@ -50,9 +36,9 @@ router.get('/men-collections',seeAllControllers.getMenCollections);
 router.get('/popular-collections', seeAllControllers.getPopularCollections);
 router.get('/accessories',seeAllControllers.getAccessories);
 router.get('/jewelries',seeAllControllers.getJewelries);
-router.post('/users/signup',upload1.single('profileimage'),validation,usersController.signUp);
+router.post('/users/signup',upload1.single('profileimage'),signupValidation,usersController.signUp);
 router.post('/subscription',subscriptionController.postSubscription);
-router.post('/login',usersController.userLogin);
+router.post('/login',loginValidation,usersController.userLogin);
 // router.get('/users/dashboard',jwtMiddleware, usersController.userDashboard);
 router.get('/pay', jwtMiddleware,usersController.userPay);
 router.post('/cart', productsController.getCartProducts); 

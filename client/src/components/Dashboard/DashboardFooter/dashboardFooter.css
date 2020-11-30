@@ -24,22 +24,22 @@
 
 }
 
-footer a {
+.dashboard-footer a {
     text-decoration: none;
     color: rgb(218, 152, 218);
     font-size:0.9em;
     font-weight: bold;
     font-family: 'acme';
 }
-footer a:hover {
+.dashboard-footer a:hover {
     text-decoration: underline;
    
 }
-footer li{
+.dashboard-footer footer li{
     list-style-type: none;
 
 }
-.ft-title{
+.dashboard-footer .ft-title{
     color: rgb(218, 152, 218);
 /*    
     -webkit-text-stroke-width:1.3px black;
@@ -53,7 +53,7 @@ footer li{
 
   
 }
-.footer-main{
+.dashboard-footer .footer-main{
     display:flex;
     flex-wrap:wrap;
     justify-content: space-around;
@@ -66,7 +66,7 @@ footer li{
 /* .footer-main-item{
   
 } */
-.footer-legal{
+.dashboard-footer .footer-legal{
     margin-top:140px;
     display:flex;
     flex-direction:row;
@@ -78,18 +78,18 @@ footer li{
   
 
 }
-.footer-legal-list {
+.dashboard-footer .footer-legal-list {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content:space-between;
 }
 
-.footer-legal-list a{
+.dashboard-footer .footer-legal-list a{
     color: rgb(218, 152, 218);
 
 }
-.footer-main-content{
+.dashboard-footer .footer-main-content{
     display:flex;
     flex-direction:row;
     justify-content: space-around;
@@ -104,16 +104,16 @@ footer li{
 
 
 }
-.footer-form{
+.dashboard-footer .footer-form{
     margin-right:4px;
 }
-.footer-form p{
+.dashboard-footer .footer-form p{
     color: rgb(218, 152, 218);
     font-size: 0.9em;
 
 }
 
-.footer-form input[type="email"] {
+.dashboard-footer .footer-form input[type="email"] {
     border: 0;
     padding: 0.625rem;
     margin-top: 0.3125rem;
@@ -131,14 +131,14 @@ footer li{
     font-family:'abel'
 }
 
-.footer-form input[type="email"]:focus {
+.dashboard-footer .footer-form input[type="email"]:focus {
     background-color:#ccc;
     color:black;
     font-family:'abel'
 
 
 }
-.footer-form input[type="submit"] {
+.dashboard-footer .footer-form input[type="submit"] {
     height:40px;
     /* background-color: rgb(218, 152, 218); */
     color: rgb(218, 152, 218);
@@ -152,7 +152,7 @@ footer li{
     background-color: #242729;
     border: 2px solid #38393a;
 }
-.footer-form input[type="submit"]:hover{
+.dashboard-footer .footer-form input[type="submit"]:hover{
     transform:scale(1.05) ;
     /* border:2px solid rgb(190, 87, 190); */
     border:2px solid rgb(218, 152, 218);

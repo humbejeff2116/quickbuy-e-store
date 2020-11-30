@@ -51,7 +51,7 @@ export default function App(){
     const auth = isAuthenticated();
     // const auth = true;
     return(
-        <>
+       
       
         <div className="container" >
         <Switch>            
@@ -128,7 +128,7 @@ export default function App(){
         </Switch> 
             </div>
           
-            </>               
+             
          
 
 

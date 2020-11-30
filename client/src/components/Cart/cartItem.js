@@ -47,21 +47,20 @@ import React from 'react';
     return (
     
 
-      <div className="card" style={{ marginBottom: "10px"}}>
+      <div className="card" >
 
-        <div className="card-body">
+      <div className="card-body">
 
-          <h4 className="card-title">{product.name}</h4>
+          <p className="card-title">Name: {product.name}</p>
 
-          <h5 className="card-text"><small>price: </small>${product.price}</h5>
+          <p className="card-text">Price: ${product.price}</p>
 
-          <span className="card-text text-success">
-
-              <small>Quantity: </small>{product.qty}</span>
+          <p className="card-text ">Quantity: {product.qty}</p>
 
           <button className="btn btn-sm btn-warning float-right" 
-
-              onClick={( ) => this.props.removeFromCart(product)}>Remove from cart</button>
+              onClick={( ) => this.props.removeFromCart(product)}>
+                Remove from cart
+          </button>
 
         </div>
 

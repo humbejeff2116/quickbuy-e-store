@@ -6,23 +6,41 @@
 
 
 
+.signup-err-cont{
+    border:1px solid #ccc;
+    width:40%;
+    /* height:40px; */
+    margin-left:auto;
+    padding:14px;
+    margin-right: auto;
+    margin-top:8px;
+    border-radius: 8px;
+    /* box-shadow:0 0 5px rgba(117, 116, 116, 0.6); */
+    text-align:center;
+    /* background-color:#cccc; */
+    color:red;
+
+}
+
+
 
 .signup-form-container{
     margin:4px;
     background-color:#ffffff;
     /* background-color: #ccc; */
     padding:4px;
-    min-height: 130vh;
+    min-height: 100vh;
 }
 .signup-form-panel{
-    display:flex;
-    flex-direction:column;
+    /* display:flex;
+    flex-direction:column; */
     width:40%;
     height:550px;
     margin-left:auto;
     margin-right: auto;
     position:relative;
-    top:80px;
+    margin-top:40px;
+    margin-bottom:40px;
     box-shadow:0 0 5px rgba(117, 116, 116, 0.6);
     background-color: #ffffff;
     

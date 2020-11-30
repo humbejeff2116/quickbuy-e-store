@@ -14,7 +14,7 @@ const { ObjectId } = mongoose.Schema.Types;
 
 const ProductSchema =  mongoose.Schema({
 
-    id:{type: String, unique:true},
+    id:{type: Number, unique:true},
     name:{type: String , required:true},
     src:{type: String},
     price:{type: String, required: true},
@@ -29,6 +29,7 @@ ProductSchema.index({
     '$**':'text'
 
 })
+ 
 
 
 const Product  = mongoose.model('products' , ProductSchema)

@@ -55,6 +55,7 @@ const NavSearchBar =()=>{
     const logOut= ( )=>{
 
         localStorage.removeItem('x-access-token');
+        localStorage.removeItem('user');
    
       }
       const auth = isAuthenticated();
@@ -70,24 +71,33 @@ const NavSearchBar =()=>{
             <div className="search-bar">
                 <form className="search-bar-form">
                     <input type="search" placeholder="Search for clothing brands and collections" /><span><i></i></span>
-            <button><i className="fa fa-search fa-lg">{search}</i></button>
+                    <button><i className="fa fa-search fa-lg">{search}</i></button>
                 </form>
             </div>
-            <div className="login">
-
-            { 
+            <div className="header-login">
+                <div className="login" >
+                { 
                 (auth) && (<Link className="nav-item nav-link" to="/checkout">Checkout</Link>)
             }
+
+                </div>
+                <div className="login" >
+                    
             {
                  (auth) && (<Link className="nav-item nav-link"  to="/users/dashboard">Dashboard</Link>) 
 
             }
 
-            {   
+                </div>
+                <div className="login" >
+                {   
                 ( auth ) ?  ( <a className="nav-item nav-link" href="/" onClick={()=>logOut()}>Logout</a>) : 
 
                 ( <Link className="nav-item nav-link float-right" to="/login">  <i className="fa fa-user">{user}</i>Signup/Login</Link> )
             }
+
+                </div>
+           
             </div>
               
         </div>
@@ -260,7 +270,7 @@ const NavSearchBar =()=>{
                 <i className="fa fa-tshirt">{accessories}</i><span className="nav-text">Accesories</span>
             </Link>
 
-            <Link className="nav-item nav-link" to="/cart">
+            <Link className="nav-item nav-link" to="/cart"  >
                 <i className="fa fa-tshirt">{cart}</i><span className="nav-text">shopping cart </span>   
             </Link>
 

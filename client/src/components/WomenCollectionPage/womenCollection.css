@@ -5,6 +5,7 @@
 .women-collections-items{
     display:flex;
     flex-direction:column;
+    justify-content:space-between;
   }
 
   .women-collections-items-header{

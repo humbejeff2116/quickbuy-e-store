@@ -5,6 +5,7 @@
 .popular-collections-items{
     display:flex;
     flex-direction:column;
+    justify-content:space-between;
   }
 
   .popular-collections-items-header{

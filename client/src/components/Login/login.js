@@ -21,6 +21,7 @@
    import { login } from '../../services/ecormerce.service';
    import {PageTemplate} from '../PageTemplate/pageTemplate'
    import './login.css'
+   import axios from 'axios';
   
 
 //   This component gets the username and password, passes it on to the backend server when the form is submitted,
@@ -33,8 +34,9 @@ export default class Login extends React.Component{
 
        super(props);
        this.state = { 
-           name: '',
+           email: '',
             password: '',
+            valErrors:[],
             errMessage:''
         }
 
@@ -45,25 +47,50 @@ export default class Login extends React.Component{
                this.setState({[e.target.name]: e.target.value})
 
      submitLogin = (e) => {
+      window.scrollTo(0,0)
 
        e.preventDefault();
 
-       login(this.state)
-       .then(response => {
-         if(response.status !== 200){
+       axios.post(`api/v1/login`, { email: this.state.email, password: this.state.password })
+       .then(response=>{
+       
+        console.log(response.data);
+       return response.data;
+       
+       })
+       .then(loginData => {
+       
+        
+         if(loginData.status !== 200){
+           if(loginData.message){
+            return this.setState({
+
+              errMessage: loginData.message,
+              valErrors:[]
+            })
+
+           }
+
+           console.log(loginData.valErrors);
            return this.setState({
-             errMessage: response.message
+             valErrors:loginData.valErrors,
+             errMessage:''
            })
+
          }
-        localStorage.setItem('x-access-token', response.token);
+        localStorage.setItem('x-access-token', loginData.token);
         localStorage.setItem('x-access-token-expiration',  Date.now() + 2 * 60 * 60 * 1000);
-        localStorage.setItem('user',JSON.stringify(response.data));
-         return response.data
+        localStorage.setItem('user',JSON.stringify(loginData.data));
+         return loginData;
      })
-     .then(token => window.location = '/')
+     .then(token =>{
+       if(token){
+        return window.location = '/'
+       }
+     })
      .catch(err => {
-       Promise.reject('Authentication Failed!');
-       console.error(err)
+      //  Promise.reject('Authentication Failed!');
+       console.error('error :'+ err)
       });
         
        
@@ -87,7 +114,12 @@ export default class Login extends React.Component{
 
          <div className="login-container">
            {
-             (this.state.errMessage ) && (<p>{this.state.errMessage}</p>)
+             (this.state.valErrors.length > 0) && (this.state.valErrors.map((err,i)=>
+              <div key={i} className="login-err-cont" ><p className="err-login">{err.msg}</p></div>
+              ))
+           }
+           {
+             (this.state.errMessage ) && (<div className="login-err-cont" ><p className="err-login">{this.state.errMessage}</p></div>)
 
            }
 
@@ -99,7 +131,7 @@ export default class Login extends React.Component{
 
                <div className="login-panel-body">
 
-                 <form onSubmit={this.submitLogin} autoComplete="none">
+                 <form action="login" onSubmit={this.submitLogin} method="POST" autoComplete="none">
 
                    <div className="login-form-group">
 

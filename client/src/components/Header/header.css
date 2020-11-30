@@ -161,10 +161,12 @@
     }
     .search-bar form input[type="search"]:focus{
       
-        background-color:#ccc;
+        /* background-color:#ccc; */
         border-radius:4px;
-        color:black;
-        font-family:'abel'
+        /* color:black; */
+        
+        font-family:'abel';
+        border:2px solid rgb(218, 152, 218) ;
         /* color: rgb(218, 152, 218); */
     }
     .search-bar form button{
@@ -191,8 +193,18 @@
         /* color:rgb(218, 152, 218); */
      
     }
-    .login{
+    .header-login{
         display:flex;
+        flex-direction: row;
+       
+        /* border:1px solid black; */
+       
+        padding:8px;
+        transition:all 0.5s ease-in-out;
+
+    }
+    .login{
+        /* display:flex; */
        
         /* border:1px solid black; */
        

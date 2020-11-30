@@ -74,7 +74,7 @@ import http from '../Http-common/http-common'
 
 // done
 export function getCartProducts(cart) {
-
+   
     return http.post(`/cart`, {cart})
           
 }
@@ -98,7 +98,7 @@ export function signup(data) {
         firstname: data.firstname,
         lastname:data.lastname,
         email:data.email,
-        phone:data.phonenumber,
+        phonenumber:data.phonenumber,
         password: data.password,
         password2:data.password2
     }
@@ -110,7 +110,7 @@ export function signup(data) {
 // done
 export function login (data) {
 
-    return http.post(`/login`, { name: data.name, password: data.password })
+    return http.post(`/login`, { email: data.email, password: data.password });
 
 }
 // not done

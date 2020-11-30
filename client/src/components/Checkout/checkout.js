@@ -17,15 +17,15 @@
 
 
 
-   import React from 'react';
-
-   import { isAuthenticated, getCartProducts,postOrders } from '../../services/ecormerce.service';
-
-   import {  Redirect, Link } from 'react-router-dom';
+import React from 'react';
+import {PageTemplate} from '../PageTemplate/pageTemplate'
+import { isAuthenticated, getCartProducts,postOrders } from '../../services/ecormerce.service';
+import {  Redirect, Link } from 'react-router-dom';
 import  ErrorBoundary  from '../ErrorBoundary/errorBoundary';
 import { PageLoader } from '../Loader/loader';
 // import PaypalButton from '../Paypal/paypalButton';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
+import './checkout.css';
 
 
   //   This component will only be rendered if the user authenticated (logged in).
@@ -42,15 +42,18 @@ export default class Checkout extends React.Component {
       this.state = {
 
         checkout:false,
+        err:'',
         products: [],
-        currency : 'NGN',   
+        currency : 'USD',   
         loading:false,
         total: 0, 
         showButton: false,
         // env : process.env.NODE_ENV === 'production'? 'production': 'sandbox',
         env : 'sandbox',
         client:{
-          sandbox: 'AXmLq1EemtB6AA1kfmc4yCKBtpnwly8EF_FFGnEofI0FvUUJMSkBompe1KXfn5QwWulteR_gSPRjiiRZ',
+          sandbox: 'AYmZjw11QthPP2YtpRTdojnB7r6a2YHpaD83bjttt0IdBzOhk7OKbeZCtyQQR4TK7zpEVO9TAxthNK_0',
+          // clientId:'AR17KhV11CbUMNQ4zUxehpSvnsoTA1hZCDXUXTGAWtLGoDngRsARH2zTsM1z6DKCyzfoFTlgPp-SQRgd',
+          // secret:'EH4QqeuR3t3LPzVBxvOp5GQe8DVg_8teiX_-F51MbLJ1pXmamsqS9bmHJcB1gA2zZ4Kn5d7YT0GiwtNE',
           production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
         },
      
@@ -59,6 +62,7 @@ export default class Checkout extends React.Component {
     }
 
   componentDidMount() {
+  
     window.scrollTo(0,0);
     this.setState({
       loading:true
@@ -69,34 +73,69 @@ export default class Checkout extends React.Component {
         return this.setState({
           loading:false
         }); 
-      } 
+      }
 
-      getCartProducts(cart)
-      .then(response=> response.data)
-      .then( products => {
 
-        let sum = 0;
-        let total;
-  
-        for (let i = 0; i < products.length; i++) {
-  
-          sum += products[i].price * products[i].qty;
-          total = sum.toFixed(2);
-  
-        }
-  
-        this.setState({
-          loading:false,
-           products,
-            total 
-        });
 
-      });
+
+      
+    getCartProducts(cart)
+    .then(response=>{
+      // console.log(response.data)
+     return response.data
+
+    })
+    .then(products => {
+      let cart2 ={
+        '2':2,
+        '3':3,
+        '6':2
+    }
+    // use cart1 later on just testing with cart2 
+     let cart1 = JSON.parse(cart);
+   
+    //  console.log(cart1);
+    // loop and add the quantity of each product to the response data products
+    
+      for( let i = 0; i < products.data.length; i++ ) {  
+
+            products.data[i].qty = cart2[products.data[i].id] 
 
     }
-    componentDidUpdate(prevProps, prevState) {
-      window.scrollTo(0,0)
-    }
+    console.log("products are", products.data);
+      
+      let sum = 0;
+      let total;
+      const cartProd = products.data;
+
+      for (let i = 0; i < cartProd.length; i++) {
+
+        sum += cartProd[i].price * cartProd[i].qty;
+        total = sum.toFixed(2);
+
+      }
+
+    return  this.setState(prevState=>({
+        loading:!prevState.loading,
+         products:products.data,
+          total 
+      }));
+
+      })
+      .catch(err=>{
+        console.error(err);
+        this.setState(prevState=>({
+          loading:!prevState.loading,
+          err:'an error occured will getting data please wait and try again'
+          
+        }));
+      })
+
+  }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //   window.scrollTo(0,0)
+    // }
     
 
    toggleCheckout=()=>{
@@ -133,71 +172,102 @@ export default class Checkout extends React.Component {
 
 
    //  if you are not authenticated you are redirected to the login page
-      if (!isAuthenticated()){
-
-          return (
-
-          <Redirect to="/login" />
-          
-          );
-
-      }
-
-      if(!products.length){
-
+      // if (!isAuthenticated()){
+        
+      //    return <Redirect to="/login" />         
+        
+      // }
+      // render component if loading is true
+      if(this.state.loading){
         return(
+          <PageTemplate>                     
+          <ErrorBoundary>
+
+             { (this.state.loading) && (<PageLoader/>) }
+             <div>
+               <p>
+                 getting content please wait .......
+               </p>
+             </div>
+
+          </ErrorBoundary> 
+          </PageTemplate>
+
+        )
+      }
+// render this component if there is a network error while getting products from database
+      if(this.state.err){
+        return(
+          <PageTemplate>
                       
           <ErrorBoundary>
-             { (this.state.loading) && (<PageLoader/>) }
-
-        <div className=" checkout-container">
-            <h3 className="checkOut-title">Checkout</h3><hr/>
-
-          <h3 className="text-warning">No item in the cart</h3>
+          <div>
+            <p>{this.state.err}</p>
           </div>
           </ErrorBoundary> 
-         
+           </PageTemplate>
+        )
+      }
+// render if no products are found in the cart
+      if(!products.length ){
 
+        return(
+          
+          <PageTemplate>                     
+          <ErrorBoundary>
+
+        <div className=" checkout-container">
+          <h3 className="checkOut-title">Checkout</h3><hr/>
+          <h3 className="text-warning">it seems you dont have any item in your  cart</h3>
+        </div>
+
+          </ErrorBoundary> 
+           </PageTemplate>
+  
         )
       
       } 
-
+// render component if everything goes well
         return (
-         
-            
+          <PageTemplate>           
           <ErrorBoundary>
               { (this.state.loading) && <PageLoader/> }
           
 
             <div className=" checkout-container">
+              <div className="checkout">
 
-              <h3 className="checkOut-title">Checkout</h3><hr/>
+                <div  className="checkout-title">
+                  <h3>Checkout</h3>
+                </div>
 
               {
 
                 products.map((product, i) => 
 
-                  <div key={i} >
-                    <p>{product.name} <small> (quantity: {product.qty})</small>
-                      <span className="float-right text-primary">amount: ${product.qty * product.price} </span>
-                    </p> <hr/>
+                  <div key={i} className="checkout-product" >
+                    <span className="text-primary">product name:<span className="checkout-data"> {product.name}</span> </span>
+                    <span className="text-primary">price per 1: ${product.price}</span><br />
+                    <span className="text-primary"> quantity: {product.qty}</span><br />
+                    <span className=" text-primary">amount: ${product.qty * product.price} </span>
                   </div>
 
               )
               } <hr/>
 
-                  <>
+                  <div className="checkout-total" >
                     <h4>
                       <small>Total Amount:</small> <span className="float-right text-primary">${total} </span>
                   </h4> <hr/>
-                  </>
+                  </div>
                    {/*paypal button  integreating starts here  */}
+                   <div>
                    {
-                     (this.state.checkout) &&   <PaypalExpressBtn 
+                     (this.state.checkout) &&   (<PaypalExpressBtn 
                                                 env={this.state.env} 
                                                 client={this.state.client}
                                                 currency={this.state.currency} 
-                                                total={this.state.total} 
+                                                total={Number(this.state.total)} 
                                                 onError={onError} 
                                                 onSuccess={onSuccess} 
                                                 onCancel={onCancel}
@@ -205,16 +275,30 @@ export default class Checkout extends React.Component {
                                                   size: 'large',
                                                   color: 'blue'
                                                 }} 
-                                                />
-                  }
-                  <button className="btn btn-success float-right" onClick={()=>this.toggleCheckout()}>Pay</button>
-              
-              <Link to="/">
-                <button className="btn btn-danger float-right" style={{ marginRight:"10px" }}>Cancel</button>
-              </Link> <br/><br/><br/>
+                                                />)
 
+
+                                              
+
+
+
+
+
+
+                  }
+                  </div>
+                  <div className="checkout-btn" >
+                    <button className="btn btn-success float-right" onClick={()=>this.toggleCheckout()}>Pay</button>
+                  
+                    <Link to="/">
+                    <button className="btn btn-danger float-right" style={{ marginRight:"10px" }}>Cancel</button>
+                    </Link>
+                </div>
+
+              </div>
             </div>
-            </ErrorBoundary> 
+            </ErrorBoundary>
+             </PageTemplate> 
           
 
         );
