@@ -200,6 +200,7 @@
 .cart-loader p{
     text-align:center;
     font-weight: bold;
+    color:rgb(212, 108, 212);
 }
 @media only screen and (max-width:414px){
     .cart-title{

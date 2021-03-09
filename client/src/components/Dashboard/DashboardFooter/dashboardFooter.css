@@ -10,7 +10,7 @@
 .dashboard-footer {
     
    
-     margin-left:200px;
+     margin-left:150px;
      display:flex;  
      flex-direction: column;
      flex-wrap: wrap;
@@ -113,12 +113,13 @@
 
 }
 
-.dashboard-footer .footer-form input[type="email"] {
-    border: 0;
+.dashboard-footer .footer-form input[type="text"] {
+    /* border: 0; */
     padding: 0.625rem;
     margin-top: 0.3125rem;
     /* margin-right:0.422rem; */
     color: rgb(218, 152, 218);
+    border-radius:5px;
    
     width:250px;
     height:40px;
@@ -128,31 +129,31 @@
     transition:all 0.5s ease-in-out;
     font-size:0.9em;
     font-weight:bold;
-    font-family:'abel'
+    font-family:'abel';
 }
-
-.dashboard-footer .footer-form input[type="email"]:focus {
-    background-color:#ccc;
-    color:black;
-    font-family:'abel'
-
-
-}
-.dashboard-footer .footer-form input[type="submit"] {
-    height:40px;
-    /* background-color: rgb(218, 152, 218); */
+.dashboard-footer .footer-form input[type="text"].not-empty,
+.dashboard-footer .footer-form input[type="text"]:focus {
+    font-family:'abel';
     color: rgb(218, 152, 218);
+    background-color: #242729;
+    border:2px solid rgb(218, 152, 218) ;
+}
+.dashboard-footer .footer-form button {
+    height:40px;
+   
+    color: rgb(218, 152, 218);
+    border-radius:5px;
     cursor: pointer;
     border:0px;
-    padding: 8px;
-    margin-top: 0.3125rem;
+    /* padding: 8px; */
+    /* margin-top: 0.3125rem; */
     transition:all 0.4s ease-in-out;
     font-weight:bold;
-    margin-left:-4px;
+    margin-left:4px;
     background-color: #242729;
     border: 2px solid #38393a;
 }
-.dashboard-footer .footer-form input[type="submit"]:hover{
+.dashboard-footer .footer-form button:hover{
     transform:scale(1.05) ;
     /* border:2px solid rgb(190, 87, 190); */
     border:2px solid rgb(218, 152, 218);
@@ -163,4 +164,22 @@
     /* color:rgb(190, 87, 190); */
    
     /* font-size: 0.8em; */
+}
+.dashboard-footer .sub-err-cont p{
+    font-size:0.8em;
+    color:rgb(248, 10, 10);
+    animation-name:animatetop;
+    animation-duration:2s;
+}
+@keyframes animatetop{
+    from{
+        right: -12px;
+        opacity:0;
+        transition:all;
+    }
+    to{
+        right:0px;
+        opacity:1;
+        transition:all;
+    }
 }

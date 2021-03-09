@@ -110,9 +110,9 @@ function productsController(){
                     })
                     .catch(err => {
                         console.error(err.stack);
-
                         res.json({ error: true, message: 'Error updating product' });
                         return res.status(500);
+
                     });
 
             })
@@ -126,17 +126,16 @@ function productsController(){
 
     // search products work on it
     this.searchProduct = async function (req, res, next) {
-        let query = req.body.query;
-        await ProductsModel.find({ $text: { $search: query } })
-            .limit(20)
-            .skip(10)
+        let text = req.query.q;
+        console.log(text);
+        await ProductsModel.find({ $text: { $search: text } })
             .then(products => {
-                if (!products) {
+                if (!products.length) {
                    
-                    res.json({ status: 400, message: 'no products found' });
+                    res.json({ status: 400, errMessage: 'no product matches your search' });
                     return res.status(400);
                 }
-                return res.status(200).json({ status: 200, data: products });
+                return res.status(200).json({ status: 200,message:`products returned ( ${products.length} )`, data: products });
 
             }).catch(err => {
                 console.error(err.stack);

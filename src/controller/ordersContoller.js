@@ -22,10 +22,10 @@ class OrderController{
 
     postOders = async (req,res,next) => {
         // parameters sent from the frontend service
-        let payment = req.body.order.payment;
-        let user = JSON.parse(req.body.order.user);       
-        let products = req.body.order.products;
-        let total = req.body.order.total;
+        let payment = req.body.payment;
+        let user = JSON.parse(req.body.user);       
+        let products = req.body.products;
+        let total = req.body.total;
 
         let orderId =payment.payerID;
         let userId = user.id;
@@ -52,9 +52,9 @@ class OrderController{
     }
     
     getOrders = async (req,res,next)=>{
-        let user = JSON.parse(req.user)
-        let userId = user.id;
-      let orders = await  OrderModel.find({_id:userId});
+        let user = JSON.parse(req.body.user);
+        const userId = user.id;
+      let orders = await  OrderModel.find({userId:userId});
       if(!orders){
          return  res.status(400).json({status:400, message:'order not found'})
       }

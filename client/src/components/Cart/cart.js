@@ -245,7 +245,7 @@ export default class AppCart extends React.Component {
            { (this.state.loading) && (<PageLoader/>) }
            <div className="cart-loader">
              <p>
-               getting content please wait.......
+               getting cart content please wait.....
              </p>
            
            </div>
@@ -354,6 +354,7 @@ export default class AppCart extends React.Component {
                   <div  className="full-cart-button" >
                     <button className="btn btn-danger float-right" onClick={this.clearCart} >Clear Cart</button>
                   </div>
+                  {/* <button className="btn btn-danger float-right" onClick={()=>{history.back()}} >back</button> */}
 
                 </div>
             </div>

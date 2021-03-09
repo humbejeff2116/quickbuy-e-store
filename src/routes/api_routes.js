@@ -15,7 +15,8 @@ const upload1 = multer({dest :'public/uploads/users'});
 const uploadProduct = multer({dest :'public/uploads/products'});
 const {body, check, validationResult } = require('express-validator');
 const signupValidation = require('../validation/signupValidation');
-const loginValidation = require('../validation/loginValidation')
+const loginValidation = require('../validation/loginValidation');
+const subscriptionValidation  = require('../validation/subscriptionValidation');
 const productsController = require('../controller/allProductsController');
 const seeAllControllers = require('../controller/seeAllControllers');
 const usersController = require('../controller/usersController');
@@ -37,7 +38,8 @@ router.get('/popular-collections', seeAllControllers.getPopularCollections);
 router.get('/accessories',seeAllControllers.getAccessories);
 router.get('/jewelries',seeAllControllers.getJewelries);
 router.post('/users/signup',upload1.single('profileimage'),signupValidation,usersController.signUp);
-router.post('/subscription',subscriptionController.postSubscription);
+router.post('/subscription',subscriptionValidation, subscriptionController.postSubscription);
+router.get('/search',productsController.searchProduct)
 router.post('/login',loginValidation,usersController.userLogin);
 // router.get('/users/dashboard',jwtMiddleware, usersController.userDashboard);
 router.get('/pay', jwtMiddleware,usersController.userPay);

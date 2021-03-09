@@ -63,6 +63,7 @@ import axios from 'axios'
         }
         
         render(){
+            let {loaiding} = this.props;
         
             let {fetchErrMssg} = this.state;
             if(fetchErrMssg){
@@ -79,7 +80,7 @@ import axios from 'axios'
 
                     <>
                         {
-                            (this.state.loading) ? <PageLoader/> :                           
+                            // (this.state.loading) ? <p>gettin data...</p> :                           
                             <ComposedComponent {...this.state} {...this.props}/>
                         }
 

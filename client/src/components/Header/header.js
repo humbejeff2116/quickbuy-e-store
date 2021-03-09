@@ -8,7 +8,7 @@
 
 
 
-import React from 'react';
+import React, {useState} from 'react';
 // import {makeStyles} from '@material-ui/core/Styles';
 // import Paper from '@material-ui/core/Paper'
 // import Grid from '@meterial-ui/core/Grid'
@@ -23,11 +23,12 @@ import {  Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-import { isAuthenticated } from '../../services/ecormerce.service'
+import { isAuthenticated, searchProduct } from '../../services/ecormerce.service'
 import {AboutMenuDropdown} from '../DropdownMenu/aboutMenuDropdown'
 import {AllCategoriesDropdown} from '../DropdownMenu/allCategoriesDropdown'
 import{MenClothingsDropdown} from '../DropdownMenu/menClothingsDropdown'
-import {WomenClothingsDropdown} from '../DropdownMenu/womenClothingsDropdown'
+import {WomenClothingsDropdown} from '../DropdownMenu/womenClothingsDropdown';
+import SearchResult from './SearchComponent/searchResults';
 import { Redirect } from 'react-router-dom';
 
 
@@ -51,8 +52,66 @@ const home = <FontAwesomeIcon  icon={['fas', "home"]}  />
 
 // navigation search bar
 const NavSearchBar =()=>{
+    let _searchValue = React.createRef();
+    const [searchedProd,setSearchedProd] = useState([]);
+    const [errMssg, setErrMssg] = useState('');
+    const [mssg,setMssg] = useState('');
 
-    const logOut= ( )=>{
+      //   search query function begins here
+      const searchProducts = (e) => {
+        e.preventDefault();
+
+      const data = {
+         searchValue: _searchValue.current.value
+      }
+      if(!data.searchValue){
+        setMssg('');
+        setSearchedProd([]);
+        setErrMssg('');
+          return;
+      }
+      searchProduct(data)
+      .then(response=>{
+          return response.data;  
+          })
+          .then(searchedProducts => {  
+
+          if(searchedProducts.status !== 200){
+
+              setErrMssg(searchedProducts.errMessage)
+              setMssg('');
+              setSearchedProd([]); 
+              console.log(errMssg);
+              return; 
+          }
+  
+          setMssg(searchedProducts.message);
+          setSearchedProd(searchedProducts.data);
+          setErrMssg('');
+         
+        console.log(searchedProducts)
+        
+          return searchedProducts;
+          })
+          .catch(err => {
+          console.error('error :'+ err)
+          });
+
+    }
+
+    const toggleBlur =(e)=> {
+
+        if(e.target.value.length > 0 ) {
+  
+         return e.target.classList.add('not-empty');
+       
+        }
+  
+         return e.target.classList.remove('not-empty')
+                  
+      }
+
+    const logOut= ( )=> {
 
         localStorage.removeItem('x-access-token');
         localStorage.removeItem('user');
@@ -60,8 +119,8 @@ const NavSearchBar =()=>{
       }
       const auth = isAuthenticated();
 
-
   
+
     return(
 
         <div className="search">
@@ -69,28 +128,27 @@ const NavSearchBar =()=>{
             <a href="index.html"><img width="90px" height="40px;" src={logo} alt="logo" title="site logo" /></a>
             </div>
             <div className="search-bar">
-                <form className="search-bar-form">
-                    <input type="search" placeholder="Search for clothing brands and collections" /><span><i></i></span>
-                    <button><i className="fa fa-search fa-lg">{search}</i></button>
+                <form onSubmit = {searchProducts} className="search-bar-form" method="GET" action="/search-product" >
+                    <input type="search" name="search" ref={_searchValue} onKeyUp = {searchProducts}  placeholder="Search for clothing brands and collections" onBlur={toggleBlur} /><span><i></i></span>
+                    <button type="submit" ><i className="fa fa-search fa-lg">{search}</i></button>
                 </form>
             </div>
-            <div className="header-login">
-                <div className="login" >
+            <div className="header-login">              
                 { 
-                (auth) && (<Link className="nav-item nav-link" to="/checkout">Checkout</Link>)
-            }
-
-                </div>
+                    (auth) && (
+                                <>
+                                <div className="login" >
+                                    <Link className="nav-item nav-link" to="/checkout">Checkout</Link>
+                                </div>
+                                <div className="login" >
+                                    <Link className="nav-item nav-link"  to="/users/dashboard">Dashboard</Link>
+                                </div>
+                                </>
+                                )
+                }
+          
                 <div className="login" >
-                    
-            {
-                 (auth) && (<Link className="nav-item nav-link"  to="/users/dashboard">Dashboard</Link>) 
-
-            }
-
-                </div>
-                <div className="login" >
-                {   
+            {   
                 ( auth ) ?  ( <a className="nav-item nav-link" href="/" onClick={()=>logOut()}>Logout</a>) : 
 
                 ( <Link className="nav-item nav-link float-right" to="/login">  <i className="fa fa-user">{user}</i>Signup/Login</Link> )
@@ -99,6 +157,14 @@ const NavSearchBar =()=>{
                 </div>
            
             </div>
+            {
+                    (searchedProd.length > 0 ) && searchedProd.map((prod,i)=>
+
+                    <SearchResult key={i} {...prod} />
+
+                    ) 
+                }
+
               
         </div>
 
@@ -172,6 +238,7 @@ const NavSearchBar =()=>{
     closeNav=(id)=>{
     
         document.getElementById(id).style.width="0";
+        
         
     }
 

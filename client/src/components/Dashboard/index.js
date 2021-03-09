@@ -42,9 +42,9 @@ import Woops404 from './Dash404/dash404';
 
 
 }
- function auth(){
-     return 1;
+//  function auth(){
+//      return 1;
 
- }
+//  }
 
- export const DashboardPage = RequireAuthentication(DashboardRoute,auth);
+ export const DashboardPage = RequireAuthentication(DashboardRoute,isAuthenticated);

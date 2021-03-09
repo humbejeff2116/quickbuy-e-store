@@ -28,6 +28,7 @@ export default class Signup extends React.Component{
             password2:null,
             errMessage:''
         }
+       
     }
     handleInputChange= (e) =>{
         this.setState({
@@ -35,6 +36,17 @@ export default class Signup extends React.Component{
         });
 
     }
+    toggleBlur =(e)=>{
+
+        if(e.target.value.length > 0 ) {
+  
+         return e.target.classList.add('not-empty');
+       
+        }
+  
+         return e.target.classList.remove('not-empty')
+                  
+      }
     handleSubmit =(e)=>{
            window.scrollTo(0,0);
         e.preventDefault();
@@ -77,6 +89,26 @@ export default class Signup extends React.Component{
        });
 
     }
+    capitalize =(e)=>{
+
+        if( (e.target.name === 'firstname') && (e.target.value) ){
+           
+              let inpt = e.target.value;
+              let inptArr =inpt.toLowerCase().split();
+                let capArr = inptArr.map(text => text[0].toUpperCase() + text.substring(1))
+                return e.target.value =  capArr.join('');
+           
+        } else if( (e.target.name === 'lastname') && (e.target.value) ){
+           
+            let inpt2 = e.target.value;
+            let inptArr2 =inpt2.toLowerCase().split();
+              let capArr2 = inptArr2.map(text => text[0].toUpperCase() + text.substring(1))
+              return e.target.value =  capArr2.join('');
+         
+      }
+    
+
+    }
     componentDidMount() {
         window.scrollTo(0,0);
     }
@@ -96,11 +128,11 @@ export default class Signup extends React.Component{
             <div className="signup-form-container">
             {
              (this.state.valErrors.length > 0) && (this.state.valErrors.map((err,i)=>
-              <div key={i} className="signup-err-cont" > {err.msg} </div>
+              <div key={i} className="signup-err-cont" > <p className="signup-err"> {err.msg} </p></div>
               ))
            }
            {
-             (this.state.errMessage ) && (<div className="signup-err-cont" ><p className="signup-err-login">{this.state.errMessage}</p></div>)
+             (this.state.errMessage ) && (<div className="signup-err-cont" ><p className="signup-err">{this.state.errMessage}</p></div>)
 
            }
 
@@ -112,39 +144,53 @@ export default class Signup extends React.Component{
 
                 <div className="signup-form-panel-body">
 
-                    <form onSubmit={this.handleSubmit} method="POST">
+                    <form onSubmit={this.handleSubmit} method="POST" autoComplete="off" >
 
                     <div className="signup-form-group">
-                   
-                    <input type="text" placeholder="Firstname*" className="form-control" name="firstname" onChange={this.handleInputChange} />
+                    <label>
+                    <input type="text" onBlur={ this.toggleBlur }  onInput ={this.capitalize}  name="firstname" onChange={this.handleInputChange} />
+                    <span className="placeholder">Firstname</span>
+                    </label>
                     </div>
 
                     <div className="signup-form-group">
-                  
-                    <input type="text" placeholder="Lastname*" className="form-control" name="lastname" onChange={this.handleInputChange}  />
+                    <label>
+                    <input type="text" onBlur={ this.toggleBlur }  onInput ={this.capitalize}  className="form-control" name="lastname" onChange={this.handleInputChange}  />
+                    <span className="placeholder">Lastname</span>
+                    </label>
                     </div>
 
                     <div className="signup-form-group">
-                   
-                    <input type="email" placeholder="Example@gmail.com*" className="form-control" name="email" onChange={this.handleInputChange}  />
+                    <label>
+                    <input type="text" onBlur={ this.toggleBlur } className="form-control" name="email" onChange={this.handleInputChange}  />
+                    <span className="placeholder">Email Address</span>
+                    </label>
                     </div>
 
                     <div className="signup-form-group">
-                   
-                    <input type="text" placeholder="Phone number*" className="form-control" name="phonenumber" onChange={this.handleInputChange}  />
+                    <label>
+                    <input type="text" onBlur={ this.toggleBlur } className="form-control" name="phonenumber" onChange={this.handleInputChange}  />
+                    <span className="placeholder">Phone Number</span>
+                    </label>
                     </div>
 
                     <div className="signup-form-group">
-                  
-                    <input type="password" placeholder="Password*" className="form-control" name="password" onChange={this.handleInputChange}/>
+                    <label>
+                    <input type="password" onBlur={ this.toggleBlur } className="form-control" name="password" onChange={this.handleInputChange}/>
+                    <span className="placeholder">Password</span>
+                    </label>
                     </div>
 
                     <div className="signup-form-group">
-                   
-                    <input type="password" placeholder="Repeat Password*" className="form-control" name="password2" onChange={this.handleInputChange} />
+                    <label>                  
+                    <input type="password" onBlur={ this.toggleBlur } className="form-control" name="password2" onChange={this.handleInputChange} />
+                    <span className="placeholder">Repeate Password</span>
+                    </label>
                     </div>
 
+                    <div className="signup-bttn">
                     <button type="submit" className="btn btn-success"> Submit</button>
+                    </div>
 
                     </form>
 

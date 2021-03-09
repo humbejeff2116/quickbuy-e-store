@@ -7,52 +7,68 @@
 
 
 
-import React from 'react'
+import React,{useState,useEffect} from 'react';
+
 import LinksPage from '../LinksPage/linksPage'
 import { PageLoader } from '../Loader/loader';
 import {getJewelries} from '../../services/ecormerce.service'
 import './jewelries.css'
 import {PageTemplate} from '../PageTemplate/pageTemplate'
-// import {Header} from '../Header/index'
+import ReactPaginate from 'react-paginate';
 
 
 
-export default class JewelriesPage extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.state={
-            loading:false,
-            products:[]
-        }
-    }
-    componentDidMount(){
-        window.scrollTo(0,0);
+const JewelriesPage = ( props ) => {
+    const [loading, setLoading] = useState(false);
+    const [products, setProducts] = useState([]);
+    // skip is current page
+    const [skip,setSkip] = useState(0);
+    const [limit] = useState(20);
+    const [pageCount,setPageCount] = useState(4);
 
-        this.setState({
-            loading:true
+   
+    useEffect(() => {
+        window.scrollTo(0,0)
+        setLoading(true);
+        getJewelries(limit,skip)
+        .then(response => response.data)
+        .then(products => {
+            setProducts(products.data);
+            setPageCount( Math.ceil(products.data.length / limit))
+            setLoading(false);
+
         })
+        .catch(err => console.error(err.stack))   
+       
+    }, [skip,limit])
 
-        getJewelries(20,5)
-        .then(response=> response.data)
-        .then(products=>{
-            this.setState({
-               products,
-                loading:false
-            })
+    const handlePageChange = (data) => {
+        let selected = data.selected;
+        let offset = Math.ceil(selected * limit);
+        setSkip(offset);
+        setLoading(true);
+        getJewelries(limit,skip)
+        .then(response => response.data)
+        .then(products => {
+            setProducts(products.data)
+            setLoading(false);
         })
-    }
-    componentDidUpdate(){
-        window.scrollTo(0,0);
-    }
-    render(){
+        .catch(err => console.error(err));
+        
+      };
+
+   
+
+   
+    
 
         return (
             <PageTemplate>
-                {/* <Header/> */}
+               
           
-                <>
-                { (this.state.loading) && <PageLoader/> }
+                
+                { (loading) && <PageLoader/> }
                 <div className="jewelries-container">
                 <div className="jewelries-items-header">
                         <h3>Jewelries</h3>          
@@ -61,19 +77,32 @@ export default class JewelriesPage extends React.Component{
                     <div className="jewelries-items">
                   
                     {
-                        this.state.products.map((product,i)=>
+                        products.map((product,i)=>
                             <LinksPage  key={i} {...product}/>
                             )
                     }
                     </div>
+                    <ReactPaginate
+                        previousLabel={'prev'}
+                        nextLabel={'next'}
+                        breakLabel={'...'}
+                        breakClassName={'break-me'}
+                        pageCount={pageCount}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={handlePageChange}
+                        containerClassName={'pagination'}
+                        subContainerClassName={'pages pagination'}
+                        activeClassName={'active'}
+                    />         
                 </div>
                 </div> 
-                </>
+                
                 </PageTemplate>
 
           
          
         )
-    }
 
 }
+export default JewelriesPage;

@@ -96,13 +96,13 @@ class UserController{
            
 
           const email = req.body.email;
-          const phonenumber = parseInt(email);
+          const phonenumber = typeof email === 'number'? parseInt(email):null;
           const password = req.body.password;
 
           const user =  await  User.findOne({"email":email });
              if(!user){
                console.error('no user found'); 
-               res.json({status:401, message: 'Incorrect email or phone number.' });
+               res.json({status:401, message: 'Incorrect email Address' });
               return res.status(401);          
                    
              }

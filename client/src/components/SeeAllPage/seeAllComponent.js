@@ -34,28 +34,17 @@ import logo from '../../images/logo.png'
         return (
           <ErrorBoundary>
 
-            <div className="all-items-picture">
+            <div className="all-items-picture"  onClick={()=>view(src,name,price,id,available)} >
               
                 <div className="see-all-items-details">
+                <Link to="/view-item">
                 <img src={logo} width="80%" height="80%" alt="img"/><br />            
-                <span className="see-all-product-title"><small>Name: {name}</small></span><br />
-                <span className="see-all-product-price"><small>Price: ${price}</small></span><br />
-                </div>
-                { 
-                  (available) ?
-                    <div className="see-all-view">               
-                    {/* view item */}
-                  <Link to="/view-item">
-                  <button className="btn btn-sm btn-warning" 
-                  onClick={()=>view(src,name,price,id,available)}>
-                    view
-                  </button>
-                  </Link>
-                    </div> :  <p className="text-danger"> product is out of stock </p>
-          
-                } 
-               
-        
+                <span className="product-title"><small>Name: {name}</small></span><br />
+                <span className="product-price"><small>Price: ${price}</small></span><br />
+                { (!available) ?<span className="text-danger"> product is out of stock </span>:'' } 
+                </Link>
+                </div> 
+
             </div>
             </ErrorBoundary>
 

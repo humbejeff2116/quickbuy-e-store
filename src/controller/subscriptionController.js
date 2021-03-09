@@ -14,19 +14,29 @@
 const SubscriptionsModel = require('../models/subscriptionsModel');
 const credentials = require('../config/credentials')
 const emailService = require('../libs/mail')(credentials);
+const { validationResult } = require('express-validator');
 
 class Subscription{
 
      // subscription form ont footer
   async postSubscription(req,res,next){
-    let email = req.body.email;
-    let tags = req.body.tags
+   const errors = validationResult(req);
+  
+   if (!errors.isEmpty()) {
+        
+     res.json({ status: 422, valErrors: errors.array() });
+     return res.status(422);
+
+   }
+    let email = req.body.subemail;
+   //  let tags = req.body.tags
+   let tags = 'yeagh';
 
     
     await SubscriptionsModel.update({email:email},{$push:{tags:tags}})
     .then(data=>{
        const body ='thank you for your supscription to quick buy service'
-       emailService.send(email,'quickbuy products supscription',body)
+      //  emailService.send(email,'quickbuy products supscription',body)
        return res.status(201).json({status:201, message:'subscription successful'});
       
 

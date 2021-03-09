@@ -24,7 +24,7 @@ const AccessoriesPage =(props)=>{
     const [products, setProducts] =useState([]);
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
-    const [pageCount,setPageCount] = useState(1);
+    const [pageCount,setPageCount] = useState(4);
 
     useEffect(() => {
         window.scrollTo(0,0)
@@ -44,6 +44,7 @@ const AccessoriesPage =(props)=>{
     }, [skip,limit])
     
     const handlePageClick = (data) => {
+     
         let selected = data.selected;
         let offset = Math.ceil(selected * limit);
         setSkip(offset);

@@ -16,7 +16,7 @@
     /* border-bottom:2px solid grey; */
     background-color:#ffffff;
     color:black;
-    margin-bottom:2px;
+    margin-bottom:0.15%;
   
   
 }
@@ -27,7 +27,6 @@
     width:98%;
     display:flex;
     flex-direction: column;
-    /* height:100vh; */
     background-color: #ffffff;
     /* border:1px solid black; */
    
@@ -40,6 +39,7 @@
     flex-wrap: wrap;
     justify-content:space-between;
     /* border:1px solid black; */
+    margin-top:0.3%;
   
   }
 

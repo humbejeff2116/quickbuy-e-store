@@ -2,45 +2,132 @@
 
 
 
-import React from 'react';
 
 
-export const FooterFormComp =(props)=>
-//  Footer form 
+import React,{ useState,useEffect } from 'react';
+import { postSubscription} from '../../services/ecormerce.service';
+
+
+export const FooterFormComp =(props)=>{
+    let _subEmail = React.createRef();
+    const [valErrs,setValErrs] = useState([]);
+    const [errMssg, setErrMssg] = useState('');
+    const [mssg,setMssg] = useState('');
+
+    const toggleBlur =(e)=> {
+
+        if(e.target.value.length > 0 ) {
+  
+         return e.target.classList.add('not-empty');
+       
+        }
+  
+         return e.target.classList.remove('not-empty')
+                  
+      }
+ 
+// email subscription function
+ const subscribe= (e) => {
+        // window.scrollTo(0,0)
+
+        e.preventDefault();
+        const data = {
+            subemail: _subEmail.current.value
+        }
+
+        postSubscription(data)
+        .then(response=>{
+
+      
+        return response.data;
+
+        })
+        .then(subscriptionData => {
+
+
+        if(subscriptionData.status !== 201){
+        if(subscriptionData.message){
+            setErrMssg(subscriptionData.message) 
+            console.log(errMssg);
+           setValErrs([]);
+           return;
+
+        }
+
+        console.log(subscriptionData.valErrors);
+       
+        _subEmail.current.focus();
+       
+        setErrMssg('') 
+        setValErrs(subscriptionData.valErrors)
+        console.log(valErrs)
+        
+       
+        return; 
+        }
+
+        setMssg(subscriptionData.message);
+        _subEmail.current.value ='';
+        _subEmail.current.focus();
+        return subscriptionData;
+        })
+        .catch(err => {
+     
+        console.error('error :'+ err)
+        });
+
+
+
+        }
+   
+    return(
+          //  Footer form 
     <section className="footer-main-content">
+    <div>
+    <h3 className="ft-title"> quick buy</h3>
+   
+          <li><a href="/">Services</a></li>
+          <li><a href="/">Portfolio</a></li>
+          <li><a href="/">Pricing</a></li>
+          <li><a href="/">Customers</a></li>
+          <li><a href="/">Careers</a></li>
+   
+    </div>
         <div>
-        <h3 className="ft-title"> quick buy</h3>
+           <h3 className="ft-title"> About </h3>
        
-              <li><a href="/">Services</a></li>
-              <li><a href="/">Portfolio</a></li>
-              <li><a href="/">Pricing</a></li>
-              <li><a href="/">Customers</a></li>
-              <li><a href="/">Careers</a></li>
-       
+            <li><a href="/">Services</a></li>
+            <li><a href="/">Portfolio</a></li>
+            <li><a href="/">Pricing</a></li>
+            <li><a href="/">Customers</a></li>
+            <li><a href="/">Careers</a></li>
+      
         </div>
-            <div>
-               <h3 className="ft-title"> About </h3>
-           
-                <li><a href="/">Services</a></li>
-                <li><a href="/">Portfolio</a></li>
-                <li><a href="/">Pricing</a></li>
-                <li><a href="/">Customers</a></li>
-                <li><a href="/">Careers</a></li>
-          
-            </div>
-                <div className="footer-form" >
-                        <p>Subscribe to our newsletter to get  latest deals</p>
-                            <form>
-                            
-                                <input type="email" name="email" placeholder="Enter email address" />
-                             
-                                {/* yet to assign subscribe handler on the onclick event */}
+            <div className="footer-form" >
+                    <p>Subscribe to our newsletter to get  latest deals</p>
+                        <form action="" method="POST" onSubmit={subscribe}  autoComplete="none">
+                        {
+                        (valErrs.length > 0) && (valErrs.map((err,i)=>
+                        <div key={i} className="sub-err-cont" ><p className="sub-err-mssg">{err.msg}</p></div>
+                        ))
+           }
+                        
+                            <input type="text" name="subemail" ref={_subEmail} onBlur={toggleBlur}  placeholder="Enter email address" />
+                         
+                            {/* yet to assign subscribe handler on the onclick event */}
 
-                                <button type="submit"  onClick={props.suscribe} >subscribe</button>
-                             
-                            </form>
-                </div>
-    </section>
+                            <button type="submit">subscribe</button>
+                         
+                        </form>
+             
+            </div>
+</section>
+
+
+    )
+  
+
+}
 
 
 

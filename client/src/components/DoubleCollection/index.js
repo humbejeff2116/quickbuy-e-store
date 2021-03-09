@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import './doubleCollection.css';
 
 import { DoubleCollectionItem} from './doubleCollection'
+import { PageLoader } from '../Loader/loader';
 
 
 
@@ -25,7 +26,7 @@ import { DoubleCollectionItem} from './doubleCollection'
     </div>
         {/* //  display of sales items   */}
         <div className="six-sale-items">
-        {
+        {(data.length === 0  ) ? < PageLoader/>:
             data.map((product,i)=>
                 < DoubleCollectionItem key ={i} {...product} />
                 )

@@ -23,7 +23,8 @@ const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
         super(props);
         this.state={
             quantity: 1,
-            err: null
+            err: null,
+            mssg:null
         }
     }
     
@@ -38,9 +39,10 @@ const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
       // validate to make sure quantity is not less than 1 and if so stop function
       if(stateQnty < 1) {
 
-        let err ='quantity is not expected to be less than 1'
+        let err ='quantity is not expected to be less than 1';
         this.setState({
-          err
+          err,
+          mssg:null
         })
         return;
 
@@ -50,19 +52,18 @@ const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
         let buying_quantity = cart[id] + parseInt(this.state.quantity,10);
     
          cart[id] = buying_quantity;
-         this.setState({
-            err:null
-          })
-        
         localStorage.setItem('cart', JSON.stringify(cart));
+        this.setState({
+            err:null,
+            mssg:'item added to cart sucessfully'
+          })
        
 
     }
- 
     
     render() {
 
-        const {src,name,price,id} = this.props;
+        const {src,name,price,description,id} = this.props;
         return(
              // display container flex:column
             <div className="view-container" >
@@ -93,6 +94,9 @@ const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
                         (this.state.err) ?<div className="item-error"> <p className="error-msg">{this.state.err}</p></div>:''
 
                         }
+                        {
+                            (this.state.mssg)? <div className="item-mssg-cont" ><p className="cart-item-mssg" >{this.state.mssg}</p></div>:''
+                        }
                         <div className="view-button">
                     <button   onClick={()=>this.addToCart(id.toString())}><i>{cart}</i>Add to cart</button>
                         <input type="number" value={this.state.quantity} name="quantity" 
@@ -105,7 +109,7 @@ const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 
                 {/* 2 div */}
                 <div className="view-foot">
-
+                    <p>{description}</p>
                 </div>
               
             </div>

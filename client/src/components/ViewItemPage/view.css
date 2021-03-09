@@ -67,13 +67,14 @@
 .view-button{
     display:flex;
     flex-direction: row;
+    transition:all 0.5s ease-in-out;
     /* justify-content: space-between; */
 }
 .view-button button{
     width:200px;
     position:relative;
-    left:75px;
-    top:160px;
+    left:82px;
+    top:110px;
     background-color:rgb(218, 152, 218);
     transition:all 0.3s ease-in-out;
     border:none;
@@ -89,8 +90,8 @@
    
 }
 .view-button input{
-    left:75px;
-    top:160px;
+    left:82px;
+    top:110px;
     position: relative;
     width:80px;
     height:45px;
@@ -120,9 +121,74 @@
     top:60px;
 
 }
-.item-error p{
-    color:red;
+.item-error{
     position:relative;
-    top:90px;
+    top:80px;
+    width:70%;
+    margin-left:auto;
+    margin-right: auto;
+    border-radius: 4px;
+    z-index:0;
+   
+    border:1px solid rgb(248, 197, 197);
+    background-color:#f8d7da;
+
+    animation-name:animatetop;
+    animation-duration:1s;
+   
+}
+
+@keyframes animatetop{
+    from{
+        right: -12px;
+        opacity:0;
+        transition:all;
+    }
+    to{
+        right:0px;
+        opacity:1;
+        transition:all;
+    }
+}
+@keyframes animateout{
+    from{
+        right: 0px;
+        opacity:0;
+        transition:all;
+    }
+    to{
+        right:-400px;
+        opacity:1;
+        transition:all;
+    }
+}
+
+.item-error p{
+   
+    /* position:relative;
+    top:90px; */
+    color:rgb(121, 30, 30);
     font-weight: normal;
+   
+}
+.item-mssg-cont{
+    position:relative;
+    top:80px;
+    width:70%;
+    margin-left:auto;
+    margin-right: auto;
+    border-radius: 4px;
+    z-index:0;
+    border:1px solid rgb(248, 197, 197);
+    background-color:#f8d7da;
+
+    animation-name:animatetop;
+    animation-duration:1s;
+
+}
+.item-mssg-cont p {
+    color:rgb(121, 30, 30);
+    font-weight: normal;
+    
+
 }

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {CollectionItem} from './collection';
+import { PageLoader } from '../Loader/loader';
 import { Link } from 'react-router-dom';
 import './collection.css';
 
@@ -16,7 +17,7 @@ import './collection.css';
                 <Link to={props.href}>See All</Link>
         </div>
         <div  className="sale-items">
-        {(props.data.length === 0  ) ? <p>no data listed</p>:
+        {(props.data.length === 0  ) ? < PageLoader/>:
             props.data.map( (product,i)=>
                 < CollectionItem  key ={i} {...product} />
 

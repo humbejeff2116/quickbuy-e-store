@@ -37,14 +37,30 @@ export default class Login extends React.Component{
            email: '',
             password: '',
             valErrors:[],
-            errMessage:''
+            errMessage:'',
+            blur:false,
         }
+
+       
+
 
      }
 
      handleInputChange = (e) => 
 
                this.setState({[e.target.name]: e.target.value})
+
+    toggleBlur =(e)=>{
+
+      if(e.target.value.length > 0 ) {
+
+       return e.target.classList.add('not-empty');
+     
+      }
+
+       return e.target.classList.remove('not-empty')
+                
+    }
 
      submitLogin = (e) => {
       window.scrollTo(0,0)
@@ -96,17 +112,16 @@ export default class Login extends React.Component{
        
 
      }
+   
      componentDidMount() {
-       window.scrollTo(0,0)
+    
+       window.scrollTo(0,0);
+  
      }
-     componentDidUpdate(prevProps, prevState) {
-      //  window.scrollTo(0,0)
-     }
-     
-     
+    
 
      render() {
-
+    
         return (
           <PageTemplate>
          
@@ -123,36 +138,42 @@ export default class Login extends React.Component{
 
            }
 
-           <div className="col-sm-8 col-sm-offset-2">
+           {/* <div className="col-sm-8 col-sm-offset-2"> */}
 
              <div className="login-panel ">
 
-               <div className="login-panel-heading"><h2>Login </h2></div>
+               <div className="login-panel-heading">
+                 <h2>Login </h2>
+                </div>
 
                <div className="login-panel-body">
 
-                 <form action="login" onSubmit={this.submitLogin} method="POST" autoComplete="none">
+                 <form action="login" onSubmit={this.submitLogin} method="POST" autoComplete="off">
+                
 
                    <div className="login-form-group">
-
-                  
-
-                     <input type="text" className="login-form-control" name="email" onChange={this.handleInputChange}placeholder="Email or phone number"/>
+                   <label >
+                     <input type="text"   name="email" onBlur={  this.toggleBlur } onChange={this.handleInputChange}/>
+                     <span className="placeholder">Email Address</span>
+                     </label>
 
                    </div>
 
                    <div className="login-form-group">
+                   <label > 
+                     <input type="password" name="password" onBlur={ this.toggleBlur } onChange={this.handleInputChange}/>
+                     <span className="placeholder">Password</span>
+                     </label>
+                     </div>
 
-                    
-                     <input type="password" placeholder="Password" className="login-form-control" name="password" onChange={this.handleInputChange}/>
-
-                   </div>
                    <div className="login-forgot-pass">
                      <p>forgot your password?</p>
                
                   </div>
 
+                  <div>
                    <button type="submit" className="btn btn-success">Submit</button>
+                   </div>
 
                  </form>
                  <div className="signup-link">
@@ -164,7 +185,7 @@ export default class Login extends React.Component{
 
              </div>
 
-           </div>
+           {/* </div> */}
 
          </div>
          </ErrorBoundary>

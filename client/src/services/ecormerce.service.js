@@ -64,13 +64,13 @@ import http from '../Http-common/http-common'
 
     }
 
-  export function  searchProduct(name){
-        return http.get(`/all-products?product=${name}`)
+  export function  searchProduct(data){
+        return http.get(`/search?q=${data.searchValue}`)
     }
 
-    export function searchProducts(data){
-        return http.post(`/all-products`,data)
-    }
+    // export function searchProducts(data){
+    //     return http.post(`/all-products`,data)
+    // }
 
 // done
 export function getCartProducts(cart) {
@@ -78,19 +78,7 @@ export function getCartProducts(cart) {
     return http.post(`/cart`, {cart})
           
 }
-// post orders
-export function postOrders(payment,user,products,total){
- const order ={
 
-        payment:payment,
-        user:user,
-        products:products,
-        total:total,
-
-    }
-
-    return http.post(`/orders`,order)
-}
 // signup
 export function signup(data) {
     const body = {
@@ -130,5 +118,30 @@ export function getAccessories(limit,skip){
 }
 export function getJewelries(limit,skip){
     return http.get(`/jewelries?limit=${limit}&skip=${skip}`)
+}
+
+// dashboard sidenav links
+// post orders
+export function postOrders(payment,user,products,total){
+    const order ={
+   
+           payment:payment,
+           user:user,
+           products:products,
+           total:total,
+   
+       }
+   
+       return http.post(`/orders`,order)
+   }
+export function getOrders(user){
+
+    return http.get(`/users/orders`,user)
+} 
+
+export function postSubscription(data){
+   
+    return http.post(`/subscription`,data)
+    
 }
 
