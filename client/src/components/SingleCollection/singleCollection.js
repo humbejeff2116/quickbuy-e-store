@@ -47,7 +47,7 @@ import ErrorBoundary from '../ErrorBoundary/errorBoundary'
 
              <Link to="/view-item">
              <button className="btn btn-sm btn-warning" 
-               onClick={()=>this.view(src,name,price,id,available)}>
+               onClick={()=>view(src,name,price,id,available)}>
                view
              </button>
              </Link>

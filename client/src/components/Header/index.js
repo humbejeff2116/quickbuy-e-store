@@ -1,20 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-import React, {useEffect}  from 'react'
+import React, {useEffect}  from 'react';
 import { MainNavBar, NavGifsBar} from './header';
-import './header.css'
-
-
-
-
+import './header.css';
 
 
 
@@ -41,9 +27,9 @@ import './header.css'
     }
   return(
     <nav className={navbarClasses.join(" ")}>
-    <NavGifsBar />
-    <MainNavBar/>    
-</nav>
+        <NavGifsBar />
+        <MainNavBar/>    
+    </nav>
 
   )
    

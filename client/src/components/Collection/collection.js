@@ -25,7 +25,7 @@ import logo from '../../images/logo.png'
     return(
       <ErrorBoundary>
   
-      <div className="items-picture"  onClick={()=>this.view(src,name,price,description,id,available)} > 
+      <div className="items-picture"  onClick={()=>view(src,name,price,description,id,available)} > 
       <div className="items-details"> 
       <Link to="view-item">   
       <img src={logo} width="80%" height="80%" alt="img" /><br />      

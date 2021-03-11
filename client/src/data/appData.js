@@ -6,234 +6,75 @@
 
 
 
-//  users collection to staore users data
-//  products collection to store products
-// payments collection to store users payment for later use
 
-// keep everything in in the products collection and give it a tag so as to use it to query document
-// query popular collection data for see all
-//  db.products.aggregate([{$match:{tag:"popular collection"}}])
 
-let popularCollectionData = [ 
+import React from 'react'
+import facebookIcon from '../images/facebook.svg'
+import googlePlusIcon from '../images/google-plus.svg'
+import  instagramIcon from '../images/instagram.svg'
+import linkedinIcon from '../images/linkedin.svg'
+import twitterIcon from '../images/twitter.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+const about = <FontAwesomeIcon  icon={['fas', "info-circle"]}  />
+const female = <FontAwesomeIcon  icon={['fas', "female"]}  />
+const male = <FontAwesomeIcon  icon={['fas', "male"]}  />
+const jewelries = <FontAwesomeIcon  icon={['fas', "gem"]}  />
+const accessories = <FontAwesomeIcon  icon={['fas', "hat-wizard"]}  />
+const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
+const home = <FontAwesomeIcon  icon={['fas', "home"]}  />
 
-    {
-         tag:"popular collection",
-        src:"images/pics1.jpg",
-        name:"shirt-blue"
+
+
+const ApplicationData= function(){ };
+
+
+
+
+
+const data = {
+
+    links:{
+        navLinks : [
+            { name:"Home", href:"/", icon:home},
+            { name:"About", href:"/about", icon:about},
+            { name:"Women Clothings", href:"/women-clothings", icon:female },
+            { name:"Men Clothings", href:"/men-clothings", icon:male },
+            { name:"Jewelries", href:"/jewelries", icon:jewelries },
+            { name:"Accessories", href:"/accessories", icon:accessories },
+            { name:"Shopping Cart", href:"/cart", icon:cart },
+            
+          ],
+
+        navGifsLinks : [
+            {href:"/contact", name:'Contact Us'},
+            {href:"/sellproduct", name:'Sell a product '},
+            {href:"/advertise", name:'Advertise with us'}
+        ],
+
+        socialLinks : [
+            {src:facebookIcon, alt:'facebook'},
+            {src:instagramIcon, alt:'instagram'},
+            {src:twitterIcon, alt: 'twitter'},
+            {src:linkedinIcon, alt:'linkedin'},
+            {src:googlePlusIcon, alt:'google+'},  
+        ],
     },
-    {
-        tag:"popular collection",
-       src:"images/pics2.jpg",
-       name:"shirt-blue"
-   },
-   {
-    tag:"popular collection",
-   src:"images/pics3.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"popular collection",
-   src:"images/pics4.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"popular collection",
-   src:"images/pics5.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"popular collection",
-   src:"images/pics6.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"popular collection",
-   src:"images/pics7.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"popular collection",
-   src:"images/pics8.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"popular collection",
-   src:"images/pics9.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"popular collection",
-   src:"images/pics10.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"popular collection",
-   src:"images/pics11.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"popular collection",
-   src:"images/pics12.jpg",
-   name:"shirt-blue"
-},
+   
+}
 
-]
+ApplicationData.prototype.data = data;
 
-let latestDealsData = [
-    {
-        tag:"latest deals",
-       src:"images/pics1.jpg",
-       name:"shirt-blue"
-   },
-   {
-    tag:"latest deals",
-   src:"images/pics2.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"latest deals",
-   src:"images/pics3.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"latest deals",
-   src:"images/pics4.jpg",
-   name:"shirt-blue"
-},
+ApplicationData.prototype.getNavLinks = function(){
+    return this.data.links.navLinks;
+}
+ApplicationData.prototype.getNavGifsLinks = function(){
+    return this.data.links.navGifsLinks;
+}
+ApplicationData.prototype.getSocialLinks = function(){
+    return this.data.links.socialLinks;
+}
+ApplicationData.prototype.getSideNavLinks = function(){
+    return this.data.sideNavLinks;
+}
 
-        ]
-
-
-let womenCollectionData = [
-
-    {
-        tag:"women collection",
-       src:"images/pics1.jpg",
-       name:"shirt-blue"
-   },
-   {
-    tag:"women collection",
-   src:"images/pics2.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"women collection",
-   src:"images/pics3.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"women collection",
-   src:"images/pics4.jpg",
-   name:"shirt-blue"
-},
-
-        ]
-
-
-
-let menCollectionData = [
-
-    {
-        tag:"men collection",
-       src:"images/pics1.jpg",
-       name:"shirt-blue"
-   },
-   {
-    tag:"men collection",
-   src:"images/pics2.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"men collection",
-   src:"images/pics3.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"men collection",
-   src:"images/pics4.jpg",
-   name:"shirt-blue"
-},
-    ]
-
-
-
-let singleCollectionData =  [ 
-    {
-        tag:"single collection",
-       src:"images/pics1.jpg",
-       name:"shirt-blue"
-   },
-   {
-    tag:"single collection",
-   src:"images/pics2.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"single collection",
-   src:"images/pics3.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"single collection",
-   src:"images/pics4.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"single collection",
-   src:"images/pics5.jpg",
-   name:"shirt-blue"
-},
-{
-    tag:"single collection",
-   src:"images/pics6.jpg",
-   name:"shirt-blue"
-},
-                                                        
-        ]
-
-
-
-
-
-
-        let daata = [
-            
-            {
-                popularCollectionData :[ 
-                
-                    { "src":"images/picsi.jpg"}, {"src":"images/pics2.jpg"}, {"src":"images/pics3.jpg"},
-                    {"src":"images/pics4.jpg"}, { "src":"images/picsi.jpg"}, {"src":"images/pics2.jpg"},
-                    {"src":"images/pics3.jpg"}, {"src":"images/pics4.jpg"}, { "src":"images/picsi.jpg"},
-                    {"src":"images/pics2.jpg"}, {"src":"images/pics3.jpg"}, {"src":"images/pics4.jpg"}                                              
-                ],
-            
-                latestDealsData : [
-                    { "src":"images/picsi.jpg","name":"short gown"},
-                    {"src":"images/pics2.jpg","name":"suit"},
-                    {"src":"images/pics3.jpg","name":"bikini"},
-                    {"src":"images/pics4.jpg","name":"gown"}
-                ],
-        
-                womenCollectionData :  [
-                    { "src":"images/picsi.jpg"},
-                    {"src":"images/pics2.jpg"},
-                    {"src":"images/pics3.jpg"},
-                    {"src":"images/pics4.jpg"}
-                ],
-            
-                menCollectionData : [
-                    { "src":"images/picsi.jpg"},
-                    {"src":"images/pics2.jpg"},
-                    {"src":"images/pics3.jpg"},
-                    {"src":"images/pics4.jpg"}
-                ],
-            
-                singleCollectionData : [ 
-                    { "src":"images/picsi.jpg"}, {"src":"images/pics2.jpg"}, {"src":"images/pics3.jpg"},
-                    {"src":"images/pics4.jpg"}, { "src":"images/picsi.jpg"}, {"src":"images/pics2.jpg"}
-                                                                
-                ]
-            
-            }
-
-        ];
+export default new ApplicationData();
