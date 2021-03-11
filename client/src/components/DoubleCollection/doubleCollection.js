@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ErrorBoundary from '../ErrorBoundary/errorBoundary'
 import {Link} from 'react-router-dom'
 import logo from '../../images/logo.png'
@@ -8,7 +7,7 @@ import logo from '../../images/logo.png'
 
 
 //  the ProductItem component, which we will be used to render each product on the product list.
-export const DoubleCollectionItem =(props)=>{
+export function DoubleCollectionItem(props){
 
   const view = (src,name,price,description,id,available) => {
   let item =[];
@@ -39,7 +38,6 @@ export const DoubleCollectionItem =(props)=>{
 
    )
 
- 
 
 }
 
