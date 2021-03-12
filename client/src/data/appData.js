@@ -15,6 +15,7 @@ import  instagramIcon from '../images/instagram.svg'
 import linkedinIcon from '../images/linkedin.svg'
 import twitterIcon from '../images/twitter.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+const user = <FontAwesomeIcon  icon={['fas', "user"]}  />
 const about = <FontAwesomeIcon  icon={['fas', "info-circle"]}  />
 const female = <FontAwesomeIcon  icon={['fas', "female"]}  />
 const male = <FontAwesomeIcon  icon={['fas', "male"]}  />
@@ -58,6 +59,17 @@ const data = {
             {src:linkedinIcon, alt:'linkedin'},
             {src:googlePlusIcon, alt:'google+'},  
         ],
+        mobileNavLinks : [
+            { name:"Home", href:"/", icon:home},
+            { name:"About", href:"/about", icon:about},
+            { name:"Women Clothings", href:"/women-clothings", icon:female },
+            { name:"Men Clothings", href:"/men-clothings", icon:male },
+            { name:"Jewelries", href:"/jewelries", icon:jewelries },
+            { name:"Accessories", href:"/accessories", icon:accessories },
+            { name:"Shopping Cart", href:"/cart", icon:cart },
+            { name:"Signup/Login", href:"/login", icon:user },
+            
+          ]
     },
    
 }
@@ -75,6 +87,9 @@ ApplicationData.prototype.getSocialLinks = function(){
 }
 ApplicationData.prototype.getSideNavLinks = function(){
     return this.data.sideNavLinks;
+}
+ApplicationData.prototype.getMobileNavLinks = function(){
+    return this.data.links.mobileNavLinks;
 }
 
 export default new ApplicationData();

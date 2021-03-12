@@ -1,10 +1,13 @@
 import React, {useEffect}  from 'react';
 import { MainNavBar, NavGifsBar} from './header';
+
+import  { MobileNav } from '../MobileNav/mobileNav';
 import './header.css';
 
 
 
  export const Header =( )=>{
+    const [openMobileNav, setOpenMobileNav] = React.useState(false);
      const [scrolled, setScrolled] = React.useState(false);
      const handleScroll =()=>{
          const offset = window.scrollY;
@@ -28,7 +31,12 @@ import './header.css';
   return(
     <nav className={navbarClasses.join(" ")}>
         <NavGifsBar />
-        <MainNavBar/>    
+        <MainNavBar openMobileNav={openMobileNav} setOpenMobileNav={setOpenMobileNav} />
+        {
+            (openMobileNav) && <MobileNav />
+
+
+        }    
     </nav>
 
   )

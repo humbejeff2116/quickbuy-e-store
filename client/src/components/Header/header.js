@@ -7,10 +7,24 @@ import ApplicationData from '../../data/appData';
 
 
 // main navigation bar
-export const  MainNavBar =()=>{
-    const [openMobileNav, setOpenMobileNav] = useState(false);
+export const  MainNavBar =(props)=>{
+ 
 
-    const navLinks = ApplicationData.getNavLinks() 
+    const navLinks = ApplicationData.getNavLinks()
+    function setUnicode(unicode){
+        let dummy;
+             let decoded
+             if(!unicode){
+                return decoded ="";
+                    
+             }
+              dummy = document.createElement('textarea');
+              dummy.innerHTML = unicode;
+              decoded = dummy.value;
+              return decoded;
+     }
+     const open = setUnicode('&#9776;')
+     const close = setUnicode('&times;') 
    
     return(
         <>
@@ -22,10 +36,20 @@ export const  MainNavBar =()=>{
                 <NavLinks  key={i} {...links} />
             )
         }
-        <button className="closebtn" onClick={()=>setOpenMobileNav(false)}>&times;</button>
+       
         </nav>  
             {/* mobile navigation open icon */}
-            <span className="nav-open-icon" onClick={()=>setOpenMobileNav(true)} >&#9776;</span>
+           
+                {
+                    (props.openMobileNav) ?  
+                    <button className="nav-open-icon closebtn" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)}>
+                        {close}
+                    </button> :
+                     <span className="nav-open-icon" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)} >
+                        {open}
+                    </span>  
+                }
+                
         </div>
         </>
     )
