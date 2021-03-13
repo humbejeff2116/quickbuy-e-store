@@ -139,13 +139,15 @@ export default class Signup extends React.Component{
             <div className = "signup-form-panel">
 
                 <div className="signup-form-panel-head">
-                    <h2>sign up</h2>
+                    <h2>Sign up</h2>
                 </div>
 
                 <div className="signup-form-panel-body">
 
                     <form onSubmit={this.handleSubmit} method="POST" autoComplete="off" >
 
+                    {/* form row */}
+            <div className="form-row">  
                     <div className="signup-form-group">
                     <label>
                     <input type="text" onBlur={ this.toggleBlur }  onInput ={this.capitalize}  name="firstname" onChange={this.handleInputChange} />
@@ -160,6 +162,9 @@ export default class Signup extends React.Component{
                     </label>
                     </div>
 
+            </div>
+            {/* form row */}
+            <div className="form-row">
                     <div className="signup-form-group">
                     <label>
                     <input type="text" onBlur={ this.toggleBlur } className="form-control" name="email" onChange={this.handleInputChange}  />
@@ -174,6 +179,9 @@ export default class Signup extends React.Component{
                     </label>
                     </div>
 
+            </div >
+            {/* form row */}
+            <div className="form-row">
                     <div className="signup-form-group">
                     <label>
                     <input type="password" onBlur={ this.toggleBlur } className="form-control" name="password" onChange={this.handleInputChange}/>
@@ -188,10 +196,14 @@ export default class Signup extends React.Component{
                     </label>
                     </div>
 
-                    <div className="signup-bttn">
-                    <button type="submit" className="btn btn-success"> Submit</button>
-                    </div>
+            </div>
 
+
+                <div className="signup-bttn">
+                        <button type="submit" className="btn btn-success"> Submit</button>
+                        </div>
+
+               
                     </form>
 
                 </div>
@@ -205,4 +217,78 @@ export default class Signup extends React.Component{
       
 
     }
+}
+
+function Form(props){
+    return(
+        // flex column
+        <div>
+            <form>
+            {/* form row */}
+            <div className="form-row">  
+                    <div className="signup-form-group">
+                    <label>
+                    <input type="text" onBlur={ this.toggleBlur }  onInput ={this.capitalize}  name="firstname" onChange={this.handleInputChange} />
+                    <span className="placeholder">Firstname</span>
+                    </label>
+                    </div>
+
+                    <div className="signup-form-group">
+                    <label>
+                    <input type="text" onBlur={ this.toggleBlur }  onInput ={this.capitalize}  className="form-control" name="lastname" onChange={this.handleInputChange}  />
+                    <span className="placeholder">Lastname</span>
+                    </label>
+                    </div>
+
+            </div>
+            {/* form row */}
+            <div className="form-row">
+                    <div className="signup-form-group">
+                    <label>
+                    <input type="text" onBlur={ this.toggleBlur } className="form-control" name="email" onChange={this.handleInputChange}  />
+                    <span className="placeholder">Email Address</span>
+                    </label>
+                    </div>
+
+                    <div className="signup-form-group">
+                    <label>
+                    <input type="text" onBlur={ this.toggleBlur } className="form-control" name="phonenumber" onChange={this.handleInputChange}  />
+                    <span className="placeholder">Phone Number</span>
+                    </label>
+                    </div>
+
+            </div >
+            {/* form row */}
+            <div className="form-row">
+                    <div className="signup-form-group">
+                    <label>
+                    <input type="password" onBlur={ this.toggleBlur } className="form-control" name="password" onChange={this.handleInputChange}/>
+                    <span className="placeholder">Password</span>
+                    </label>
+                    </div>
+
+                    <div className="signup-form-group">
+                    <label>                  
+                    <input type="password" onBlur={ this.toggleBlur } className="form-control" name="password2" onChange={this.handleInputChange} />
+                    <span className="placeholder">Repeate Password</span>
+                    </label>
+                    </div>
+
+            </div>
+
+            <div className="form-bttn">
+                <div className="signup-bttn">
+                        <button type="submit" className="btn btn-success"> Submit</button>
+                        </div>
+
+                </div>
+
+
+            </form>
+
+           
+
+
+        </div>
+    )
 }
