@@ -143,6 +143,9 @@ class UserController{
         }
   
     }
+    checkout =(req,res,next)=>{
+      return res.status(200).json({status:200, error:false, message:'token authenticated successfully'})
+    }
     //   work on your integrate paypal here
     // the checkout route
 

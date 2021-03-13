@@ -31,6 +31,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.product-bttn{
+  /* border:1px solid red; */
+  margin-top:auto;
+
+}
+.product-bttn button{
+  border:none;
+  outline:none;
+  background-color:rgb(218, 152, 218);
+  /* background-color: #292b2c; */
+  color:#292b2c;
+  color:#ffffff;
+  font-size: 1em;
+  font-weight: bold;
+  width:100%; 
+  height: 40px;
+  transition:all 0.3s ease; 
+  font-family:'acme';
+
+  
+
+}
+.product-bttn button:hover{
+  cursor:pointer;
+  background-color:#292b2c;
+  color:rgb(218, 152, 218);
+  /* text-decoration: underline; */
+  /* border: 1px solid black; */
+}
 
 .items{
   display:flex;
@@ -64,12 +93,13 @@ code {
   margin:0.25%;
   width:15.5%;
   
-  border:2px solid rgb(209, 208, 208);
+  /* border:2px solid rgb(209, 208, 208); */
+  box-shadow:0 0 6px rgb(196, 195, 195);
   /* border:1px solid #242729; */
-  transition:all 0.6s ease;
+  transition:all 0.3s ease;
   cursor:pointer;
   position:relative;
-  border-radius: 3%;
+  /* border-radius: 3%; */
 
 }
 .items-picture img{
@@ -84,7 +114,7 @@ code {
   -moz-box-shadow:0 0 5px rgba(0,0,0,0.6); */
   border:none;
   box-shadow:0px 2px 2px 2px rgba(117, 116, 116, 0.6);
-  transform:scale(1.03) ;
+  /* transform:scale(1.01) ; */
 
 }
 .items-header{
@@ -134,7 +164,7 @@ code {
    cursor:pointer;
   }
   .product-text-danger{
-    color:blue;
+    color:rgb(168, 5, 5);
     text-align:center;
   }
   /* pagination styles start here */

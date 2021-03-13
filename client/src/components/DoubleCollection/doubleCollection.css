@@ -18,10 +18,11 @@
     flex-wrap: wrap;
     /* border:1px solid orangered; */
     background-color:#ffffff;
+    margin:0.4%;
   }
 .six{
     /* justify-content: space-between; */
-      min-height:473px;
+      min-height:480px;
       /* border:1px solid blue; */
   }
 
@@ -32,8 +33,9 @@
       margin:0.25%;
       width:15.5%;
       height:auto;
-      border:2px solid rgb(209, 208, 208);
-      border-radius: 3%;
+      /* border:2px solid rgb(209, 208, 208); */
+      box-shadow:0 0 6px rgb(196, 195, 195);
+      /* border-radius: 3%; */
       transition:all 0.3s ease-in-out;
       cursor:pointer;
       position:relative;
@@ -44,7 +46,7 @@
       -moz-box-shadow:0 0 5px rgba(0,0,0,0.6); */
       border:none;
       box-shadow:0px 2px 2px 2px rgba(117, 116, 116, 0.6);
-      transform:scale(1.03) ;
+      /* transform:scale(1.03) ; */
     
     }
     .view-six{
@@ -59,21 +61,6 @@
 
 
 
-.view-six button{
-  background-color:rgb(218, 152, 218);
-  border:0;
-  width:100%;  
-  height: 40px;
-  cursor:pointer;
-  position:relative;
-  font-size:1em;
-  font-weight: bold;
-  transition:all 0.3s ease-in-out;
-  font-family: 'acme';
-}
-.view-six button:hover{
-    background-color: rgb(212, 108, 212);
-}
 .view-six span{
   /* width:90%;  */
   /* border:1px solid black;  */

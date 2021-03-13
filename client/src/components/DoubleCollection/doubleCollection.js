@@ -28,9 +28,22 @@ export function DoubleCollectionItem(props){
         <img src={logo} width="80%" height="80%" alt="img" /><br />      
         <span className="product-title"><small>name: {name}</small></span><br />
         <span className="product-price"><small>price: ${price}</small></span><br />
-        { (!available) ? <span className="product-text-danger"> product is out of stock </span> : '' }
         </Link>
         </div>
+        { (!available) ? 
+         <div className="product-bttn">
+        <p className="product-text-danger"> 
+          *Out of stock* 
+        </p>
+        </div> : <div className="product-bttn">
+                     <Link to="/view-item" className="product-link" >
+                      <button  onClick={()=>view(src,name,price,description,id,available)} >
+                          {/* <i> <FaRegEye className="contact-bttn-icon"/></i> */}
+                        View 
+                      </button>
+                     </Link>
+                     </div>  
+        }
                   
         
           </div>

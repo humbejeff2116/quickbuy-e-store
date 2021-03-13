@@ -63,9 +63,13 @@ export default class Login extends React.Component{
     }
 
      submitLogin = (e) => {
-      window.scrollTo(0,0)
+      // window.scrollTo(0,0)
 
        e.preventDefault();
+       const checkoutAction = localStorage.getItem('checkout-action');
+       if(checkoutAction){
+         localStorage.removeItem('checkout-action')
+       }
 
        axios.post(`api/v1/login`, { email: this.state.email, password: this.state.password })
        .then(response=>{
@@ -116,7 +120,25 @@ export default class Login extends React.Component{
      componentDidMount() {
     
        window.scrollTo(0,0);
+      const checkoutAction = localStorage.getItem('checkout-action');
+      if(checkoutAction){
+        alert(checkoutAction)
+
+      }
+     
+     
+
   
+     }
+     componentWillUnmount(){
+      const checkoutAction = localStorage.getItem('checkout-action');
+       if(checkoutAction){
+        localStorage.removeItem('checkout-action');
+         
+       }
+
+     
+
      }
     
 

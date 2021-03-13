@@ -22,13 +22,13 @@ import ErrorBoundary from '../ErrorBoundary/errorBoundary'
 
 
   export function SingleCollectionItem(props){
-   const view = (src,name,price,id,available) => {
+   const view = (src,name,price,description,id,available) => {
       let item =[];
-        item.push({ src, name, price, id, available });
+        item.push({ src, name, price,description, id, available });
        localStorage.setItem('view', JSON.stringify(item))
   
     }
-    const {src,name,price,available,id} = props;
+    const {src,name,price,description,available,id} = props;
     return(
       <ErrorBoundary>
   
@@ -42,17 +42,18 @@ import ErrorBoundary from '../ErrorBoundary/errorBoundary'
           {
            
            (available ) ?
-           <div>
-             {/* view item */}
-
-             <Link to="/view-item">
-             <button className="btn btn-sm btn-warning" 
-               onClick={()=>view(src,name,price,id,available)}>
-               view
-             </button>
-             </Link>
-           
-           </div> : <p className="product-text-danger"> product is out of stock </p>
+           <div className="product-bttn">
+              <Link to="/view-item" className="product-link" >
+              <button  onClick={()=>view(src,name,price,description,id,available)} >
+                  {/* <i> <FaRegEye className="contact-bttn-icon"/></i> */}
+                View 
+              </button>
+              </Link>
+            </div>  : <div className="product-bttn">
+                      <p className="product-text-danger"> 
+                        *Out of stock* 
+                      </p>
+                      </div>
              
          }
                           

@@ -37,9 +37,18 @@ import logo from '../../images/logo.png'
      { 
          (!available) ?
 
-            <div className="view">
-            <p className="product-text-danger"> product is out of stock </p> 
-            </div> : ''
+         <div className="product-bttn">
+         <p className="product-text-danger"> 
+           *Out of stock* 
+         </p>
+         </div> : <div className="product-bttn">
+                     <Link to="/view-item" >
+                      <button  onClick={()=>view(src,name,price,description,id,available)} >
+                          {/* <i> <FaRegEye className="contact-bttn-icon"/></i> */}
+                        View 
+                      </button>
+                     </Link>
+                     </div> 
 
     } 
 </div>

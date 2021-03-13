@@ -47,6 +47,8 @@ router.post('/cart', productsController.getCartProducts);
 router.post('/orders',jwtMiddleware, orderController.postOders);
 router.get('/orders',jwtMiddleware, orderController.getOrders);
 
+router.post('/authenticate',jwtMiddleware,usersController.checkout)
+
 
 // work on route getAccesories and getJewelries
 

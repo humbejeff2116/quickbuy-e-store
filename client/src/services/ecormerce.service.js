@@ -144,4 +144,7 @@ export function postSubscription(data){
     return http.post(`/subscription`,data)
     
 }
+export function checkToken(credentails){
+    return http.post(`/authenticate?x-access-token=${credentails}`)
+}
 
