@@ -8,13 +8,12 @@
 
 
 import React,{useState,useEffect} from 'react';
-
-import LinksPage from '../LinksPage/linksPage'
-import { PageLoader } from '../Loader/loader';
-import {getJewelries} from '../../services/ecormerce.service'
-import './jewelries.css'
-import {PageTemplate} from '../PageTemplate/pageTemplate'
+import LinksPage from '../LinksPage/linksPage';
+import { Loader } from '../Loader/loader';
+import {getJewelries} from '../../services/ecormerce.service';
+import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
+import './jewelries.css';
 
 
 
@@ -22,6 +21,7 @@ import ReactPaginate from 'react-paginate';
 const JewelriesPage = ( props ) => {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
+    const [err,setErr] = useState(false)
     // skip is current page
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
@@ -34,6 +34,11 @@ const JewelriesPage = ( props ) => {
         getJewelries(limit,skip)
         .then(response => response.data)
         .then(products => {
+            if(products.data.length < 1 ){
+                setErr('no products returned');
+                setLoading(false);
+                return;
+            }
             setProducts(products.data);
             setPageCount( Math.ceil(products.data.length / limit))
             setLoading(false);
@@ -57,6 +62,15 @@ const JewelriesPage = ( props ) => {
         .catch(err => console.error(err));
         
       };
+      if(!err && products.length < 1 || loading){
+
+        return(
+          <PageTemplate>
+          <Loader/>
+          </PageTemplate>
+        )
+ 
+    }
 
    
 
@@ -68,7 +82,7 @@ const JewelriesPage = ( props ) => {
                
           
                 
-                { (loading) && <PageLoader/> }
+               
                 <div className="jewelries-container">
                 <div className="jewelries-items-header">
                         <h3>Jewelries</h3>          

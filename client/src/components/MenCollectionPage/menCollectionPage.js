@@ -9,14 +9,13 @@
 
 
 import React,{useEffect,useState} from 'react';
-import SeeAllComp from '../SeeAllPage/seeAllComponent'
-import './menCollection.css'
-import {getMenCollections} from '../../services/ecormerce.service'
-import ErrorBoundary from '../ErrorBoundary/errorBoundary'
+import SeeAllComp from '../SeeAllPage/seeAllComponent';
+import {getMenCollections} from '../../services/ecormerce.service';
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
-
-import {PageLoader} from '../Loader/loader'
+import {Loader} from '../Loader/loader';
+import './menCollection.css';
 
 
 
@@ -25,6 +24,7 @@ import {PageLoader} from '../Loader/loader'
    
     const [loading, setLoading] = useState(false);
     const [products, setProducts] =useState([]);
+    const [err,setErr] = useState('');
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
     const [pageCount,setPageCount] = useState(1);
@@ -59,7 +59,16 @@ import {PageLoader} from '../Loader/loader'
         })
         .catch(err=>console.error(err));
         
-      };       
+      };
+
+      if( !err && products.length < 1 || loading){
+        return(
+          <PageTemplate>
+          <Loader/>
+          </PageTemplate>
+        )
+ 
+    }   
 
         return(
             <PageTemplate>
@@ -67,7 +76,7 @@ import {PageLoader} from '../Loader/loader'
               
 
             <ErrorBoundary>
-                  { (loading) && (<PageLoader/>) }
+               
             <div className="men-collections-items">
 
             <div className="men-collections-items-header">

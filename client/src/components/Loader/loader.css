@@ -24,15 +24,46 @@
                 /* border:1px solid black; */
 
               }
-              .loader {
-                 margin:16px;
-                  
-                border: 6px solid #f3f3f3;
+              .page-loader-container{
+                width:100%;
+                min-height:100vh;
+               
+                display:flex;
+                flex-direction: column;                          
+                border:0;
+                justify-content: center;  
+                position:relative;
+                top:0;
+                background-color: #fff;
+              
+              }
+              .page-loader{
+                margin-top:-20%;
+               
+              
+
+                border: 6px solid #fff;
                 border-radius: 50%;
-                border-top: 6px solid rgb(218, 152, 218);
-                border-bottom: 6px solid rgb(218, 152, 218);
-                width: 40px;
-                height: 40px;
+                border-top: 6px solid #242729;
+                border-bottom: 6px solid #242729;
+                width:2rem;
+                height: 2rem;
+                margin-left:auto;
+                margin-right:auto;
+                -webkit-animation: spin 2s linear infinite;
+                animation: spin 2s linear infinite;
+
+              }
+              .loader {
+                
+                border: 5px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 5px solid rgb(218, 152, 218);
+                border-bottom: 5px solid rgb(218, 152, 218);
+                width:1.8rem;
+                height: 1.8rem;
+                margin-left:auto;
+                margin-right:auto;
                 -webkit-animation: spin 2s linear infinite;
                 animation: spin 2s linear infinite;
               }

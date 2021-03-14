@@ -9,7 +9,7 @@
 
 import React,{useEffect,useState} from 'react'
 import LinksPage from '../LinksPage/linksPage'
-import { PageLoader } from '../Loader/loader';
+import { Loader } from '../Loader/loader';
 import {getAccessories} from '../../services/ecormerce.service'
 import ErrorBoundary from '../ErrorBoundary/errorBoundary'
 import './accessories.css'
@@ -22,6 +22,7 @@ import ReactPaginate from 'react-paginate';
 const AccessoriesPage =(props)=>{
     const [loading, setLoading] = useState(false);
     const [products, setProducts] =useState([]);
+    const [err,setErr] = useState('');
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
     const [pageCount,setPageCount] = useState(4);
@@ -52,20 +53,33 @@ const AccessoriesPage =(props)=>{
         getAccessories(limit,skip)
         .then(response=>response.data)
         .then(products=>{
+            if(products.data.length <1){
+                setErr('no products returned');
+                setLoading(false);
+                return;
+            }
             setProducts(products.data)
             setLoading(false);
         })
-        .catch(err=>console.error(err));
+        .catch(err=> console.error(err) );
         
-      };    
+      };  
+      if( !err && products.length < 1 || loading){
+        return(
+          <PageTemplate>
+          <Loader/>
+          </PageTemplate>
+        )
+ 
+    }  
 
         return (
            
                 // <ErrorBoundary>
                 <PageTemplate>
                <ErrorBoundary>
-                {/* <Header /> */}
-                { (loading) && <PageLoader/> }
+        
+             
             <div className="accessories-container">
 
             <div className="accessories-items-header">

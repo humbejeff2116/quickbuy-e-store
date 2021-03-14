@@ -7,13 +7,13 @@
 
 
 import React,{useEffect,useState} from 'react';
-import SeeAllComp from '../SeeAllPage/seeAllComponent'
-import './womenCollection.css'
-import {getWomenCollections} from '../../services/ecormerce.service'
-import ErrorBoundary from '../ErrorBoundary/errorBoundary'
-import {PageLoader} from '../Loader/loader'
-import {PageTemplate} from '../PageTemplate/pageTemplate'
+import SeeAllComp from '../SeeAllPage/seeAllComponent';
+import {getWomenCollections} from '../../services/ecormerce.service';
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
+import {Loader} from '../Loader/loader';
+import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
+import './womenCollection.css';
 
 
 window.React = React;
@@ -27,6 +27,7 @@ window.React = React;
 
     const [loading, setLoading] = useState(false);
     const [products, setProducts] =useState([]);
+    const [err,setErr] = useState('');
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
     const [pageCount,setPageCount] = useState(1);
@@ -61,7 +62,16 @@ window.React = React;
         })
         .catch(err=>console.error(err));
         
-      };       
+      };  
+      
+      if( !err && products.length < 1 || loading){
+        return(
+          <PageTemplate>
+          <Loader/>
+          </PageTemplate>
+        )
+ 
+    }  
 
   
         return(
@@ -69,7 +79,7 @@ window.React = React;
          
                
             <ErrorBoundary>
-                 { (loading) && (<PageLoader/>) }
+             
             <div className="women-collections-items">
 
             <div className="women-collections-items-header">

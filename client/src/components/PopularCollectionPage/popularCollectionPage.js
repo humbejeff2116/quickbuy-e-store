@@ -3,20 +3,21 @@
 
 
 import React,{useEffect,useState} from 'react';
-import SeeAllComp from '../SeeAllPage/seeAllComponent'
-import './popularCollection.css'
-import {getPopularCollections} from '../../services/ecormerce.service'
-import ErrorBoundary from '../ErrorBoundary/errorBoundary'
+import SeeAllComp from '../SeeAllPage/seeAllComponent';
+import {getPopularCollections} from '../../services/ecormerce.service';
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
+import './popularCollection.css'
 
-import {PageLoader} from '../Loader/loader'
+import {Loader} from '../Loader/loader'
 
 
 
  const PopularCollectionsPage =(props)=>{
     const [loading, setLoading] = useState(false);
     const [products, setProducts] =useState([]);
+    const [err,setErr] = useState('');
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
     const [pageCount,setPageCount] = useState(1);
@@ -51,7 +52,16 @@ import {PageLoader} from '../Loader/loader'
         })
         .catch(err=>console.error(err));
         
-      };    
+      }; 
+      
+      if( !err && products.length < 1 || loading){
+        return(
+          <PageTemplate>
+          <Loader/>
+          </PageTemplate>
+        )
+ 
+    }  
 
   
         return(
@@ -59,13 +69,14 @@ import {PageLoader} from '../Loader/loader'
            
             
             <ErrorBoundary>
-                    { (loading) && (<PageLoader/>) }
+                   
             <div className="popular-collections-items">
 
             <div className="popular-collections-items-header">
-                    <h3>Popular Collection</h3>          
+                    <h2>Popular Collection</h2>          
             </div>
             <div  className="popular-collections-items-container">
+            {/* { (loading) && (<PageLoader/>) } */}
                 <div className="popular-collections-items">
                         { 
                          

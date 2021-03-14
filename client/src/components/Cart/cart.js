@@ -14,7 +14,7 @@ import { Link,Redirect, useLocation } from 'react-router-dom';
 import { getCartProducts,checkToken } from '../../services/ecormerce.service';
 import CartItem from './cartItem';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import { PageLoader } from '../Loader/loader';
+import { Loader } from '../Loader/loader';
 import {PageTemplate} from '../PageTemplate/pageTemplate'
 import './cart.css'
 import './fullcart.css'
@@ -287,15 +287,7 @@ export default class AppCart extends React.Component {
       return(
         <PageTemplate>                     
         <ErrorBoundary>
-
-            <PageLoader/> 
-           <div className="cart-loader">
-             <p>
-               getting cart content please wait.....
-             </p>
-           
-           </div>
-
+            <Loader/> 
         </ErrorBoundary> 
         </PageTemplate>
 
@@ -607,7 +599,7 @@ export function Cart(props){
         <PageTemplate>                     
         <ErrorBoundary>
 
-           <PageLoader/> 
+           <Loader/> 
            <div className="cart-loader">
              <p>
                getting cart content please wait.....

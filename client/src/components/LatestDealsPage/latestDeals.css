@@ -5,6 +5,7 @@
 .latest-deals-container{
     display:flex;
     flex-direction:column;
+    margin-top:0.3%;
     /* border:1px solid black; */
   }
 
@@ -24,7 +25,8 @@
   .latest-deals-items-container{
     margin-left:auto;
     margin-right:auto;
-    width:98%;
+    padding:0.25%;
+    /* width:98%; */
     display:flex;
     flex-direction: column;
     background-color: #ffffff;
