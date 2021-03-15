@@ -141,7 +141,7 @@ export default class AppCart extends React.Component {
 
     if (!token){
 
-      localStorage.setItem('checkout-action','please log in to complete action');
+      localStorage.setItem('checkout-message','please log in to complete action');
       return this.setState({ redirect:'/login' })
       
     }

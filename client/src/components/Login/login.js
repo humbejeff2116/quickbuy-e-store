@@ -24,10 +24,6 @@
    import axios from 'axios';
   
 
-//   This component gets the username and password, passes it on to the backend server when the form is submitted,
-//  using the login method from the repository module, 
-//    and redirects the user to the home URL upon a successful request.
-
 export default class Login extends React.Component{
 
      constructor(props) {
@@ -40,15 +36,10 @@ export default class Login extends React.Component{
             errMessage:'',
             blur:false,
         }
-
-       
-
-
      }
 
      handleInputChange = (e) => 
-
-               this.setState({[e.target.name]: e.target.value})
+        this.setState({[e.target.name]: e.target.value})
 
     toggleBlur =(e)=>{
 
@@ -63,90 +54,81 @@ export default class Login extends React.Component{
     }
 
      submitLogin = (e) => {
-      // window.scrollTo(0,0)
-
+    
        e.preventDefault();
-       const checkoutAction = localStorage.getItem('checkout-action');
+       const checkoutAction = localStorage.getItem('checkout-message');
+
        if(checkoutAction){
          localStorage.removeItem('checkout-action')
        }
-
-       axios.post(`api/v1/login`, { email: this.state.email, password: this.state.password })
-       .then(response=>{
-       
-        console.log(response.data);
-       return response.data;
-       
-       })
+    
+       login(this.state)
+       .then( response => response.data )
        .then(loginData => {
-       
-        
-         if(loginData.status !== 200){
-           if(loginData.message){
+
+         if( loginData.status !== 200 ){
+           if( loginData.message ){
             return this.setState({
 
-              errMessage: loginData.message,
-              valErrors:[]
-            })
+                    errMessage: loginData.message,
+                    valErrors:[]
+
+                  })
 
            }
 
-           console.log(loginData.valErrors);
            return this.setState({
-             valErrors:loginData.valErrors,
-             errMessage:''
-           })
+
+                    valErrors:loginData.valErrors,
+                    errMessage:''
+
+                  })
 
          }
+
         localStorage.setItem('x-access-token', loginData.token);
         localStorage.setItem('x-access-token-expiration',  Date.now() + 2 * 60 * 60 * 1000);
         localStorage.setItem('user',JSON.stringify(loginData.data));
-         return loginData;
+        return loginData;
+
      })
-     .then(token =>{
-       if(token){
+     .then( token =>{
+       if( token ){
         return window.location = '/'
        }
      })
-     .catch(err => {
+     .catch( err => {
       //  Promise.reject('Authentication Failed!');
        console.error('error :'+ err)
       });
         
-       
-
      }
    
      componentDidMount() {
     
-       window.scrollTo(0,0);
-      const checkoutAction = localStorage.getItem('checkout-action');
+      window.scrollTo(0,0);
+      const checkoutAction = localStorage.getItem('checkout-message');
       if(checkoutAction){
+
         alert(checkoutAction)
 
       }
      
-     
-
-  
      }
      componentWillUnmount(){
-      const checkoutAction = localStorage.getItem('checkout-action');
+      // checkout action initialy set in cart when trying to checkout
+      const checkoutAction = localStorage.getItem('checkout-message');
        if(checkoutAction){
-        localStorage.removeItem('checkout-action');
+        localStorage.removeItem('checkout-message');
          
        }
 
-     
-
      }
     
-
      render() {
     
         return (
           <PageTemplate>
-         
           <ErrorBoundary>
 
          <div className="login-container">
@@ -160,64 +142,53 @@ export default class Login extends React.Component{
 
            }
 
-           {/* <div className="col-sm-8 col-sm-offset-2"> */}
+            <div className="login-panel ">
+              <div className="login-panel-heading">
+                <h2>Login </h2>
+              </div>
 
-             <div className="login-panel ">
+              <div className="login-panel-body">
 
-               <div className="login-panel-heading">
-                 <h2>Login </h2>
-                </div>
+                <form action="login" onSubmit={this.submitLogin} method="POST" autoComplete="off">
+              
 
-               <div className="login-panel-body">
+                  <div className="login-form-group">
+                  <label >
+                    <input type="text"   name="email" onBlur={  this.toggleBlur } onChange={this.handleInputChange}/>
+                    <span className="placeholder">Email Address</span>
+                    </label>
+                  </div>
 
-                 <form action="login" onSubmit={this.submitLogin} method="POST" autoComplete="off">
-                
+                  <div className="login-form-group">
+                  <label > 
+                    <input type="password" name="password" onBlur={ this.toggleBlur } onChange={this.handleInputChange}/>
+                    <span className="placeholder">Password</span>
+                    </label>
+                  </div>
 
-                   <div className="login-form-group">
-                   <label >
-                     <input type="text"   name="email" onBlur={  this.toggleBlur } onChange={this.handleInputChange}/>
-                     <span className="placeholder">Email Address</span>
-                     </label>
-
-                   </div>
-
-                   <div className="login-form-group">
-                   <label > 
-                     <input type="password" name="password" onBlur={ this.toggleBlur } onChange={this.handleInputChange}/>
-                     <span className="placeholder">Password</span>
-                     </label>
-                     </div>
-
-                   <div className="login-forgot-pass">
-                     <p>forgot your password?</p>
-               
+                  <div className="login-forgot-pass">
+                    <p>forgot your password?</p>
                   </div>
 
                   <div>
-                   <button type="submit" className="btn btn-success">Submit</button>
-                   </div>
+                    <button type="submit" className="btn btn-success">Submit</button>
+                  </div>
 
-                 </form>
-                 <div className="signup-link">
-                   <p>dont have an account? <span><Link to="/signup" > sign up </Link></span></p>
-                 </div>
+                </form>
 
+                <div className="signup-link">
+                  <p>dont have an account? <span><Link to="/signup" > sign up </Link></span></p>
+                </div>
 
-               </div>
-
-             </div>
-
-           {/* </div> */}
+              </div>
+            </div>
 
          </div>
          </ErrorBoundary>
          </PageTemplate>
         
-
        );
 
      }
 
    }
-   
- 

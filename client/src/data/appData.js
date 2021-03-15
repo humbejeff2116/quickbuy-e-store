@@ -71,6 +71,29 @@ const data = {
             
           ]
     },
+
+    formData : [
+        {
+          
+           formInputs : [
+                { type:"text",placeholder:"Firstname", name:'firstname',capitalize:true },
+                { type:"text",placeholder:"Lastname", name:'lastname', capitalize:true },
+            ]
+        },
+        {
+            formInputs : [
+                { type:"text",placeholder:"Email Address", name:'email', },
+                { type:"text",placeholder:"Phone Number", name:'phonenumber',},
+            ]
+        },
+        {
+            formInputs : [
+                { type:"password",placeholder:"Password", name:'password', },
+                { type:"password",placeholder:"Repeat Password", name:'password2', },
+            ]
+        }
+        
+    ]
    
 }
 
@@ -90,6 +113,9 @@ ApplicationData.prototype.getSideNavLinks = function(){
 }
 ApplicationData.prototype.getMobileNavLinks = function(){
     return this.data.links.mobileNavLinks;
+}
+ApplicationData.prototype.getFormData = function(){
+    return this.data.formData;
 }
 
 export default new ApplicationData();
