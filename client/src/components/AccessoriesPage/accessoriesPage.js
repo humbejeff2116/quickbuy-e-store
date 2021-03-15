@@ -8,7 +8,7 @@
 
 
 import React,{useEffect,useState} from 'react'
-import LinksPage from '../LinksPage/linksPage'
+import SeeAllComp from '../SeeAllPage/seeAllComponent';
 import { Loader } from '../Loader/loader';
 import {getAccessories} from '../../services/ecormerce.service'
 import ErrorBoundary from '../ErrorBoundary/errorBoundary'
@@ -89,7 +89,7 @@ const AccessoriesPage =(props)=>{
                 <div className="accessories-items">
                     {
                         products.map((product,i)=>
-                            <LinksPage  key={i} {...product}/>
+                            <SeeAllComp  key={i} {...product}/>
                             )
                     }
                 </div> 

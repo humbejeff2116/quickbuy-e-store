@@ -7,39 +7,46 @@
 
 
 
-.jewelries-items-container{
-    display:flex;
-    flex-direction:column;
-  }
+.jewelries-container{
+  display:flex;
+  flex-direction:column;
+  margin-top:0.5%;
+  margin-bottom:0.6%;
+  /* border:1px solid black; */
+ 
+}
 
-  .jewelries-items-header{
-    /* border:1px solid black; */
+ .jewelries-items-header{
     display:flex;
     flex:1;
     justify-content:center;
-    border-bottom:2px solid grey;
     background-color:#ffffff;
     color:black;
-    /* margin:2px; */
-  
+    margin-bottom:0.15%;
   
 }
+
 .jewelries-items-header h3{
     text-align:center;
 }
-  
-  .jewelries-items-container{
-    margin-left:auto;
-    margin-right:auto;
-    width:98%;
-    display:flex;
-    flex-direction: column;
-  
+
+.jewelries-items-container{
+  margin-left:auto;
+  margin-right:auto;
+  padding:0.25%;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  /* border:1px solid black; */
+   
   }
   
   .jewelries-items{
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border:1px solid black;
+    justify-content:space-between;
+    /* border:1px solid black; */
+    margin-top:0.3%;
   }

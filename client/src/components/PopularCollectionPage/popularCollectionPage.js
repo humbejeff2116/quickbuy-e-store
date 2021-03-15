@@ -70,7 +70,7 @@ import {Loader} from '../Loader/loader'
             
             <ErrorBoundary>
                    
-            <div className="popular-collections-items">
+            <div className="popular-collections-container">
 
             <div className="popular-collections-items-header">
                     <h2>Popular Collection</h2>          

@@ -2,7 +2,15 @@
 
 
  
-
+ 
+  .women-collections-container{
+    display:flex;
+    flex-direction:column;
+    margin-top:0.5%;
+    margin-bottom:0.6%;
+   
+    /* border:1px solid black; */
+  } 
 
   .women-collections-items-header{
  

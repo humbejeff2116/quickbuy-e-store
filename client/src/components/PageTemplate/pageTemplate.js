@@ -25,7 +25,7 @@ export const PageTemplate = ({children})=>
     <div className="main-container" id="main-container">
     <MobileSearch />
     {children}                 
-     < Banner />                   
+     {/* < Banner />                    */}
     {/* // single 6 divs collection goes here */}
                     
     {/* // collection goes here */}

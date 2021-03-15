@@ -77,7 +77,7 @@ import './menCollection.css';
 
             <ErrorBoundary>
                
-            <div className="men-collections-items">
+            <div className="men-collections-container">
 
             <div className="men-collections-items-header">
                     <h3>Men Collections</h3>          

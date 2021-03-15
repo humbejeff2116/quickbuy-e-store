@@ -2,12 +2,15 @@
 
 
 
-/* .popular-collections-items{
+.popular-collections-container{
     display:flex;
     flex-direction:column;
+    margin-top:0.5%;
+    margin-bottom:0.6%;
    
     
-  } */
+  }
+  
 
   .popular-collections-items-header{
    

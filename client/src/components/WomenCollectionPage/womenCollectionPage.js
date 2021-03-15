@@ -80,7 +80,7 @@ window.React = React;
                
             <ErrorBoundary>
              
-            <div className="women-collections-items">
+            <div className="women-collections-container">
 
             <div className="women-collections-items-header">
                     <h3>Women Collections</h3>          

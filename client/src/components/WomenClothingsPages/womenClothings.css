@@ -1,23 +1,22 @@
 
 
-.men-collections-container{
-  display:flex;
-  flex-direction:column;
-  /* border: 1px solid black; */
-  margin-top:0.5%;
-  margin-bottom:0.6%;
-}
 
-.men-collections-items{
+ 
+  .women-clothings-container{
     display:flex;
     flex-direction:column;
-  }
-
-  .men-collections-items-header{
+    margin-top:0.5%;
+    margin-bottom:0.6%;
    
+    /* border:1px solid black; */
+  } 
+
+  .women-clothings-items-header{
+ 
     display:flex;
     flex:1;
     justify-content:center;
+    /* border-bottom:2px solid grey; */
     background-color:#ffffff;
     color:black;
     margin-bottom:2px;
@@ -25,7 +24,7 @@
   
 }
   
-  .men-collections-items-container{
+  .women-clothings-items-container{
     padding:0.25%;
     display:flex;
     flex-direction: column;
@@ -33,12 +32,10 @@
   
   }
   
-  .men-collections-items{
+  .women-clothings-items{
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content:space-between;
-   
-    margin-top:0.3%;
+      justify-content:space-between;
     /* border:1px solid black; */
-  }
+  } 

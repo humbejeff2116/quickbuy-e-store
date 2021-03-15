@@ -8,7 +8,7 @@
 
 
 import React,{useState,useEffect} from 'react';
-import LinksPage from '../LinksPage/linksPage';
+import SeeAllComp from '../SeeAllPage/seeAllComponent';
 import { Loader } from '../Loader/loader';
 import {getJewelries} from '../../services/ecormerce.service';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
@@ -92,7 +92,7 @@ const JewelriesPage = ( props ) => {
                   
                     {
                         products.map((product,i)=>
-                            <LinksPage  key={i} {...product}/>
+                            <SeeAllComp  key={i} {...product}/>
                             )
                     }
                     </div>
