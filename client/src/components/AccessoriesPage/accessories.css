@@ -16,6 +16,7 @@
     flex-direction:column;
     margin-top:0.5%;
     margin-bottom:0.6%;
+    /* min-height:70vh; */
   }
 
   .accessories-items-header{
@@ -31,6 +32,8 @@
 }
   
   .accessories-items-container{
+      min-height:65vh;
+    
     margin-left:auto;
   margin-right:auto;
   padding:0.25%;
@@ -44,8 +47,10 @@
   
   }
   
+  
   .accessories-items{
-    display:flex;
+    
+  display:flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content:space-between;

@@ -20,20 +20,15 @@
 import React from 'react';
 import {PageTemplate} from '../PageTemplate/pageTemplate'
 import { isAuthenticated, getCartProducts,postOrders } from '../../services/ecormerce.service';
-import {  Redirect, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 import  ErrorBoundary  from '../ErrorBoundary/errorBoundary';
-import { PageLoader } from '../Loader/loader';
-// import PaypalButton from '../Paypal/paypalButton';
+import { Loader } from '../Loader/loader';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
+import RequireAuthentication from '../AuthHoc/authenticate';
 import './checkout.css';
 
 
-  //   This component will only be rendered if the user authenticated (logged in).
-  // This component loads and renders all the products on the cart, much like the Cart component.
-  // It also provides a pay button which will in this case alert a message to proceed 
-  // to payment after accessing a secured route on the backend server
-
-export default class Checkout extends React.Component {
+ class CheckoutComp extends React.Component {
 
     constructor(props) {
 
@@ -46,9 +41,9 @@ export default class Checkout extends React.Component {
         products: [],
         currency : 'USD',   
         loading:false,
-        total: 0, 
+        checkoutTotalSum: 0, 
         showButton: false,
-        // env : process.env.NODE_ENV === 'production'? 'production': 'sandbox',
+       
         env : 'sandbox',
         client:{
           sandbox: 'AYmZjw11QthPP2YtpRTdojnB7r6a2YHpaD83bjttt0IdBzOhk7OKbeZCtyQQR4TK7zpEVO9TAxthNK_0',
@@ -75,16 +70,8 @@ export default class Checkout extends React.Component {
         }); 
       }
 
-
-
-
-      
     getCartProducts(cart)
-    .then(response=>{
-      // console.log(response.data)
-     return response.data
-
-    })
+    .then( response => response.data )
     .then(products => {
       let cart2 ={
         '2':2,
@@ -94,38 +81,33 @@ export default class Checkout extends React.Component {
     // use cart1 later on just testing with cart2 
      let cart1 = JSON.parse(cart);
    
-    //  console.log(cart1);
-    // loop and add the quantity of each product to the response data products
-    
       for( let i = 0; i < products.data.length; i++ ) {  
 
             products.data[i].qty = cart2[products.data[i].id] 
-
     }
-    console.log("products are", products.data);
       
       let sum = 0;
-      let total;
+      let checkoutTotalSum;
       const cartProd = products.data;
 
       for (let i = 0; i < cartProd.length; i++) {
 
         sum += cartProd[i].price * cartProd[i].qty;
-        total = sum.toFixed(2);
+       checkoutTotalSum = sum.toFixed(2);
 
       }
 
     return  this.setState(prevState=>({
-        loading:!prevState.loading,
+        loading:false,
          products:products.data,
-          total 
+         checkoutTotalSum 
       }));
 
       })
       .catch(err=>{
         console.error(err);
         this.setState(prevState=>({
-          loading:!prevState.loading,
+          loading:false,
           err:'an error occured will getting data please wait and try again'
           
         }));
@@ -133,12 +115,8 @@ export default class Checkout extends React.Component {
 
   }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //   window.scrollTo(0,0)
-    // }
-    
-
-   toggleCheckout=()=>{
+     
+   toggleCheckout = ( ) => {
      this.setState(prevState=>({
        checkout:!prevState.checkout
      }))
@@ -146,16 +124,16 @@ export default class Checkout extends React.Component {
               
 
   render() {
-    const { products, total } =  this.state;
+    const { products,checkoutTotalSum } =  this.state;
    
     const onSuccess = (payment) => {
       const user = localStorage.getItem('user');
       const products = this.state.products;
-      const total = this.state.total;
+      const checkoutTotalSum = this.state.checkoutTotalSum;
       console.log("Your payment has been made successful!", payment);
-      postOrders(payment,user,products,total)
-      .then(response=>console.log('orders posted successfully'))
-      .catch(err=> console.error(err));
+      postOrders( payment, user, products, checkoutTotalSum )
+      .then( response=> console.log('orders posted successfully') )
+      .catch( err => console.error(err) );
 
   }	        
   const onCancel = (data) => {
@@ -165,41 +143,23 @@ export default class Checkout extends React.Component {
   const onError = (err) => {
 
       console.log("an Error! occured while carrying out transaction", err);
-// Since the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js" 
-// => sometimes it may take about 0.5 second for everything to get set, or for the button to appear			 
+		 
   }		            
 
-
-
-   //  if you are not authenticated you are redirected to the login page
-      // if (!isAuthenticated()){
-        
-      //    return <Redirect to="/login" />         
-        
-      // }
-      // render component if loading is true
       if(this.state.loading){
         return(
           <PageTemplate>                     
           <ErrorBoundary>
-
-             { (this.state.loading) && (<PageLoader/>) }
-             <div>
-               <p>
-                 getting content please wait .......
-               </p>
-             </div>
-
+          <Loader/>   
           </ErrorBoundary> 
           </PageTemplate>
 
         )
       }
-// render this component if there is a network error while getting products from database
+
       if(this.state.err){
         return(
-          <PageTemplate>
-                      
+          <PageTemplate>            
           <ErrorBoundary>
           <div>
             <p>{this.state.err}</p>
@@ -208,32 +168,27 @@ export default class Checkout extends React.Component {
            </PageTemplate>
         )
       }
-// render if no products are found in the cart
+
       if(!products.length ){
 
         return(
           
           <PageTemplate>                     
           <ErrorBoundary>
-
-        <div className=" checkout-container">
-          <h3 className="checkOut-title">Checkout</h3><hr/>
-          <h3 className="text-warning">it seems you dont have any item in your  cart</h3>
-        </div>
-
+            <div className=" checkout-container">
+              <h3 className="checkOut-title">Checkout</h3><hr/>
+              <h3 className="text-warning">it seems you dont have any item in your  cart</h3>
+            </div>
           </ErrorBoundary> 
-           </PageTemplate>
+          </PageTemplate>
   
         )
       
       } 
-// render component if everything goes well
+
         return (
           <PageTemplate>           
           <ErrorBoundary>
-              { (this.state.loading) && <PageLoader/> }
-          
-
             <div className=" checkout-container">
               <div className="checkout">
 
@@ -257,34 +212,29 @@ export default class Checkout extends React.Component {
 
                   <div className="checkout-total" >
                     <h4>
-                      <small>Total Amount:</small> <span className="float-right text-primary">${total} </span>
+                      <small>Total Amount:</small> <span className="float-right text-primary">${checkoutTotalSum } </span>
                   </h4> <hr/>
                   </div>
                    {/*paypal button  integreating starts here  */}
                    <div>
                    {
-                     (this.state.checkout) &&   (<PaypalExpressBtn 
-                                                env={this.state.env} 
-                                                client={this.state.client}
-                                                currency={this.state.currency} 
-                                                total={Number(this.state.total)} 
-                                                onError={onError} 
-                                                onSuccess={onSuccess} 
-                                                onCancel={onCancel}
-                                                style={{
-                                                  size: 'large',
-                                                  color: 'blue'
-                                                }} 
-                                                />)
+                     (this.state.checkout) &&   (
 
-
-                                              
-
-
-
-
-
-
+                      <PaypalExpressBtn 
+                        env={this.state.env} 
+                        client={this.state.client}
+                        currency={this.state.currency} 
+                        total={Number(this.state.total)} 
+                        onError={onError} 
+                        onSuccess={onSuccess} 
+                        onCancel={onCancel}
+                        style = {{
+                          size: 'large',
+                          color: 'blue'
+                        }} 
+                        />
+                                                
+                      )
                   }
                   </div>
                   <div className="checkout-btn" >
@@ -297,14 +247,15 @@ export default class Checkout extends React.Component {
 
               </div>
             </div>
-            </ErrorBoundary>
-             </PageTemplate> 
-          
-
+          </ErrorBoundary>
+          </PageTemplate> 
         );
     }
 
 }
+
+ const Checkout = RequireAuthentication(CheckoutComp , isAuthenticated);
+ export default Checkout;
 
     
 

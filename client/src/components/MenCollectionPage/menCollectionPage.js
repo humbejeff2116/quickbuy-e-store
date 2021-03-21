@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 import React,{useEffect,useState} from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
 import {getMenCollections} from '../../services/ecormerce.service';
@@ -20,10 +10,9 @@ import './menCollection.css';
 
 
 
- const MenCollectionsPage =(props)=>{
-   
+export default function MenCollectionsPage(props) {
     const [loading, setLoading] = useState(false);
-    const [products, setProducts] =useState([]);
+    const [products, setProducts] = useState([]);
     const [err,setErr] = useState('');
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
@@ -33,18 +22,17 @@ import './menCollection.css';
         window.scrollTo(0,0)
         setLoading(true);
         getMenCollections(limit,skip)
-        .then(response=> response.data)
-        .then(products=> {
+        .then(response => response.data)
+        .then(products => {
             setProducts(products.data);
-            setPageCount( Math.ceil(products.data.length / limit))
+            setPageCount( Math.ceil(products.data.length / limit));
             setLoading(false);
-
         })
-        .catch(err=>{
+        .catch(err => {
             console.error(err.stack);
         })   
        
-    }, [skip,limit])
+    },[skip,limit])
     
     const handlePageClick = (data) => {
         let selected = data.selected;
@@ -52,68 +40,52 @@ import './menCollection.css';
         setSkip(offset);
         setLoading(true);
         getMenCollections(limit,skip)
-        .then(response=>response.data)
-        .then(products=>{
+        .then(response => response.data)
+        .then(products => {
             setProducts(products.data)
             setLoading(false);
         })
-        .catch(err=>console.error(err));
-        
-      };
-
-      if( !err && products.length < 1 || loading){
+        .catch(err => console.error(err));    
+    }
+    if((!err && products.length < 1) || loading) {
         return(
           <PageTemplate>
           <Loader/>
           </PageTemplate>
         )
- 
-    }   
+    }    
 
-        return(
-            <PageTemplate>
-          
-              
-
-            <ErrorBoundary>
-               
-            <div className="men-collections-container">
-
+    return(
+        <PageTemplate>
+        <ErrorBoundary>   
+        <div className="men-collections-container">
             <div className="men-collections-items-header">
-                    <h3>Men Collections</h3>          
+                <h3>Men Collections</h3>          
             </div>
             <div  className="men-collections-items-container">
-                    <div className="men-collections-items">
-                        {   
-                          products.map( (product,i)=>
-
-                            < SeeAllComp  key ={i} {...product} />
-
-                            )
-
-                        }
-                    </div>
-                    <ReactPaginate
-                        previousLabel={'prev'}
-                        nextLabel={'next'}
-                        breakLabel={'...'}
-                        breakClassName={'break-me'}
-                        pageCount={pageCount}
-                        marginPagesDisplayed={2}
-                        pageRangeDisplayed={5}
-                        onPageChange={handlePageClick}
-                        containerClassName={'pagination'}
-                        subContainerClassName={'pages pagination'}
-                        activeClassName={'active'}
-                    />           
-            
-            
+                <div className="men-collections-items">
+                    {   
+                        products.map( (product,i)=>
+                        < SeeAllComp  key ={i} {...product} />
+                        )
+                    }
+                </div>
+                <ReactPaginate
+                previousLabel={'prev'}
+                nextLabel={'next'}
+                breakLabel={'...'}
+                breakClassName={'break-me'}
+                pageCount={pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageClick}
+                containerClassName={'pagination'}
+                subContainerClassName={'pages pagination'}
+                activeClassName={'active'}
+                />           
             </div>
-            </div>
-            </ErrorBoundary>
-            </PageTemplate>
-           
-        )
-    }
-
-export default MenCollectionsPage;
+        </div>
+        </ErrorBoundary>
+        </PageTemplate>  
+    )
+}

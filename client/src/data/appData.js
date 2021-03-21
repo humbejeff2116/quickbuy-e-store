@@ -69,10 +69,89 @@ const data = {
             { name:"Shopping Cart", href:"/cart", icon:cart },
             { name:"Signup/Login", href:"/login", icon:user },
             
-          ]
+          ],
+
+
+          footerMainLinks :[
+            {
+              title:'About quick buy', 
+              links:[{href:'/about', name:'About us'},
+                   {href:'/services', name:'Our services'},
+                   {href:'/customers', name:'Customers'},
+                   {href:'/pricing', name:'Pricing'}
+            
+              ]
+            },
+            {
+              title:'Contact us', 
+              links:[{href:'/about', name:'About us'},
+                   {href:'/services', name:'Our services'},
+                   {href:'/customers', name:'Customers'},
+                   {href:'/pricing', name:'Pricing'}
+            
+              ]
+            },
+            {
+              title:'Support', 
+              links:[{href:'/about', name:'About us'},
+                   {href:'/services', name:'Our services'},
+                   {href:'/customers', name:'Customers'},
+                   {href:'/pricing', name:'Pricing'}
+            
+              ]
+            },
+            {
+              title:'Resources', 
+              links:[{href:'/about', name:'About us'},
+                   {href:'/services', name:'Our services'},
+                   {href:'/customers', name:'Customers'},
+                   {href:'/pricing', name:'Pricing'}
+            
+              ]
+            }
+          ],
+
+          footerLegalLinks : [
+            {href:'/terms-and-conditions', name:`Terms &amp; Conditions`},
+            {href:'/privacy', name:'Privacy Policy'},
+            {href:'/', name:'Developed by Humbe Jeffrey'},
+            {href:'/hujesoft.com', name:'&copy; 2019 Copyright Huje Soft Inc.'},
+           ],
+
+           footerContentLinks : [
+            {
+              title:'About quick buy', 
+              links:[{href:'/about', name:'About us'},
+                   {href:'/services', name:'Our services'},
+                   {href:'/customers', name:'Customers'},
+                   {href:'/pricing', name:'Pricing'}
+            
+              ]
+            },
+            {
+              title:'Contact us', 
+              links:[{href:'/about', name:'About us'},
+                   {href:'/services', name:'Our services'},
+                   {href:'/customers', name:'Customers'},
+                   {href:'/pricing', name:'Pricing'}
+            
+              ]
+            },
+           
+          ],
+          sideNavLinks :[
+
+            {href:'/users/dashboard',name:'Dashboard',icon:''},
+            {href:'/users/dashboard/account',name:'Account',icon:''},
+            {href:'/users/dashboard/profile',name:'Profile',icon:''},
+            {href:'/users/dashboard/orders',name:'Orders',icon:''},
+            {href:'/users/dashboard/settings',name:'Settings',icon:''},
+            {href:'/users/dashboard/help',name:'Help',icon:''}
+        
+        ]
     },
 
-    formData : [
+    signupFormData : [
         {
           
            formInputs : [
@@ -109,13 +188,23 @@ ApplicationData.prototype.getSocialLinks = function(){
     return this.data.links.socialLinks;
 }
 ApplicationData.prototype.getSideNavLinks = function(){
-    return this.data.sideNavLinks;
+    return this.data.links.sideNavLinks;
 }
 ApplicationData.prototype.getMobileNavLinks = function(){
     return this.data.links.mobileNavLinks;
 }
-ApplicationData.prototype.getFormData = function(){
-    return this.data.formData;
+
+ApplicationData.prototype.getFooterMainLinks = function(){
+    return this.data.links.footerMainLinks;
+}
+ApplicationData.prototype.getFooterContentLinks = function(){
+    return this.data.links.footerContentLinks;
+}
+ApplicationData.prototype.getFooterLegalLinks= function(){
+    return this.data.links.footerLegalLinks;
+}
+ApplicationData.prototype.getSignupFormData = function(){
+    return this.data.signupFormData;
 }
 
 export default new ApplicationData();

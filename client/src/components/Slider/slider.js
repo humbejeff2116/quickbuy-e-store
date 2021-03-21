@@ -20,13 +20,7 @@ import image6 from '../../images/logo.png'
 
 
 
-const images =[image1,image2,image3,image4,image5,image6]
-
-
-
-
-
-
+const images =[image1, image2, image3, image4, image5, image6]
 class Slider extends React.Component{
     constructor(props){
         super(props);
@@ -34,37 +28,29 @@ class Slider extends React.Component{
             flickityReady:false
         }
     }
-
-   
-    componentDidMount(){
-        this.flickity = new Flickity(this.flickityNode,this.props.options ||{});
+ 
+    componentDidMount() {
+        this.flickity = new Flickity(this.flickityNode,this.props.options || {});
         this.setState({ 
             flickityReady:true
         });
-   
     }
-
-    refreshFlickity =()=>{
-
+    refreshFlickity = ( ) => {
         this.flickity.reloadCells();
         this.flickity.resize();
         this.flickity.updateDraggable();
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.flickity.destroy();
     }
-    componentDidUpdate(prevProps,prevState){
-
+    componentDidUpdate(prevProps, prevState) {
         const flickityDidBecomeActive = !prevState.flickityReady && this.state.flickityReady;
         const childrenDidChange = prevProps.children.length !== this.props.children.length;
-
         if(flickityDidBecomeActive || childrenDidChange){
             this.refreshFlickity();
         }
-
     }
-    renderPortal =()=>{
-        
+    renderPortal = ( ) =>  {
         if(!this.flickityNode){
             return null;
         }
@@ -74,9 +60,8 @@ class Slider extends React.Component{
         }
     }
 
-    render(){
+    render() {
         return [ 
-
                 <div className={'test'} key='flickityBase' ref={node=> (this.flickityNode = node)} />,this.renderPortal()
 
                ].filter(Boolean);
@@ -84,14 +69,13 @@ class Slider extends React.Component{
 }
 
 
- export class SlideShow extends React.Component{
-     render(){
+ export class SlideShow extends React.Component {
+     render() {
          return(
             <div>
             <div style={{display:'flex' ,justifyContent:'space-between'}} />
-            
             <Slider 
-            options={{
+            options = {{
                 autoPlay:4000,
                 pauseAutoPlayOnHover: true,
                 wrapAround: true,
@@ -100,31 +84,26 @@ class Slider extends React.Component{
             }}
             >
                 {
-                    images.map((image, i)=>(
+                    images.map((image, i) =>(
                         <div style={{ width:'80%', height:'400px' ,margin:'0 0.5em'}} key={i}>
                             <image src={image} alt='' />
                         </div>
                     ))
                 }
             </Slider>
-        </div>
+            </div>
          )
      }
  }
  
- export const BreadCrumb =()=>
+ export const BreadCrumb = ( ) =>
     <div className="bread-crumb">
         <div className="bread-crumb-links">
-
         </div>
-            <div className="bread-crumb-links">
-
-            </div>
-                <div className="bread-crumb-links">
-
-                </div>
-                    <div className="bread-crumb-links">
-
-                    </div>
+        <div className="bread-crumb-links">
+        </div>
+        <div className="bread-crumb-links">
+        </div>
+        <div className="bread-crumb-links">
+        </div>
     </div>
-

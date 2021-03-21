@@ -1,43 +1,37 @@
 
-
-
-
 import React,{useEffect,useState} from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
 import {getPopularCollections} from '../../services/ecormerce.service';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
+import {Loader} from '../Loader/loader';
 import './popularCollection.css'
 
-import {Loader} from '../Loader/loader'
 
 
-
- const PopularCollectionsPage =(props)=>{
+export default function PopularCollectionsPage(props) {
     const [loading, setLoading] = useState(false);
-    const [products, setProducts] =useState([]);
-    const [err,setErr] = useState('');
-    const [skip,setSkip] = useState(0);
-    const [limit] = useState(20);
-    const [pageCount,setPageCount] = useState(1);
+    const [products,setProducts] = useState([]);
+    const [err, setErr] = useState('');
+    const [skip, setSkip] = useState(0);
+    const [limit,setLimit] = useState(20);
+    const [pageCount, setPageCount] = useState(1);
 
     useEffect(() => {
         window.scrollTo(0,0)
         setLoading(true);
         getPopularCollections(limit,skip)
-        .then(response=> response.data)
-        .then(products=> {
+        .then(response => response.data)
+        .then(products => {
             setProducts(products.data);
-            setPageCount( Math.ceil(products.data.length / limit))
+            setPageCount(Math.ceil(products.data.length / limit))
             setLoading(false);
-
         })
-        .catch(err=>{
+        .catch(err => {
             console.error(err.stack);
-        })   
-       
-    }, [skip,limit])
+        })       
+    },[skip,limit])
     
     const handlePageClick = (data) => {
         let selected = data.selected;
@@ -45,71 +39,52 @@ import {Loader} from '../Loader/loader'
         setSkip(offset);
         setLoading(true);
         getPopularCollections(limit,skip)
-        .then(response=>response.data)
-        .then(products=>{
+        .then(response => response.data)
+        .then(products => {
             setProducts(products.data)
             setLoading(false);
         })
-        .catch(err=>console.error(err));
-        
-      }; 
+        .catch(err => console.error(err));      
+    } 
       
-      if( !err && products.length < 1 || loading){
+    if( (!err && products.length < 1) || loading) {
         return(
           <PageTemplate>
           <Loader/>
           </PageTemplate>
         )
- 
     }  
-
-  
-        return(
-            <PageTemplate>
-           
-            
-            <ErrorBoundary>
-                   
-            <div className="popular-collections-container">
-
+    return(
+        <PageTemplate>
+        <ErrorBoundary>     
+        <div className="popular-collections-container">
             <div className="popular-collections-items-header">
                     <h2>Popular Collection</h2>          
             </div>
             <div  className="popular-collections-items-container">
-            {/* { (loading) && (<PageLoader/>) } */}
                 <div className="popular-collections-items">
-                        { 
-                         
-                            products.map( (product,i)=>
-                                < SeeAllComp  key ={i} {...product} />
-
-                                )
-                                
-                        }
-                    </div>
-                    <ReactPaginate
-                        previousLabel={'prev'}
-                        nextLabel={'next'}
-                        breakLabel={'...'}
-                        breakClassName={'break-me'}
-                        pageCount={pageCount}
-                        marginPagesDisplayed={2}
-                        pageRangeDisplayed={5}
-                        onPageChange={handlePageClick}
-                        containerClassName={'pagination'}
-                        subContainerClassName={'pages pagination'}
-                        activeClassName={'active'}
-                    />           
-            
-        
+                    { 
+                        products.map( (product,i)=>
+                            < SeeAllComp  key ={i} {...product} />
+                            )       
+                    }
+                </div>
+                <ReactPaginate
+                previousLabel={'prev'}
+                nextLabel={'next'}
+                breakLabel={'...'}
+                breakClassName={'break-me'}
+                pageCount={pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageClick}
+                containerClassName={'pagination'}
+                subContainerClassName={'pages pagination'}
+                activeClassName={'active'}
+                />           
             </div>
-            </div>
-            </ErrorBoundary>
-            </PageTemplate>
-          
-       
-        )
+        </div>
+        </ErrorBoundary>
+        </PageTemplate>       
+    )
 }
-
-
-export default PopularCollectionsPage;

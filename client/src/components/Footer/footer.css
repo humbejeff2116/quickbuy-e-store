@@ -8,6 +8,22 @@ footer{
      z-index:1;
 
 }
+.dashboard-footer {
+    
+   
+    margin-left:9.8%;
+    display:flex;  
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color:#242729;
+    position:relative;
+    min-height: 87vh;
+    border-left:1px solid #2f3133;
+  
+    z-index:0;
+  
+
+}
 
 footer a {
     text-decoration: none;

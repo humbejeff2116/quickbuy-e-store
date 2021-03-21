@@ -3,8 +3,7 @@ import {  NavLink } from 'react-router-dom';
 
 
 
-export function NavLinks(props){
-
+export function NavLinks(props) {
     return (
         <NavLink
         exact 
@@ -17,7 +16,7 @@ export function NavLinks(props){
     ) 
 }
 
-export  function NavGifsLinks(props){
+export function NavGifsLinks(props) {
     return(
         <NavLink
         exact 
@@ -27,14 +26,11 @@ export  function NavGifsLinks(props){
         >
             {props.name}
         </NavLink>
-
     )
 }
 
-
-export   function SocialNav(props){
+export function SocialNav(props) {
     return(
         <img src = {props.src} width="30px" height="30px" alt={props.alt} />
-
     )
 }

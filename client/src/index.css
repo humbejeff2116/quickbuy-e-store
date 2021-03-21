@@ -34,6 +34,35 @@ code {
 a,button{
   outline:none;
 }
+
+.pagination {
+  /* border:1px solid black; */
+  margin-top:auto;
+  padding:4px;
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex; 
+  justify-content: center;
+
+}  
+
+.pagination li {
+ 
+   border:1px solid grey;
+   display: inline-block;
+   padding-left: 12px;
+   padding-right: 12px;
+   padding-top:4px;
+   padding-bottom:4px;
+   color:grey;
+   cursor:pointer;
+
+} 
+
+.active{
+ border:1px solid black;
+}
 .product-bttn{
   /* border:1px solid red; */
   margin-top:auto;

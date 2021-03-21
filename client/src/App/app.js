@@ -10,32 +10,22 @@
 
 
 
-import React from 'react'
+import React from 'react';
 import './App.css';
-import {  Route,Switch,Redirect } from 'react-router-dom';
-// import ErrorBoundary from './components/ErrorBoundary/errorBoundary'
-import { isAuthenticated } from '../services/ecormerce.service';
-
-
-
+import {  Route,Switch} from 'react-router-dom';
 import HomePage from '../components/Home/home';
 import Login from '../components/Login/login';
 import Signup from '../components/SignupPage/signup';
-
-// import Signup from './components/SignupPage/signup'
 import AppCart from '../components/Cart/cart';
 import Checkout from '../components/Checkout/checkout';
-
-import {ContactPage} from '../components/ContactPage/contact'
-import {SellProductPage} from '../components/SellProductPage/sellProductPage'
-import AccessoriesPage from '../components/AccessoriesPage/accessoriesPage'
-import JewelriesPage from '../components/JewelriesPage/jewelriesPage'
-import {AdvertisePage} from '../components/AdvertisePage/advertise'
-import {View} from '../components/ViewItemPage/view'
-import {DashboardPage} from '../components/Dashboard/index'
-import Woops404 from '../components/404/woops404'
-
-
+import {ContactPage} from '../components/ContactPage/contact';
+import {SellProductPage} from '../components/SellProductPage/sellProductPage';
+import AccessoriesPage from '../components/AccessoriesPage/accessoriesPage';
+import JewelriesPage from '../components/JewelriesPage/jewelriesPage';
+import {AdvertisePage} from '../components/AdvertisePage/advertise';
+import {View} from '../components/ViewItemPage/view';
+import {DashboardPage} from '../components/Dashboard/index';
+import Woops404 from '../components/404/woops404';
 import  PopularCollectionsPage  from '../components/PopularCollectionPage/popularCollectionPage';
 import  LatestDealsPage  from '../components/LatestDealsPage/latestDealsPage';
 import  WomenCollectionsPage from '../components/WomenCollectionPage/womenCollectionPage';
@@ -52,8 +42,8 @@ import WomenClothingsPage from '../components/WomenClothingsPages/womenClothings
 
 export default function App(){
  
-    const auth = isAuthenticated();
-    // const auth = true;
+  
+  
     return(
        
       

@@ -1,40 +1,16 @@
-import { dom } from '@fortawesome/fontawesome-svg-core'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React from 'react'
 import {Link} from 'react-router-dom';
+import CartTemplate from './cartTemplate';
 import shopping_cart_PNG60 from '../../images/shopping_cart_PNG65.png'
 
 
 
-export default function  EmptyCart(props){
+export default function  EmptyCart(props) {
     return(
+      <CartTemplate>
         <div className=" cart-container">
-        
           <div className="div1" ></div>
-         
           <div className="cart">
-
             <div className="cart-header">
               <div className="cart-title">
               </div>
@@ -42,7 +18,6 @@ export default function  EmptyCart(props){
                 <button onClick={props.getCart} >Refresh</button>
               </div>
             </div>
-
             <div className="cart-body">
               <h2 className="cart-warning">No item in your cart</h2> 
               <div className="cart-img">
@@ -53,9 +28,8 @@ export default function  EmptyCart(props){
               </div>     
             </div> 
           </div>  
-        
           <div className="div3" ></div>
-
-        </div>   
+        </div> 
+      </CartTemplate>  
     )
 }

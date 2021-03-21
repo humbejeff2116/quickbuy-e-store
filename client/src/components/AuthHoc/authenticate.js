@@ -1,65 +1,27 @@
 
-
-
-
-
-
-
-
-
-
-
 import React from 'react';
-import {Link,Redirect} from 'react-router-dom';
-import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import { PageLoader } from '../Loader/loader';
-import {PageTemplate} from '../PageTemplate/pageTemplate'
-import Login from '../Login/login';
-import './auth.css';
+import {Redirect} from 'react-router-dom';
 
 
-export default function RequireAuthentication(Component,auth){
+
+export default function RequireAuthentication(Component, auth) {
     class AuthenticatedComponent extends React.Component{
      
         render(){
             const isAuthenticated = auth();
-            
-
-            if (!isAuthenticated){
-
+            if (!isAuthenticated) {
+                localStorage.setItem('route-auth-message','you must be logged in to view this page');
                 return(
-                    <PageTemplate>
-
-                    <div className="auth-container">
-                        <div className="auth">
-                        <div className="auth-header">
-                        <h2> you must be logged in to visit this page </h2>
-                        </div>
-
-                        <div className="auth-body">
-                           <button><Link to="/login">login</Link></button> 
-
-                        </div>
-                        </div>  
-                    </div>  
-                    </PageTemplate>
+                   <Redirect to='/login' />
                 )
-
             }
-
-            return(
-               
+            return( 
                 <>
                 {
-                     <Component {...this.props}/>
-
+                    <Component {...this.props}/>
                 }
                 </>
-              
-               
-
             )
-
         }
     }
     return AuthenticatedComponent;

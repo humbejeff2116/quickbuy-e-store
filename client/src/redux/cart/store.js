@@ -30,23 +30,16 @@ const logger = store => next=> action => {
 
 }
 const saver = store=> next=> action => {
-
-    let res;
-    res = next(action)
-    localStorage['redux-store '] = JSON.stringify(store.getState())
-    return res;
-
+  
+    localStorage['redux-store'] = JSON.stringify(store.getState())
+    return  next(action);
 }
-const storeFactory = (initialState=colorData) => {
-
-    applyMiddleware(logger,saver) (createStore)(combineReducers({cartReducer,sortReducer}),
+const storeFactory = (initialState = colorData ) => {
+    applyMiddleware(logger,saver)(createStore)(combineReducers({cartReducer,sortReducer}),
     (localStorage['redux-store']) ? JSON.parse(localStorage['redux-store']) :
     initialState
-
     )
-
 }
-
 export default storeFactory
 
 

@@ -1,72 +1,43 @@
 
-
-
-
-
-
-
-
 import React from 'react';
-import { PageLoader } from '../Loader/loader';
 import axios from 'axios'
 
-// let i = 0;
-// let dataI = [
-//     {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'},
-//     {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'},
-//     {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'},
-//     {id:i++,name:'jeff', price:23,available:true, src:'humbe.jpg'}
-// ]
 
 
 
 
-
-
- const DataComponent = (ComposedComponent, url) =>{
-    class DataC extends React.Component{
+ const DataComponent = (ComposedComponent, url) => {
+    class DataComponentChild extends React.Component {
         constructor(props){
             super(props);
-            this.state={
+            this.state = {
                 data:[],
                 loading:false,
                 fetchErrMssg:''
-            
             }
-
         }
         componentDidMount() {
-            // this.setState({
-            //     data:dataI
-            // })
             this.setState({
                 loading:true
             })
-        axios.get(url)
-            .then(response=> response.data)
-            .then(data=>{
+            axios.get(url)
+            .then(response => response.data)
+            .then(data => {
                 this.setState({
                     loading:false,
                     data:data.data
                 })
-                console.log('returned data is',this.state.data)
             })
-            .catch(err=>{
-                console.error(err);
+            .catch(err => {
                 this.setState({
                     fetchErrMssg: err
                 })
-            }
-                
-        )
-        
+            })
         }
         
-        render(){
-            let {loaiding} = this.props;
-        
+        render() {
             let {fetchErrMssg} = this.state;
-            if(fetchErrMssg){
+            if(fetchErrMssg) {
                 return(
                     <div className="error" >
                         <p>An Error occured while getting resource</p>
@@ -76,19 +47,15 @@ import axios from 'axios'
                     </div>
                 )
             }        
-                return(
-
-                    <>
-                        {
-                            // (this.state.loading) ? <p>gettin data...</p> :                           
-                            <ComposedComponent {...this.state} {...this.props}/>
-                        }
-
-                    </>
-                )
-            
+            return(
+                <>
+                    {                      
+                        <ComposedComponent {...this.state} {...this.props}/>
+                    }
+                </>
+            )           
         }
     }
-    return DataC
+    return DataComponentChild;
  }
 export default DataComponent;
