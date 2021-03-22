@@ -29,8 +29,11 @@ export function View(props) {
     const [viewProduct, setViewProduct] = useState([]);
     const [loading, setLoading] = useState(null);
     const [quantity, setQuantity] = useState(1);
-    const [mssg, setMssg] = useState(null);
-    const [err, setErr] = useState(null);
+    const [mssg, setMssg] = useState(false);
+    const [cartMssg, setCartMssg] = useState('');
+    const [err, setErr] = useState(false);
+    const [errMssg, setErrMssg] = useState('');
+
 
     useEffect(()=> {
         const viewItem = localStorage.getItem('view')? JSON.parse(localStorage.getItem('view')) : [];
@@ -47,18 +50,25 @@ export function View(props) {
     const addToCart = (id) => {
         let buying_quantity;
         let stateQnty = quantity;
-        let err;
+        let errMssg;
         let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
         if(stateQnty < 1) {
-            err ='quantity is not expected to be less than 1';
-            setErr(err);
+            errMssg ='quantity is not expected to be less than 1';
+            setErr(true);
+            setErrMssg(errMssg)
             return;   
         }
         cart[id] = cart[id] ? cart[id] : 0;
         buying_quantity = cart[id] + parseInt(quantity, 10);
         cart[id] = buying_quantity;
         localStorage.setItem('cart', JSON.stringify(cart));
-        setMssg('item added to cart sucessfully')
+        setMssg(true);
+        setCartMssg('item added to cart sucessfully');
+    }
+
+    const hideModal = ( ) => {
+         setErr(false);
+         setMssg(false);
     }
     if((!err && viewProduct.length < 1) || loading) {
         return(
@@ -74,16 +84,31 @@ export function View(props) {
     return (
         <PageTemplate>
         <div className="view-container">
-            {
-                (err)  && ( 
-                <div className="view-item-error"> <p>{err}</p></div> 
-                )
-            }
-            {
-               ( mssg) && ( 
-               <div className="view-item-mssg" ><p  >{mssg}</p></div>
-               )
-            }
+        {
+            (err) && (
+                <AlertBox show = {err} handleClose={hideModal}>
+                    <div className="modal-header">
+                        <span className="close" onClick={hideModal}> &times; </span>
+                    </div>
+                    <div className="modal-content">
+                        <p> {errMssg} </p>
+                        <p> Please wait and try again.</p>
+                    </div>
+                </AlertBox>
+            )
+        }
+        {
+            (mssg) && (
+                <AlertBox show = {mssg} handleClose={hideModal}>
+                    <div className="modal-header">
+                        <span className="close" onClick={hideModal}> &times; </span>
+                    </div>
+                    <div className="modal-content">
+                        <p> {cartMssg} </p>
+                    </div>
+                </AlertBox>
+            )
+        }
             <div className="view-item-container">
             {
                 viewProduct.map((product, i)=>

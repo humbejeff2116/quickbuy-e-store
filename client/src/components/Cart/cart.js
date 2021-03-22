@@ -117,6 +117,14 @@ export default class AppCart extends React.Component {
         });
      });
   }
+  hideModal = () => {
+    this.setState({
+      err: false,
+      
+
+    })
+
+  }
 
   render() {
     const { products, cartTotalSum, redirect, err, loading } = this.state;
@@ -154,7 +162,9 @@ export default class AppCart extends React.Component {
           removeFromCart={this.removeFromCart} 
           total={cartTotalSum} 
           checkout={this.checkout}
-          clearCart={this.clearCart}  
+          clearCart={this.clearCart}
+          hideModal={this.hideModal}
+          err={err}  
           />    
     );
   }
