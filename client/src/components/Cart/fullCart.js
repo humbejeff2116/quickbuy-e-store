@@ -21,9 +21,9 @@ export default function FullCart(props) {
           </div>
           <div className="full-cart-body" >           
             {
-                props.products.map((product, index) => 
+                props.products.map((product, i) => 
                   <CartItem product={product} 
-                  removeFromCart={()=>props.removeFromCart(product)} key={index}
+                  removeFromCart={()=>props.removeFromCart(product)} key={}
                   />
                 )
             } 

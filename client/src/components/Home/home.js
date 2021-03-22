@@ -8,12 +8,10 @@
 
 
 import React,{useEffect} from 'react';
-import {Slider} from '../Slider/index';
 import  ErrorBoundary  from '../ErrorBoundary/errorBoundary';
 import { Collection } from '../Collection/index';
 import { DoubleCollection} from '../DoubleCollection/index';
 import DataComponent from '../HOC/dataComponent';
-// import config from '../../config/config'
 import {PageTemplate} from '../PageTemplate/pageTemplate'
 
 

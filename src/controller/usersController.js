@@ -81,45 +81,32 @@ class UserController{
     }
 
     // login route
-    userLogin = async (req,res,next) => {
-   
+    userLogin = async (req,res,next) => {   
         try{
-
-          const errors = validationResult(req);
-  
-          if (!errors.isEmpty()) {
-               
+          const errors = validationResult(req);  
+          if (!errors.isEmpty()) {              
             res.json({ status: 422, valErrors: errors.array() });
             return res.status(422);
-
           }
-           
-
           const email = req.body.email;
           const phonenumber = typeof email === 'number'? parseInt(email):null;
           const password = req.body.password;
-
           const user =  await  User.findOne({"email":email });
-             if(!user){
+             if(!user) {
                console.error('no user found'); 
                res.json({status:401, message: 'Incorrect email Address' });
-              return res.status(401);          
-                   
-             }
-           
+              return res.status(401);                           
+             }          
              user.checkPassword(password, function(err,isMatch) {
-               if(err){
-                 console.error('error while checking password'); 
-                 
+               if(err) {
+                 console.error('error while checking password');                  
                    res.json({status:401,error:true,message:'an error occured while getting details'});
                    return res.status(401);
                }
-               if(!isMatch){
-                 console.error('no match found'); 
-                  
+               if(!isMatch) {
+                 console.error('no match found');                  
                    res.json( {status:401,error:true, message: 'Incorrect password.' });
-                   return res.status(401);
-           
+                   return res.status(401);           
                }
                let userDetails = {
                    id:user._id,
@@ -127,23 +114,17 @@ class UserController{
                    lastname:user.lastname,
                    email:user.email,
                    profileimage:user.profileimage
-               }
-           
+               }           
                let token_payload = {name: user.name, id: user._id};
                const token = jwt.sign(token_payload, credentails.jwtSecret , { expiresIn: '2h' });
                let response = {status:200,data:userDetails,error:false, message: 'Token Created, Authentication Successful!', token: token };
                return res.status(200).json(response);           
            });
-
-
         }catch(err){
-
           console.error(err);
-
-        }
-  
+        } 
     }
-    checkout =(req,res,next)=>{
+    checkout = (req, res, next) => {
       return res.status(200).json({status:200, error:false, message:'token authenticated successfully'})
     }
     //   work on your integrate paypal here

@@ -192,3 +192,66 @@
     
 
 }
+
+
+
+
+
+
+
+
+.view-container{
+    display:flex;
+    flex-direction:column;
+    background-color:#ffffff;
+    margin:4%;
+    min-height: 50vh;
+  
+}
+.view-item-container{
+    display:flex;
+    flex-direction: column;
+    width:60%;
+    min-height:30vh;
+    margin-left:auto;
+    margin-right: auto;
+   
+}
+
+.view-info{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+
+}
+.view-product-img{
+
+}
+
+.view-item-details{
+
+}
+
+.thumbnails{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+
+}
+
+.view-add-bttn{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+
+}
+
+.view-qty{
+    display: flex;
+    flex-direction: row;
+   
+
+}
+.view-add-to-cart{
+
+}

@@ -110,11 +110,20 @@
     margin-left:auto;
     margin-right:auto;  */
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     align-items: center;
     padding:8px;
      /* border:1px solid black; */
     /* box-shadow:0 0 5px rgba(117, 116, 116, 1); */
+}
+.card-item-image{
+
+}
+.card-item-details{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding:8px;
 }
 .card-body p{
     font-weight: bold;

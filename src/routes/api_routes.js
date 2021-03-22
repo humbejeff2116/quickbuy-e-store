@@ -30,27 +30,25 @@ let router = express.Router();
 
 
 router.get('/all-Products', productsController.getAllProducts);
-router.post('/all-products',uploadProduct.single('itemimage'),productsController.postAllProducts);
+router.post('/all-products', uploadProduct.single('itemimage'), productsController.postAllProducts);
 router.get(`/latest-deals`, seeAllControllers.getLatestDeals);
 router.get('/women-collections', seeAllControllers.getWomenCollections);
 router.get('/men-collections',seeAllControllers.getMenCollections);
 router.get('/popular-collections', seeAllControllers.getPopularCollections);
-router.get('/accessories',seeAllControllers.getAccessories);
-router.get('/jewelries',seeAllControllers.getJewelries);
-router.post('/users/signup',upload1.single('profileimage'),signupValidation,usersController.signUp);
-router.post('/subscription',subscriptionValidation, subscriptionController.postSubscription);
+router.get('/accessories', seeAllControllers.getAccessories);
+router.get('/jewelries', seeAllControllers.getJewelries);
+router.post('/users/signup', upload1.single('profileimage'), signupValidation, usersController.signUp);
+router.post('/subscription', subscriptionValidation, subscriptionController.postSubscription);
 router.get('/search',productsController.searchProduct)
-router.post('/login',loginValidation,usersController.userLogin);
+router.post('/login',loginValidation, usersController.userLogin);
 // router.get('/users/dashboard',jwtMiddleware, usersController.userDashboard);
 router.get('/pay', jwtMiddleware,usersController.userPay);
 router.post('/cart', productsController.getCartProducts); 
 router.post('/orders',jwtMiddleware, orderController.postOders);
-router.get('/orders',jwtMiddleware, orderController.getOrders);
+router.get('/orders', jwtMiddleware, orderController.getOrders);
+router.post('/authenticate', jwtMiddleware,usersController.checkout)
 
-router.post('/authenticate',jwtMiddleware,usersController.checkout)
 
-
-// work on route getAccesories and getJewelries
 
 
 module.exports = router;

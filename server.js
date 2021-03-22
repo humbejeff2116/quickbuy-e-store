@@ -37,26 +37,21 @@ const devDbUri =  `mongodb://${config.db.host}:${config.db.port}/${config.db.nam
 const dbOptions = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true, useFindAndModify:false }
 
 
-// establish connection with database
-// let url = process.env.MONGODB_URI || `mongodb://localhost:27017/test`;
-mongoose.connect( prodDbUri ||devDbUri,dbOptions,(err,conn)=>{
-    if(err){
+
+mongoose.connect( prodDbUri ||devDbUri, dbOptions, (err, conn)=> {
+    if(err) {
         throw err
     }
     console.log(`connection to database established`);
 })
-// set app view engine
 
 app.set('views', path.join( __dirname, 'src', 'views'));
-app.set('view engine' , 'ejs');
+app.set('view engine', 'ejs');
 
 const corsOptions = {
-    
     origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 
   }
-
-
 
 // set up application middleware
 app.use(uncaughtExceptions);
@@ -74,11 +69,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookie(credentials.cookieSecret));
 // handle application sessions
 app.use(session({
-
     secret:credentials.sessionSecret,
     resave:true,
-    saveUninitialized:true
-    
+    saveUninitialized:true   
 }));
 
 // user routes start here
@@ -86,24 +79,23 @@ app.use(session({
 // app.use('*',renderApp);
 // serve static files from build folder
 app.use(express.static(path.join(__dirname ,'client','build')));
-app.get('/',(req,res)=>{
+app.get('/',(req, res)=> {
     res.sendFile(path.join(__dirname,'client','build','index.html'));
 });
 
 app.use('/api/v1/', apiRouter);
 
-app.use((req,res)=>{
+app.use((req, res)=> {
     res.status(404).sendFile(path.join(__dirname,'public','404.html'));
 });
 // collect app errors
-app.use((err,req,res,next)=>{
+app.use((err, req, res, next)=> {
     console.error(err);
     next(err);
 });
 // handle app errors
-app.use((err,req,res,next)=>{
-    res.status(500).json({ServerError:true,message:'internal server error'});
+app.use((err, req, res, next)=> {
+    res.status(500).json({ServerError:true, message:'internal server error'});
 });
 
-// start application
 http.createServer(app).listen(port,()=> console.log(`app started at port ${port}`));

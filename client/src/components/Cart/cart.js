@@ -44,7 +44,7 @@ export default class AppCart extends React.Component {
     getCartProducts(cart)
     .then(response => response.data )
     .then(products => {
-      const cartProducts = products.data;
+     
       let cart2 = {
         '2':2,
         '3':3,
@@ -53,9 +53,11 @@ export default class AppCart extends React.Component {
     // use cart1 later on just testing with cart2 
       cart1 = JSON.parse(cart);
       for(let i = 0; i < products.data.length; i++) {  
-          products.data[i].qty = cart2[products.data[i].id]; 
+          products.data[i].qty = cart2[products.data[i].id];
+          // products.data[i].productTotal = cart2[products.data[i].id] * products.data[i].price; 
       } 
-      for (let i = 0; i < cartProducts.length; i++) {
+      const cartProducts = products.data;
+      for (let i = 0; i < cartProducts.length; i++) {     
         cartSum += cartProducts[i].price * cartProducts[i].qty;   
         cartTotalSum = cartSum.toFixed(2);
         cartTotalQty += cartProducts[i].qty;
