@@ -27,10 +27,21 @@ const home = <FontAwesomeIcon  icon={['fas', "home"]}  />
 
 
 const ApplicationData= function(){ };
+// function to inject unicode to html using javascript
+function setUnicode(unicode){
+    let dummy;
+         let decoded
+         if(!unicode){
+            return decoded ="";
 
-
-
-
+         }
+          dummy = document.createElement('textarea');
+          dummy.innerHTML = unicode;
+          decoded = dummy.value;
+          return decoded;
+ }
+ const and =setUnicode('&amp;');
+ const copyright =setUnicode('&copy;');
 
 const data = {
 
@@ -112,10 +123,10 @@ const data = {
           ],
 
           footerLegalLinks : [
-            {href:'/terms-and-conditions', name:`Terms &amp; Conditions`},
+            {href:'/terms-and-conditions', name:`Terms ${and} Conditions`},
             {href:'/privacy', name:'Privacy Policy'},
             {href:'/', name:'Developed by Humbe Jeffrey'},
-            {href:'/hujesoft.com', name:'&copy; 2019 Copyright Huje Soft Inc.'},
+            {href:'/hujesoft.com', name:`${copyright} ${new Date().getFullYear()} Copyright Huje Soft Inc.`},
            ],
 
            footerContentLinks : [
