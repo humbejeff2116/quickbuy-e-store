@@ -1,13 +1,4 @@
 
-
-
-
-
-
-
-
-
-
 module.exports ={
     '/all-products': require("./paths/allProducts").postAndGet,
     '/all-products/:id': require("./paths/allProducts").updateAndDelete,
@@ -20,9 +11,4 @@ module.exports ={
     '/users/signup':require("./paths/userSignup"),
     '/subscription':require("./paths/subscription"),
     '/login':require("./paths/login"),
-
-
-
-
-
-  }
+}

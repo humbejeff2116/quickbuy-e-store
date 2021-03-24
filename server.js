@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 const express = require('express');
 const uncaughtExceptions = require('./src/exceptions/uncaughtExceptions');
 const bodyParser = require('body-parser');
@@ -26,19 +16,15 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 // const serverRender = require('../src/controller/renderHtmlController');
 // const  renderApp = require( '../dist-server/renderHtmlController')
-
-
-const app = express()
+const app = express();
 app.use(helmet());
-//  application configuration variables;
+
 const port =  config.app.port;
-const prodDbUri = config.db.prod
+const prodDbUri = config.db.prod;
 const devDbUri =  `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
-const dbOptions = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true, useFindAndModify:false }
+const dbOptions = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false };
 
-
-
-mongoose.connect( prodDbUri ||devDbUri, dbOptions, (err, conn)=> {
+mongoose.connect(prodDbUri ||devDbUri, dbOptions, (err, conn)=> {
     if(err) {
         throw err
     }
@@ -53,49 +39,32 @@ const corsOptions = {
     optionsSuccessStatus: 200 
   }
 
-// set up application middleware
 app.use(uncaughtExceptions);
 app.use(morgan('dev'));
-
 app.use(cors(corsOptions));
 // api documentation using swagger
-// set specifications for swagger with the options
-const specs = swaggerJsdoc( require('./src/documentation/options'));
-app.use("/api-docs",swaggerUi.serve, swaggerUi.setup(specs, {explorer: true}));
-// use body parser to collect form data
+const swaggerDocumentationSpecs = swaggerJsdoc( require('./src/documentation/options'));
+app.use("/api-docs",swaggerUi.serve, swaggerUi.setup(swaggerDocumentationSpecs, {explorer: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-// set cookie for application
 app.use(cookie(credentials.cookieSecret));
-// handle application sessions
 app.use(session({
     secret:credentials.sessionSecret,
     resave:true,
     saveUninitialized:true   
 }));
-
-// user routes start here
 // render react app from the server
 // app.use('*',renderApp);
-// serve static files from build folder
 app.use(express.static(path.join(__dirname ,'client','build')));
 app.get('/',(req, res)=> {
     res.sendFile(path.join(__dirname,'client','build','index.html'));
 });
-
 app.use('/api/v1/', apiRouter);
-
-app.use((req, res)=> {
-    res.status(404).sendFile(path.join(__dirname,'public','404.html'));
-});
-// collect app errors
 app.use((err, req, res, next)=> {
     console.error(err);
     next(err);
 });
-// handle app errors
 app.use((err, req, res, next)=> {
-    res.status(500).json({ServerError:true, message:'internal server error'});
+    res.status(500).json({ServerError: true, message: 'internal server error'});
 });
-
 http.createServer(app).listen(port,()=> console.log(`app started at port ${port}`));

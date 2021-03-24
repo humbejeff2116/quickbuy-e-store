@@ -1,9 +1,5 @@
 
-
-
 const ProductsModel = require('../models/productsModel')
-
-
 
 
 function productsController() {
@@ -70,6 +66,7 @@ function productsController() {
             return res.status(500);
         }   
     }
+    
     this.updateProducts = async function (req, res, next) {
         try{
             let id = req.params.id;

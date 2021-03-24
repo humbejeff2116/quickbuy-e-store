@@ -3,9 +3,9 @@
 
 const ProductsModel = require('../models/productsModel')
 
-class SeeAllController {
+function SeeAllController() {
  
-    getLatestDeals = async (req, res, next) => {
+    this.getLatestDeals = async (req, res, next) => {
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);
         await  ProductsModel.find({tags:"latest deals"})
@@ -25,6 +25,7 @@ class SeeAllController {
                     tags:product.tags,
                 }               
             });
+            console.log(products);
            return res.status(200).json({status: 200, data: products, message: 'retrieved app data succesfully' });
         })
         .catch(err => {
@@ -33,7 +34,7 @@ class SeeAllController {
         });
     }
 
-    getWomenCollections = async (req, res, next) => {
+    this.getWomenCollections = async (req, res, next) => {
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);
         await  ProductsModel.find({tags : "women collections"})
@@ -61,7 +62,7 @@ class SeeAllController {
         });
     }
 
-    getMenCollections = async (req, res, next) => {
+    this.getMenCollections = async (req, res, next) => {
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);     
         await  ProductsModel.find({tags :"men collections"})
@@ -89,7 +90,7 @@ class SeeAllController {
         });
     }
 
-    getPopularCollections = async (req, res, next) => {
+    this.getPopularCollections = async (req, res, next) => {
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);
         await  ProductsModel.find({tags :"popular collections"})
@@ -117,7 +118,7 @@ class SeeAllController {
             });       
     }
 
-    getAccessories = async (req, res, next) => {  
+    this.getAccessories = async (req, res, next) => {  
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);
         await  ProductsModel.find({tags :"accessories"})
@@ -145,7 +146,7 @@ class SeeAllController {
         });
     }
 
-    getJewelries = async (req, res, next)  => {
+    this.getJewelries = async (req, res, next)  => {
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);
         await  ProductsModel.find({tags : "jewelries"})
@@ -173,4 +174,4 @@ class SeeAllController {
         });
     }
 }
-module.exports = new SeeAllController()
+module.exports = new SeeAllController();
