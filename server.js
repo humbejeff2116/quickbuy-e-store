@@ -14,42 +14,39 @@ const cors = require('cors');
 const helmet = require('helmet');
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
+const connectToMongodb = require('./src/libs/mongoDbConnection');
 // const serverRender = require('../src/controller/renderHtmlController');
 // const  renderApp = require( '../dist-server/renderHtmlController')
 const app = express();
 app.use(helmet());
 
-const port =  config.app.port;
-const prodDbUri = config.db.prod;
-const devDbUri =  `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
-const dbOptions = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false };
+const port =  process.env.PORT || 4000 ;
+const mongoConfig = {
+    prodDbUri: process.env.PROD_MONGODB_URI  || config.db.prod,
+    devDbUri:  process.env.DEV_MONGODB_URI || `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`,
+    dbOptions: {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
+}
+connectToMongodb(mongoose, mongoConfig);
 
-mongoose.connect(prodDbUri ||devDbUri, dbOptions, (err, conn)=> {
-    if(err) {
-        throw err
-    }
-    console.log(`connection to database established`);
-})
-
-app.set('views', path.join( __dirname, 'src', 'views'));
+app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
 const corsOptions = {
     origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 
-  }
+}
 
 app.use(uncaughtExceptions);
 app.use(morgan('dev'));
 app.use(cors(corsOptions));
 // api documentation using swagger
-const swaggerDocumentationSpecs = swaggerJsdoc( require('./src/documentation/options'));
+const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'));
 app.use("/api-docs",swaggerUi.serve, swaggerUi.setup(swaggerDocumentationSpecs, {explorer: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(cookie(credentials.cookieSecret));
+app.use(cookie(process.env.COOKIE_SECRET || credentials.cookieSecret));
 app.use(session({
-    secret:credentials.sessionSecret,
+    secret: process.env.SESSION_SECRET || credentials.sessionSecret,
     resave:true,
     saveUninitialized:true   
 }));
