@@ -9,6 +9,7 @@ import CheckoutLoader from './checkoutLoader';
 import CheckoutErr from './checkoutErr';
 import FullCheckout from './fullCheckout';
 import EmptyCart from './emptyCheckout';
+import config from '../../config/config';
 import './checkout.css';
 
 
@@ -24,11 +25,8 @@ import './checkout.css';
         loading: false,
         checkoutTotalSum: 0, 
         showButton: false,      
-        env: 'sandbox',
-        client: {
-          sandbox: 'AYmZjw11QthPP2YtpRTdojnB7r6a2YHpaD83bjttt0IdBzOhk7OKbeZCtyQQR4TK7zpEVO9TAxthNK_0',
-          production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
-        }
+        env: config.paypal.env,
+        client: config.paypal.paypalClient
       }
     }
   componentDidMount() {

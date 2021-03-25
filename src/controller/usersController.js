@@ -1,8 +1,8 @@
 
 const jwt = require('jsonwebtoken');
-const credentails = require('../config/credentials');
 const { validationResult } = require('express-validator');
-const User = require('../models/usersModel')
+const User = require('../models/usersModel');
+const config = require('../config/config');
 
 function UserController() {
   this.signUp = async (req, res, next) => {
@@ -39,10 +39,9 @@ function UserController() {
         profileimage
       }
       let token_payload = {firstname, phonenumber};
-      let token = jwt.sign(token_payload, credentails.jwtSecret , { expiresIn: '2h' });
+      let token = jwt.sign(token_payload, config.secret.jwtSecret , { expiresIn: '2h' });
       let response = {status:200, data : userDetails, error : false, message : 'you are now registered', token: token };
       return res.status(200).json(response); 
-
     }catch(err) {
       console.error(err);
       return res.status(400).json({status:400, message:'an error occured while registering please try again'});
@@ -84,7 +83,7 @@ function UserController() {
           profileimage:user.profileimage
         }           
         let token_payload = {name: user.name, id: user._id};
-        const token = jwt.sign(token_payload, credentails.jwtSecret , { expiresIn: '2h' });
+        const token = jwt.sign(token_payload,config.secret.jwtSecret , { expiresIn: '2h' });
         let response = {status:200,data:userDetails,error:false, message: 'Token Created, Authentication Successful!', token: token };
         return res.status(200).json(response);           
       });
@@ -100,6 +99,5 @@ function UserController() {
   this.userPay = (req,res,next) => {         
     return res.json("Payment Successful!");
   }
-
 }
 module.exports = new UserController();

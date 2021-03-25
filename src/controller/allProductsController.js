@@ -34,8 +34,7 @@ function productsController() {
    }
 
     this.postAllProducts = async function (req, res, next) {
-        try{
-           
+        try{ 
             let name = req.body.name;
             let src = (req.file) ? req.file.filename : 'noimage.jpg';
             let price = req.body.price;

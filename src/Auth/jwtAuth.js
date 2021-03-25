@@ -1,10 +1,10 @@
 
 const jwt = require('jsonwebtoken');
-const credentials = require('../config/credentials');
+const config = require('../config/config');
 
-const JWT_SECRET = credentials.jwtSecret;
 
 module.exports = (req, res, next) => {
+    const JWT_SECRET = config.secret.jwtSecret;
     let token = req.body['x-access-token'] || req.query['x-access-token'] || req.headers['x-access-token'];
     if (token) {
         jwt.verify(token, JWT_SECRET, function(err, decoded) {

@@ -1,13 +1,13 @@
 
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').Extractjwt;
-const credentails = require('../config/credentials');
+const config = require('../config/config');
 
 
 module.exports = (passport) => {
     let opts = {};
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-    opts.secret = credentails.pssrptJwtSecret;
+    opts.secret =config.secret.pssrptJwtSecret;
     // beleive these should be optional
     opts.issuer = 'accounts.example.com';
     opts.audience = 'yoursite.net';

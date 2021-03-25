@@ -12,8 +12,8 @@
 
 
 const SubscriptionsModel = require('../models/subscriptionsModel');
-const credentials = require('../config/credentials')
-const emailService = require('../libs/mail')(credentials);
+const config = require('../config/config');
+const emailService = require('../libs/mail')(config);
 const { validationResult } = require('express-validator');
 
 function Subscription() {
@@ -39,6 +39,3 @@ function Subscription() {
    }
 }
 module.exports = new Subscription();
- 
-
-

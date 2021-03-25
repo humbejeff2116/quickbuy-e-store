@@ -25,7 +25,6 @@ function SeeAllController() {
                     tags:product.tags,
                 }               
             });
-            console.log(products);
            return res.status(200).json({status: 200, data: products, message: 'retrieved app data succesfully' });
         })
         .catch(err => {
