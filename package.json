@@ -10,7 +10,8 @@
         "dev:start": "nodemon ./server-build/server.js",
         "dev": "npm-run-all --parallel build dev:*",
         "build": "babel ./server -d dist-server",
-        "start": " node server.js",
+        "start": " npm run clusters",
+        "clusters":"node serverCluster.js",
         "heroku-postbuild": "cd client && yarn && yarn run build"
     },
     "dependencies": {

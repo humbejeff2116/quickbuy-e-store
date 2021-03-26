@@ -56,4 +56,11 @@ app.use((err, req, res, next)=> {
 app.use((err, req, res, next)=> {
     res.status(500).json({ServerError: true, message: 'internal server error'});
 });
-http.createServer(app).listen(port,()=> console.log(`app started at port ${port}`));
+function startServer() {
+    http.createServer(app).listen(port, ()=> console.log(`app started at port ${port}`));
+}
+if(require.main === module) {
+    startServer();
+}else{
+    module.exports = startServer;
+}
