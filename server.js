@@ -14,6 +14,8 @@ const helmet = require('helmet');
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const connectToMongodb = require('./src/libs/mongoDbConnection');
+const compression = require('compression');
+require('dotenv').config();
 const port = config.app.port;
 const mongoConfig = {
     devDbURI: config.db.devURI,
@@ -32,6 +34,7 @@ app.set('view engine', 'ejs');
 app.use(uncaughtExceptions);
 app.use(morgan('dev'));
 app.use(cors(corsOptions));
+app.use(compression());
 app.use("/apidocs",swaggerUi.serve, swaggerUi.setup(swaggerDocumentationSpecs, {explorer: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
