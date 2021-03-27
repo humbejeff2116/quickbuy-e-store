@@ -27,6 +27,7 @@ const corsOptions = {
 }
 const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'));
 const app = express();
+app.disable('x-powered-by');
 app.use(helmet());
 connectToMongodb(mongoose, mongoConfig);
 app.set('views', path.join(__dirname, 'src', 'views'));

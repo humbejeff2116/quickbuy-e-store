@@ -106,7 +106,7 @@ import './checkout.css';
   } 
 
   render() {
-    const { products, checkoutTotalSum, loading,err,redirect, env, client, currency, checkoutTotalSum } =  this.state;
+    const { products, checkoutTotalSum, loading,err,redirect, env, client, currency} =  this.state;
     if(redirect) {
       return(
         <Redirect to={redirect}/>

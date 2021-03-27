@@ -1,6 +1,16 @@
+const cloudinary = require('cloudinary').v2;
+const ProductsModel = require('../models/productsModel');
+const config = require('../config/config');
+const { dataUri } = require('../routes/Multer/multer');
 
-const ProductsModel = require('../models/productsModel')
 
+
+
+cloudinary.config({ 
+    cloud_name:config.cloudinary.cloudName, 
+    api_key: config.cloudinary.apiKey, 
+    api_secret:config.cloudinary.secret 
+});
 
 function productsController() {
    this.getAllProducts = async function (req, res, next) {
@@ -35,23 +45,30 @@ function productsController() {
 
     this.postAllProducts = async function (req, res, next) {
         try{ 
+           
             let name = req.body.name;
-            let src = (req.file) ? req.file.filename : 'noimage.jpg';
+            let imageSrc = (req.file) ? dataUri(req).content : '';
             let price = req.body.price;
             let available = req.body.available;
             let category = req.body.category;
             let description = req.body.description;
             let tags = req.body.tags;
-            let product = new ProductsModel({
-                name,
-                src,
-                price,
-                available,
-                category,
-                description,
-                tags
-            });
-            await product.save()
+            await cloudinary.uploader.upload(imageSrc)
+            .then(image => {
+                console.log('image is', image);
+                console.log('image url is', imageUrl);
+                let src = image.url;
+                console.log('image url is', src);
+                let product = new ProductsModel({
+                    name,
+                    src,
+                    price,
+                    available,
+                    category,
+                    description,
+                    tags
+                });
+                product.save()
                 .then(data => {
                     return res.status(201).json({ status: 201, message: 'product saved sucessfully' });
                 })
@@ -60,6 +77,13 @@ function productsController() {
                     res.json({ status: 500, message: 'An error occured while saving products to database' });
                     return res.status(500);
                 });
+            })
+            .catch(err => { 
+                console.error(err.stack);                   
+                res.json({ message: 'Error occured while saving image'});
+                return  res.status(400);
+            });
+              
         }catch(err) {
             res.json({ status: 500, message: 'An error occured while saving products to database' });
             return res.status(500);

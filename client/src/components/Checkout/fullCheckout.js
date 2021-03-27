@@ -12,7 +12,7 @@ import PaypalExpressBtn from 'react-paypal-express-checkout';
 import CheckoutItem from './checkoutItem';
 import CheckoutTotalSum from './checkouTotalSum';
 import CheckoutButton from './checkoutButton';
-import PaypalExpressBtn from 'react-paypal-express-checkout';
+
 
 
 

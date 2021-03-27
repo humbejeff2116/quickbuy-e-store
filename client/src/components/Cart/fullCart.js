@@ -40,7 +40,7 @@ export default function FullCart(props) {
             {
                 props.products.map((product, i) => 
                   <CartItem product={product} 
-                  removeFromCart={()=>props.removeFromCart(product)} key={}
+                  removeFromCart={()=>props.removeFromCart(product)} key={i}
                   />
                 )
             } 
