@@ -16,7 +16,7 @@ export default function CheckoutItem(props) {
                 <div className="checkout-item-image">
                     <image src={props.src} width="80%" height="80%" />
                 </div>
-                <div key={i} className="checkout-product" >
+                <div  className="checkout-product" >
                     <span className="text-primary">product name:<span className="checkout-data"> {props.name}</span> </span>
                     <span className="text-primary">price per 1: ${props.price}</span><br />
                     <span className="text-primary"> quantity: {props.qty}</span><br />

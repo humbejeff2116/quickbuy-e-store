@@ -9,6 +9,7 @@ import {  NavLink } from 'react-router-dom';
 
 export function NavSearchBar(props) {
     const auth = isAuthenticated();
+    console.log('auth is ', auth);
     const search = <FontAwesomeIcon icon={['fas', "search"]}  />
     const user = <FontAwesomeIcon  icon={['fas', "user"]}  />
 
@@ -38,12 +39,15 @@ export function NavSearchBar(props) {
 
 
 function LogInNav(props) {
+   
     const authNavLinks = [
         {href:'/checkout',name:'Checkout'},
         {href:'/users/dashboard',name:'Dashboard'}
     ]
 
     if(props.auth) {
+        console.log(props.auth)
+        
         return(
             <>
             {
@@ -52,7 +56,7 @@ function LogInNav(props) {
                 )
             }
             <div className="login" >
-                <a className="nav-item nav-link" href="/" onClick={props.logOut}>Logout</a>
+                <a className="nav-item nav-link" href="/" onClick={()=>props.logOut()}>Logout</a>
             </div>
             </>
         )

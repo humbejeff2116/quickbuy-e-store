@@ -4,7 +4,7 @@
 
 .login-err-cont{
       /* border:1px solid black; */
-      width:35%;
+      width:25%;
       margin-left:auto;
       margin-right: auto;
       margin-top:4px;
@@ -43,6 +43,7 @@
 
 
 .login-container{
+    scroll-behavior:smooth;
    
     display:flex;
     flex-direction:column;

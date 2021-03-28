@@ -8,20 +8,15 @@
 
 
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './searchResult.css';
 
 const SearchResult = (props) => {
-    const {name, description} = props;
+    const {src, name, price, description, available, id} = props;
     return(
-        <div className="search-result-container">
-            <section className="search-results">
-                <Link to="/view">
-                <p>{name}</p>
-                <span>{description}</span>
-                </Link>
-            </section>
-        </div>       
+            <section className="search-results" onClick={()=>props.onClick(src, name, price, description, id, available)}>
+                <span>{name}</span>
+                <span>{description}</span>  
+            </section>        
     )   
 }
 export default SearchResult;

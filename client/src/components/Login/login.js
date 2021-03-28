@@ -48,6 +48,7 @@ export default class Login extends React.Component{
                           valErrors:[]
                         })
               }
+              window.scrollTo(0,0);
               return this.setState({
                         valErrors:loginData.valErrors,
                         errMessage:''
@@ -83,6 +84,7 @@ export default class Login extends React.Component{
           alert(authMessage);
         }    
      }
+    
      componentWillUnmount() {
         const checkoutMessage = localStorage.getItem('checkout-message');
         const authMessage = localStorage.getItem('route-auth-message');

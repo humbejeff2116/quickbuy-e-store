@@ -7,12 +7,12 @@
 
 
 
-// import React from "react";
-// import Flickity from "react-flickity-component";
+import React from "react";
+import Flickity from "react-flickity-component";
 
 // import "./styles.css";
-// import "./flickity.css";
-import Flickity  from 'react-flickity-component'
+import "./flickity.css";
+
 
 const flickityOptions ={
     initialIndex:2

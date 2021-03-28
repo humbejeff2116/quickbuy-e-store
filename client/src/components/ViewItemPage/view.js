@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ViewItemCard from './viewItemCard';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import { Loader } from '../Loader/loader';
-import './view1.css';
+import './view.css';
+import {AlertBox} from '../AlertBox/alertBox';
 const cartIcon = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 
 
@@ -39,7 +40,7 @@ export function View(props) {
         const viewItem = localStorage.getItem('view')? JSON.parse(localStorage.getItem('view')) : [];
         setViewProduct(viewItem);
         window.scrollTo(0,0);
-        ()=> {
+       return ()=> {
             localStorage.removeItem('view');
         }
     },[]);

@@ -35,7 +35,7 @@ export default function FullCheckout(props) {
               <CheckoutTotalSum checkoutTotalSum={props.checkoutTotalSum} />
               <div>
               {
-                (checkout) &&   (
+                (props.checkout) &&   (
                 <PaypalExpressBtn 
                   env={props.env} 
                   client={props.client}

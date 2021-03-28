@@ -72,23 +72,25 @@ export function pay (data) {
     return http.get(`/pay`, { totalAmount: data.totalAmount, params: { 'x-access-token': localStorage.getItem('x-access-token')} })          
 }
 
-export function isAuthenticated() { 
+export  function isAuthenticated() { 
     const accessToken = localStorage.getItem('x-access-token');
-    const accessTokenExpirationTime = localStorage.getItem('x-access-token-expiration') > Date.now()
-    let accessGranted = null;
-    if(!accessToken){
-        accessGranted = false;
-        return 
+    const accessTokenExpirationTime = localStorage.getItem('x-access-token-expiration')
+    if(!accessToken){ 
+        return false;
     }
-    validateToken(accessToken)
-    .then(token => {
-        if(token && accessTokenExpirationTime) {
-           accessGranted = true;
-        }
-        accessGranted = false;
+  let result =  validateToken(accessToken)
+    .then(res => {
+       return res.data;
+        
     } )
-    return accessGranted;
-    // return localStorage.getItem('x-access-token') && localStorage.getItem('x-access-token-expiration') > Date.now()
+    .then(token => {
+       if((token.status ===200) && (accessTokenExpirationTime > Date.now()) ){
+           return true;
+          
+       }
+       return false;
+    });
+    return result
 }
 
 export function getAccessories(limit,skip) {

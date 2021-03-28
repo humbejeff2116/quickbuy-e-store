@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom/';
     const [redirect, setRedirect] = useState('');
     const {src, name, price, description, available, id} = props;
 
-   const view = (src, name, price, description, id, available) => {
+    const view = (src, name, price, description, id, available) => {
       let item = [];
       item.push({ src, name, price,description, id,available });
        localStorage.setItem('view', JSON.stringify(item));

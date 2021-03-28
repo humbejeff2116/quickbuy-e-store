@@ -49,19 +49,18 @@ import './checkout.css';
         '6':2
       }
       // use cart1 later on just testing with cart2 
-      cart1 = JSON.parse(cart);
+     let cart1 = JSON.parse(cart);
       for(let i = 0; i < products.data.length; i++) {  
           products.data[i].qty = cart2[products.data[i].id];
       } 
-      const checkoutProducts = products.data;
-      let cart1; 
+      const checkoutProducts = products.data; 
       let checkoutSum = 0;
       let checkoutTotalQty = 0;
       let checkoutTotalSum;
-      for (let i = 0; i < cartProducts.length; i++) {     
-        checkoutSum += cartProducts[i].price * cartProducts[i].qty;   
-        checkoutTotalSum = cartSum.toFixed(2);
-        checkoutTotalQty += cartProducts[i].qty;
+      for (let i = 0; i <checkoutProducts.length; i++) {     
+        checkoutSum +=checkoutProducts[i].price * checkoutProducts[i].qty;   
+        checkoutTotalSum =checkoutSum.toFixed(2);
+        checkoutTotalQty += checkoutProducts[i].qty;
       }
       return this.setState({
         loading:false,
@@ -106,7 +105,7 @@ import './checkout.css';
   } 
 
   render() {
-    const { products, checkoutTotalSum, loading,err,redirect, env, client, currency} =  this.state;
+    const { products, checkoutTotalSum, loading,err,redirect, env, client, currency,checkout} =  this.state;
     if(redirect) {
       return(
         <Redirect to={redirect}/>
@@ -135,6 +134,7 @@ import './checkout.css';
       title={'Checkout'}
       products={products}
       checkoutTotalSum={checkoutTotalSum}
+      checkout={checkout}
       env={env}
       client={client}
       currency={currency}
