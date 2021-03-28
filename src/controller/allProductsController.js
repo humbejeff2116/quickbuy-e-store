@@ -138,7 +138,19 @@ function productsController() {
                     res.json({ status: 400, errMessage: 'no product matches your search' });
                     return res.status(400);
                 }
-                return res.status(200).json({ status: 200,message:`products returned ( ${products.length} )`, data: products });
+                const searchedProducts = products.map( product=>{
+                    return {
+                        id: product.id,
+                        name: product.name,
+                        src: product.src,
+                        price: product.price,
+                        available: product.available,
+                        category: product.category,
+                        description: product.description,
+                        tags: product.tags
+                    };
+                })
+                return res.status(200).json({ status: 200,message:`products returned ( ${products.length} )`, data: searchedProducts });
             }).catch(err => {
                 console.error(err.stack);
                 res.json({ error: true, message: 'an error occured while getting products' });

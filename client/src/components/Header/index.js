@@ -67,7 +67,8 @@ export const Header = ( ) => {
         let item = [];
         item.push({ src, name, price,description, id,available });
          localStorage.setItem('view', JSON.stringify(item));
-         setRedirect('/view-item');
+         window.location ='/view-item'
+        //  setRedirect('/view-item');
     }
     useEffect(()=> {
          window.addEventListener('scroll', handleScroll);

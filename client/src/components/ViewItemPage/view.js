@@ -22,7 +22,8 @@ const viewDetails = [
         description : "",
         id : "",
         available:"",
-        thumbnails : [{ imageSrc:"" }, { imageSrc:"" } ,{ imageSrc:"" }]
+        thumbnails : [{ imageSrc:"" }, { imageSrc:"" } ,{ imageSrc:"" }],
+        productSize: [{size:10},{size:20},{size:15}]
     }
 ]
 
@@ -45,8 +46,18 @@ export function View(props) {
         }
     },[]);
 
-    const  handleInputChange = e => 
-        setQuantity(e.target.value)
+    const  handleInputChange = e => {
+        if(e.target.value && (!isNaN(e.target.value)) ){ 
+           return setQuantity(parseInt(e.target.value));
+        }
+        if(isNaN(e.target.value)){
+            setErr(true);
+            setQuantity(1);
+            return setErrMssg('quantity is expected to be a number')       
+        }
+        return setQuantity(parseInt(e.target.value))       
+    }
+      
 
     const addToCart = (id) => {
         let buying_quantity;
@@ -58,6 +69,12 @@ export function View(props) {
             setErr(true);
             setErrMssg(errMssg)
             return;   
+        }
+        if(isNaN(stateQnty)) {
+            errMssg ='please key in a quantity of your choice';
+            setErr(true);
+            setErrMssg(errMssg)
+            return;
         }
         cart[id] = cart[id] ? cart[id] : 0;
         buying_quantity = cart[id] + parseInt(quantity, 10);
@@ -93,7 +110,7 @@ export function View(props) {
                     </div>
                     <div className="modal-content">
                         <p> {errMssg} </p>
-                        <p> Please wait and try again.</p>
+                       
                     </div>
                 </AlertBox>
             )

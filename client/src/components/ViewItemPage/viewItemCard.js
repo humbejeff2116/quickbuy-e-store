@@ -3,6 +3,7 @@
 import React from 'react';
 import ViewThumbnails from './viewThumbnails';
 import ViewAddButton from './viewAddButton';
+import ViewProductSize from './viewProductSize'
 
 
 
@@ -15,25 +16,34 @@ export default function ViewItemCard(props) {
             <image src={props.src} width="80%" height="80%" />
             </div>
             <div className="view-item-details">
-                <span>{props.name}</span>
+                <span>{props.name}</span><br />
                 <span>{props.price}</span>
                 <div>
                     <p>{props.description}</p>
                 </div>
             </div>
-        </div>
-        {/* flex row */}
-        <div className="thumbnails">
+        </div>     
             {
-                (props.thumbnails) && (
-                    props.thumbnails.map((thumbnail, i)=>
-                    <ViewThumbnails key={i} {...thumbnail}/>
-                    )
+                (props.thumbnails) && (                   
+                    <div className="thumbnails">
+                         {/*TODO... flex row */}
+                        {
+                            props.thumbnails.map((thumbnail, i)=>
+                            <ViewThumbnails key={i} {...thumbnail}/>
+                            )
+                        }               
+                    </div>
                 )        
             }
-        </div>
-        <div className="view-item-size">
-
+        <div className="view-item-size-contr">
+            {
+                (props.productSize) && (                                                           
+                        
+                            props.productSize.map((size, i)=>
+                            <ViewProductSize key={i} {...size}/>
+                            )               
+                )   
+            }
         </div>
         <div className="view-add-bttn">
             <ViewAddButton 
@@ -48,3 +58,5 @@ export default function ViewItemCard(props) {
         </>
     )
 }
+
+
