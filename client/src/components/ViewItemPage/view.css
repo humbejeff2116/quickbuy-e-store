@@ -191,7 +191,7 @@
     margin-top:0.5%;
     margin-bottom:0.6%;
     min-height: 70vh;
-    border:1px solid black;
+    /* border:1px solid black; */
   
 }
 .view-item-container{
@@ -199,47 +199,99 @@
     flex-direction: column;
     width:60%;
     min-height:70vh;
-    margin-left:auto;
-    margin-right: auto;
-    border:1px solid yellow;
-    margin-top:0.6%;
-    margin-bottom:0.6%;
-
-    
-   
+    /* border:1px solid yellow; */
+    box-shadow:0 0 3px rgba(117, 116, 116, 0.8);
+    margin:1.4% auto 1.4% auto ;
+    padding:4px; 
 }
 
 .view-info{
     display: flex;
     flex-direction: row;
-    width:100%;
+    /* width:100%; */
+    border:1px solid purple;
+  margin: 9px;
 
 }
 .view-product-img{
-    border:1px solid black;
+    display: flex;
+    flex-direction: column;
+    /* border:1px solid black; */
     width:50%;
     min-height:50vh;
+    padding:1%;
+
+}
+.view-img{
+    min-height: 50vh;
+    /* border:1px solid black; */
+}
+.thumbnails{
+    min-height:10vh;
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    margin-top:2%;
+    /* border:1px solid black; */
+
+}
+.view-item-details-cntr{
+    display:flex;
+    flex-direction: column;
+    /* border:1px solid black; */
+    justify-content: center;
+    width:50%;
 
 }
 
 .view-item-details{
-    border:1px solid black;
-    width:50%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border:1px solid green; */
+  
+    margin:2%;
+    /* margin:4px; */
 
 }
 
-.thumbnails{
-    display: flex;
-    flex-direction: row;
-    width:100%;
-    border:1px solid black;
 
-}
 .view-item-size-contr{
-    border:1px solid rgb(202, 14, 124);
+    display:flex;
+    flex-direction: column;
+    /* border:1px solid rgb(202, 14, 124); */
     margin-top:0.5%;
     margin-bottom:0.6%;
-    min-height: 10vh;
+    /* min-height: 5vh; */
+
+}
+.view-item-size-title{
+    display:flex;
+    justify-content: center;
+
+}
+.view-item-size-panel{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+   
+    margin-top:0.5%;
+    margin-bottom:0.6%;
+
+}
+.view-item-size{
+    /* border:1px solid black; */
+    background-color:rgb(218, 152, 218);
+    color:#ffffff;
+    width:10%;
+    text-align: center;
+    padding:1.2%;
+    margin:0.3%;
+    transition:all 0.3s ease;
+}
+.view-item-size:hover{
+    cursor: pointer;
+    background-color: rgb(212, 108, 212);
 
 }
 
@@ -248,7 +300,7 @@
     display:flex;
     flex-direction:column;
     width:100%;
-    border:1px solid green;
+    /* border:1px solid green; */
     margin-top:0.5%;
     margin-bottom:0.6%;
     min-height:20vh;
@@ -256,15 +308,15 @@
 
 }
 .view-add-bttn h4{
-   margin-left:26%;
+   margin-left:21%;
 }
 .view-add-section{
     width:100%;
     display:flex;
     flex-direction:row;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
-    border:1px solid blue;
+    /* border:1px solid blue; */
     padding:3px;
     margin-top: auto;
     margin-bottom: auto;
@@ -275,7 +327,7 @@
     width: 30%;
     display: flex;
     flex-direction: column;
-    border:1px solid black;
+    /* border:1px solid black; */
     margin-right: 0.3%;
 
 }
@@ -284,28 +336,41 @@
 .view-add-qty{
     display: flex;
     flex-direction: row;
-    border:1px solid black; 
+    /* border:1px solid black;  */
     width: 100%;
 }
 .view-add-qty button{
     width:40%;
-    height:45px;
+    height:50px;
     position:relative;
     background-color:rgb(218, 152, 218);
     transition:all 0.3s ease-in-out;
     border:none;
-    color:#242729;
+    color:#ffffff;
     font-weight: bold;
   
 
 }
+.view-add-qty button:hover{
+    cursor: pointer;
+    background-color: rgb(212, 108, 212);
+   
+   
+}
 .view-add-qty input{
     width:20%;
+    border:2px solid rgb(218, 152, 218);
+    caret-color:rgb(218, 152, 218);
 
 }
+.view-add-qty input:focus{
+    outline:0;
+  
+   
+}
 .view-add-to-cart{
-    width: 40%;
-    border:1px solid red;
+    width: 30%;
+    /* border:1px solid red; */
     /* height:55px; */
     margin-top: auto;
     margin-bottom: auto;
@@ -314,12 +379,18 @@
 }
 .view-add-to-cart button{
     width:100%;
-    height:45px;
+    height:50px;
     position:relative;
     background-color:rgb(218, 152, 218);
     transition:all 0.3s ease-in-out;
     border:none;
-    color:#242729;
+    color:#ffffff;
     font-weight: bold;
+   
+}
+.view-add-to-cart button:hover{
+    cursor: pointer;
+    background-color: rgb(212, 108, 212);
+   
    
 }

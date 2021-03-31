@@ -1,22 +1,22 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import logo from '../../images/logo.png';
-import { isAuthenticated } from '../../services/ecormerce.service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  NavLink } from 'react-router-dom';
 
 
 
 
+
+
 export function NavSearchBar(props) {
-    const auth = isAuthenticated();
-    console.log('auth is ', auth);
+    
     const search = <FontAwesomeIcon icon={['fas', "search"]}  />
     const user = <FontAwesomeIcon  icon={['fas', "user"]}  />
 
     const logOut = ( ) => {
         localStorage.removeItem('x-access-token');
         localStorage.removeItem('user');
-      }
+    }
 
     return(
         <div className="search">
@@ -30,7 +30,7 @@ export function NavSearchBar(props) {
                 </form>
             </div>
             <div className="header-login">
-                <LogInNav auth={auth} logOut={logOut} user={user} />              
+                <LogInNav auth={props.auth} logOut={logOut} user={user} />              
             </div>              
         </div>
     )
@@ -40,13 +40,14 @@ export function NavSearchBar(props) {
 
 function LogInNav(props) {
    
+   
     const authNavLinks = [
         {href:'/checkout',name:'Checkout'},
         {href:'/users/dashboard',name:'Dashboard'}
     ]
 
     if(props.auth) {
-        console.log(props.auth)
+       
         
         return(
             <>
@@ -75,6 +76,7 @@ function LogInNav(props) {
         </div>
     )
 }
+
 
 
 function AuthLinks(props) {

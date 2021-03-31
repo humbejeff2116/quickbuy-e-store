@@ -14,10 +14,13 @@ function CartItem(props){
             <image src={product.src} width="80%" height="80%" />
           </div>
           <div className="card-item-details">
+            <div className="card-item-text" >
             <p className="card-title">Name: {product.name}</p>
             <p className="card-text">Price: ${product.price}</p>
             <p className="card-text ">Quantity: {product.qty}</p>
             <p className="card-text ">Product amount: ${product.qty * product.price}</p>
+            </div>
+            
             <button className="btn btn-sm btn-warning float-right" 
             onClick={()=>props.removeFromCart(product)}
             >

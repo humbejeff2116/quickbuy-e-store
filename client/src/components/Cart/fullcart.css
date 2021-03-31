@@ -15,9 +15,6 @@
 
 
 
-
-
-
 .full-cart-container{
     /* display:flex;
     flex-direction:column; */
@@ -94,7 +91,8 @@
 }
 .card{
     /* border-top:1px solid #ccc; */
-    border-bottom:1px solid #ccc;
+    /* border-bottom:1px solid #ccc; */
+    padding:0.2%;
    
       background-image: url(../../images/shopping_cart_PNG65.png);
       background-color: #ffffff;
@@ -112,25 +110,42 @@
     display:flex;
     flex-direction:row;
     align-items: center;
+    margin:3% 3% 0 3%;
     padding:8px;
-     /* border:1px solid black; */
+   
+    
+     box-shadow:0 0 3px rgba(117, 116, 116, 0.8);
     /* box-shadow:0 0 5px rgba(117, 116, 116, 1); */
 }
 .card-item-image{
+    /* border:1px solid black; */
+    width:50%;
+    min-height:50vh;
 
 }
 .card-item-details{
+    width:50%;
+    min-height:50vh;
+    /* border:1px solid black; */
     display:flex;
     flex-direction:column;
     align-items: center;
     padding:8px;
+}
+.card-item-text{
+    display:flex;
+    flex-direction:column;
+   
+   
+
 }
 .card-body p{
     font-weight: bold;
        /* border:1px solid black; */
 }
 .card-body button{
-    width:230px;  
+    margin-top:auto;
+    width:80%;  
     height: 45px;
     border:0;
     background-color: rgb(218, 152, 218);
@@ -138,6 +153,7 @@
     font-size: 1em;
     font-family:'acme';
     font-weight: bold;
+    
 
 }
 
@@ -152,13 +168,16 @@
       /* border:1px solid black; */
 
 }
-.cart-btn-ctn{
+.cart-btn-ctnr{
     display:flex;
     flex-direction: row;
+    /* border:1px solid black;  */
+    width:100%;
 }
+
 .full-cart-total button{
-    width:230px;  
-    height: 45px;
+    width:100%;  
+    height: 50px;
     border:0;
     background-color: rgb(218, 152, 218);
     color: #ffffff;
@@ -170,10 +189,23 @@
 .full-cart-button{
     /* border:1px solid blue; */
     margin:6px;
-    width:232px;  
+    width:40%;  
     margin-left:auto;
     margin-right:auto;
    
+
+}
+.full-cart-button .clear-cart-btn{
+    border: 2px solid rgb(218, 152, 218);
+    background-color: #ffffff;
+    color: rgb(218, 152, 218);
+    transition:all 0.3s ease;
+
+}
+.full-cart-button .clear-cart-btn:hover{
+    border:none;
+    background-color: rgb(212, 108, 212);
+    color: #ffffff;
 
 }
 

@@ -34,6 +34,7 @@ export const  MainNavBar = (props) => {
             < NavSearchBar 
             searchProducts ={props.searchProducts}
             searchValue ={props.searchValue}
+            auth={props.auth}
 
             />
             <nav className="main-navigation" id="main-navigation" >             

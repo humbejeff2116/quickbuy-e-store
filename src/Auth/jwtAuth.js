@@ -10,12 +10,14 @@ module.exports = (req, res, next) => {
     if (token) {
         jwt.verify(token, JWT_SECRET, function(err, decoded) {
             if (err) {
-                return res.status(403).send({status:403, success: false,  message: 'Failed to authenticate token.' });
+               res.send({status:403, success: false,  message: 'Failed to authenticate token.' });
+               return res.status(403);
             } 
                 req.decoded = decoded;
                next();
         });
     } else {
-        return res.status(401).send({status:401, success: false, message: 'No token provided.'});
+        res.send({status:401, success: false, message: 'No token provided.'});
+        return res.status(401);
     }
 };

@@ -44,8 +44,8 @@ import './checkout.css';
     .then(response => response.data )
     .then(products => {
       let cart2 = {
-        '2':2,
-        '3':3,
+        '7':2,
+        '8':3,
         '6':2
       }
       // use cart1 later on just testing with cart2 

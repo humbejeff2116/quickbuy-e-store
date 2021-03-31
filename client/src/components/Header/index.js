@@ -7,6 +7,7 @@ import { searchProduct } from '../../services/ecormerce.service';
 import SearchResult from './SearchComponent/searchResults';
 import ApplicationData from '../../data/appData';
 import { Redirect } from 'react-router-dom/';
+import { validateToken } from '../../services/ecormerce.service';
 import './header.css';
 
 
@@ -16,8 +17,8 @@ export const Header = ( ) => {
     const [errMssg, setErrMssg] = useState('');
     const [mssg,setMssg] = useState('');
     const [openMobileNav, setOpenMobileNav] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const [redirect, setRedirect] = useState('');
+    const [auth, setAuth] = useState(null)
     let navbarClasses = ['header-container'];
     let _searchValue = React.createRef();
     const navGifsLinks =  ApplicationData.getNavGifsLinks();
@@ -54,15 +55,7 @@ export const Header = ( ) => {
             console.error('error :' + err);
         });
     }
-    
-    const handleScroll = ( ) => {
-         const offset = window.scrollY;
-         if(offset > 0) {
-            setScrolled(true)
-         } else {
-            setScrolled(false)
-         }
-    }
+   
     const viewItem = (src, name, price, description, id, available) => {
         let item = [];
         item.push({ src, name, price,description, id,available });
@@ -70,16 +63,36 @@ export const Header = ( ) => {
          window.location ='/view-item'
         //  setRedirect('/view-item');
     }
-    useEffect(()=> {
-         window.addEventListener('scroll', handleScroll);
-         return ()=> {
-             window.removeEventListener('scroll',handleScroll);
+    useEffect(()=> {     
+         const accessTokenExpirationTime = localStorage.getItem('x-access-token-expiration')
+         const accessToken = localStorage.getItem('x-access-token');
+         let isSubscribed = true;
+         if(!accessToken) { 
+             return setAuth(false);            
+         } 
+         validateToken(accessToken)
+         .then(res => {
+             return res.data;                      
+         })
+         .then(token => {
+             if((token.status === 200) && (accessTokenExpirationTime > Date.now())) {
+                 if(isSubscribed) {
+                    setAuth(true)
+                    return; 
+                 }                        
+             }else{
+                 if(isSubscribed) {
+                    setAuth(false)
+                    return;
+                 }
+             }
+         })
+         .catch(err=> console.error(err))       
+         return ()=> {          
+             isSubscribed = false;                      
          }
-    });
+    },[]);
    
-    if(scrolled) {
-        navbarClasses.push('scrolled');
-    }
     if(redirect){
         return(
             < Redirect to={redirect}/>
@@ -87,7 +100,7 @@ export const Header = ( ) => {
     }
     return(
         <>
-        <nav className={navbarClasses.join(" ")}>
+        <nav className={'header-container scrolled'}>
             <NavGifsBar 
             navGifsLinks={navGifsLinks}
             socialLinks={socialLinks} 
@@ -98,6 +111,7 @@ export const Header = ( ) => {
             searchProducts={searchProducts} 
             searchValue={_searchValue}
             navLinks={navLinks}
+            auth={auth}
             />
             {
                 (openMobileNav) && <MobileNav />

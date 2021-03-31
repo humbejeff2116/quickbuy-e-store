@@ -16,13 +16,13 @@ const cartIcon = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 
 const viewDetails = [
     {
-        src : "",
-        name : "",
-        price :"",
-        description : "",
-        id : "",
-        available:"",
-        thumbnails : [{ imageSrc:"" }, { imageSrc:"" } ,{ imageSrc:"" }],
+        src : "/",
+        name : "gucci shirt",
+        price :"200",
+        description : "latest gucci model 2021 prad shirt for men",
+        id : "3",
+        available:true,
+        thumbnails : [{ imageSrc:"/hjghfg" }, { imageSrc:"/gfgdf" } ,{ imageSrc:"/fdfdf" }],
         productSize: [{size:10},{size:20},{size:15}]
     }
 ]
@@ -31,6 +31,7 @@ export function View(props) {
     const [viewProduct, setViewProduct] = useState([]);
     const [loading, setLoading] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const [size, setSize] = useState('');
     const [mssg, setMssg] = useState(false);
     const [cartMssg, setCartMssg] = useState('');
     const [err, setErr] = useState(false);
@@ -39,7 +40,7 @@ export function View(props) {
 
     useEffect(()=> {
         const viewItem = localStorage.getItem('view')? JSON.parse(localStorage.getItem('view')) : [];
-        setViewProduct(viewItem);
+        setViewProduct(viewDetails);
         window.scrollTo(0,0);
        return ()=> {
             localStorage.removeItem('view');
@@ -137,7 +138,8 @@ export function View(props) {
                     addToCart={addToCart} 
                     cartIcon={cartIcon} 
                     handleInputChange={handleInputChange}
-                    setQuantity ={setQuantity}  
+                    setQuantity ={setQuantity}
+                    setSize ={setSize}  
                     />
                 )
             }

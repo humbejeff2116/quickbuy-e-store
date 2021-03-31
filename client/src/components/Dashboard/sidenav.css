@@ -34,7 +34,7 @@
 }
 .side-nav-active{
     background-color: #2b2e30;
-    border-bottom:1px solid rgb(218, 152, 218);
+    border-right:1px solid rgb(218, 152, 218);
 
 }
 .side-nav a{

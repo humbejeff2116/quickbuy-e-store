@@ -13,16 +13,9 @@ export default function ViewItemCard(props) {
         {/* flex row */}
         <div  className="view-info">
             <div className="view-product-img" >
-            <image src={props.src} width="80%" height="80%" />
-            </div>
-            <div className="view-item-details">
-                <span>{props.name}</span><br />
-                <span>{props.price}</span>
-                <div>
-                    <p>{props.description}</p>
-                </div>
-            </div>
-        </div>     
+                <div className="view-img">
+                <image src={props.src} width="80%" height="80%" />
+                </div>         
             {
                 (props.thumbnails) && (                   
                     <div className="thumbnails">
@@ -35,15 +28,37 @@ export default function ViewItemCard(props) {
                     </div>
                 )        
             }
+            </div>
+
+            <div className="view-item-details-cntr">
+            <div className="view-item-details">
+                <p> Name: {props.name}</p>
+                <p>Price: ${props.price}</p>
+                <div>
+                    <p>Description: {props.description}</p>
+                </div>
+            </div>
+            </div>
+           
+        </div>     
+           
         <div className="view-item-size-contr">
+            <div className="view-item-size-title">
+                <h4>size</h4>
+            </div>
+            <div  className="view-item-size-panel">
             {
-                (props.productSize) && (                                                           
-                        
+                (props.productSize) && (                                                                                  
                             props.productSize.map((size, i)=>
-                            <ViewProductSize key={i} {...size}/>
+                                <ViewProductSize key={i} 
+                                {...size}
+                                setSize ={props.setSize} 
+                                />
                             )               
                 )   
             }
+            </div>
+            
         </div>
         <div className="view-add-bttn">
             <ViewAddButton 
@@ -52,7 +67,8 @@ export default function ViewItemCard(props) {
             quantity={props.quantity} 
             cartIcon={props.cartIcon} 
             handleInputChange={props.handleInputChange}
-            setQuantity={props.setQuantity}  
+            setQuantity={props.setQuantity} 
+           
             />
         </div>
         </>

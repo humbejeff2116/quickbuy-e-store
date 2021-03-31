@@ -170,8 +170,8 @@ function productsController() {
             let cartProducts = [];
             let id = null;
             let cart1 ={
-                '2':2,
-                '3':3,
+                '7':2,
+                '8':3,
                 '6':2
             }
             if (!cart) {

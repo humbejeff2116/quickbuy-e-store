@@ -47,16 +47,16 @@ export default function FullCart(props) {
             <div className="full-cart-total">
               <div className="total-header" >
                   <h4>
-                  <small>Total Amount: </small>
+                 Total Amount:
                   <span className="float-right text-primary">${props.total}</span>
                   </h4>
                 </div>           
-                <div className="cart-btn-ctn" >  
+                <div className="cart-btn-ctnr" >  
                   <div  className="full-cart-button">                        
-                    <button onClick={ props.checkout} className="btn btn-success float-right">Checkout </button>                    
+                    <button onClick={ props.checkout} >Checkout </button>                    
                   </div>
                   <div  className="full-cart-button" >
-                    <button className="btn btn-danger float-right" onClick={props.clearCart} >Clear Cart</button>
+                    <button className="clear-cart-btn" onClick={props.clearCart} >Clear Cart</button>
                   </div>                 
                 </div>
             </div>

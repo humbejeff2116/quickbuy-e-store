@@ -44,13 +44,14 @@ export default class AppCart extends React.Component {
     getCartProducts(cart)
     .then(response => response.data )
     .then(products => {
+      console.log("cart products are", products.data)
      
       let cart2 = {
-        '2':2,
-        '3':3,
+        '7':2,
+        '8':3,
         '6':2
       }
-    // use cart1 later on just testing with cart2 
+    // TODO...use cart1 later on just testing with cart2 
       cart1 = JSON.parse(cart);
       for(let i = 0; i < products.data.length; i++) {  
           products.data[i].qty = cart2[products.data[i].id];

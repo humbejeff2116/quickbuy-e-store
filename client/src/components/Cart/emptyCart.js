@@ -5,6 +5,7 @@ import shopping_cart_PNG60 from '../../images/shopping_cart_PNG65.png'
 
 
 
+
 export default function  EmptyCart(props) {
     return(
       <CartTemplate>

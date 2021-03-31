@@ -29,16 +29,16 @@ import PropTypes from 'prop-types'
 
     addToCart = (id) => {
         let buying_quantity
-      let stateQnty = this.state.quantity;
-      let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
-      if(stateQnty < 1) {
-        let err ='quantity is not expected to be less than 1';
-        this.setState({
-          err,
-          mssg:null
-        })
-        return;
-      }
+        let stateQnty = this.state.quantity;
+        let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+        if(stateQnty < 1) {
+            let err ='quantity is not expected to be less than 1';
+            this.setState({
+            err,
+            mssg:null
+            })
+            return;
+        }
         cart[id] = cart[id] ? cart[id]: 0;
         buying_quantity = cart[id] + parseInt(this.state.quantity,10);
          cart[id] = buying_quantity;
@@ -46,7 +46,7 @@ import PropTypes from 'prop-types'
         this.setState({
             err:null,
             mssg:'item added to cart sucessfully'
-          })
+        })
     }
     render() {
         const {src, name, price, description, id} = this.props;

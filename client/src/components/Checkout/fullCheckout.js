@@ -31,7 +31,7 @@ export default function FullCheckout(props) {
                 props.products.map((product, i) => 
                 <CheckoutItem key={i} {...product} />
               )
-              } <hr/>
+              }
               <CheckoutTotalSum checkoutTotalSum={props.checkoutTotalSum} />
               <div>
               {
