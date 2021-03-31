@@ -1,43 +1,27 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-  .all-items-picture{
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-      margin:0.25%;
-      width:15.5%;
-      height:auto;
-      /* border:2px solid rgb(209, 208, 208); */
-      box-shadow:0 0 6px rgb(196, 195, 195);
-      /* border-radius: 3%; */
-      transition:all 0.3s ease;
-      cursor:pointer;
-      position:relative;
-  }
+.all-items-picture{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:0.25%;
+    width:15.5%;
+    height:auto;
+    box-shadow:0 0 6px rgb(196, 195, 195);
+    transition:all 0.3s ease;
+    cursor:pointer;
+    position:relative;
+}
   
-  .all-items-picture:hover{
-    /* -webkit-box-shadow:0 0 5px rgba(0,0,0,0.6);
-    -moz-box-shadow:0 0 5px rgba(0,0,0,0.6); */
+.all-items-picture:hover{
     border:none;
     box-shadow:0px 2px 2px 2px rgba(117, 116, 116, 0.6);
-  /* transform:scale(1.03) ; */
 }  
 .see-all-items-details{
-  display:flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-     /* border:1px solid black; */
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     margin-top: 2px;
     margin-bottom:2px;
     width:90%; 
@@ -45,38 +29,32 @@
     margin-right: auto;
     margin-left: auto;
     padding:3%;
-
 }
+
 .see-all-items-details img{
- 
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
-.see-all-items-details a{
-  text-decoration: none;
-  color:black;
- 
-}
-.see-all-product-title{
-  font-weight: bold;
-  font-family:'acme';
-}
-.see-all-product-price{
-  font-weight: bold;
-  font-family:'acme';
 
+.see-all-items-details a{
+    text-decoration: none;
+    color:black;
+}
+
+.see-all-product-title{
+    font-weight: bold;
+    font-family:'acme';
+}
+
+.see-all-product-price{
+    font-weight: bold;
+    font-family:'acme';
 }
 
 .see-all-view{
-  /* border:1px solid black; */
-  width:100%; 
-  position: relative; 
-  margin-right: auto;
-  margin-left: auto;
-  bottom: 2px;
-  /* display:flex;
-  flex-direction: column; */
-  /* background-color:rgb(218, 152, 218); */
-
+    width:100%; 
+    position: relative; 
+    margin-right: auto;
+    margin-left: auto;
+    bottom: 2px;
 }
-

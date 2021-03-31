@@ -282,6 +282,7 @@
 .view-item-size{
     /* border:1px solid black; */
     background-color:rgb(218, 152, 218);
+    border:1px solid #ffffff;
     color:#ffffff;
     width:10%;
     text-align: center;
@@ -292,6 +293,15 @@
 .view-item-size:hover{
     cursor: pointer;
     background-color: rgb(212, 108, 212);
+
+}
+.item-selected{
+    /* border:1px solid rgb(212, 108, 212); */
+    background-color:#292b2c;
+    border:1px solid #ffffff;
+}
+.item-selected:hover{
+    background-color:#292b2c;
 
 }
 
@@ -357,13 +367,24 @@
    
    
 }
-.view-add-qty input{
+.view-add-qty input[type=number]{
     width:20%;
     border:2px solid rgb(218, 152, 218);
     caret-color:rgb(218, 152, 218);
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin:0;
+    padding:6%;
 
 }
-.view-add-qty input:focus{
+.view-add-qty input[type=number]::-webkit-inner-spin-button,
+.view-add-qty input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    appearance: none;
+   
+}
+
+.view-add-qty  input[type=number]:focus{
     outline:0;
   
    

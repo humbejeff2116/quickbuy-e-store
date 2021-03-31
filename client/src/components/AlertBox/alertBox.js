@@ -13,10 +13,10 @@ import React,{ useEffect } from 'react';
 
 export const AlertBox = ({ handleClose, show, children }) => {
 
-    useEffect(()=>{
-      window.scrollTo(0,0)
+    // useEffect(()=>{
+    //   window.scrollTo(0,0)
   
-    })
+    // })
   
     const showHideClassName = show ? "modal display-block" : "modal display-none";
   

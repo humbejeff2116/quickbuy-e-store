@@ -52,7 +52,8 @@ export default function ViewItemCard(props) {
                             props.productSize.map((size, i)=>
                                 <ViewProductSize key={i} 
                                 {...size}
-                                setSize ={props.setSize} 
+                                setSize ={props.setSize}
+                                selectedSize={props.selectedSize} 
                                 />
                             )               
                 )   

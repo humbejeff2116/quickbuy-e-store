@@ -71,6 +71,19 @@ export function View(props) {
             setErrMssg(errMssg)
             return;   
         }
+        if(!size){
+            errMssg ='please select a particular size';
+            setErr(true);
+            setErrMssg(errMssg)
+            return;   
+        }
+        if(size){
+          
+            setErr(false);
+            setErrMssg('')
+          
+
+        }
         if(isNaN(stateQnty)) {
             errMssg ='please key in a quantity of your choice';
             setErr(true);
@@ -139,7 +152,8 @@ export function View(props) {
                     cartIcon={cartIcon} 
                     handleInputChange={handleInputChange}
                     setQuantity ={setQuantity}
-                    setSize ={setSize}  
+                    setSize ={setSize}
+                    selectedSize={size}  
                     />
                 )
             }

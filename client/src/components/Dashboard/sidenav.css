@@ -1,6 +1,5 @@
 
 .side-nav{
-    /* border:1px solid black; */
     margin:0;
     padding:0;
     position:fixed;
@@ -46,11 +45,9 @@
     font-family:'acme';
 }
 
-
 .profile-image{
     display:flex;
     justify-content: center;
-    /* border:1px solid white; */
     width:100%;
     margin:-5% 0 5% 0 ;
 }

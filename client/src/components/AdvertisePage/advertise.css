@@ -1,28 +1,16 @@
 
-
-
-
-
-
-
-
-
 .advertise-container{
     margin:2px;
     display: flex;
     flex-direction: column;
     padding:2px;
-
 }
 .advertise-header{
     border:1px solid black;
     padding:4px;
-
-
 }
 .advertise-body{
     display:flex;
     flex-direction:column;
     padding:4px;
-
 }

@@ -1,32 +1,5 @@
 
-
-/* .view{
-    border:1px solid red;
-  
-    position: relative; 
-   
-    margin-bottom: 1%;
-
-} */
-
-/* .view button{
-    background-color:rgb(218, 152, 218);
-    border:0;
-    width:100%;  
-    height: 40px;
-    cursor:pointer;
-    position:relative;
-    font-size:1em;
-    font-weight: bold;
-    transition:all 0.3s ease-in-out;
-    font-family: 'acme';
-}
-.view button:hover{
-    background-color: rgb(212, 108, 212);
-} */
-
 .items-details{
-    /* border:1px solid black; */
     margin-top: 4px;
     width:90%;  
     margin-right: auto;
@@ -34,18 +7,14 @@
     padding:3%;
 
 }
+
 .items-details a{
   text-decoration: none;
   color:black;
 }
 
 
-
 @media only screen  and (max-width:414px){
-    /* .view button{     
-        width:100%;
-        bottom:-2px; 
-       
-    } */
+
 
 }

@@ -1,11 +1,10 @@
 
 
 .men-collections-container{
-  display:flex;
-  flex-direction:column;
-  /* border: 1px solid black; */
-  margin-top:0.5%;
-  margin-bottom:0.6%;
+    display:flex;
+    flex-direction:column;
+    margin-top:0.5%;
+    margin-bottom:0.6%;
 }
 
 .men-collections-items{
@@ -13,32 +12,26 @@
     flex-direction:column;
   }
 
-  .men-collections-items-header{
-   
+.men-collections-items-header{
     display:flex;
     flex:1;
     justify-content:center;
     background-color:#ffffff;
     color:black;
-    margin-bottom:2px;
-  
-  
+    margin-bottom:2px; 
 }
   
-  .men-collections-items-container{
+.men-collections-items-container{
     padding:0.25%;
     display:flex;
     flex-direction: column;
     background-color:#ffffff;
+}
   
-  }
-  
-  .men-collections-items{
+.men-collections-items{
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:space-between;
-   
     margin-top:0.3%;
-    /* border:1px solid black; */
-  }
+}

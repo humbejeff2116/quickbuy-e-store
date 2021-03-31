@@ -1,21 +1,10 @@
-
-
-
-
-
-
-
 .not-found-container{
-    /* border:1px solid black; */
     background-color:#ffffff;
     min-height: 60vh;
     margin:8px;
-
-
 }
 
 .not-found-content{
-  
     position:relative;
     top:14px;
     background-color:#ffffff;
@@ -23,19 +12,15 @@
     min-height: 50vh;
     width:40%;
     margin-left:auto;
-    margin-right:auto;
-  
+    margin-right:auto;  
 }
 .not-found h2{
     text-align: center;
     position:relative;
     top:12px;
-
 }
 .not-found h3{
     text-align: center;
   position:relative;
   top:12px;
-
 }
-

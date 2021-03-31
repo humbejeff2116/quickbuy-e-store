@@ -12,10 +12,16 @@ import './header.css';
 
 
 
+
+
+
+
+
 export const Header = ( ) => {
     const [searchedProd,setSearchedProd] = useState([]);
     const [errMssg, setErrMssg] = useState('');
     const [mssg,setMssg] = useState('');
+    const [scrolled, setScrolled] = useState(false);
     const [openMobileNav, setOpenMobileNav] = useState(false);
     const [redirect, setRedirect] = useState('');
     let _searchValue = React.createRef();
@@ -23,6 +29,16 @@ export const Header = ( ) => {
     const navLinks = ApplicationData.getNavLinks();
     const socialLinks =ApplicationData.getSocialLinks();
     const auth = isAuthenticated();
+    let navbarClasses = ['header-container'];
+
+    const handleScroll = ( ) => {
+        const offset = window.scrollY;
+        if(offset > 0) {
+           setScrolled(true)
+        } else {
+           setScrolled(false)
+        }
+    }
 
     const searchProducts = (e) => { 
         e.preventDefault();
@@ -62,6 +78,15 @@ export const Header = ( ) => {
          window.location ='/view-item'
         //  setRedirect('/view-item');
     }
+    useEffect(()=> {
+        window.addEventListener('scroll', handleScroll);
+        return ()=> {
+            window.removeEventListener('scroll',handleScroll);
+        }
+    });
+    if(scrolled) {
+        navbarClasses.push('scrolled');
+    }
   
    
     if(redirect){
@@ -71,7 +96,7 @@ export const Header = ( ) => {
     }
     return(
         <>
-        <nav className={'header-container scrolled'}>
+        <nav className={navbarClasses.join(" ")}>
             <NavGifsBar 
             navGifsLinks={navGifsLinks}
             socialLinks={socialLinks} 

@@ -13,23 +13,18 @@
     background-color: #ffffff;
     min-height: 70vh;
     margin:6px;
-    /* border-radius: 6px; */
-      /* border:1px solid black; */
 }
-.div1{
-    /* border:1px solid black; */
+
+.div1{ 
     width:29%; 
     min-height: 40vh;   
-
 }
-.div3{
-    /* border:1px solid black; */
+
+.div3{ 
     width:29%; 
     min-height: 40vh;   
-
 }
 .cart{
-    /* border:1px solid black; */
     min-height: 40vh;
     width:40%;
     margin-left:auto;
@@ -38,116 +33,70 @@
     margin-top:20px;
     margin-bottom:20px;
     box-shadow:0 0 5px rgba(117, 116, 116, 0.8);
-    /* background-image: url(../../images/shopping_cart_PNG44.png); */
-        /* background-color: #f1f1f1; */
-        /* background-attachment: fixed; */
-        background-repeat: no-repeat;
-        background-position:center; 
-      
-
-
-
+    background-repeat: no-repeat;
+    background-position:center; 
 }
 .cart-header{
     display:flex;
     flex-direction:row;
-
     background-color: #ffffff;
-    /* margin-top:20px ; */
-    /* justify-content: space-between; */
-    /* text-align: center; */
-    /* box-shadow:0 0 5px rgba(117, 116, 116, 0.7); */
-    /* border:1px solid black; */
-    
-
+  
 }
 .cart-title{
-   display:flex;
-   flex:1;
+    display:flex;
+    flex:1;
     text-align: center;
-    
-    /* border:1px solid black; */
-
 }
 
 .cart-refresh{
-  
-   /* border:1px solid black; */
    position:relative;
    margin-right:1%;
- 
-
 }
-.cart-refresh button{
-    
+.cart-refresh button{   
     border:0;
     background-color:#fff;
     font-size: 1em;
     font-family:'acme';
-    /* border:1px solid black; */
     margin-top:20%;
     color:rgb(218, 152, 218);
-   
-   
-
 }
 .cart-refresh button:hover{
     cursor:pointer;
     text-decoration: underline;
-    /* background-color: rgb(212, 108, 212); */
-
 }
 
 .cart-body{
-    /* display:flex;
-    flex-direction:column; */
     background-color: #ffffff;
-    /* justify-content: space-between; */
     margin:4px ;
-    /* height:600px; */
-
 }
-
-
 
 .cart-body h2{
     color:#ccc;
-    /* border:1px solid black; */
     margin:6px;
     font-size: 1.3em;
     font-family:'acme';
-    /* color: rgb(218, 152, 218); */
-    /* color:rgb(230, 230, 230); */
+     color:rgb(230, 230, 230); 
 }
 .cart-title h3{
-   
     color: rgb(218, 152, 218);
     margin:6px;
     border-radius: 4px;
     padding:6px;
-    /* width:15%; */
-   
     margin-right: 25%;
-    margin-left:auto;
-   
+    margin-left:auto; 
 }
 
 
 .cart-warning{
     text-align: center;
-  
-
 }
 
 .cart-button{
     width:50%;  
-     margin-right: auto;
+    margin-right: auto;
     margin-left: auto;
-    /* border:1px solid black; */
     position:relative;
     margin-top:8%;
-  
-
 }
 
 .cart-body button{
@@ -159,61 +108,48 @@
     font-family:'acme';
     font-weight: bold;
     position: relative;
-    /* left:40px; */
-    
-    /* bottom: 45px;  */
     color:#ffffff;
     transition:all 0.3s ease-in-out;
-
-
 }
 
 .cart-body button:hover{
     cursor:pointer;
-    /* text-decoration: underline; */
     background-color: rgb(212, 108, 212);
-
 }
 
 .cart-body button a{
-
     text-decoration:none;
     color:#ffffff;
-    font-family:'acme';
-    
+    font-family:'acme'; 
 }
+
 .cart-img{
-    /* border:1px solid black; */
     background-color: rgb(230, 230, 230);
     width:50%;
     height:250px;
-     margin-right: auto;
+    margin-right: auto;
     margin-left: auto;
-   
     border-radius: 8px;
 }
+
 .cart-img img{
     position: relative;
     margin-top: 10%;
     width:80%;
     height:80%;
-
-  
-   
-    /* left:540px; */
-  
-   
 }
+
 .cart-loader{
-    /* border:1px solid black; */
     min-height:40vh;
     background-color: #ffffff;
 }
+
 .cart-loader p{
     text-align:center;
     font-weight: bold;
     color:rgb(212, 108, 212);
 }
+
 @media only screen and (max-width:414px){
     .cart-title{
         width:80%;
@@ -225,8 +161,8 @@
     .cart-img img{
         top:25px;
     }
-
 }
+
 @media only screen and (max-width:360px){
     .cart-img {      
         width:80%;
@@ -235,8 +171,8 @@
     .cart-img img{
         top:25px;
     }
-
 }
+
 @media only screen and (max-width:305px){
     .cart-img {      
         width:80%;
@@ -245,5 +181,4 @@
     .cart-img img{
         top:25px;
     }
-
 }
