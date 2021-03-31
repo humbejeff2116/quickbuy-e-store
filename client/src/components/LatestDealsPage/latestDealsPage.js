@@ -6,6 +6,7 @@ import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import {Loader} from '../Loader/loader';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
+import BackButton from '../BackButton/backButton';
 import './latestDeals.css';
 
 window.React = React;
@@ -60,9 +61,12 @@ export default function LatestDealsPage(props) {
     return( 
         <PageTemplate>              
         <ErrorBoundary>
-        <div className="latest-deals-container">         
+        <div className="latest-deals-container">  
             <div className="latest-deals-items-header">
-                <h3>Latest Deals</h3>          
+                <BackButton buttonDivClassName="pages-back-bttn"/>
+                <div className="latest-deals-title" >
+                    <h3>Latest Deals</h3>    
+                </div>       
             </div>
             <div  className="latest-deals-items-container">
                 <div className="latest-deals-items">

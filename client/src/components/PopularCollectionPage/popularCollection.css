@@ -19,6 +19,13 @@
     color:black;
     margin-bottom:0.15%; 
 }
+
+
+.popular-collections-title{
+    display:flex;
+    flex:1;
+    justify-content: center;
+}
   
 .popular-collections-items-container{
     min-height:65vh;

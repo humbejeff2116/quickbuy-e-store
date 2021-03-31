@@ -6,6 +6,7 @@ import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
 import {Loader} from '../Loader/loader';
+import BackButton from '../BackButton/backButton';
 import './popularCollection.css'
 
 
@@ -59,7 +60,10 @@ export default function PopularCollectionsPage(props) {
         <ErrorBoundary>     
         <div className="popular-collections-container">
             <div className="popular-collections-items-header">
-                    <h2>Popular Collection</h2>          
+                <BackButton buttonDivClassName="pages-back-bttn"/>
+                <div className="popular-collections-title" >
+                    <h3>Popular Collections</h3>    
+                </div>           
             </div>
             <div  className="popular-collections-items-container">
                 <div className="popular-collections-items">

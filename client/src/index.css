@@ -35,6 +35,32 @@ a,button{
   outline:none;
 }
 
+.pages-back-bttn{
+  /* border:1px solid black; */
+  display:flex;
+  justify-content: center;
+  padding:1% 0.8% 1%  0.8%;
+ 
+
+}
+.pages-back-bttn button{
+  border:none;
+  cursor: pointer;
+  background-color: rgb(218, 152, 218);
+  color:#ffffff;
+
+  
+
+}
+.pages-back-bttn button:hover{
+ 
+  cursor: pointer;
+  text-decoration: underline;
+  
+
+}
+
+
 .pagination {
   /* border:1px solid black; */
   margin-top:auto;

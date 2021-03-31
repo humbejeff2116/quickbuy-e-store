@@ -5,6 +5,7 @@ import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
 import {Loader} from '../Loader/loader';
+import BackButton from '../BackButton/backButton';
 import './menCollection.css';
 
 
@@ -60,7 +61,10 @@ export default function MenCollectionsPage(props) {
         <ErrorBoundary>   
         <div className="men-collections-container">
             <div className="men-collections-items-header">
-                <h3>Men Collections</h3>          
+                <BackButton buttonDivClassName="pages-back-bttn"/>
+                <div className="men-collections-title" >
+                    <h3>Men Collections</h3>    
+               </div>      
             </div>
             <div  className="men-collections-items-container">
                 <div className="men-collections-items">
