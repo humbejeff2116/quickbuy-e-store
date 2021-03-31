@@ -7,7 +7,7 @@ import { searchProduct } from '../../services/ecormerce.service';
 import SearchResult from './SearchComponent/searchResults';
 import ApplicationData from '../../data/appData';
 import { Redirect } from 'react-router-dom/';
-import { validateToken } from '../../services/ecormerce.service';
+import { isAuthenticated } from '../../services/ecormerce.service';
 import './header.css';
 
 
@@ -18,12 +18,11 @@ export const Header = ( ) => {
     const [mssg,setMssg] = useState('');
     const [openMobileNav, setOpenMobileNav] = useState(false);
     const [redirect, setRedirect] = useState('');
-    const [auth, setAuth] = useState(null)
-    let navbarClasses = ['header-container'];
     let _searchValue = React.createRef();
     const navGifsLinks =  ApplicationData.getNavGifsLinks();
     const navLinks = ApplicationData.getNavLinks();
     const socialLinks =ApplicationData.getSocialLinks();
+    const auth = isAuthenticated();
 
     const searchProducts = (e) => { 
         e.preventDefault();
@@ -63,35 +62,7 @@ export const Header = ( ) => {
          window.location ='/view-item'
         //  setRedirect('/view-item');
     }
-    useEffect(()=> {     
-         const accessTokenExpirationTime = localStorage.getItem('x-access-token-expiration')
-         const accessToken = localStorage.getItem('x-access-token');
-         let isSubscribed = true;
-         if(!accessToken) { 
-             return setAuth(false);            
-         } 
-         validateToken(accessToken)
-         .then(res => {
-             return res.data;                      
-         })
-         .then(token => {
-             if((token.status === 200) && (accessTokenExpirationTime > Date.now())) {
-                 if(isSubscribed) {
-                    setAuth(true)
-                    return; 
-                 }                        
-             }else{
-                 if(isSubscribed) {
-                    setAuth(false)
-                    return;
-                 }
-             }
-         })
-         .catch(err=> console.error(err))       
-         return ()=> {          
-             isSubscribed = false;                      
-         }
-    },[]);
+  
    
     if(redirect){
         return(

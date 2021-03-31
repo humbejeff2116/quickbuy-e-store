@@ -9,7 +9,6 @@ export default function RequireAuthentication(Component, auth) {
      
         render(){
             const isAuthenticated = auth();
-            console.log('auth in auth hoc is', isAuthenticated)
             if (!isAuthenticated) {
                 localStorage.setItem('route-auth-message','you must be logged in to view this page');
                 return(

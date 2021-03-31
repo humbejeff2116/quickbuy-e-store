@@ -44,7 +44,6 @@ export default class AppCart extends React.Component {
     getCartProducts(cart)
     .then(response => response.data )
     .then(products => {
-      console.log("cart products are", products.data)
      
       let cart2 = {
         '7':2,
