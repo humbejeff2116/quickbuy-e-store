@@ -31,9 +31,7 @@ export default class AppCart extends React.Component {
   getCart = ( ) => {
     const cart = localStorage.getItem('cart');
     let cart1; 
-    let cartSum = 0;
-    let cartTotalQty = 0;
-    let cartTotalSum;
+    
 
     window.scrollTo(0,0);
     this.setState({ loading:true })
@@ -57,11 +55,15 @@ export default class AppCart extends React.Component {
           // products.data[i].productTotal = cart2[products.data[i].id] * products.data[i].price; 
       } 
       const cartProducts = products.data;
+      let cartSum = 0;
+      let cartTotalQty = 0;
+      let cartTotalSum;
       for (let i = 0; i < cartProducts.length; i++) {     
         cartSum += cartProducts[i].price * cartProducts[i].qty;   
         cartTotalSum = cartSum.toFixed(2);
         cartTotalQty += cartProducts[i].qty;
       }
+      localStorage.setItem('cartProducts',JSON.stringify(cartProducts))
       return this.setState({
         loading:false,
          products:cartProducts,
@@ -100,9 +102,15 @@ export default class AppCart extends React.Component {
 
   checkout = ( ) => {
     const token = localStorage.getItem('x-access-token');
-    if (!token){
+    const accessTokenExpirationTime = localStorage.getItem('x-access-token-expiration');
+    if (!token ){
       localStorage.setItem('checkout-message','please log in to complete action');
       return this.setState({ redirect:'/login' })   
+    }
+    if(token && (accessTokenExpirationTime < Date.now())){
+      localStorage.setItem('checkout-message','please log in to complete action');
+      return this.setState({ redirect:'/login' })   
+
     }
 
     validateToken(token)
@@ -123,6 +131,61 @@ export default class AppCart extends React.Component {
       
 
     })
+
+  }
+  addQuantity = (id) => {
+    const products = this.state.products;
+    let cartSum = 0;
+    let cartTotalQty = 0;
+    let cartTotalSum;
+    for(let i = 0; i < products.length; i++) {
+      if(products[i].id === id) {
+        products[i].qty += 1;
+         
+      }
+      cartSum += products[i].price * products[i].qty;   
+      cartTotalSum = cartSum.toFixed(2);
+      cartTotalQty += products[i].qty;
+    }
+    const cartProducts= JSON.parse(localStorage.getItem('cartProducts'));
+    localStorage.removeItem('cartProducts');
+    localStorage.setItem('cartProducts',JSON.stringify(cartProducts))
+    return this.setState({
+      products, 
+      cartTotalSum,
+    })
+    
+ 
+  }
+  // TODOS... 
+  reduceQuantity = (id) => {
+    const products = this.state.products;
+    let cartSum = 0;
+    let cartTotalQty = 0;
+    let cartTotalSum;
+    for(let i = 0; i < products.length; i++) {
+      if(products[i].id === id) {
+        if(products[i].qty < 2) {
+          return;
+        }
+        products[i].qty -= 1;    
+      }
+      cartSum += products[i].price * products[i].qty;   
+      cartTotalSum = cartSum.toFixed(2);
+      cartTotalQty += products[i].qty;
+    }
+    const cartProducts= JSON.parse(localStorage.getItem('cartProducts'));
+    localStorage.removeItem('cartProducts');
+    localStorage.setItem('cartProducts',JSON.stringify(cartProducts))
+    return this.setState({
+      products, 
+      cartTotalSum,
+    })
+  }
+  quantity=( )=>{
+
+  }
+  handleChange= ( ) =>{
 
   }
 
@@ -164,7 +227,11 @@ export default class AppCart extends React.Component {
           checkout={this.checkout}
           clearCart={this.clearCart}
           hideModal={this.hideModal}
-          err={err}  
+          err={err}
+          reduceQuantity={this.reduceQuantity}
+          addQuantity={this.addQuantity}
+          quantity={this.quantity}
+          handleChange={this.handleChange}   
           />    
     );
   }

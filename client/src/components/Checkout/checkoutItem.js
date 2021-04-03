@@ -17,10 +17,10 @@ export default function CheckoutItem(props) {
                     <image src={props.src} width="80%" height="80%" />
                 </div>
                 <div  className="checkout-product" >
-                    <p className="text-primary">product name:<span className="checkout-data"> {props.name}</span> </p>
-                    <p className="text-primary">price per 1: ${props.price}</p><br />
-                    <p className="text-primary"> quantity: {props.qty}</p><br />
-                    <p className=" text-primary">product amount: ${props.qty * props.price} </p>
+                    <p className="text-primary"><span>product name:</span> {props.name}</p>
+                    <p className="text-primary"><span>price per 1:</span> ${props.price}</p><br />
+                    <p className="text-primary"><span>quantity:</span> {props.qty}</p><br />
+                    <p className=" text-primary"><span>product amount:</span> ${props.qty * props.price} </p>
                 </div>
             </div>
       </div>

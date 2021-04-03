@@ -25,7 +25,7 @@ export default function FullCheckout(props) {
           <div className=" checkout-container">
             <div className="checkout">
               <div  className="checkout-title">
-                <h3>{props.title}</h3>
+                <h2>{props.title}</h2>
               </div>
               {
                 props.products.map((product, i) => 

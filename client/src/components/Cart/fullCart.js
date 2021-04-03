@@ -39,17 +39,22 @@ export default function FullCart(props) {
           <div className="full-cart-body" >           
             {
                 props.products.map((product, i) => 
-                  <CartItem product={product} 
-                  removeFromCart={()=>props.removeFromCart(product)} key={i}
+                  <CartItem 
+                    key={i}
+                    product={product} 
+                    removeFromCart={props.removeFromCart} 
+                   addQuantity={props.addQuantity}
+                    reduceQuantity={props.reduceQuantity}
+                    quantity={props.quantity}
+                    handleChange={props.handleChange} 
                   />
                 )
             } 
             <div className="full-cart-total">
               <div className="total-header" >
-                  <h4>
-                 Total Amount:
-                  <span className="float-right text-primary">${props.total}</span>
-                  </h4>
+                  <p>
+                  <span>Total Amount:</span> ${props.total}
+                  </p>
                 </div>           
                 <div className="cart-btn-ctnr" >  
                   <div  className="full-cart-button">                        

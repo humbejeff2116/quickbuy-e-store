@@ -32,10 +32,10 @@ export default function ViewItemCard(props) {
 
             <div className="view-item-details-cntr">
             <div className="view-item-details">
-                <p> Name: {props.name}</p>
-                <p>Price: ${props.price}</p>
+                <p><span>Name:</span>  {props.name}</p>
+                <p><span>Price:</span> ${props.price}</p>
                 <div>
-                    <p>Description: {props.description}</p>
+                    <p><span>Description:</span> {props.description}</p>
                 </div>
             </div>
             </div>
@@ -48,8 +48,8 @@ export default function ViewItemCard(props) {
             </div>
             <div  className="view-item-size-panel">
             {
-                (props.productSize) && (                                                                                  
-                            props.productSize.map((size, i)=>
+                (props.productSizes) && (                                                                                  
+                            props.productSizes.map((size, i)=>
                                 <ViewProductSize key={i} 
                                 {...size}
                                 setSize ={props.setSize}

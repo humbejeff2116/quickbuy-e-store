@@ -1,19 +1,22 @@
 import React, {useState} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation, useHistory} from 'react-router-dom/';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import './singleCollection.css'
 
 
 export function SingleCollectionItem(props) {
-  const [redirect, setRedirect] = useState('');
+    const [redirect, setRedirect] = useState('');
+    let location = useLocation();
+    let history = useHistory();
     const {src, name, price, description, available, id} = props;
     const view = (src, name, price, description, id, available) => {
+      history.push(location.pathname);
       let item = [];
-        item.push({ src, name, price,description, id, available });
-       localStorage.setItem('view', JSON.stringify(item));
-       setRedirect('/view-item');
+      item.push({ src, name, price,description, id, available });
+      localStorage.setItem('view', JSON.stringify(item));
+      setRedirect('/view-item');
     }
-    if(redirect){
+    if(redirect) {
       return(
         <Redirect to={redirect} />
       )

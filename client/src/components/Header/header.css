@@ -213,8 +213,9 @@
 }
 
 .main-navigation> .nav-link-active{
-background-color: #2b2e30;
-    border-bottom:1px solid rgb(218, 152, 218);   
+    background-color: #2b2e30;
+    border-bottom:1px solid rgb(218, 152, 218);
+       
 }
 
 .nav-open-icon{

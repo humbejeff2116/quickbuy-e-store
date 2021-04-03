@@ -7,8 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ViewItemCard from './viewItemCard';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import { Loader } from '../Loader/loader';
+import ViewAlertBox from './viewModalBox';
+import {ViewOkAlertBox} from './viewModalBox';
+import BackButton from '../BackButton/backButton';
 import './view.css';
-import {AlertBox} from '../AlertBox/alertBox';
 const cartIcon = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 
 
@@ -22,8 +24,8 @@ const viewDetails = [
         description : "latest gucci model 2021 prad shirt for men",
         id : "3",
         available:true,
-        thumbnails : [{ imageSrc:"/hjghfg" }, { imageSrc:"/gfgdf" } ,{ imageSrc:"/fdfdf" }],
-        productSize: [{size:10},{size:20},{size:15}]
+        thumbnails : [{ imageSrc:"/hjghfg" }, { imageSrc:"/gfgdf" }, { imageSrc:"/fdfdf" }],
+        productSizes: [{size:10}, {size:20}, {size:15}]
     }
 ]
 
@@ -48,10 +50,10 @@ export function View(props) {
     },[]);
 
     const  handleInputChange = e => {
-        if(e.target.value && (!isNaN(e.target.value)) ){ 
+        if(e.target.value && (!isNaN(e.target.value)) ) { 
            return setQuantity(parseInt(e.target.value));
         }
-        if(isNaN(e.target.value)){
+        if(isNaN(e.target.value)) {
             setErr(true);
             setQuantity(1);
             return setErrMssg('quantity is expected to be a number')       
@@ -66,23 +68,20 @@ export function View(props) {
         let errMssg;
         let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
         if(stateQnty < 1) {
-            errMssg ='quantity is not expected to be less than 1';
+            errMssg ='quantity should not be less than 1';
             setErr(true);
             setErrMssg(errMssg)
             return;   
         }
-        if(!size){
+        if(!size) {
             errMssg ='please select a particular size';
             setErr(true);
             setErrMssg(errMssg)
             return;   
         }
-        if(size){
-          
+        if(size) {
             setErr(false);
             setErrMssg('')
-          
-
         }
         if(isNaN(stateQnty)) {
             errMssg ='please key in a quantity of your choice';
@@ -95,6 +94,7 @@ export function View(props) {
         cart[id] = buying_quantity;
         localStorage.setItem('cart', JSON.stringify(cart));
         setMssg(true);
+        setErr(false);
         setCartMssg('item added to cart sucessfully');
     }
 
@@ -106,8 +106,11 @@ export function View(props) {
         return(
             <PageTemplate>
             <div className="view-container">
+                <BackButton buttonDivClassName="view-back-bttn"/>
                 <div className="view-item-container">
-                <Loader/> 
+                    <Loader/> 
+                </div>               
+                <div className="view-item-alert">
                 </div>
             </div>   
             </PageTemplate>
@@ -116,31 +119,7 @@ export function View(props) {
     return (
         <PageTemplate>
         <div className="view-container">
-        {
-            (err) && (
-                <AlertBox show = {err} handleClose={hideModal}>
-                    <div className="modal-header">
-                        <span className="close" onClick={hideModal}> &times; </span>
-                    </div>
-                    <div className="modal-content">
-                        <p> {errMssg} </p>
-                       
-                    </div>
-                </AlertBox>
-            )
-        }
-        {
-            (mssg) && (
-                <AlertBox show = {mssg} handleClose={hideModal}>
-                    <div className="modal-header">
-                        <span className="close" onClick={hideModal}> &times; </span>
-                    </div>
-                    <div className="modal-content">
-                        <p> {cartMssg} </p>
-                    </div>
-                </AlertBox>
-            )
-        }
+        <BackButton buttonDivClassName="view-back-bttn"/>
             <div className="view-item-container">
             {
                 viewProduct.map((product, i)=>
@@ -157,6 +136,28 @@ export function View(props) {
                     />
                 )
             }
+            </div>
+
+
+            <div className="view-item-alert">
+            {
+            (err) && (
+                <ViewAlertBox 
+                show={err}
+                hideModal={hideModal}
+                message={errMssg}
+                />
+            )
+        }
+        {
+            (mssg && !err) && (
+                <ViewOkAlertBox
+                show={mssg }
+                hideModal={hideModal}
+                message={cartMssg}
+                />
+            )
+        }
             </div>    
         </div>
         </PageTemplate>

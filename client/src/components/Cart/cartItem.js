@@ -15,17 +15,24 @@ function CartItem(props){
           </div>
           <div className="card-item-details">
             <div className="card-item-text" >
-            <p className="card-title">Name: {product.name}</p>
-            <p className="card-text">Price: ${product.price}</p>
-            <p className="card-text ">Quantity: {product.qty}</p>
-            <p className="card-text ">Product amount: ${product.qty * product.price}</p>
+              <p className="card-title"><span>Name:</span> {product.name}</p>
+              <p className="card-text"><span>Price:</span> ${product.price}</p>
+              <p className="card-text "><span>Quantity:</span> {product.qty}</p>
+              <p className="card-text "><span>Product amount:</span> ${product.qty * product.price}</p>
+            </div>
+            {/* TODO  */}
+            <div className="card-add-button">
+              <button onClick={()=>props.reduceQuantity(product.id)}> reduce </button>
+                  {/* <input type="number" value={props.quantity} name="quantity" 
+                  onChange={props.handleInputChange} className="float-right"  
+                  /> */}
+              <button onClick={()=>props.addQuantity(product.id)}> add </button>
             </div>
             
-            <button className="btn btn-sm btn-warning float-right" 
-            onClick={()=>props.removeFromCart(product)}
-            >
-              Remove from cart
-            </button>
+            <div className="card-remove-button">
+            <button  onClick={()=>props.removeFromCart(product)}>Remove from cart</button>
+            </div>
+           
           </div>
         </div>
       </div>

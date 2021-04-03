@@ -31,7 +31,7 @@
     position: relative;
     margin-top:2%;
     margin-bottom:2%;
-    box-shadow:0 0 5px rgba(117, 116, 116, 0.8);
+    /* box-shadow:0 0 5px rgba(117, 116, 116, 0.8); */
 }
 
 .full-cart-header{
@@ -90,6 +90,7 @@
     min-height:50vh;
     display:flex;
     flex-direction:column;
+    justify-content: space-around;
     align-items: center;
     padding:8px;
 }
@@ -97,22 +98,37 @@
 .card-item-text{
     display:flex;
     flex-direction:column;
+  
+    width:100%;
 }
 
-.card-body p{
+.card-item-text span{
     font-weight: bold;
 }
 
-.card-body button{
+.card-remove-button{
+    /* border:1px solid black; */
+    display:flex;
+    width:100%;
+
+}
+.card-remove-button button{
     margin-top:auto;
     width:80%;  
     height: 45px;
     border:0;
     background-color: rgb(218, 152, 218);
     color: #ffffff;
+    /* background-color:#242729; 
+    color:rgb(212, 108, 212); */
+    /* border:1px solid rgb(212, 108, 212); */
     font-size: 1em;
     font-family:'acme';
-    font-weight: bold;
+    font-weight: bold; 
+    margin-right: auto;
+     transition:all 0.3s ease;
+    /* border:1px solid black; */
+
 }
 
 .full-cart-total{
@@ -135,6 +151,8 @@
     font-size: 1em;
     font-family:'acme';
     font-weight: bold;
+    transition:all 0.3s ease;
+    
 }
 .full-cart-button{
     margin:6px;
@@ -143,7 +161,7 @@
     margin-right:auto;
 }
 .full-cart-button .clear-cart-btn{
-    border: 2px solid rgb(218, 152, 218);
+    border: 1px solid rgb(218, 152, 218);
     background-color: #ffffff;
     color: rgb(218, 152, 218);
     transition:all 0.3s ease;
@@ -167,6 +185,61 @@
 .total-header{
     text-align:center;
 }
+.total-header span{
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+.card-add-button{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    /* border:1px solid black; */
+    margin-bottom: -2%; 
+    width: 80%;
+    margin-right: auto;
+}
+.card-add-button button{
+    width:50%;  
+    /* margin-left:auto; */
+    /* margin-right:auto; */
+    height:45px;
+    position:relative;
+    transition:all 0.3s ease-in-out;
+    border:none;
+    background-color:#ffffff;
+    color:rgb(218, 152, 218);
+    border:1px solid rgb(218, 152, 218);
+    /* border-radius: 6%; */
+    font-weight: bold;
+   
+    /* margin:2px; */
+  
+
+}
+.card-add-button button:first-child{
+    border-right: 0;
+}
+.card-add-button button:hover{
+    cursor: pointer;
+    color:#ffffff;
+    background-color: rgb(212, 108, 212);
+   
+   
+}
+
+
+
+
+
+
 
 
 @media only screen and (max-width:414px){

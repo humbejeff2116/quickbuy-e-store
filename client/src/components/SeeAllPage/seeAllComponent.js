@@ -1,29 +1,39 @@
 
-import React from 'react';
-import {Link} from 'react-router-dom'
+import React,{ useState} from 'react';
+import {Link,useParams,useLocation,useHistory} from 'react-router-dom';
 import './seeAll.css'
-import ErrorBoundary from '../ErrorBoundary/errorBoundary'
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
+import { Redirect } from 'react-router-dom';
 import logo from '../../images/logo.png'
 
 
  const SeeAllComp = (props) => { 
+  const [redirect, setRedirect] = useState('');
+  let location = useLocation();
+  let history = useHistory();
   const {src, name, price, description, available, id} = props;
-
   const view = (src, name, price, description, id, available) => {
+    history.push(location.pathname);
     let item = [];
       item.push({ src, name, price,description, id,available });
      localStorage.setItem('view', JSON.stringify(item));
+     setRedirect('/view-item');
   }
+  if(redirect){
+    return(
+      <Redirect to={redirect} />
+    )
+  } 
  
   return (
     <ErrorBoundary>
       <div className="all-items-picture"  onClick={()=>view(src,name,price,description,id,available)} >
           <div className="see-all-items-details">
-            <Link to="/view-item">
+           
             <img src={logo} width="80%" height="80%" alt="img"/><br />            
-            <span className="product-title"><small>Name: {name}</small></span><br />
-            <span className="product-price"><small>Price: ${price}</small></span><br />
-            </Link>
+            <span className="product-title">Name:</span> {name}<br />
+            <span className="product-price">Price:</span> ${price}<br />
+          
           </div> 
           { 
             (!available) ?
@@ -32,12 +42,10 @@ import logo from '../../images/logo.png'
               *Out of stock* 
             </p>
             </div> : <div className="product-bttn">
-                        <Link to="/view-item" >
                           <button  onClick={()=>view(src,name,price,description,id,available)} >
                               {/* <i> <FaRegEye className="contact-bttn-icon"/></i> */}
                             View 
                           </button>
-                        </Link>
                         </div> 
           } 
       </div>

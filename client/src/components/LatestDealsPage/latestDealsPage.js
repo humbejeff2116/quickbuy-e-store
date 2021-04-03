@@ -27,7 +27,6 @@ export default function LatestDealsPage(props) {
         getLatestDeals(limit,skip)
         .then(response => response.data)
         .then(data => {
-            console.log(data.data)
             setPageCount( Math.ceil(data.length / limit))
             setProducts(data.data ) 
             setLoading(false)          

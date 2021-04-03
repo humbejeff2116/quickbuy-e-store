@@ -17,8 +17,10 @@ const ProductSchema =  mongoose.Schema({
     available: {type: Boolean , required: true },
     category: {type: String, required: true},
     description: {type: String, required: true},
+    thumbnails: [{type: String}],
+    productSizes:[{type: Number}],
     tags: [String],
-    createdAt: {type: Date , default: Date.now} 
+    createdAt: {type: Date, default: Date.now} 
 });
 
 ProductSchema.index({

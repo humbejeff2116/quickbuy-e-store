@@ -53,6 +53,12 @@ function productsController() {
             let category = req.body.category;
             let description = req.body.description;
             let tags = req.body.tags;
+            let thumbNails = req.body.thumnails;
+            let productSizes = req.body.productsizes;
+            // TODO...upload thumbnails to cloudinary
+            for(let i = 0; i < thumbNails.length; i++) {
+
+            }
             await cloudinary.uploader.upload(imageSrc)
             .then(image => {
                 console.log('image is', image);
@@ -66,7 +72,8 @@ function productsController() {
                     available,
                     category,
                     description,
-                    tags
+                    tags,
+                    productSizes
                 });
                 product.save()
                 .then(data => {

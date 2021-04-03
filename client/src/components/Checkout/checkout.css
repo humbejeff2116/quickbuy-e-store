@@ -13,7 +13,7 @@
     min-height: 75vh;
     width:45%;
     margin: 2% auto 2% auto;
-    box-shadow:0 0 5px rgba(117, 116, 116, 0.8);
+    /* box-shadow:0 0 5px rgba(117, 116, 116, 0.8); */
 }
 .checkout-title{
     color: rgb(218, 152, 218);
@@ -57,11 +57,11 @@
 
 } */
 
-.checkout-data{
+/* .checkout-data{
     color:rgb(218, 152, 218);
-}
+} */
 
-.checkout-product p{
+.checkout-product span{
     font-weight:bold;
    
 }
@@ -71,6 +71,10 @@
     flex-direction:column;
     align-items: center;
     padding:8px;
+}
+.checkout-total span{
+    font-weight:bold;
+   
 }
 
 .checkout-btn{

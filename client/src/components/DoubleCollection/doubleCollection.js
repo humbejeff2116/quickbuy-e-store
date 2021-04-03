@@ -1,16 +1,21 @@
 
 import React, { useState } from 'react';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary'
-import { Redirect } from 'react-router-dom'
 import logo from '../../images/logo.png'
+import { Redirect, useLocation, useHistory} from 'react-router-dom/';
+
+
 
 
 
 export function DoubleCollectionItem(props) {
   const [redirect, setRedirect] = useState('');
+  let location = useLocation();
+  let history = useHistory();
   const {src,name,price,description,available,id} = props;
 
   const view = (src,  name, price, description, id, available) => {
+    history.push(location.pathname);
     let item =[];
       item.push({ src, name, price,description, id,available });
     localStorage.setItem('view', JSON.stringify(item));
@@ -26,8 +31,8 @@ export function DoubleCollectionItem(props) {
      <div className="items-picture-six"  onClick={()=>view(src,name,price,description,id,available)} >   
       <div className="items-six-details">
           <img src={logo} width="80%" height="80%" alt="img" /><br />      
-          <span className="product-title"><small>name: {name}</small></span><br />
-          <span className="product-price"><small>price: ${price}</small></span><br />
+          <span className="product-title">name:</span> {name}<br />
+          <span className="product-price">price:</span> ${price}<br />
         </div>
           { (!available) ? 
           <div className="product-bttn">

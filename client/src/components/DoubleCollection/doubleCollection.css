@@ -53,9 +53,9 @@
 }
 
 .items-six-details{
-  display:flex;
+  /* display:flex;
   flex-direction: column;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; */
   margin-top: 2px;
   margin-bottom:2px;
   width:90%; 
@@ -63,6 +63,9 @@
   margin-right: auto;
   margin-left: auto;
   padding:3%;
+}
+.items-six-details span{
+  font-weight: bold;
 }
 
 .items-six-details img{
