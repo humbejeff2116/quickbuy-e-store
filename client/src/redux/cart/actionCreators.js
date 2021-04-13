@@ -15,7 +15,7 @@ import C from './constants'
 
 
 
-export const addToCart =(id,name,price,src,buying_quantity)=>{
+export const addToCart = (id, name, price, src, buying_quantity) => {
     return {
 
         type:C.ADD_TO_CART,

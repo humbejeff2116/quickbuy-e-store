@@ -147,9 +147,8 @@ export default class AppCart extends React.Component {
       cartTotalSum = cartSum.toFixed(2);
       cartTotalQty += products[i].qty;
     }
-    const cartProducts= JSON.parse(localStorage.getItem('cartProducts'));
     localStorage.removeItem('cartProducts');
-    localStorage.setItem('cartProducts',JSON.stringify(cartProducts))
+    localStorage.setItem('cartProducts',JSON.stringify(products))
     return this.setState({
       products, 
       cartTotalSum,
@@ -157,7 +156,7 @@ export default class AppCart extends React.Component {
     
  
   }
-  // TODOS... 
+  // TODO... 
   reduceQuantity = (id) => {
     const products = this.state.products;
     let cartSum = 0;
@@ -174,17 +173,15 @@ export default class AppCart extends React.Component {
       cartTotalSum = cartSum.toFixed(2);
       cartTotalQty += products[i].qty;
     }
-    const cartProducts= JSON.parse(localStorage.getItem('cartProducts'));
+    // const cartProducts= JSON.parse(localStorage.getItem('cartProducts'));
     localStorage.removeItem('cartProducts');
-    localStorage.setItem('cartProducts',JSON.stringify(cartProducts))
+    localStorage.setItem('cartProducts',JSON.stringify(products))
     return this.setState({
       products, 
       cartTotalSum,
     })
   }
-  quantity=( )=>{
 
-  }
   handleChange= ( ) =>{
 
   }
@@ -230,7 +227,6 @@ export default class AppCart extends React.Component {
           err={err}
           reduceQuantity={this.reduceQuantity}
           addQuantity={this.addQuantity}
-          quantity={this.quantity}
           handleChange={this.handleChange}   
           />    
     );

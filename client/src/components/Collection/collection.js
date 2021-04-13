@@ -2,6 +2,7 @@
 import React,{useState} from 'react';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary'
 import logo from '../../images/logo.png'
+import azz_black from '../../images/azz_black_xl.webp'
 import { Redirect, useLocation, useHistory} from 'react-router-dom/';
 
 
@@ -28,7 +29,8 @@ import { Redirect, useLocation, useHistory} from 'react-router-dom/';
       <ErrorBoundary>  
       <div className="items-picture"  onClick={()=>view(src,name,price,description,id,available)} > 
           <div className="items-details"> 
-              <img src={logo} width="80%" height="80%" alt="img" /><br />      
+          {/* TODO change image src back to product src props */}
+              <img src={azz_black} width="80%" height="80%" alt="img" /><br />      
              <span className="product-title">name:</span> {name}<br />
              <span className="product-price">price:</span> ${price}<br />
           </div> 

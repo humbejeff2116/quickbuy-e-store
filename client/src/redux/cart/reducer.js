@@ -67,7 +67,7 @@ export const cartReducer =(state=[], action) => {
                 return  (prod.id !== action.id) ? prod :
                 {
                     ...prod,
-                    rating:action.qty
+                   qty:action.qty
                 }
             })
             default :

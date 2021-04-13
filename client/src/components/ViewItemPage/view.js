@@ -64,10 +64,10 @@ export function View(props) {
 
     const addToCart = (id) => {
         let buying_quantity;
-        let stateQnty = quantity;
+        let productQnty = quantity;
         let errMssg;
         let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
-        if(stateQnty < 1) {
+        if(productQnty < 1) {
             errMssg ='quantity should not be less than 1';
             setErr(true);
             setErrMssg(errMssg)
@@ -83,7 +83,7 @@ export function View(props) {
             setErr(false);
             setErrMssg('')
         }
-        if(isNaN(stateQnty)) {
+        if(isNaN(productQnty)) {
             errMssg ='please key in a quantity of your choice';
             setErr(true);
             setErrMssg(errMssg)

@@ -1,15 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
 import React from 'react';
 import './App.css';
 import {  Route,Switch} from 'react-router-dom';
@@ -40,101 +29,68 @@ import WomenClothingsPage from '../components/WomenClothingsPages/womenClothings
 
 
 
-export default function App(){
- 
-  
-  
-    return(
-       
-      
-        <div className="container" >
+export default function App() {
+    return(  
+        <div className="container">
         <Switch>            
-            <Route exact  path="/" >
-                <HomePage />
+            <Route exact  path="/">
+                <HomePage/>
             </Route>
-            <Route exact path="/popular-collections" >
+            <Route exact path="/popular-collections">
                 <PopularCollectionsPage/>
             </Route>
-
-            <Route exact path="/women-collections"  >
+            <Route exact path="/women-collections">
                 <WomenCollectionsPage/>
             </Route>
-            <Route exact path="/women-clothings"  >
+            <Route exact path="/women-clothings">
                 <WomenClothingsPage/>
             </Route>
-
-            <Route exact path="/men-collections"  >
+            <Route exact path="/men-collections">
                 <MenCollectionsPage/>
             </Route>
-            <Route exact path="/men-clothings"  >
+            <Route exact path="/men-clothings">
                 <MenClothingsPage/>
-            </Route>
-                
-            <Route exact  path="/latest-deals"  >
+            </Route>               
+            <Route exact  path="/latest-deals">
                 <LatestDealsPage/>
-            </Route>
-                 
-            <Route exact path="/cart" >
+            </Route>  
+            <Route exact path="/cart">
                 <AppCart/>
             </Route>
-
-            <Route exact path="/checkout"  >
+            <Route exact path="/checkout">
                 <Checkout/>
             </Route>
-
-           
-            <Route exact path="/jewelries"  >
+            <Route exact path="/jewelries">
                 <JewelriesPage/>
             </Route>
-
-            <Route exact path="/accessories"  >
+            <Route exact path="/accessories">
                 <AccessoriesPage/>
             </Route>
-
-            <Route exact path="/contact"  >
+            <Route exact path="/contact">
                 <ContactPage/>
             </Route>
-
-            <Route exact path="/sell-Product" >
+            <Route exact path="/sell-Product">
                 <SellProductPage/>
             </Route>
-
-            <Route exact path="/advertise"  >
+            <Route exact path="/advertise">
                 <AdvertisePage/>
             </Route>
-
-            <Route exact path="/view-item"  >
+            <Route exact path="/view-item">
                 <View/>
             </Route>
-          
-             
-           <Route exact path="/login" >
+           <Route exact path="/login">
                 <Login/>
             </Route>
-            <Route exact path="/signup" component={Signup}/>
-            <Route  path="/users/dashboard"  >
-                    <DashboardPage/>
-                </Route>
-           
-            <Route path="*">
-            <Woops404 />
+            <Route exact path="/signup">
+                <Signup/>
             </Route>
-                         
-            
-           
-            
-         
-            {/* <Route component={Woops404} /> */}          
+            <Route  path="/users/dashboard">
+                <DashboardPage/>
+            </Route>
+            <Route path="*">
+                <Woops404/>
+            </Route>                         
         </Switch> 
-            </div>
-          
-             
-         
-
-
+        </div>   
     )
 } 
-
-
-
-   

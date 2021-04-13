@@ -8,10 +8,13 @@ export default function FormRow(props) {
         <div className="form-row">
         {
             props.formInputs.map((inputs, i)=>
-            <FormGroup key={i} {...inputs} 
+            <FormGroup 
+            key={i} 
+            {...inputs} 
             toggleBlur={props.toggleBlur} 
             handleInputChange={props.handleInputChange} 
-            onInput={props.onInput}  />
+            onInput={props.onInput} 
+            />
             )
         }
         </div>

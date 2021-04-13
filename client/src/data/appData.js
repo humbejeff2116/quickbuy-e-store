@@ -24,6 +24,13 @@ const accessories = <FontAwesomeIcon  icon={['fas', "hat-wizard"]}  />
 const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 const home = <FontAwesomeIcon  icon={['fas', "home"]}  />
 
+let _firstnameValue = React.createRef();
+let _lastnameValue = React.createRef();
+let _emailValue = React.createRef();
+let _phonenumberValue = React.createRef();
+let _passwordValue = React.createRef();
+let _password2Value = React.createRef();
+
 
 
 const ApplicationData= function(){ };
@@ -165,27 +172,33 @@ const data = {
     signupFormData : [
         {
           
-           formInputs : [
-                { type:"text",placeholder:"Firstname", name:'firstname',capitalize:true },
-                { type:"text",placeholder:"Lastname", name:'lastname', capitalize:true },
+            formInputs : [
+                { type: "text",placeholder: "Firstname", name: 'firstname', ref: _firstnameValue, capitalize: true },
+                { type: "text",placeholder: "Lastname", name: 'lastname',  ref: _lastnameValue, capitalize: true },
             ]
         },
         {
             formInputs : [
-                { type:"text",placeholder:"Email Address", name:'email', },
-                { type:"text",placeholder:"Phone Number", name:'phonenumber',},
+                { type:"email",placeholder:"Email Address", ref: _emailValue, name:'email', },
+                { type:"text",placeholder:"Phone Number",  ref: _phonenumberValue, name:'phonenumber',},
             ]
         },
         {
             formInputs : [
-                { type:"password",placeholder:"Password", name:'password', },
-                { type:"password",placeholder:"Repeat Password", name:'password2', },
+                { type:"password",placeholder:"Password",  ref: _passwordValue, name:'password', },
+                { type:"password",placeholder:"Repeat Password",  ref: _password2Value, name:'password2', },
             ]
         }
         
     ]
    
 }
+
+
+
+
+
+
 
 ApplicationData.prototype.data = data;
 
