@@ -23,13 +23,14 @@ export function FooterMainCompChild(props) {
     return(
        <div className="ft-main-item">
           <h3 className="ft-title">{props.title}</h3>
-          <ul>
+         <div className="ft-main-links">
             {
               props.links.map((link, i)=>
               <FooterLinks key={i} {...link}/>
               )
             }
-          </ul>
+            </div>
+         
         </div>
     )
 }

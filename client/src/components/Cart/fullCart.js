@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 import React from 'react'
 import CartTemplate from './cartTemplate';
 import CartItem from './cartItem';
@@ -34,7 +28,7 @@ export default function FullCart(props) {
 
         <div className="full-cart">
           <div className="full-cart-header">
-          <h2 className="full-cart-title">Cart</h2> 
+          <h2 className="full-cart-title">Bag</h2> 
           </div>
           <div className="full-cart-body" >           
             {
@@ -46,7 +40,6 @@ export default function FullCart(props) {
                    addQuantity={props.addQuantity}
                     reduceQuantity={props.reduceQuantity}
                     quantity={props.quantity}
-                    handleChange={props.handleChange} 
                   />
                 )
             } 
@@ -61,7 +54,7 @@ export default function FullCart(props) {
                     <button onClick={ props.checkout} >Checkout </button>                    
                   </div>
                   <div  className="full-cart-button" >
-                    <button className="clear-cart-btn" onClick={props.clearCart} >Clear Cart</button>
+                    <button className="clear-cart-btn" onClick={props.clearCart} >Clear Bag</button>
                   </div>                 
                 </div>
             </div>

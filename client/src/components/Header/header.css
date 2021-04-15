@@ -124,7 +124,7 @@
     color:rgb(218, 152, 218); 
     border-radius:5px;
     margin-right:0.2rem;
-    border:2px solid #38393a; 
+    border:1px solid #505152; 
     transition:all 0.5s ease-in-out;
     font-family: 'abel';
     font-size:15.5px;   
@@ -134,7 +134,7 @@
 .search-bar form input[type="search"]:focus{  
     border-radius:4px;    
     font-family:'abel';
-    border:2px solid rgb(218, 152, 218) ;
+    border:1px solid rgb(218, 152, 218) ;
     transition-delay: 0.1s;
 }
 
@@ -144,7 +144,7 @@
     width:12%;
     height:39px;
     background-color: #242729;
-    border:2px solid #38393a;
+    border:1px solid #505152;
     color:rgb(218, 152, 218); 
     transition:all 0.3s ease-in-out;
     border-radius:5px; 
@@ -152,7 +152,7 @@
 
 .search-bar form button:hover{
     transform:scale(1.05) ;
-    border:2px solid rgb(218, 152, 218) ;
+    border:1px solid rgb(218, 152, 218) ;
 }
 
 .header-login{
@@ -236,6 +236,29 @@
 
 #sign-up-link{
     display:none;
+}
+.show-qty{
+   visibility: visible;
+   position:relative;
+   /* top:-8px; */
+   border:1px solid #dd4b39;
+   background-color: #dd4b39;
+   color:#fff;
+   padding:1px 6px 1px 6px;
+   /* height:20px;
+   width:50px; */
+   border-radius: 15%;
+
+}
+.hide-qty{
+    border:1px solid #dd4b39;
+    padding:6px;
+    visibility: hidden;
+
+}
+
+.nav-cart-qty{
+   
 }
 
 @media only screen  and (max-width:910px){

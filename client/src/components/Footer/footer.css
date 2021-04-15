@@ -42,10 +42,22 @@ footer li{
     justify-content: space-around;
     margin-top:50px;
 }
+.ft-main-item {
+  /* border:1px solid white; */
+  width:12%;
+  /* padding:3px; */
+}
+.ft-main-links{
+    /* border:1px solid red; */
+    width:98%;
+    margin-left: auto;
+    
 
-/* .footer-main-item{
-   
-} */
+}
+.ft-main-item li{
+    width:100%;
+    /* text-align: center;   */
+}
 .footer-legal{
     margin-top:120px;
     display:flex;
@@ -100,7 +112,7 @@ footer li{
     width:250px;
     height:40px;
     background-color: #242729;
-    border: 2px solid #38393a;
+    border: 1px solid #505152;
     transition:all 0.5s ease-in-out;
     font-size:0.9em;
     font-weight:bold;
@@ -112,7 +124,7 @@ footer li{
     font-family:'abel';
     color: rgb(218, 152, 218);
     background-color: #242729;
-    border:2px solid rgb(218, 152, 218) ;
+    border:1px solid rgb(218, 152, 218) ;
     outline: none;
 }
 
@@ -126,12 +138,12 @@ footer li{
     font-weight:bold;
     margin-left:4px;
     background-color: #242729;
-    border: 2px solid #38393a;
+    border: 1px solid #505152;
 }
 
 .footer-form form button:hover{
     transform:scale(1.05) ;
-    border:2px solid rgb(218, 152, 218);
+    border:1px solid rgb(218, 152, 218);
 }
 
 .sub-err-cont p{

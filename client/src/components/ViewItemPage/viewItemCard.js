@@ -65,7 +65,15 @@ export default function ViewItemCard(props) {
             <ViewAddButton 
             addToCart={props.addToCart} 
             id={props.id}
+            src={props.src}
+            price={props.price}
+            name={props.name}
+            setErr={props.setErr}
+            setErrMssg={props.setErrMssg}
+            setMssg={props.setMssg}
+            setCartMssg={props.setCartMssg}
             quantity={props.quantity} 
+            size={props.selectedSize}
             cartIcon={props.cartIcon} 
             handleInputChange={props.handleInputChange}
             setQuantity={props.setQuantity} 

@@ -17,6 +17,7 @@ import './header.css';
 
 
 
+
 export const Header = ( ) => {
     const [searchedProd,setSearchedProd] = useState([]);
     const [errMssg, setErrMssg] = useState('');
@@ -113,6 +114,7 @@ export const Header = ( ) => {
                 (openMobileNav) && <MobileNav />
             }    
         </nav>
+         
         {
             (searchedProd.length > 0 ) && (
                 <div className="search-result-container">
@@ -127,6 +129,7 @@ export const Header = ( ) => {
             </div>
             ) 
         }
+       
         </>
     )
 } 

@@ -59,10 +59,8 @@ const data = {
             { name:"Women Clothings", href:"/women-clothings", icon:female },
             { name:"Men Clothings", href:"/men-clothings", icon:male },
             { name:"Jewelries", href:"/jewelries", icon:jewelries },
-            { name:"Accessories", href:"/accessories", icon:accessories },
-            { name:"Shopping Cart", href:"/cart", icon:cart },
-            
-          ],
+            { name:"Accessories", href:"/accessories", icon:accessories },   
+        ],
 
         navGifsLinks : [
             {href:"/contact", name:'Contact Us'},

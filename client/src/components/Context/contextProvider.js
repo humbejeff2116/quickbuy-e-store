@@ -2,102 +2,95 @@
 
 
 
-
-
-
-
-
-
-
-
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import MyContext from './context';
+import  setErrorMessage from './setErrorMessage';
+import { postOrders } from '../../services/ecormerce.service';
 
 
 
 
 export default function ContextProvider(props) {
     const [cartProducts, setCartProducts] = useState([])
-    const [numberOfItems, setNumberOfItems] =  useState(0);
-    const [quantity, setQuantity] = useState(1);
-    const [loading] = useState(false);
+    const [cartQuantity, setCartQuantity] =  useState(0);
     const  [cartTotalSum, setTotalSum] = useState(0);
-    const [size, setSize] = useState('');
-    const  [redirect] = useState('');
-    const [err, setErr] = useState(false);
-    const [errMssg, setErrMssg] = useState('');
-    const [cartMssg, setCartMssg] = useState('');
-    const [mssg, setMssg] = useState(false);
-
-    const addToCart = (id, src, name, price) => {
+   
+    const addToCart = (id, src, name, price, setErr, setErrMssg, setMssg, setCartMssg, quantity, size) => {
         let productQnty = quantity;
-        const cartProducts = cartProducts;
-        let cartId =0;
+        let errorMessage;  
+        let cartId ='';
+        let cartSum = 0;
+        let cartTotalQty = 0;
+        let cartTotalSum;
     
-        if( id < 1 ){
-            throw new Error('id should not be less than one');
-        }
-        if(productQnty < 1) {
-            errMssg ='quantity should not be less than 1';
-            setErr(true);
-            setErrMssg(errMssg)
-            return;   
+        if (productQnty < 1) {
+            errorMessage ='quantity should not be less than 1';
+            return setErrorMessage(true, errorMessage, setErr, setErrMssg)           
         } 
-        if(!size) {
-            errMssg ='please select a particular size';
-            setErr(true);
-            setErrMssg(errMssg)
-            return;   
+        if (!size) {
+            errorMessage ='please select a particular size';
+            return setErrorMessage(true, errorMessage, setErr, setErrMssg)               
         }
-        if(size) {
-            setErr(false);
-            setErrMssg('')
+        if (size) {
+            errorMessage ='';
+            setErrorMessage(false, errorMessage, setErr, setErrMssg)          
         }
-        if(isNaN(productQnty)) {
-            errMssg ='please key in a quantity of your choice';
-            setErr(true);
-            setErrMssg(errMssg)
-            return;
-        }
-    
+        if (isNaN(productQnty)) {
+            errorMessage ='please key in a quantity of your choice';
+            return setErrorMessage(true, errorMessage, setErr, setErrMssg);            
+        }   
         for (let i = 0; i < cartProducts.length; i++) {
             if(cartProducts[i].id === id) {
             cartId += id;
             }
-        }
-        
-        if(cartId) { 
+        }  
+        if (cartId) {
+            // TODO... add product to cart instead of updating it if different size is chosen by user
             const products = cartProducts.map(product => {
-                if(product.id === cartId) {
-                    product.qty = quantity;
+                if (product.id === cartId) {
+                    product.qty += quantity;
+                    product.size = size;
                 }
                 return product;
             })
+            for (let i = 0; i < products.length; i++) {
+                cartSum += products[i].price * products[i].qty;   
+                cartTotalSum = cartSum.toFixed(2);
+                cartTotalQty += products[i].qty;
+            }
             setCartProducts(products);
+            setTotalSum(cartTotalSum);
+            setCartQuantity(cartTotalQty)
             setMssg(true);
             setErr(false);
-            setCartMssg('item added to cart sucessfully');
+            setCartMssg('item added to bag sucessfully');
             localStorage.removeItem('cartProducts');
             localStorage.setItem('cartProducts',JSON.stringify(products));
             return; 
         }
-        setCartProducts( [ ...cartProducts, {id, src, name, price, qty: productQnty}] );
+        const newCartproduct = [ ...cartProducts, {id, src, name, price, qty: productQnty, size}];
+        setCartProducts(  newCartproduct );
+        for (let i = 0; i < newCartproduct.length; i++) {
+            cartSum +=  newCartproduct[i].price * newCartproduct[i].qty;   
+            cartTotalSum = cartSum.toFixed(2);
+            cartTotalQty +=  newCartproduct[i].qty;
+        }
+        setTotalSum(cartTotalSum);
+        setCartQuantity(cartTotalQty);
         setMssg(true);
         setErr(false);
-        setCartMssg('item added to cart sucessfully'); 
+        setCartMssg('item added to bag sucessfully'); 
         localStorage.removeItem('cartProducts');
-        localStorage.setItem('cartProducts',JSON.stringify(products)); 
+        localStorage.setItem('cartProducts', JSON.stringify(newCartproduct)); 
     }
    
-   
-
     const addQuantity = (id) => {
         const products = cartProducts;
         let cartSum = 0;
         let cartTotalQty = 0;
         let cartTotalSum;
-        for(let i = 0; i < products.length; i++) {
-            if(products[i].id === id) {
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].id === id) {
                 products[i].qty += 1;   
             }
             cartSum += products[i].price * products[i].qty;   
@@ -105,20 +98,20 @@ export default function ContextProvider(props) {
             cartTotalQty += products[i].qty;
         }
         localStorage.removeItem('cartProducts');
-        localStorage.setItem('cartProducts',JSON.stringify(products))
+        localStorage.setItem('cartProducts', JSON.stringify(products))
         setCartProducts(products); 
-        setTotalSum(cartTotalSum);   
+        setTotalSum(cartTotalSum);
+        setCartQuantity(cartTotalQty);   
     }
 
-   
     const reduceQuantity = (id) => {
         const products = cartProducts;
         let cartSum = 0;
         let cartTotalQty = 0;
         let cartTotalSum;
-        for(let i = 0; i < products.length; i++) {
-            if(products[i].id === id) {
-                if(products[i].qty < 2) {
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].id === id) {
+                if (products[i].qty < 2) {
                     return;
                 }
                 products[i].qty -= 1;    
@@ -128,214 +121,61 @@ export default function ContextProvider(props) {
             cartTotalQty += products[i].qty;
         }
         localStorage.removeItem('cartProducts');
-        localStorage.setItem('cartProducts',JSON.stringify(products));
+        localStorage.setItem('cartProducts', JSON.stringify(products));
         setCartProducts(cartProducts);
         setTotalSum(cartTotalSum);
+        setCartQuantity(cartTotalQty);
     }
-    const removeFromCart = (product) => {
-        const products = cartProducts;
-        products.filter(product =>  product.id !== product.id );
-        let cartSum = cartTotalSum - (product.qty * product.price); 
-        let totalSum = cartSum.toFixed(2);
+
+    const removeFromCart = (cartProduct) => {
+        let cartSum = 0;
+        let cartTotalQty = 0;
+        let cartTotalSum;
+        const products = cartProducts.filter(product =>  product.id !== cartProduct.id);
+        for (let i = 0; i <products.length; i++) {
+            cartSum +=  products[i].price * products[i].qty;   
+            cartTotalSum = cartSum.toFixed(2);
+            cartTotalQty +=  products[i].qty;
+        }
         localStorage.removeItem('cartProducts');
         localStorage.setItem('cartProducts', JSON.stringify(products));
         setCartProducts(products);
-        setTotalSum(totalSum);
+        setTotalSum(cartTotalSum);
+        setCartQuantity(cartTotalQty);
     }
-    const   clearCart = ( ) => {
+
+    const clearCart = () => {
         localStorage.removeItem('cartProducts');
         setCartProducts([]);
         setTotalSum(0);
     }
 
-    const handleInputChange = e => {
-        if(e.target.value && (!isNaN(e.target.value)) ) { 
-           return setQuantity(parseInt(e.target.value));
-        }
-        if(isNaN(e.target.value)) {
-            setErr(true);
-            setQuantity(1);
-            return setErrMssg('quantity is expected to be a number')       
-        }
-        return setQuantity(parseInt(e.target.value))       
+
+    const onSuccess = (payment) => {
+        const user = localStorage.getItem('user');
+        const products = cartProducts;
+        const checkoutTotalSum = cartTotalSum;
+        console.log("Your payment has been made successful!", payment);
+        postOrders(payment, user, products, checkoutTotalSum )
+        .then(response => console.log('orders posted successfully') )
+        .catch(err => console.error(err));
     }
-    
+
     return(
         <MyContext.Provider 
             value={{
-                cartproducts: cartProducts,
+                cartProducts: cartProducts,
                 addToCart: addToCart,
                 removeFromCart: removeFromCart,
                 addQuantity: addQuantity,
                 reduceQuantity: reduceQuantity, 
-                setQuantity: setQuantity,
-                handleInputChange: handleInputChange,
                 clearCart: clearCart,
-                quantity: quantity,
-                total: cartTotalSum,
-                err: err,
-                errMssg: errMssg,
-                cartMssg: cartMssg,
-                mssg: mssg,
+                onSuccess: onSuccess,
+                cartTotalSum: cartTotalSum,
+                cartQuantity: cartQuantity  
             }}
         >
             {props.children}
         </MyContext.Provider>
     )  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export default class ContextProvider extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             cartProducts: [],
-//             numberOfCartItems: 0,
-//             quantity: 1,
-//             err: '',
-//             loading: false,
-//             cartTotalSum: 0,
-//             redirect: '', 
-//         }
-//     }
-//     addQuantity = (id) => {
-//         const products = this.state.cartProducts;
-//         let cartSum = 0;
-//         let cartTotalQty = 0;
-//         let cartTotalSum;
-//         for(let i = 0; i < products.length; i++) {
-//             if(products[i].id === id) {
-//                 products[i].qty += 1;   
-//             }
-//             cartSum += products[i].price * products[i].qty;   
-//             cartTotalSum = cartSum.toFixed(2);
-//             cartTotalQty += products[i].qty;
-//         }
-//         localStorage.removeItem('cartProducts');
-//         localStorage.setItem('cartProducts',JSON.stringify(products))
-//         return this.setState({
-//             products, 
-//             cartTotalSum,
-//         })    
-//     }
-
-//     addToCart = (id, src, name, price) => {
-//         buying_quantity = cart[id] + parseInt(quantity, 10);
-//         const cartProducts = this.state.cartProducts;
-//         let cartId =0;
-    
-//         if( id < 1 ){
-//             throw new Error('id should not be less than one');
-//         } 
-      
-//         for (let i = 0; i < cartProducts.length; i++) {
-//             if(cartProducts[i].id === id){
-//               cartId += id;
-//             }
-//         }
-       
-//         if( cartId ) {
-//             return cartProducts.map(product => {
-//             if(product.id === cartId) {
-//                 product.qty = this.state.quantity;
-//             }
-//             return prod;
-//             })
-//         }
-       
-//         return [
-//           ...cartProducts,
-//           {id, src, name, price, qty}
-//         ]   
-
-//     }
-//     reduceQuantity = (id) => {
-//         const products = this.state.cartProducts;
-//         let cartSum = 0;
-//         let cartTotalQty = 0;
-//         let cartTotalSum;
-//         for(let i = 0; i < products.length; i++) {
-//           if(products[i].id === id) {
-//             if(products[i].qty < 2) {
-//               return;
-//             }
-//             products[i].qty -= 1;    
-//           }
-//           cartSum += products[i].price * products[i].qty;   
-//           cartTotalSum = cartSum.toFixed(2);
-//           cartTotalQty += products[i].qty;
-//         }
-//         // const cartProducts= JSON.parse(localStorage.getItem('cartProducts'));
-//         localStorage.removeItem('cartProducts');
-//         localStorage.setItem('cartProducts',JSON.stringify(products))
-//         return this.setState({
-//           cartProducts, 
-//           cartTotalSum,
-//         })
-
-//     }
-//     removeFromCart = (product) => {
-//         let cartProducts = this.state.cartProducts;
-//         cartProducts.filter(product =>  product.id !== product.id );
-//         let cartSum = this.state.cartTotalSum - (product.qty * product.price); 
-//         let cartTotalSum = cartSum.toFixed(2);
-//         localStorage.removeItem('cartProducts');
-//         localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
-//         return this.setState({
-//             cartProducts, 
-//             cartTotalSum
-//         });
-//     }
-
-//      handleInputChange = e => {
-//         if(e.target.value && (!isNaN(e.target.value)) ) { 
-//            return setQuantity(parseInt(e.target.value));
-//         }
-//         if(isNaN(e.target.value)) {
-//             setErr(true);
-//             setQuantity(1);
-//             return setErrMssg('quantity is expected to be a number')       
-//         }
-//         return setQuantity(parseInt(e.target.value))       
-//     }
-//     setQuantity =()=>{
-//         this.setState(prevState =>({
-
-//         }))
-
-//     }
-//     render() {
-//         return(
-//             <MyContext.Provider value={{
-//                 state: this.state,
-//                 addToCart: this.addToCart,
-//                 removeFromCart: this.removeFromCart,
-//                 addQuantity: this.addQuantity,
-//                 reduceQuantity: this.reduceQuantity,        
-//             }}
-//             >
-//                 {this.props.children}
-//             </MyContext.Provider>
-//         )
-//     }
-// }

@@ -4,7 +4,10 @@
 import React from 'react';
 import {NavSearchBar} from './navSearchBar';
 import {NavLinks} from './navLinks';
-import ApplicationData from '../../data/appData';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  NavLink } from 'react-router-dom';
+import MyContext from '../Context/context';
+const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 
 
 
@@ -35,24 +38,39 @@ export const  MainNavBar = (props) => {
             searchProducts ={props.searchProducts}
             searchValue ={props.searchValue}
             auth={props.auth}
-
             />
-            <nav className="main-navigation" id="main-navigation" >             
-                {
-                    props.navLinks.map((links, i)=>
-                        <NavLinks  key={i} {...links} />
-                    )
-                }
-            </nav>  
-                {
-                    (props.openMobileNav) ?  
-                    <button className="nav-open-icon closebtn" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)}>
-                        {close}
-                    </button> :
-                     <span className="nav-open-icon" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)} >
-                        {open}
-                     </span>  
-                }               
+            <MyContext.Consumer>
+            {context => (
+                <nav className="main-navigation" id="main-navigation" >             
+                    {
+                        props.navLinks.map((links, i)=>
+                            <NavLinks  key={i} {...links} />
+                        )
+                    }
+                    <NavLink
+                    exact 
+                    to={"/cart"} 
+                    activeClassName="nav-link-active"
+                    className="nav-item nav-link"
+                    title={"Shopping Cart"} >              
+                    <i>{cart}</i>
+                    <span className="nav-text">{"Shopping Bag"}</span>
+                    <span className={context.cartQuantity > 0 ?"show-qty" : "hide-qty"}>
+                        {context.cartQuantity}
+                    </span> 
+                    </NavLink> 
+                </nav>
+            )}
+            </MyContext.Consumer>  
+            {
+                (props.openMobileNav) ?  
+                <button className="nav-open-icon closebtn" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)}>
+                    {close}
+                </button> :
+                <span className="nav-open-icon" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)} >
+                    {open}
+                </span>  
+            }               
         </div>
         </>
     )   

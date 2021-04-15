@@ -12,144 +12,135 @@ import EmptyCart from './emptyCheckout';
 import config from '../../config/config';
 import './checkout.css';
 
+export function CheckoutComponent(props) {
+ 
 
- class CheckoutComp extends React.Component {
-    constructor(props) {
-    super(props);
-      this.state = {
-        products: [],
-        checkout: false,
-        err: '',
-        redirect:'',
-        currency: 'USD',   
-        loading: false,
-        checkoutTotalSum: 0, 
-        showButton: false,      
-        env: config.paypal.env,
-        client: config.paypal.paypalClient
-      }
-    }
-  componentDidMount() {
-  this.getCart();
-  }
-  getCart = ( ) => {
-    window.scrollTo(0,0);
-    const cart = localStorage.getItem('cart');
-    this.setState({ loading: true });
-    if (!cart) {
-      this.setState({ loading: false });
-      return; 
-    }
-    getCartProducts(cart)
-    .then(response => response.data )
-    .then(products => {
-      let cart2 = {
-        '7':2,
-        '8':3,
-        '6':2
-      }
-      // use cart1 later on just testing with cart2 
-     let cart1 = JSON.parse(cart);
-      for(let i = 0; i < products.data.length; i++) {  
-          products.data[i].qty = cart2[products.data[i].id];
-      } 
-      const checkoutProducts = products.data; 
-      let checkoutSum = 0;
-      let checkoutTotalQty = 0;
-      let checkoutTotalSum;
-      for (let i = 0; i <checkoutProducts.length; i++) {     
-        checkoutSum +=checkoutProducts[i].price * checkoutProducts[i].qty;   
-        checkoutTotalSum =checkoutSum.toFixed(2);
-        checkoutTotalQty += checkoutProducts[i].qty;
-      }
-      return this.setState({
-        loading:false,
-         products:checkoutProducts,
-         checkoutTotalSum,
-          err:'' 
-      });
-    }).catch(err => {
-        console.error(err);
-        this.setState({
-          loading:false,
-          err:'an error occured will getting data please wait and refresh'  
-        });
-    });
-  }
-  
-   toggleCheckout = ( ) => {
-     this.setState(prevState => ({
-       checkout: !prevState.checkout
-     }));
-   }
-   
-   onSuccess = (payment) => {
-    const user = localStorage.getItem('user');
-    const products = this.state.products;
-    const checkoutTotalSum = this.state.checkoutTotalSum;
-    console.log("Your payment has been made successful!", payment);
-    postOrders(payment, user, products, checkoutTotalSum )
-    .then(response => console.log('orders posted successfully') )
-    .catch(err => console.error(err));
-  }	
-   onCancel = (data) => {
-      console.log('You have cancelled your payment', data);
-  }	        
-  onError = (err) => {
-      console.log("an Error! occured while carrying out transaction", err);	 
-  }
-  cancelPayment = ( ) => {
-    this.setState({
-      redirect: '/'
-    })
-  } 
-
-  render() {
-    const { products, checkoutTotalSum, loading,err,redirect, env, client, currency,checkout} =  this.state;
-    if(redirect) {
-      return(
-        <Redirect to={redirect}/>
-      )
-    }
-          
-    if(loading) {
-      return(
-        <CheckoutLoader/>
-      )
-    }
-
-    if(err) {
-      return(
-        <CheckoutErr err={err}/>
-      )
-    }
-
-    if(!products.length ) {
-      return(       
-        <EmptyCart />
-      )      
-    } 
-    return (
-      <FullCheckout 
-      title={'Checkout'}
-      products={products}
-      checkoutTotalSum={checkoutTotalSum}
-      checkout={checkout}
-      env={env}
-      client={client}
-      currency={currency}
-      total={checkoutTotalSum}
-      onError={this.onError}
-      onSuccess={this.onSuccess}
-      onCancel={this.onCancel}
-      toggleCheckout={this.toggleCheckout}
-      cancelPayment={this.cancelPayment}
-      />
-    );
-  }
+ if(props.redirect) {
+  return(
+    <Redirect to={props.redirect}/>
+  )
 }
- const Checkout = RequireAuthentication(CheckoutComp , isAuthenticated);
- export default Checkout;
+      
+
+if(!props.products.length ) { 
+  return(       
+    <EmptyCart />
+  )      
+} 
+return (
+  <FullCheckout 
+  title={'Checkout'}
+  products={props.products}
+  checkoutTotalSum={props.checkoutTotalSum}
+  checkout={props.checkout}
+  env={props.env}
+  client={props.client}
+  currency={props.currency}
+  total={props.checkoutTotalSum}
+  onError={props.onError}
+  onSuccess={props.onSuccess}
+  onCancel={props.onCancel}
+  toggleCheckout={props.toggleCheckout}
+  cancelPayment={props.cancelPayment}
+  />
+);
+
+}
+//  class CheckoutComp extends React.Component {
+//     constructor(props) {
+//     super(props);
+//       this.state = {
+//         products: [],
+//         checkout: false,
+//         err: '',
+//         redirect:'',
+//         currency: 'USD',   
+//         loading: false,
+         
+//         showButton: false,      
+//         env: config.paypal.env,
+//         client: config.paypal.paypalClient
+//       }
+//     }
+//   componentDidMount() {
+//     window.scrollTo(0,0);
+ 
+//   }
+
+//    toggleCheckout = ( ) => {
+//      this.setState(prevState => ({
+//        checkout: !prevState.checkout
+//      }));
+//    }
+   
+//    onSuccess = (payment) => {
+//     const user = localStorage.getItem('user');
+//     const products = this.state.products;
+//     const checkoutTotalSum = this.state.checkoutTotalSum;
+//     console.log("Your payment has been made successful!", payment);
+//     postOrders(payment, user, products, checkoutTotalSum )
+//     .then(response => console.log('orders posted successfully') )
+//     .catch(err => console.error(err));
+//   }	
+//    onCancel = (data) => {
+//       console.log('You have cancelled your payment', data);
+//   }	        
+//   onError = (err) => {
+//       console.log("an Error! occured while carrying out transaction", err);	 
+//   }
+//   cancelPayment = ( ) => {
+//     this.setState({
+//       redirect: '/'
+//     })
+//   } 
+
+//   render() {
+//     const {  loading,err,redirect, env, client, currency,checkout} =  this.state;
+   
+//     if(redirect) {
+//       return(
+//         <Redirect to={redirect}/>
+//       )
+//     }
+          
+//     if(loading) {
+//       return(
+//         <CheckoutLoader/>
+//       )
+//     }
+
+//     if(err) {
+//       return(
+//         <CheckoutErr err={err}/>
+//       )
+//     }
+
+//     if(!products.length ) {
+//       return(       
+//         <EmptyCart />
+//       )      
+//     } 
+//     return (
+//       <FullCheckout 
+//       title={'Checkout'}
+//       products={products}
+//       checkoutTotalSum={checkoutTotalSum}
+//       checkout={checkout}
+//       env={env}
+//       client={client}
+//       currency={currency}
+//       total={checkoutTotalSum}
+//       onError={this.onError}
+//       onSuccess={this.onSuccess}
+//       onCancel={this.onCancel}
+//       toggleCheckout={this.toggleCheckout}
+//       cancelPayment={this.cancelPayment}
+//       />
+//     );
+//   }
+// }
+//  const Checkout = RequireAuthentication(CheckoutComp , isAuthenticated);
+//  export default Checkout;
 
 // on success will return this object then send the details to the backend 
 // onSuccess={

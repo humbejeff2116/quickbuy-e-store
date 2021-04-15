@@ -6,7 +6,9 @@ import HomePage from '../components/Home/home';
 import Login from '../components/Login/login';
 import Signup from '../components/SignupPage/signup';
 import AppCart from '../components/Cart/cart';
-import Checkout from '../components/Checkout/checkout';
+import Cart from '../components/Cart/index';
+// import Checkout from '../components/Checkout/checkout';
+import AppCheckout from '../components/Checkout/index';
 import {ContactPage} from '../components/ContactPage/contact';
 import {SellProductPage} from '../components/SellProductPage/sellProductPage';
 import AccessoriesPage from '../components/AccessoriesPage/accessoriesPage';
@@ -21,6 +23,7 @@ import  WomenCollectionsPage from '../components/WomenCollectionPage/womenCollec
 import MenCollectionsPage from '../components/MenCollectionPage/menCollectionPage';
 import MenClothingsPage from '../components/MenClothingsPages/menClothings';
 import WomenClothingsPage from '../components/WomenClothingsPages/womenClothings';
+import ContextProvider from '../components/Context/contextProvider';
 
 
 
@@ -30,7 +33,8 @@ import WomenClothingsPage from '../components/WomenClothingsPages/womenClothings
 
 
 export default function App() {
-    return(  
+    return(
+        <ContextProvider> 
         <div className="container">
         <Switch>            
             <Route exact  path="/">
@@ -55,10 +59,10 @@ export default function App() {
                 <LatestDealsPage/>
             </Route>  
             <Route exact path="/cart">
-                <AppCart/>
+                <Cart/>
             </Route>
             <Route exact path="/checkout">
-                <Checkout/>
+                <AppCheckout/>
             </Route>
             <Route exact path="/jewelries">
                 <JewelriesPage/>
@@ -91,6 +95,7 @@ export default function App() {
                 <Woops404/>
             </Route>                         
         </Switch> 
-        </div>   
+        </div>
+        </ContextProvider>    
     )
 } 

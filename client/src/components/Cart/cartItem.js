@@ -23,14 +23,11 @@ function CartItem(props){
             {/* TODO  */}
             <div className="card-add-button">
               <button onClick={()=>props.reduceQuantity(product.id)}> reduce </button>
-                  {/* <input type="number" value={props.quantity} name="quantity" 
-                  onChange={props.handleInputChange} className="float-right"  
-                  /> */}
               <button onClick={()=>props.addQuantity(product.id)}> add </button>
             </div>
             
             <div className="card-remove-button">
-            <button  onClick={()=>props.removeFromCart(product)}>Remove from cart</button>
+            <button  onClick={()=>props.removeFromCart(product)}>Remove from bag</button>
             </div>
            
           </div>
