@@ -20,21 +20,32 @@ import './header.css';
 
 export const Header = ( ) => {
     const [searchedProd,setSearchedProd] = useState([]);
+    const [searchIsOpen, setSearchIsOpen] = useState(false);
     const [errMssg, setErrMssg] = useState('');
     const [mssg,setMssg] = useState('');
     const [scrolled, setScrolled] = useState(false);
     const [openMobileNav, setOpenMobileNav] = useState(false);
     const [redirect, setRedirect] = useState('');
     let _searchValue = React.createRef();
+    let _toggleSearchContainer = React.createRef();
     const navGifsLinks =  ApplicationData.getNavGifsLinks();
     const navLinks = ApplicationData.getNavLinks();
     const socialLinks =ApplicationData.getSocialLinks();
     const auth = isAuthenticated();
     let navbarClasses = ['header-container'];
 
+    useEffect(()=> {
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('click', closeSearchResultComponent);
+        return ()=> {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('click', closeSearchResultComponent);
+        }
+    });
+
     const handleScroll = ( ) => {
         const offset = window.scrollY;
-        if(offset > 0) {
+        if (offset > 0) {
            setScrolled(true)
         } else {
            setScrolled(false)
@@ -46,7 +57,7 @@ export const Header = ( ) => {
         const searchedProduct = {
             searchValue: _searchValue.current.value
         }
-        if(!searchedProduct.searchValue) {
+        if (!searchedProduct.searchValue) {
             setMssg('');
             setSearchedProd([]);
             setErrMssg('');
@@ -55,7 +66,7 @@ export const Header = ( ) => {
         searchProduct(searchedProduct)
         .then(response => response.data)
         .then(searchedProducts => {  
-            if(searchedProducts.status !== 200) {
+            if (searchedProducts.status !== 200) {
                 setErrMssg(searchedProducts.errMessage)
                 setMssg('');
                 setSearchedProd([]); 
@@ -64,6 +75,7 @@ export const Header = ( ) => {
             }
             setMssg(searchedProducts.message);
             setSearchedProd(searchedProducts.data);
+            setSearchIsOpen(true);
             setErrMssg(''); 
             return searchedProducts;
         })
@@ -79,18 +91,22 @@ export const Header = ( ) => {
          window.location ='/view-item'
         //  setRedirect('/view-item');
     }
-    useEffect(()=> {
-        window.addEventListener('scroll', handleScroll);
-        return ()=> {
-            window.removeEventListener('scroll',handleScroll);
-        }
-    });
-    if(scrolled) {
+    
+    const closeSearchResultComponent = (e) => {    
+        if (searchIsOpen && !_toggleSearchContainer.current.contains(e.target)) {      
+            setSearchIsOpen(false);
+            setSearchedProd([]);
+            setMssg('');
+            setErrMssg('');     
+        }  
+    }
+  
+    if (scrolled) {
         navbarClasses.push('scrolled');
     }
   
    
-    if(redirect){
+    if (redirect) {
         return(
             < Redirect to={redirect}/>
         )
@@ -116,8 +132,8 @@ export const Header = ( ) => {
         </nav>
          
         {
-            (searchedProd.length > 0 ) && (
-                <div className="search-result-container">
+            (searchIsOpen ) && (
+                <div  ref={_toggleSearchContainer} className="search-result-container">
                     <div className="search-content">
                     {
                         searchedProd.map((prod ,i)=>
