@@ -2,7 +2,7 @@
 const express = require('express');
 const multer = require('multer');
 const upload1 = multer({dest: 'public/uploads/users'});
-const {body, check, validationResult } = require('express-validator');
+// const {body, check, validationResult } = require('express-validator');
 const signupValidation = require('../validation/signupValidation');
 const loginValidation = require('../validation/loginValidation');
 const subscriptionValidation  = require('../validation/subscriptionValidation');
@@ -12,12 +12,10 @@ const usersController = require('../controller/usersController');
 const subscriptionController = require('../controller/subscriptionController');
 const jwtMiddleware = require('../Auth/jwtAuth');
 const orderController = require('../controller/ordersContoller');
-const { multerUploads } = require('./Multer/multer');
 let router = express.Router();
 
 
 router.get('/all-Products', productsController.getAllProducts);
-router.post('/all-products', multerUploads, productsController.postAllProducts);
 router.get(`/latest-deals`, seeAllControllers.getLatestDeals);
 router.get('/women-collections', seeAllControllers.getWomenCollections);
 router.get('/men-collections',seeAllControllers.getMenCollections);

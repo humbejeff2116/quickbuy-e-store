@@ -1,0 +1,137 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+          quickbuy admin panel
+          </title>
+<link rel="stylesheet" href="/admin/style.css" >
+<link rel="icon" href="/admin/favicon.ico" />
+    </head>
+    <body>
+        <header  role="navigation">          
+               
+                    <nav class="nav-links">
+                        <% if (currentUser){ %>
+                            <div class="nav-1">
+                                <div class="nav-item" >                               
+                                    <a class="<% title = 'login' ? 'active' : ''  %> " href="/admin/">
+                                        <span>
+                                           Admin Panel
+                                        </span>
+                                    </a> 
+                                </div>   
+                            </div>
+
+                            <div class="nav-2">
+                                <div  class="nav-item" >                               
+                                    <a class="<% title = 'members' ? 'active' : ''  %> " href="/admin/edit">
+                                        <span>
+                                            hello  <%= currentUser.displayName() %>
+                                        </span>
+                                    </a> 
+                                </div>
+                                <div  class="nav-item">                               
+                                    <a  href="/admin/logout">
+                                        <span>
+                                        logout
+                                        </span>
+                                    </a> 
+                                </div>
+                            </div>
+                        
+                        <%}else{ %>
+                            <!-- nav 1 begins here -->
+                            <!-- home -->
+                            <div class="nav-1">
+                                <div class="nav-item" >                               
+                                    <a class="<% title = 'login' ? 'active' : ''  %> " href="/admin/">
+                                        <span>
+                                         Go to admin panel
+                                        </span>
+                                    </a> 
+                                </div>
+                                    
+                            </div>
+                            <!-- nav 2 begins here -->
+                            <div class="nav-2">
+                                
+                                <!-- login -->
+                                <div class="nav-item" >                               
+                                    <a class="<% title = 'login' ? 'active' : ''  %> " href="/admin/login">
+                                        <span>
+                                            Login
+                                        </span>
+                                    </a> 
+                                </div>
+                                <!-- signup -->
+                                <div class="nav-item" >                               
+                                    <a class="<% title = 'signup' ? 'active' : ''  %> " href="/admin/signup">
+                                        <span>
+                                            Signup
+                                        </span>
+                                    </a> 
+                                </div>
+                            </div>                                                  
+                        <% } %>                   
+                    </nav>                        
+        </header>
+        <div class="progress"></div>
+        <div class="container">
+       
+
+        <div class="err-container" >
+         <%  if (errors.length > 0) {%>
+            <% errors.forEach(err => { %>
+                <div class="alert alert-danger" role ="alert">
+                    <%= err %>
+                </div>
+           <% }) %>
+
+
+
+         <%}%>
+              
+
+               <% if (valErrors.length>0) {%>
+
+                <% valErrors.forEach(err => { %>
+                    <div class="alert alert-danger" role ="alert">
+                            <%= err.msg %>
+                    </div>
+                    <% }) %>
+
+
+            <% } %>
+
+           
+              
+          
+           <% infos.forEach(info => { %>
+                <div id="info" class="alert alert-info" role="alert">
+                    <%= info %>
+                </div>
+                <script>
+                   
+                    window.onload = function(){
+                        let alertInfo = document.getElementById('info');
+                        if(alertInfo.textContent ){
+                            setTimeout(()=>{
+                                alertInfo.style.display = 'none';
+                            },8000);
+                        }
+                    }  
+                
+                window.addEventListener('scroll',()=>{
+                    document.body.style.setProperty('--scroll',
+                        window.pageYOffset/(document.body.offsetHeight-window.innerHeight)
+                    )
+                },false);
+                </script>        
+          <%  }) %>
+        </div>
+      
