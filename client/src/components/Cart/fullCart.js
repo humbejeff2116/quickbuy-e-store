@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React from 'react';
 import CartTemplate from './cartTemplate';
 import CartItem from './cartItem';
 import { AlertBox } from '../AlertBox/alertBox';

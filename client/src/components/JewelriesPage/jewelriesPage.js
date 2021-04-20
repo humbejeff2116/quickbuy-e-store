@@ -14,7 +14,6 @@ export default function JewelriesPage(props) {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
     const [err,setErr] = useState(false)
-    // skip is current page
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
     const [pageCount,setPageCount] = useState(4);
@@ -26,7 +25,7 @@ export default function JewelriesPage(props) {
         getJewelries(limit,skip)
         .then(response => response.data )
         .then(products => {
-            if(products.data.length < 1) {
+            if (products.data.length < 1) {
                 setErr('no products returned');
                 setLoading(false);
                 return;
@@ -52,7 +51,7 @@ export default function JewelriesPage(props) {
         .catch(err => console.error(err));  
     }
 
-    if((!err && products.length < 1) || loading) {
+    if ((!err && products.length < 1) || loading) {
         return(
           <PageTemplate>
           <Loader/>

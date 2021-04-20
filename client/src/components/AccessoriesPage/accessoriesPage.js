@@ -1,12 +1,12 @@
 
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState} from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
 import { Loader } from '../Loader/loader';
 import {getAccessories} from '../../services/ecormerce.service'
-import ErrorBoundary from '../ErrorBoundary/errorBoundary'
-import './accessories.css'
-import {PageTemplate} from '../PageTemplate/pageTemplate'
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
+import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
+import './accessories.css';
 
 
 
@@ -20,20 +20,20 @@ export default function AccssoriesPage (props) {
     const [pageCount,setPageCount] = useState(4);
 
     useEffect(() => {
-         window.scrollTo(0,0) 
+         window.scrollTo(0,0); 
         setLoading(true);
         getAccessories(limit,skip)
         .then(response => response.data)
         .then(products => {
             setProducts(products.data);
-            setPageCount( Math.ceil(products.data.length / limit))
+            setPageCount( Math.ceil(products.data.length / limit));
             setLoading(false);
         })
         .catch(err => {
             console.error(err.stack);
             setErr('an Error occured while trying to get content');
             setLoading(false);
-        })   
+        });   
        
     }, [skip,limit])
     
@@ -54,7 +54,7 @@ export default function AccssoriesPage (props) {
             setLoading(false);
         })
         .catch(err => {
-            console.error(err)
+            console.error(err);
             setErr('no products returned');
             setLoading(false); 
         });   

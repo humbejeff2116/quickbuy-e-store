@@ -7,7 +7,6 @@ import Login from '../components/Login/login';
 import Signup from '../components/SignupPage/signup';
 import AppCart from '../components/Cart/cart';
 import Cart from '../components/Cart/index';
-// import Checkout from '../components/Checkout/checkout';
 import AppCheckout from '../components/Checkout/index';
 import {ContactPage} from '../components/ContactPage/contact';
 import {SellProductPage} from '../components/SellProductPage/sellProductPage';

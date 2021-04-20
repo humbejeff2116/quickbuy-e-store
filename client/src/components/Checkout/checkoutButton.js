@@ -1,10 +1,5 @@
 
-
-
-
 import React  from 'react';
-
-
 
 
 export default function CheckoutButton(props) {
@@ -14,7 +9,6 @@ export default function CheckoutButton(props) {
             <button  onClick={()=>props.toggleCheckout()}>
                 Pay
             </button>
-
             </div>
            <div className="full-checkout-button">
            <button onClick={()=>props.cancelPayment()} >

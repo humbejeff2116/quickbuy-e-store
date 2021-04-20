@@ -1,11 +1,9 @@
 
-import React from 'react'
-import './contact.css'
+import React from 'react';
+import './contact.css';
 
 
-
-
-export const ContactPage = ( ) =>
+export const ContactPage = () =>
     <div className="contact-container">
         <div className="contact-header">
             <h3>Contact Us</h3>

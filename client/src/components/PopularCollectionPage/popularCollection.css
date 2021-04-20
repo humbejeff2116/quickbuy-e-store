@@ -1,15 +1,10 @@
 
-
-
-
 .popular-collections-container{
     display:flex;
     flex-direction:column;
     margin-top:0.5%;
-    margin-bottom:0.6%;
-     
+    margin-bottom:0.6%;    
   }
-  
 
 .popular-collections-items-header{
     display:flex;
@@ -19,14 +14,12 @@
     color:black;
     margin-bottom:0.15%; 
 }
-
-
 .popular-collections-title{
     display:flex;
     flex:1;
     justify-content: center;
 }
-  
+
 .popular-collections-items-container{
     min-height:65vh;
     padding:0.25%;

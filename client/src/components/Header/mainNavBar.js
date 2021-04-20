@@ -1,13 +1,12 @@
 
 
-
 import React from 'react';
-import {NavSearchBar} from './navSearchBar';
-import {NavLinks} from './navLinks';
+import { NavSearchBar } from './navSearchBar';
+import { NavLinks } from './navLinks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  NavLink } from 'react-router-dom';
 import MyContext from '../Context/context';
-const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
+const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}/>
 
 
 
@@ -15,7 +14,6 @@ const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 
 
 export const  MainNavBar = (props) => {
-   
 
     function setUnicode(unicode) {
         let dummy;

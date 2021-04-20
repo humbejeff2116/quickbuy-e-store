@@ -5,13 +5,13 @@ import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import {Loader} from '../Loader/loader';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
-import BackButton from '../BackButton/backButton'
+import BackButton from '../BackButton/backButton';
 import './womenCollection.css';
 
 window.React = React;
 
 
-export default function WomenCollectionsPage(props) {
+export default function WomenCollectionsPage() {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
     const [err, setErr] = useState('');
@@ -20,7 +20,7 @@ export default function WomenCollectionsPage(props) {
     const [pageCount, setPageCount] = useState(1);
 
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0,0);
         setLoading(true);
         getWomenCollections(limit,skip)
         .then(response => response.data)

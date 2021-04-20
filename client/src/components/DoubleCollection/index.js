@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import { DoubleCollectionItem} from './doubleCollection'
 import { PageLoader } from '../Loader/loader';
 import './doubleCollection.css';

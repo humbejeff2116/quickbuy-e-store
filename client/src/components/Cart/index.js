@@ -6,16 +6,15 @@ import MyContext from '../Context/context';
 
 
 
-export default function AppCart(props){
-    const [err, setErr] = React.useState('')
+export default function AppCart(props) {
+    const [err, setErr] = React.useState('');
     const [loading, setLoading] = React.useState(false);
     const [redirect, setRedirect] = React.useState('');
   
-
-    const checkout = ( ) => {
+    const checkout = () => {
         const token = localStorage.getItem('x-access-token');
         const accessTokenExpirationTime = localStorage.getItem('x-access-token-expiration');
-        if (!token ){
+        if (!token ) {
             localStorage.setItem('checkout-message','please log in to complete action');
             return setRedirect('/login');   
         }

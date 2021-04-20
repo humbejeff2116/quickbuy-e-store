@@ -1,10 +1,10 @@
 
 import React,{ useState} from 'react';
 import {Link,useParams,useLocation,useHistory} from 'react-router-dom';
-import './seeAll.css'
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import { Redirect } from 'react-router-dom';
-import logo from '../../images/logo.png'
+import logo from '../../images/logo.png';
+import './seeAll.css';
 
 
  const SeeAllComp = (props) => { 
@@ -19,7 +19,7 @@ import logo from '../../images/logo.png'
      localStorage.setItem('view', JSON.stringify(item));
      setRedirect('/view-item');
   }
-  if(redirect){
+  if (redirect) {
     return(
       <Redirect to={redirect} />
     )

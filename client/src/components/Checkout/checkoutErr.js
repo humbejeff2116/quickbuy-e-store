@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 import React  from 'react';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import  ErrorBoundary  from '../ErrorBoundary/errorBoundary';

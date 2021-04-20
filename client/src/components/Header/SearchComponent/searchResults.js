@@ -1,14 +1,8 @@
 
-
-
-
-
-
-
-
-
 import React from 'react';
 import './searchResult.css';
+
+
 
 const SearchResult = (props) => {
     const {src, name, price, description, available, id} = props;

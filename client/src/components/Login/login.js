@@ -4,11 +4,11 @@
    import { Link,Redirect } from 'react-router-dom'
    import { login } from '../../services/ecormerce.service';
    import {PageTemplate} from '../PageTemplate/pageTemplate'
-   import './login.css'
+   import './login.css';
 
   
 
-export default class Login extends React.Component{
+export default class Login extends React.Component {
      constructor(props) {
        super(props);
        this.state = { 
@@ -26,7 +26,7 @@ export default class Login extends React.Component{
 
       toggleBlur = (e) => {
 
-        if(e.target.value.length > 0) {
+        if (e.target.value.length > 0) {
         return e.target.classList.add('not-empty');
         }
        return e.target.classList.remove('not-empty')           
@@ -35,14 +35,14 @@ export default class Login extends React.Component{
       submitLogin = (e) => {
         e.preventDefault();
         const checkoutAction = localStorage.getItem('checkout-message');
-        if(checkoutAction) {
+        if (checkoutAction) {
             localStorage.removeItem('checkout-action')
         }
         login(this.state)
         .then( response => response.data)
         .then(loginData => {
-            if(loginData.status !== 200) {
-              if(loginData.message) {
+            if (loginData.status !== 200) {
+              if (loginData.message) {
                   return this.setState({
                           errMessage: loginData.message,
                           valErrors:[]
@@ -88,17 +88,17 @@ export default class Login extends React.Component{
      componentWillUnmount() {
         const checkoutMessage = localStorage.getItem('checkout-message');
         const authMessage = localStorage.getItem('route-auth-message');
-        if(checkoutMessage){
+        if (checkoutMessage){
           localStorage.removeItem('checkout-message');
           
         }
-        if(authMessage) {
+        if (authMessage) {
           localStorage.removeItem('route-auth-message');
         }
      }
      
      render() {
-       if(this.state.redirect) {
+       if (this.state.redirect) {
          return(
            <Redirect to={this.state.redirect} />
          )

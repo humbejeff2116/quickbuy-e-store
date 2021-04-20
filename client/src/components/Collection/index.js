@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import {CollectionItem} from './collection';
 import { PageLoader } from '../Loader/loader';

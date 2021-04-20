@@ -1,7 +1,7 @@
 
-import React from 'react'
-import FooterLinks from './footerLinks'
-import ApplicationData from '../../data/appData'
+import React from 'react';
+import FooterLinks from './footerLinks';
+import ApplicationData from '../../data/appData';
 
 
 
@@ -11,7 +11,7 @@ export default  function FooterMainComp() {
     return(
       <section className="footer-main">
         {
-          footerMainLinks.map((links, i)=>
+          footerMainLinks.map((links, i) =>
           <FooterMainCompChild key={i} {...links}/>
           )
         }      
@@ -25,7 +25,7 @@ export function FooterMainCompChild(props) {
           <h3 className="ft-title">{props.title}</h3>
          <div className="ft-main-links">
             {
-              props.links.map((link, i)=>
+              props.links.map((link, i) =>
               <FooterLinks key={i} {...link}/>
               )
             }

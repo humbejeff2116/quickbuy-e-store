@@ -63,7 +63,7 @@ export default function WomenClothingsPage(props) {
             <div  className="women-clothings-items-container">
                 <div className="women-clothings-items">
                     { 
-                        products.map((product, i)=>
+                        products.map((product, i) =>
                             < SeeAllComp  key ={i} {...product} />
                         )       
                     }

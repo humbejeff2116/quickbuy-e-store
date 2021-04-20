@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom';
 
 
 export default function Link(props) {
-    if(props.className) {
+    if (props.className) {
         return(
             <div className={props.className} >
                 <NavLink 

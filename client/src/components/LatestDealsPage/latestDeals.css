@@ -1,7 +1,4 @@
 
-
-
-
 .latest-deals-container{
     display:flex;
     flex-direction:column;
@@ -11,21 +8,17 @@
 }
 
 .latest-deals-items-header{
-  /* border:1px solid black; */
   display:flex;
   flex-direction:row;
-  /* justify-content:center; */
   background-color:#ffffff;
   color:black;
   margin-bottom:0.15%;
 }
 
 .latest-deals-title{
-  /* border:1px solid green; */
   display:flex;
   flex:1;
   justify-content: center;
-
 }
   
 .latest-deals-items-container{

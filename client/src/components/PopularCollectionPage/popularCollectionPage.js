@@ -7,7 +7,7 @@ import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
 import {Loader} from '../Loader/loader';
 import BackButton from '../BackButton/backButton';
-import './popularCollection.css'
+import './popularCollection.css';
 
 
 
@@ -48,7 +48,7 @@ export default function PopularCollectionsPage(props) {
         .catch(err => console.error(err));      
     } 
       
-    if( (!err && products.length < 1) || loading) {
+    if ((!err && products.length < 1) || loading) {
         return(
           <PageTemplate>
           <Loader/>

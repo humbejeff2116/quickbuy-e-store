@@ -19,7 +19,7 @@ export default function MenClothingsPage(props) {
     const [pageCount,setPageCount] = useState(1);
 
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0,0);
         setLoading(true);
         getMenCollections(limit,skip)
         .then(response=> response.data)
@@ -47,7 +47,7 @@ export default function MenClothingsPage(props) {
         })
         .catch(err => console.error(err));   
     }
-    if((!err && products.length < 1) || loading) {
+    if ((!err && products.length < 1) || loading) {
         return(
           <PageTemplate>
           <Loader/>

@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 .view-main{
     display:flex;
     flex-direction:row;
@@ -15,11 +7,7 @@
     margin:4px;
     /* border:1px solid black; */
     height:400px;
-  
-
 }
-
-
 .view-content{
     width:59.2%;
     display:flex;
@@ -29,8 +17,6 @@
     margin-bottom: 2px;
     /* border:1px solid black; */
     background-color:#ffffff;
-
-
 }
 .view-content p{
     font-weight:bold;
@@ -53,14 +39,10 @@
     border:none;
     color:#242729;
     font-weight: bold;
-   
 }
 .view-button button:hover{
-  
     background-color:rgb(218, 152, 218);
-    cursor:pointer;
-   
-   
+    cursor:pointer; 
 }
 .view-button input{
     left:82px;
@@ -69,8 +51,6 @@
     width:80px;
     height:45px;
     /* transition:all 0.3s ease-in-out; */
-    
-  
 }
 .view-button input:focus{
     border:2px solid rgb(218, 152, 218);
@@ -82,17 +62,14 @@
     height:200px;
     border:1px solid black;
     margin:4px;
-
 }
 .item-name{
     position:relative;
     top:40px;
-
 }
 .item-price{
     position:relative;
     top:60px;
-
 }
 .item-error{
     position:relative;
@@ -102,14 +79,11 @@
     margin-right: auto;
     border-radius: 4px;
     z-index:0;
-   
     border:1px solid rgb(248, 197, 197);
     background-color:#f8d7da;
     color:rgb(121, 30, 30);
-
     animation-name:animatetop;
     animation-duration:1s;
-   
 }
 
 @keyframes animatetop{
@@ -138,12 +112,10 @@
 }
 
 .item-error p{
-   
     /* position:relative;
     top:90px; */
     color:rgb(121, 30, 30);
-    font-weight: normal;
-   
+    font-weight: normal;  
 }
 .item-mssg-cont{
     position:relative;
@@ -155,46 +127,30 @@
     z-index:0;
     border:1px solid rgb(248, 197, 197);
     background-color:#f8d7da;
-
     animation-name:animatetop;
     animation-duration:1s;
-
 }
 .item-mssg-cont p {
     color:rgb(121, 30, 30);
     font-weight: normal;
-    
-
 }
 
-
-
-
-
-
 .view-back-bttn{
-    
       margin-left:1%;
 }
 
-  .view-back-bttn button{
-      height: 40px;
+.view-back-bttn button{
+    height: 40px;
     border:none;
     cursor: pointer;
     background-color: rgb(218, 152, 218);
     color:#ffffff;
     margin-top:15%;
-  
-    
-  
-  }
-  .view-back-bttn button:hover{
-   
+}
+.view-back-bttn button:hover{
     cursor: pointer;
     text-decoration: underline;
-    
-  
-  }
+}
 
 .view-container{
     display:flex;
@@ -203,13 +159,11 @@
     margin-top:0.5%;
     margin-bottom:0.6%;
     min-height: 70vh;
-    /* border:1px solid black; */
-  
+    /* border:1px solid black; */ 
 }
 .view-item-container{
     display:flex;
     flex-direction: column;
-    
     width:60%;
     min-height:70vh;
     /* border:1px solid yellow; */
@@ -245,7 +199,6 @@
     width:45%;
     min-height:50vh;
     padding:1%;
-
 }
 .view-img{
     min-height: 50vh;
@@ -259,25 +212,19 @@
     justify-content: center;
     margin-left: auto;
     width:50%;
-
 }
 
 .view-item-details{
     display:flex;
     flex-direction: column;
     justify-content: center;
-   
     /* border:1px solid green; */
-  
     margin:2%;
     /* margin:4px; */
-
 }
 .view-item-details span{
     font-weight: bold;
 }
-
-
 .view-item-size-contr{
     display:flex;
     flex-direction: column;
@@ -285,21 +232,17 @@
     margin-top:0.5%;
     margin-bottom:0.6%;
     /* min-height: 5vh; */
-
 }
 .view-item-size-title{
     display:flex;
     justify-content: center;
-
 }
 .view-item-size-panel{
     display:flex;
     flex-direction: row;
     justify-content: center;
-   
     margin-top:0.5%;
     margin-bottom:0.6%;
-
 }
 .view-item-size{
     /* border:1px solid black; */
@@ -316,7 +259,6 @@
     cursor: pointer;
     background-color: rgb(212, 108, 212);
     color:#ffffff;
-
 }
 .item-selected{
     /* border:1px solid rgb(212, 108, 212); */
@@ -326,8 +268,6 @@
     border:1px solid #ffffff;
 }
 
-
-
 .view-add-bttn{
     display:flex;
     flex-direction:column;
@@ -336,8 +276,6 @@
     margin-top:0.5%;
     margin-bottom:0.6%;
     min-height:20vh;
-
-
 }
 .view-add-bttn h4{
    margin-left:21%;
@@ -352,7 +290,6 @@
     padding:3px;
     margin-top: auto;
     margin-bottom: auto;
-
 }
 
 .view-quantity{
@@ -361,7 +298,6 @@
     flex-direction: column;
     /* border:1px solid black; */
     margin-right: 0.3%;
-
 }
 
 
@@ -380,14 +316,10 @@
     border:none;
     color:#ffffff;
     font-weight: bold;
-  
-
 }
 .view-add-qty button:hover{
     cursor: pointer;
     background-color: rgb(212, 108, 212);
-   
-   
 }
 .view-add-qty input[type=number]{
     width:20%;
@@ -397,19 +329,15 @@
     appearance: textfield;
     margin:0;
     padding:6%;
-
 }
 .view-add-qty input[type=number]::-webkit-inner-spin-button,
 .view-add-qty input[type=number]::-webkit-outer-spin-button{
     -webkit-appearance: none;
-    appearance: none;
-   
+    appearance: none  
 }
 
 .view-add-qty  input[type=number]:focus{
-    outline:0;
-  
-   
+    outline:0; 
 }
 .view-add-to-cart{
     width: 30%;
@@ -417,8 +345,6 @@
     /* height:55px; */
     margin-top: auto;
     margin-bottom: auto;
-
-
 }
 .view-add-to-cart button{
     width:100%;
@@ -428,18 +354,12 @@
     transition:all 0.3s ease-in-out;
     border:none;
     color:#ffffff;
-    font-weight: bold;
-   
+    font-weight: bold; 
 }
 .view-add-to-cart button:hover{
     cursor: pointer;
-    background-color: rgb(212, 108, 212);
-   
-   
+    background-color: rgb(212, 108, 212); 
 }
-
-
-
 
 .view-modal {
     display:flex;
@@ -455,8 +375,6 @@
     width:90%;
     margin-left: auto;
     margin-right: auto;
-   
-   
     border:1px solid rgb(248, 197, 197);
     border-radius:0 0 4% 4%;
     background-color:#ffebed;
@@ -477,14 +395,13 @@
     text-align:center;
 }
 
-  .view-modal-close{
+.view-modal-close{
     cursor:pointer;
     font-size:bold;
     margin-right:-2%;
     margin-top:-2%;
     color:rgb(121, 30, 30);
 }
-
 
   @keyframes animatetfromside{
     from{
@@ -501,11 +418,6 @@ display: block;
 .display-none {
 display: none;
 }
-
-
-
-
-
 
 .view-modal-ok {
     display:flex;
@@ -549,7 +461,6 @@ display: none;
     color:rgb(39, 129, 39); 
 }
 
-
   @keyframes animatetfromside{
     from{
        left: -400px;
@@ -565,11 +476,6 @@ display: block;
 .display-none {
 display: none;
 }
-
-
-
-
-
 
 
   /* @media screen and (max-width:600px){

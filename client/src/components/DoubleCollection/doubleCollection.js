@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import ErrorBoundary from '../ErrorBoundary/errorBoundary'
-import logo from '../../images/logo.png'
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
+import logo from '../../images/logo.png';
 import { Redirect, useLocation, useHistory} from 'react-router-dom/';
 
 
@@ -21,7 +21,7 @@ export function DoubleCollectionItem(props) {
     localStorage.setItem('view', JSON.stringify(item));
     setRedirect('/view-item');
   }
-  if(redirect){
+  if (redirect) {
     return(
       <Redirect to={redirect} />
     )

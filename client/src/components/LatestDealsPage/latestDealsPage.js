@@ -50,7 +50,7 @@ export default function LatestDealsPage(props) {
         
     } 
 
-    if((!err && products.length < 1) || loading) {
+    if ((!err && products.length < 1) || loading) {
         return(
         <PageTemplate>
         <Loader/>

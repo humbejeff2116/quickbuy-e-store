@@ -1,18 +1,11 @@
 
 
-
-
-
-
-
-import React,{useState, useEffect} from 'react';
+import React,{ useState, useEffect } from 'react';
 import MyContext from '../Context/context';
-
 import RequireAuthentication from '../AuthHoc/authenticate';
 import { isAuthenticated } from '../../services/ecormerce.service';
 import config from '../../config/config';
 import {CheckoutComponent} from './checkout';
-
 
 
 

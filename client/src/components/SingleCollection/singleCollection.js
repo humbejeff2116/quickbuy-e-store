@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Redirect, useLocation, useHistory} from 'react-router-dom/';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import './singleCollection.css'
+import './singleCollection.css';
 
 
 export function SingleCollectionItem(props) {
@@ -16,7 +16,7 @@ export function SingleCollectionItem(props) {
       localStorage.setItem('view', JSON.stringify(item));
       setRedirect('/view-item');
     }
-    if(redirect) {
+    if (redirect) {
       return(
         <Redirect to={redirect} />
       )

@@ -1,20 +1,15 @@
 
-
-
-
-
-
-import React,{useState, useEffect} from 'react';
-import {signup} from '../../services/ecormerce.service'
-import {PageTemplate} from '../PageTemplate/pageTemplate'
+import React from 'react';
+import {signup} from '../../services/ecormerce.service';
+import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ApplicationData from '../../data/appData';
 import FormRow from './formRow';
 import Button from '../Button/button';
-import BackButton from '../BackButton/backButton';
-import { Redirect, useLocation, useHistory} from 'react-router-dom/';
+// import BackButton from '../BackButton/backButton';
+// import { Redirect, useLocation, useHistory} from 'react-router-dom/';
 import './signup.css';
 
-
+// TODO... change Sgnup component from class to function  so as to be able to use th backbutton hook;
 export default class Signup extends React.Component {
     constructor(props){
         super(props);
@@ -34,7 +29,7 @@ export default class Signup extends React.Component {
     }
 
     toggleBlur = (e) => {
-        if(e.target.value.length > 0 ) {
+        if (e.target.value.length > 0 ) {
             return e.target.classList.add('not-empty');
         }
         return e.target.classList.remove('not-empty');            
@@ -46,8 +41,8 @@ export default class Signup extends React.Component {
         signup(this.state)
         .then(response =>  response.data)
         .then(signupData => {
-            if(signupData.status !== 200) {
-                if(signupData.message) {
+            if (signupData.status !== 200) {
+                if (signupData.message) {
                     return this.setState({
                     errMessage: signupData.message,
                     valErrors:[]
@@ -63,7 +58,7 @@ export default class Signup extends React.Component {
             return signupData;
         })
         .then(token => {
-            if(token) {
+            if  (token) {
                 return window.location = '/'
             }
         }) 
@@ -73,12 +68,12 @@ export default class Signup extends React.Component {
     }
     capitalize = (e) => {
         let inpt, inptArr, capArr;
-        if((e.target.name === 'firstname') && (e.target.value)) {
+        if ((e.target.name === 'firstname') && (e.target.value)) {
             inpt = e.target.value;
             inptArr = inpt.toLowerCase().split();
             capArr = inptArr.map(text => text[0].toUpperCase() + text.substring(1))
             return e.target.value = capArr.join('');     
-        } else if((e.target.name === 'lastname') && (e.target.value)) {
+        } else if ((e.target.name === 'lastname') && (e.target.value)) {
             inpt = e.target.value;
             inptArr = inpt.toLowerCase().split();
             capArr = inptArr.map(text => text[0].toUpperCase() + text.substring(1))
@@ -136,7 +131,7 @@ export default class Signup extends React.Component {
     }
 }
 
-
+// TODO... use the changed signup component so as to be able to plug in the backbutton hook based component
 // function SignupComp(props) {
 //     const [valErrors, setValErrors] =useState([]);
 //     const [ firstname,setFirstName] = useState('');

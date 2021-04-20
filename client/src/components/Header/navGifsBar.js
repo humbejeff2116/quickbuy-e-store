@@ -1,15 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
 import React from 'react';
 import { NavGifsLinks, SocialNav } from './navLinks';
 
@@ -19,7 +8,6 @@ import { NavGifsLinks, SocialNav } from './navLinks';
 
 
 export const NavGifsBar = (props) => {
-   
     return(
         <div className="gifs-bar">
             <div>

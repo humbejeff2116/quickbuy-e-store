@@ -1,26 +1,23 @@
 
 import React,{useState} from 'react';
-import ErrorBoundary from '../ErrorBoundary/errorBoundary'
-import logo from '../../images/logo.png'
-import azz_black from '../../images/azz_black_xl.webp'
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import { Redirect, useLocation, useHistory} from 'react-router-dom/';
 
 
   export function CollectionItem(props) {
+    const [redirect, setRedirect] = useState('');
+
     let location = useLocation();
     let history = useHistory();
-    
-    const [redirect, setRedirect] = useState('');
     const {src, name, price, description, available, id, productSizes} = props;
-   
-    const view = (src, name, price, description, id, available,productSizes) => { 
+    const view = (src, name, price, description, id, available, productSizes) => { 
       history.push(location.pathname);
       let item = [];
       item.push({src,name,price,description,id,available, productSizes });
       localStorage.setItem('view', JSON.stringify(item));
       setRedirect('/view-item');
     }
-    if(redirect){
+    if (redirect) {
       return(
         <Redirect to={redirect} />
       )

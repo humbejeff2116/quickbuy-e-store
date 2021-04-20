@@ -9,7 +9,7 @@ import {PageTemplate} from '../PageTemplate/pageTemplate'
 export const About =({match})=>
     <PageTemplate>
         <section>
-            {/* remove the AboutMenu route */}
+            {/*TODO remove the AboutMenu route */}
         <Route component={AboutMenu}/>
         <Route exact path="/about" component={Company} />
         <Route exact path="/about/history" component={History} />
@@ -20,4 +20,3 @@ export const About =({match})=>
         <Route exact path="/about/htyuu" component={Company} />
         </section>
     </PageTemplate>
-

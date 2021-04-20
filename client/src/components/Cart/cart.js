@@ -5,8 +5,8 @@ import CartLoader from './cartLoader';
 import EmptyCart from './emptyCart';
 import FullCart from  './fullCart';
 import ErrCart from './errCart';
-import './cart.css'
-import './fullcart.css'
+import './cart.css';
+import './fullcart.css';
 
 
 export function Cart (props) {

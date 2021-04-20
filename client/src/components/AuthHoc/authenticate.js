@@ -5,11 +5,9 @@ import {Redirect} from 'react-router-dom';
 
 
 export default function RequireAuthentication(Component, auth) {
-    class AuthenticatedComponent extends React.Component{
-     
-        render(){
+    class AuthenticatedComponent extends React.Component {
+        render() {
             const isAuthenticated = auth();
-            console.log(isAuthenticated)
             if (!isAuthenticated) {
                 localStorage.setItem('route-auth-message','you must be logged in to view this page');
                 return(

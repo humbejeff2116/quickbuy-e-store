@@ -1,16 +1,5 @@
 
-
-
-
-
-
-
-
-
 import React from 'react';
-
-
-
 
 export default function CheckoutTotalSum(props) {
     return(

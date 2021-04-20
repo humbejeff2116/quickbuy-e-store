@@ -1,6 +1,6 @@
 
-import React,{useEffect} from 'react'
-import './sellProduct.css'
+import React,{useEffect} from 'react';
+import './sellProduct.css';
 
 
 

@@ -1,7 +1,4 @@
 
-
-
-
 import React, { useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ViewItemCard from './viewItemCard';
@@ -10,8 +7,8 @@ import { Loader } from '../Loader/loader';
 import ViewAlertBox from './viewModalBox';
 import {ViewOkAlertBox} from './viewModalBox';
 import BackButton from '../BackButton/backButton';
-import './view.css';
 import MyContext from '../Context/context';
+import './view.css';
 const cartIcon = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 
 
@@ -39,18 +36,14 @@ export function View(props) {
     const [cartMssg, setCartMssg] = useState('');
     const [err, setErr] = useState(false);
     const [errMssg, setErrMssg] = useState('');
-    // const viewItem = localStorage.getItem('view') ? JSON.parse(localStorage.getItem('view')) : [];
-    const viewItem =  JSON.parse(localStorage.getItem('view'));
-
 
     useEffect(()=> {
-        const viewItem =  JSON.parse(localStorage.getItem('view'));
+        const viewItem =  localStorage.getItem('view') ? JSON.parse(localStorage.getItem('view')) : [];
          console.log(viewItem)
         setViewProduct(viewItem);
-       
         window.scrollTo(0,0);
-       return ()=> {
-          
+
+        return ()=> {
             localStorage.removeItem('view');
         }
     },[]);
@@ -59,26 +52,18 @@ export function View(props) {
         setMssg(false);
         setCartMssg('');
         setErrMssg(''); 
-   }
+    }
     const handleInputChange = e => {
-        if(isNaN(e.target.value) || !e.target.value) {
+        if (isNaN(e.target.value) || !e.target.value) {
             console.log(true)
             setErr(true);
-           
             setErrMssg('quantity is expected to be a number');
             return;       
-        } 
-        return setQuantity(parseInt(e.target.value)) 
-
-    
-   
-    
+        }  
+        setQuantity(parseInt(e.target.value));
     }
 
-  
-
- 
-    if((!err && viewProduct.length < 1) || loading) {
+    if ((!err && viewProduct.length < 1) || loading) {
         return(
             <PageTemplate>
             <div className="view-container">
@@ -100,8 +85,7 @@ export function View(props) {
                 <BackButton buttonDivClassName="view-back-bttn"/>
                     <div className="view-item-container">
                     {
-                        viewItem.map((product, i) =>
-                       
+                        viewProduct.map((product, i) =>
                             <ViewItemCard 
                             key={i} 
                             {...product} 
@@ -116,13 +100,10 @@ export function View(props) {
                             setErrMssg={setErrMssg}
                             setMssg={setMssg}
                             setCartMssg={setCartMssg} 
-                            />
-                            
+                            />  
                         )
                     }
                     </div>
-        
-        
                     <div className="view-item-alert">
                     {
                     (err) && (
