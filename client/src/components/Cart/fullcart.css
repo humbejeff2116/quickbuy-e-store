@@ -35,6 +35,7 @@
 }
 
 .full-cart-header{
+    /* border: 1px solid black; */
     background-color: #ffffff;
     text-align: center;
 }
@@ -86,6 +87,7 @@
 }
 
 .card-item-details{
+    /* border: 1px solid black; */
     width:50%;
     min-height:50vh;
     display:flex;

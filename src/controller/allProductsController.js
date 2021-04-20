@@ -1,12 +1,9 @@
 
 const ProductsModel = require('../models/productsModel');
-const config = require('../config/config');
-const { dataUri } = require('../routes/Multer/multer');
 
 
 
-
-
+// TODO... uncomment key/value of productSizes in products object
 
 function productsController() {
    this.getAllProducts = async function (req, res, next) {
@@ -22,6 +19,7 @@ function productsController() {
                         available: product.available,
                         category: product.category,
                         description: product.description,
+                        // productSizes:product.productSizes,
                         tags: product.tags
                     };
                 });
@@ -48,7 +46,7 @@ function productsController() {
                     res.json({ status: 400, errMessage: 'no product matches your search' });
                     return res.status(400);
                 }
-                const searchedProducts = products.map( product=>{
+                const searchedProducts = products.map( product=> {
                     return {
                         id: product.id,
                         name: product.name,
@@ -57,6 +55,7 @@ function productsController() {
                         available: product.available,
                         category: product.category,
                         description: product.description,
+                         // productSizes:product.productSizes,
                         tags: product.tags
                     };
                 })
@@ -85,8 +84,8 @@ function productsController() {
                 '6':2
             }
             if (!cart) {
-            res.json({ data: cartProducts, message: 'no items in cart' });
-            return res.status(400);
+                res.json({ data: cartProducts, message: 'no items in cart' });
+                return res.status(400);
             }
             const products = await ProductsModel.find();
                for(let i = 0; i < products.length; i++) {

@@ -29,7 +29,7 @@ const { validationResult } = require('express-validator');
 require('dotenv').config();
 const port = config.app.port;
 const mongoConfig = {
-    devDbURI: config.db.devURI,
+    devDbURI: config.db.testURI,
     dbOptions: config.db.dbOptions
 }
 const corsOptions = {

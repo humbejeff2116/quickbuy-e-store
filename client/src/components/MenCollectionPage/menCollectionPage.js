@@ -23,7 +23,10 @@ export default function MenCollectionsPage(props) {
         window.scrollTo(0,0)
         setLoading(true);
         getMenCollections(limit,skip)
-        .then(response => response.data)
+        .then(response =>{
+            console.log(response)
+           return response.data
+        } )
         .then(products => {
             setProducts(products.data);
             setPageCount( Math.ceil(products.data.length / limit));

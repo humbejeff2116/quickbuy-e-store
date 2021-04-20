@@ -17,18 +17,18 @@ const cartIcon = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 
 
 
-const viewDetails = [
-    {
-        src : "/",
-        name : "gucci shirt",
-        price :"200",
-        description : "latest gucci model 2021 prad shirt for men",
-        id : "3",
-        available:true,
-        thumbnails : [{ imageSrc:"/hjghfg" }, { imageSrc:"/gfgdf" }, { imageSrc:"/fdfdf" }],
-        productSizes: [{size:10}, {size:90}, {size:15}]
-    }
-]
+// const viewDetails = [
+//     {
+//         src : "/",
+//         name : "gucci shirt",
+//         price :"200",
+//         description : "latest gucci model 2021 prad shirt for men",
+//         id : "3",
+//         available:true,
+//         thumbnails : [{ imageSrc:"/hjghfg" }, { imageSrc:"/gfgdf" }, { imageSrc:"/fdfdf" }],
+//         productSizes: [{size:10}, {size:90}, {size:15}]
+//     }
+// ]
 
 export function View(props) { 
     const [viewProduct, setViewProduct] = useState([]);
@@ -39,13 +39,18 @@ export function View(props) {
     const [cartMssg, setCartMssg] = useState('');
     const [err, setErr] = useState(false);
     const [errMssg, setErrMssg] = useState('');
+    // const viewItem = localStorage.getItem('view') ? JSON.parse(localStorage.getItem('view')) : [];
+    const viewItem =  JSON.parse(localStorage.getItem('view'));
 
 
     useEffect(()=> {
-        const viewItem = localStorage.getItem('view')? JSON.parse(localStorage.getItem('view')) : [];
-        setViewProduct(viewDetails);
+        const viewItem =  JSON.parse(localStorage.getItem('view'));
+         console.log(viewItem)
+        setViewProduct(viewItem);
+       
         window.scrollTo(0,0);
        return ()=> {
+          
             localStorage.removeItem('view');
         }
     },[]);
@@ -95,7 +100,8 @@ export function View(props) {
                 <BackButton buttonDivClassName="view-back-bttn"/>
                     <div className="view-item-container">
                     {
-                        viewProduct.map((product, i)=>
+                        viewItem.map((product, i) =>
+                       
                             <ViewItemCard 
                             key={i} 
                             {...product} 
@@ -111,6 +117,7 @@ export function View(props) {
                             setMssg={setMssg}
                             setCartMssg={setCartMssg} 
                             />
+                            
                         )
                     }
                     </div>

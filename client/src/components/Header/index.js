@@ -60,6 +60,7 @@ export const Header = ( ) => {
         if (!searchedProduct.searchValue) {
             setMssg('');
             setSearchedProd([]);
+            setSearchIsOpen(false);
             setErrMssg('');
             return;
         }
@@ -71,6 +72,7 @@ export const Header = ( ) => {
                 setMssg('');
                 setSearchedProd([]); 
                 console.log(errMssg);
+                setSearchIsOpen(false);
                 return; 
             }
             setMssg(searchedProducts.message);

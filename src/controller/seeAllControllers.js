@@ -3,6 +3,8 @@
 
 const ProductsModel = require('../models/productsModel')
 
+// TODO... uncomment key/value of productSizes in products object
+
 function SeeAllController() {
  
     this.getLatestDeals = async (req, res, next) => {
@@ -17,11 +19,12 @@ function SeeAllController() {
                 return{
                     id:product.id,
                     name:product.name,
-                    src:product.src,
+                    src:product.src.trim(),
                     price:product.price,
                     available:product.available,
                     category: product.category,
                     description :product.description,
+                    productSizes:product.productSizes,
                     tags:product.tags,
                 }               
             });
@@ -45,11 +48,12 @@ function SeeAllController() {
                 return{
                     id:product.id,
                     name:product.name,
-                    src:product.src,
+                    src:product.src.trim(),
                     price:product.price,
                     available:product.available,
                     category: product.category,
                     description :product.description,
+                    productSizes:product.productSizes,
                     tags:product.tags,
                 }               
             });
@@ -64,7 +68,7 @@ function SeeAllController() {
     this.getMenCollections = async (req, res, next) => {
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.skip);     
-        await  ProductsModel.find({tags :"men collections"})
+        await  ProductsModel.find({tags:"men collections"})
         .sort({createdate : 'descending'})
         .skip(skip)
         .limit(limit)
@@ -73,11 +77,12 @@ function SeeAllController() {
                 return{
                     id:product.id,
                     name:product.name,
-                    src:product.src,
+                    src:product.src.trim(),
                     price:product.price,
                     available:product.available,
                     category: product.category,
                     description :product.description,
+                    productSizes:product.productSizes,
                     tags:product.tags,
                 }               
             });
@@ -101,11 +106,12 @@ function SeeAllController() {
                     return{
                         id:product.id,
                         name:product.name,
-                        src:product.src,
+                        src:product.src.trim(),
                         price:product.price,
                         available:product.available,
                         category: product.category,
                         description :product.description,
+                        productSizes:product.productSizes,
                         tags:product.tags,
                     }   
                 });
@@ -129,11 +135,12 @@ function SeeAllController() {
                 return{
                     id:product.id,
                     name:product.name,
-                    src:product.src,
+                    src:product.src.trim(),
                     price:product.price,
                     available:product.available,
                     category: product.category,
                     description :product.description,
+                    productSizes:product.productSizes,
                     tags:product.tags,
                 }               
             });
@@ -162,6 +169,7 @@ function SeeAllController() {
                     available:product.available,
                     category: product.category,
                     description :product.description,
+                    productSizes:product.productSizes,
                     tags:product.tags,
                 }               
             });

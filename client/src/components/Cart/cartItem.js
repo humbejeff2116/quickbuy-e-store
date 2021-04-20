@@ -1,6 +1,8 @@
 
 import React from 'react';
 
+import azz_black from '../../images/azz_black_xl.webp';
+
 
 
 
@@ -11,7 +13,7 @@ function CartItem(props){
     <div className="card" >
         <div className="card-body">
           <div className="card-item-image">
-            <image src={product.src} width="80%" height="80%" />
+            <img src={azz_black } width="100%" height="100%" />
           </div>
           <div className="card-item-details">
             <div className="card-item-text" >

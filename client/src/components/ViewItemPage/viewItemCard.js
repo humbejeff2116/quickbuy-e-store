@@ -3,31 +3,22 @@
 import React from 'react';
 import ViewThumbnails from './viewThumbnails';
 import ViewAddButton from './viewAddButton';
-import ViewProductSize from './viewProductSize'
+import ViewProductSize from './viewProductSize';
+import azz_black from '../../images/azz_black_xl.webp';
 
 
 
 export default function ViewItemCard(props) {
+    const {src} = props
+    console.log('src is',src)
+   console.log(props.productSizes) 
     return (
         <>
-        {/* flex row */}
         <div  className="view-info">
             <div className="view-product-img" >
                 <div className="view-img">
-                <image src={props.src} width="80%" height="80%" />
+                <img src={azz_black } width="100%" height="100%" alt="image"/>
                 </div>         
-            {
-                (props.thumbnails) && (                   
-                    <div className="thumbnails">
-                         {/*TODO... flex row */}
-                        {
-                            props.thumbnails.map((thumbnail, i)=>
-                            <ViewThumbnails key={i} {...thumbnail}/>
-                            )
-                        }               
-                    </div>
-                )        
-            }
             </div>
 
             <div className="view-item-details-cntr">
@@ -48,14 +39,14 @@ export default function ViewItemCard(props) {
             </div>
             <div  className="view-item-size-panel">
             {
-                (props.productSizes) && (                                                                                  
+                // (props.productSizes) && (                                                                                 
                             props.productSizes.map((size, i)=>
                                 <ViewProductSize key={i} 
                                 {...size}
                                 setSize ={props.setSize}
                                 selectedSize={props.selectedSize} 
                                 />
-                            )               
+                                           
                 )   
             }
             </div>

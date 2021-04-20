@@ -11,12 +11,12 @@ import { Redirect, useLocation, useHistory} from 'react-router-dom/';
     let history = useHistory();
     
     const [redirect, setRedirect] = useState('');
-    const {src, name, price, description, available, id} = props;
+    const {src, name, price, description, available, id, productSizes} = props;
    
-    const view = (src, name, price, description, id, available) => { 
+    const view = (src, name, price, description, id, available,productSizes) => { 
       history.push(location.pathname);
       let item = [];
-      item.push({ src, name, price,description, id,available });
+      item.push({src,name,price,description,id,available, productSizes });
       localStorage.setItem('view', JSON.stringify(item));
       setRedirect('/view-item');
     }
@@ -27,10 +27,10 @@ import { Redirect, useLocation, useHistory} from 'react-router-dom/';
     }
     return(
       <ErrorBoundary>  
-      <div className="items-picture"  onClick={()=>view(src,name,price,description,id,available)} > 
+      <div className="items-picture"  onClick={()=>view(src,name,price,description,id,available,productSizes)} > 
           <div className="items-details"> 
-          {/* TODO change image src back to product src props */}
-              <img src={azz_black} width="80%" height="80%" alt="img" /><br />      
+         
+              <img src={src} width="80%" height="80%" alt="img" /><br />      
              <span className="product-title">name:</span> {name}<br />
              <span className="product-price">price:</span> ${price}<br />
           </div> 

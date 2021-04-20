@@ -148,6 +148,7 @@ export default function ContextProvider(props) {
         localStorage.removeItem('cartProducts');
         setCartProducts([]);
         setTotalSum(0);
+        setCartQuantity(0);
     }
 
 
