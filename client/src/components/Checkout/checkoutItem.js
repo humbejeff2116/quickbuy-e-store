@@ -8,7 +8,7 @@ export default function CheckoutItem(props) {
         <div className="checkout-item-container" >
             <div className="checkout-item-panel">
                 <div className="checkout-item-image">
-                    <img src={azz_black} width="100%" height="100%" />
+                    <img src={props.src} width="100%" height="100%" />
                 </div>
                 <div  className="checkout-product" >
                     <p className="text-primary"><span>product name:</span> {props.name}</p>

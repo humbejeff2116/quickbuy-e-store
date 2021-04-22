@@ -15,7 +15,7 @@ import './seeAll.css';
   const view = (src, name, price, description, id, available) => {
     history.push(location.pathname);
     let item = [];
-      item.push({ src, name, price,description, id,available });
+      item.push({ src, name, price, description, id, available });
      localStorage.setItem('view', JSON.stringify(item));
      setRedirect('/view-item');
   }
@@ -27,10 +27,10 @@ import './seeAll.css';
  
   return (
     <ErrorBoundary>
-      <div className="all-items-picture"  onClick={()=>view(src,name,price,description,id,available)} >
+      <div className="all-items-picture"  onClick={()=>view(src, name, price, description, id, available)} >
           <div className="see-all-items-details">
            
-            <img src={logo} width="80%" height="80%" alt="img"/><br />            
+            <img src={src} width="80%" height="80%" alt="img"/><br />            
             <span className="product-title">Name:</span> {name}<br />
             <span className="product-price">Price:</span> ${price}<br />
           

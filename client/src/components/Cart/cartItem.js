@@ -9,7 +9,7 @@ function CartItem(props) {
     <div className="card" >
         <div className="card-body">
           <div className="card-item-image">
-            <img src={azz_black } width="100%" height="100%" />
+            <img src={product.src} width="100%" height="100%" />
           </div>
           <div className="card-item-details">
             <div className="card-item-text" >

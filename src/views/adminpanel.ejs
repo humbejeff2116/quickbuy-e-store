@@ -23,9 +23,7 @@
                        <div class="signup-form-group">
                       
                         <label for="product image" >select product image <span class="compulsory" >*</span></label>
-                        <input type="file" name="imagesrc"  class="form-control" >
-                           
-        
+                        <input type="file" name="imagesrc"  class="form-control" id="fle">
                         </div>
                         <div class="signup-form-group">
                             <label for="product price" >Product Price<span class="compulsory" >*</span></label>
@@ -33,11 +31,6 @@
         
                         </div>
                         <!-- TODO availlable should be a tick/checkbox box -->
-
-
-
-
-                        
                         <div class="">
                             <h3>is product availlable?</h3>
                             <div>
@@ -93,5 +86,16 @@
     </div>
 </div>
 </div>
+<div class="signup-form-group">
+                                           
+    <label for="product image" >display product image</label>
+    <img alt="productimage" id="img" width="80%" height="80%"/>
+    <button type="button" id="showImage">show product</button>
+    
+    </div>
+
+<script type="text/javascript" src="/admin/admin.js">
+        
+</script>
 
 <%- include('_footer') %> 

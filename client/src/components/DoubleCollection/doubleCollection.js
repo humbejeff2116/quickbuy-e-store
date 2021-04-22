@@ -28,9 +28,9 @@ export function DoubleCollectionItem(props) {
   } 
   return (
     <ErrorBoundary>
-     <div className="items-picture-six"  onClick={()=>view(src,name,price,description,id,available)} >   
+     <div className="items-picture-six"  onClick={()=>view(src, name, price, description, id, available)} >   
       <div className="items-six-details">
-          <img src={logo} width="80%" height="80%" alt="img" /><br />      
+          <img src={src} width="80%" height="80%" alt="img" /><br />      
           <span className="product-title">name:</span> {name}<br />
           <span className="product-price">price:</span> ${price}<br />
         </div>

@@ -23,7 +23,7 @@ export function SingleCollectionItem(props) {
     }
     return(
       <ErrorBoundary>
-      <div className="items-picture"  onClick={()=>view(src,name,price,description,id,available)}>
+      <div className="items-picture"  onClick={()=>view(src, name, price, description, id, available)}>
           <img src={src} alt="img"/>      
           <p className="product-title">{name}</p>
           <p className="product-price"><small>price: </small>${price}</p>

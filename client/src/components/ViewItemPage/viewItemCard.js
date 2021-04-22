@@ -6,13 +6,13 @@ import ViewProductSize from './viewProductSize';
 
 
 export default function ViewItemCard(props) {
-    const {src} = props;
+   
     return (
         <>
         <div  className="view-info">
             <div className="view-product-img" >
                 <div className="view-img">
-                <img src={src} width="100%" height="100%" alt="image"/>
+                <img src={props.src} width="100%" height="100%" alt="image"/>
                 </div>         
             </div>
             <div className="view-item-details-cntr">
