@@ -37,11 +37,11 @@ function OrderController() {
     this.getOrders = async (req, res, next) => {
         let user = JSON.parse(req.body.user);
         const userId = user.id;
-      let orders = await OrderModel.find({userId: userId});
-      if(!orders) {
-         return  res.status(400).json({status: 400, message: 'order not found'})
-      }
-      return res.status(200).json({status: 200, data: orders, message: ' Orders retrieved successfully'});
+        let orders = await OrderModel.find({userId: userId});
+        if(!orders) {
+            return  res.status(400).json({status: 400, message: 'order not found'})
+        }
+        return res.status(200).json({status: 200, data: orders, message: ' Orders retrieved successfully'});
     }
 }
 

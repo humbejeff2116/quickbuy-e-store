@@ -5,7 +5,6 @@ import {  Route,Switch} from 'react-router-dom';
 import HomePage from '../components/Home/home';
 import Login from '../components/Login/login';
 import Signup from '../components/SignupPage/signup';
-import AppCart from '../components/Cart/cart';
 import Cart from '../components/Cart/index';
 import AppCheckout from '../components/Checkout/index';
 import {ContactPage} from '../components/ContactPage/contact';

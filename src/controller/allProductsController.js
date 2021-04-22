@@ -3,8 +3,6 @@ const ProductsModel = require('../models/productsModel');
 
 
 
-// TODO... uncomment key/value of productSizes in products object
-
 function productsController() {
    this.getAllProducts = async function (req, res, next) {
        try{
@@ -19,7 +17,7 @@ function productsController() {
                         available: product.available,
                         category: product.category,
                         description: product.description,
-                        // productSizes:product.productSizes,
+                        productSizes:product.productSizes,
                         tags: product.tags
                     };
                 });
@@ -55,7 +53,7 @@ function productsController() {
                         available: product.available,
                         category: product.category,
                         description: product.description,
-                         // productSizes:product.productSizes,
+                         productSizes:product.productSizes,
                         tags: product.tags
                     };
                 })

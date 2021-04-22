@@ -18,9 +18,8 @@ function UserController() {
       let phonenumber = req.body.phonenumber;
       let password = req.body.password;  
       let profileimage = (req.file) ? req.file.filename: 'noimage.jpg';
-      console.log(req.body);
       const user =  await  User.findOne({email:email} );           
-      if(user) {
+      if (user) {
         res.json({status:400, message:' Email has already been registered on this site'});
         return res.status(400);
       }
@@ -59,18 +58,18 @@ function UserController() {
       const phonenumber = typeof email === 'number'? parseInt(email):null;
       const password = req.body.password;
       const user =  await  User.findOne({"email":email });
-      if(!user) {
+      if (!user) {
         console.error('no user found'); 
         res.json({status:401, message: 'Incorrect email Address' });
         return res.status(401);                           
       }          
       user.checkPassword(password, function(err,isMatch) {
-        if(err) {
+        if (err) {
           console.error('error while checking password');                  
           res.json({status:401,error:true,message:'an error occured while getting details'});
           return res.status(401);
         }
-        if(!isMatch) {
+        if (!isMatch) {
           console.error('no match found');                  
           res.json( {status:401,error:true, message: 'Incorrect password.' });
           return res.status(401);           

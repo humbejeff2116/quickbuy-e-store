@@ -36,7 +36,7 @@ export function CheckoutComponent(props) {
 
 }
 
-// on success will return this object then send the details to the backend 
+//TODO... on success will return this object then send the details to the backend 
 // onSuccess={
 //   paid: true,
 //   cancelled: false, 

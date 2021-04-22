@@ -1,7 +1,5 @@
 
 import React from 'react';
-import azz_black from '../../images/azz_black_xl.webp';
-
 
 function CartItem(props) {
   const { product } = props;

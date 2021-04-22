@@ -3,7 +3,6 @@
 
 const ProductsModel = require('../models/productsModel')
 
-// TODO... uncomment key/value of productSizes in products object
 
 function SeeAllController() {
  

@@ -1,6 +1,5 @@
 
 import React from 'react';
-import azz_black from '../../images/azz_black_xl.webp';
 
 
 export default function CheckoutItem(props) {

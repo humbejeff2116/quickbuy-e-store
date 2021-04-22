@@ -21,11 +21,8 @@ export default function FullCart(props) {
                         <p> Please wait and try again.</p>
                     </div>
                 </AlertBox>
-
-
                 )
             }
-
         <div className="full-cart">
           <div className="full-cart-header">
           <h2 className="full-cart-title">Bag</h2> 
