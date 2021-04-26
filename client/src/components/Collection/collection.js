@@ -13,7 +13,7 @@ import { Redirect, useLocation, useHistory} from 'react-router-dom/';
     const view = (src, name, price, description, id, available, productSizes) => { 
       history.push(location.pathname);
       let item = [];
-      item.push({src,name,price,description,id,available, productSizes });
+      item.push({src,name,price,description,id,available,productSizes});
       localStorage.setItem('view', JSON.stringify(item));
       setRedirect('/view-item');
     }
@@ -38,7 +38,7 @@ import { Redirect, useLocation, useHistory} from 'react-router-dom/';
                 *Out of stock* 
               </p>
             </div> : <div className="product-bttn">
-                          <button  onClick={()=>view(src,name,price,description,id,available)} >
+                          <button  onClick={()=>view(src,name,price,description,id,available,productSizes)} >
                               {/* <i> <FaRegEye className="contact-bttn-icon"/></i> */}
                             View 
                           </button>
