@@ -7,7 +7,7 @@ import { Loader } from '../Loader/loader';
 
 
 
-export default function CartLoader(props) {
+export default function CartLoader() {
     return(
         <CartTemplate>
             <Loader/> 

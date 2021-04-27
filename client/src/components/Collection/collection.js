@@ -1,7 +1,7 @@
 
-import React,{useState} from 'react';
+import React,{ useState } from 'react';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import { Redirect, useLocation, useHistory} from 'react-router-dom/';
+import { Redirect, useLocation, useHistory } from 'react-router-dom/';
 
 
   export function CollectionItem(props) {

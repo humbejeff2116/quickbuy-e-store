@@ -12,7 +12,7 @@ export default function ViewItemCard(props) {
         <div  className="view-info">
             <div className="view-product-img" >
                 <div className="view-img">
-                <img src={props.src} width="100%" height="100%" alt="image"/>
+                <img src={props.src} width="100%" height="100%" alt="viewed item"/>
                 </div>         
             </div>
             <div className="view-item-details-cntr">

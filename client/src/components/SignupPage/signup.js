@@ -1,7 +1,7 @@
 
 import React from 'react';
-import {signup} from '../../services/ecormerce.service';
-import {PageTemplate} from '../PageTemplate/pageTemplate';
+import { signup } from '../../services/ecormerce.service';
+import { PageTemplate } from '../PageTemplate/pageTemplate';
 import ApplicationData from '../../data/appData';
 import FormRow from './formRow';
 import Button from '../Button/button';
@@ -9,7 +9,7 @@ import Button from '../Button/button';
 // import { Redirect, useLocation, useHistory} from 'react-router-dom/';
 import './signup.css';
 
-// TODO... change Sgnup component from class to function  so as to be able to use th backbutton hook;
+// TODO... change Signup component from class to function  so as to be able to use th backbutton hook;
 export default class Signup extends React.Component {
     constructor(props){
         super(props);

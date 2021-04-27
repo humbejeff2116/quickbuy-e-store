@@ -1,8 +1,8 @@
 import React from 'react';
-import { Route,Redirect,Switch} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
-import {DashboardTemplate} from './dashboardTemplate';
-import {isAuthenticated} from '../../services/ecormerce.service';
+import { DashboardTemplate } from './dashboardTemplate';
+import { isAuthenticated } from '../../services/ecormerce.service';
 import RequireAuthentication from '../AuthHoc/authenticate';
 import { NotFound } from '../404/woops404';
 import './dashboard.css';

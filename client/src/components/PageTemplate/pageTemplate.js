@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {Header} from '../Header/index'
+import { Header } from '../Header/index';
 import { Footer } from '../Footer/index';
 import { MobileSearch }   from '../Slider/index';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';

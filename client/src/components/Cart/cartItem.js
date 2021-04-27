@@ -7,7 +7,7 @@ function CartItem(props) {
     <div className="card" >
         <div className="card-body">
           <div className="card-item-image">
-            <img src={product.src} width="100%" height="100%" />
+            <img src={product.src} alt="cart item" width="100%" height="100%" />
           </div>
           <div className="card-item-details">
             <div className="card-item-text" >

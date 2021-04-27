@@ -10,7 +10,7 @@ export const PageLoader = ( ) =>
         <div className="loader"></div>
     </div>
 
-export function Loader(props) {
+export function Loader( ) {
     return(
         <div className="page-loader-container" >
             <div className="page-loader"></div>

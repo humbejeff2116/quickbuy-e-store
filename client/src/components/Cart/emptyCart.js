@@ -1,13 +1,13 @@
 
 import React,{ useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CartTemplate from './cartTemplate';
 import shopping_cart_PNG60 from '../../images/shopping_cart_PNG65.png';
 
 
 
 
-export default function  EmptyCart(props) {
+export default function  EmptyCart() {
   useEffect(()=> {
     window.scrollTo(0,0);
   },[])

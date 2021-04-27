@@ -1,18 +1,10 @@
 
-
-
-
-
-
-
-
-
-import React,{useEffect} from 'react';
+import React,{ useEffect } from 'react';
 import  ErrorBoundary  from '../ErrorBoundary/errorBoundary';
 import { Collection } from '../Collection/index';
-import { DoubleCollection} from '../DoubleCollection/index';
+import { DoubleCollection } from '../DoubleCollection/index';
 import DataComponent from '../HOC/dataComponent';
-import {PageTemplate} from '../PageTemplate/pageTemplate'
+import { PageTemplate } from '../PageTemplate/pageTemplate';
 
 
 const host = 'localhost';

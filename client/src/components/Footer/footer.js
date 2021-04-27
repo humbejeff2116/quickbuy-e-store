@@ -1,11 +1,11 @@
 
 import React,{ useState } from 'react';
-import { postSubscription} from '../../services/ecormerce.service';
-import {FooterMainCompChild}  from './footerMainComp';
-import ApplicationData from '../../data/appData'
+import { postSubscription } from '../../services/ecormerce.service';
+import {FooterMainCompChild }  from './footerMainComp';
+import ApplicationData from '../../data/appData';
 
 
-export const FooterFormComp = (props) => {
+export const FooterFormComp = () => {
   const [valErrs,setValErrs] = useState([]);
   const [errMssg, setErrMssg] = useState('');
   const [mssg,setMssg] = useState('');
@@ -22,8 +22,10 @@ export const FooterFormComp = (props) => {
     .then(subscriptionData => {
         if (subscriptionData.status !== 201) {
           if (subscriptionData.message) {
-              setErrMssg(subscriptionData.message) 
+              setErrMssg(subscriptionData.message) ;
               setValErrs([]);
+              // TODO remove alert and use custom pop up modal
+              alert(errMssg);
             return;
           }  
           _subEmail.current.focus();
@@ -34,6 +36,7 @@ export const FooterFormComp = (props) => {
         setMssg(subscriptionData.message);
         _subEmail.current.value ='';
         _subEmail.current.focus();
+        alert(mssg);
         return subscriptionData;
     })
     .catch(err => {

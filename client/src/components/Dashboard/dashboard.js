@@ -1,13 +1,11 @@
-import React, {useEffect,useState}  from 'react';
+import React, { useEffect }  from 'react';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import { Link } from 'react-router-dom';
-import { PageLoader } from '../Loader/loader';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-const user1 = <FontAwesomeIcon  icon={['fas', "user"]}   />
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// const user1 = <FontAwesomeIcon  icon={['fas', "user"]}   />
 
 
 
-export default function Dashboard(props) {
+export default function Dashboard() {
     useEffect(()=>{
         window.scrollTo(0,0); 
     },[]);

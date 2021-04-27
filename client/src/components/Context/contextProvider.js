@@ -1,7 +1,4 @@
 
-
-
-
 import React, { useEffect, useState } from 'react';
 import MyContext from './context';
 import  setErrorMessage from './setErrorMessage';
@@ -14,6 +11,28 @@ export default function ContextProvider(props) {
     const [cartProducts, setCartProducts] = useState([])
     const [cartQuantity, setCartQuantity] =  useState(0);
     const  [cartTotalSum, setTotalSum] = useState(0);
+
+    
+    useEffect(()=>{
+        setStateOnload(); 
+
+    },[])
+
+    const setStateOnload = ( )=> {
+        let cartProd = localStorage.getItem('cartProducts') ? JSON.parse(localStorage.getItem('cartProducts')): [];
+        let cartSum = 0;
+        let cartTotalQty = 0;
+        let cartTotalSum;
+
+        for (let i = 0; i < cartProd.length; i++) {
+            cartSum += cartProd[i].price * cartProd[i].qty;   
+            cartTotalSum = cartSum.toFixed(2);
+            cartTotalQty += cartProd[i].qty;
+        }
+        setCartProducts(cartProd);
+        setTotalSum(cartTotalSum);
+        setCartQuantity(cartTotalQty)
+    }
    
     const addToCart = (id, src, name, price, setErr, setErrMssg, setMssg, setCartMssg, quantity, size) => {
         let productQnty = quantity;

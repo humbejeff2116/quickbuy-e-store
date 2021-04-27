@@ -27,7 +27,7 @@ const { validationResult } = require('express-validator');
 
 
 require('dotenv').config();
-const port = config.app.port;
+const port = config.app.port || process.env.PORT || 5000;
 const mongoConfig = {
     devDbURI: config.db.testURI,
     dbOptions: config.db.dbOptions
@@ -36,7 +36,7 @@ const corsOptions = {
     origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 
 }
-const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'))
+const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'));
 const app = express();
 app.disable('x-powered-by');
 app.use(helmet());
@@ -80,10 +80,10 @@ app.use('/admin', adminRouter);
 
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
-app.get('/',(req, res)=> {
+app.use('/api/v1/', apiRouter);
+app.get('*',(req, res)=> {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
-app.use('/api/v1/', apiRouter);
 app.use(( req, res, next)=> {
     res.status(404).json({Error: true, message: 'API endpoint does not exist'});
 })

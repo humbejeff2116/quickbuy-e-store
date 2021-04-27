@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Redirect, useLocation, useHistory} from 'react-router-dom/';
+import React, { useState } from 'react';
+import { Redirect, useLocation, useHistory } from 'react-router-dom/';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import './singleCollection.css';
 

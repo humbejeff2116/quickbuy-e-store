@@ -1,9 +1,9 @@
 
    import React from 'react';
-   import ErrorBoundary from '../ErrorBoundary/errorBoundary'
-   import { Link,Redirect } from 'react-router-dom'
+   import ErrorBoundary from '../ErrorBoundary/errorBoundary';
+   import { Link, Redirect } from 'react-router-dom';
    import { login } from '../../services/ecormerce.service';
-   import {PageTemplate} from '../PageTemplate/pageTemplate'
+   import { PageTemplate } from '../PageTemplate/pageTemplate';
    import './login.css';
 
   

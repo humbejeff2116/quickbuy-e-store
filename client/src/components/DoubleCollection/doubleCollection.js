@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import logo from '../../images/logo.png';
 import { Redirect, useLocation, useHistory} from 'react-router-dom/';
 
 

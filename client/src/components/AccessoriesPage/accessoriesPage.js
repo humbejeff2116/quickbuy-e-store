@@ -1,10 +1,10 @@
 
-import React,{useEffect,useState} from 'react';
+import React,{ useEffect, useState } from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
 import { Loader } from '../Loader/loader';
-import {getAccessories} from '../../services/ecormerce.service'
+import { getAccessories } from '../../services/ecormerce.service'
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import {PageTemplate} from '../PageTemplate/pageTemplate';
+import { PageTemplate } from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
 import './accessories.css';
 

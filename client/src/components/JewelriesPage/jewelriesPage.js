@@ -10,7 +10,7 @@ import './jewelries.css';
 
 
 
-export default function JewelriesPage(props) {
+export default function JewelriesPage( ) {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
     const [err,setErr] = useState(false)

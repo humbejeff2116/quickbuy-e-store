@@ -5,11 +5,11 @@ import MyContext from '../Context/context';
 import RequireAuthentication from '../AuthHoc/authenticate';
 import { isAuthenticated } from '../../services/ecormerce.service';
 import config from '../../config/config';
-import {CheckoutComponent} from './checkout';
+import { CheckoutComponent } from './checkout';
 
 
 
- function Checkout(props) {
+ function Checkout() {
     const [checkout, setCheckout] = useState(false);
     const [err, setErr] = useState('');
     const [redirect, setRedirect] = useState('');
@@ -17,26 +17,30 @@ import {CheckoutComponent} from './checkout';
     const [env] = useState(config.paypal.env);
     const [client] = useState(config.paypal.paypalClient);
   
-    useEffect(()=>{
+    useEffect(()=> {
       window.scrollTo(0,0);
-  
     })
 
-    const toggleCheckout = () => {
-       return setCheckout(prevState => !prevState )
-    }
+     const toggleCheckout = ( ) => {
+          return setCheckout(prevState => !prevState )
+     }
       	
      const onCancel = (data) => {
-         console.log('You have cancelled your payment', data);
-     }	        
-    const onError = (err) => {
-         console.log("an Error! occured while carrying out transaction", err);
-         setErr('an error occured while carrying out transaction.')	 
-    }
+          console.log('You have cancelled your payment', data);
+     }
+
+     const onError = (error) => {
+          //TODO remove console.error
+         console.error("an Error! occured while carrying out transaction", error);
+         setErr('an error occured while carrying out transaction.');
+          // TODO change alert to a custom react pop up modal component
+         alert(err);	 
+     }
+
      const cancelPayment = ( ) => {
       return setRedirect('/')
      }
-
+    
      return(
         <MyContext.Consumer>
         {context => (
@@ -60,7 +64,6 @@ import {CheckoutComponent} from './checkout';
       </MyContext.Consumer>
 
      )
-
 }
 const AppCheckout = RequireAuthentication(Checkout , isAuthenticated);
 export default AppCheckout;

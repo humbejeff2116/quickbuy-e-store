@@ -17,18 +17,20 @@ export default function ViewAddButton(props) {
             </div> 
         <div className="view-add-to-cart">
             <button onClick={()=>props.addToCart(
-                props.id.toString(), 
-                props.src, props.name, 
-                props.price,props.setErr, 
-                props.setErrMssg, props.setMssg, 
-                props.setCartMssg,
-                props.quantity,
-                props.size
-                )}
-                > 
-                    <i>{props.cartIcon}</i>
-                    Add to bag
-                </button>
+            props.id.toString(), 
+            props.src, props.name, 
+            props.price,
+            props.setErr, 
+            props.setErrMssg, 
+            props.setMssg, 
+            props.setCartMssg,
+            props.quantity,
+            props.size
+            )}
+            > 
+            <i>{props.cartIcon}</i>
+                Add to bag
+            </button>
         </div>
         </div>
         </>

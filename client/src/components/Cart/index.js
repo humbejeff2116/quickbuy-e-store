@@ -6,9 +6,8 @@ import MyContext from '../Context/context';
 
 
 
-export default function AppCart(props) {
+export default function AppCart() {
     const [err, setErr] = React.useState('');
-    const [loading, setLoading] = React.useState(false);
     const [redirect, setRedirect] = React.useState('');
   
     const checkout = () => {
@@ -41,7 +40,6 @@ export default function AppCart(props) {
            <Cart 
            products={context.cartProducts}
            redirect={redirect}
-           loading={loading}
            removeFromCart={context.removeFromCart} 
            total={context.cartTotalSum} 
            checkout={checkout}

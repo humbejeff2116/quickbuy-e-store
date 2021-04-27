@@ -1,20 +1,20 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
-import {getMenCollections} from '../../services/ecormerce.service';
+import { getMenCollections } from '../../services/ecormerce.service';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import {PageTemplate} from '../PageTemplate/pageTemplate';
+import { PageTemplate } from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
-import {Loader} from '../Loader/loader';
+import { Loader } from '../Loader/loader';
 import BackButton from '../BackButton/backButton';
 import './menCollection.css';
 
 
 
 
-export default function MenCollectionsPage(props) {
+export default function MenCollectionsPage( ) {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
-    const [err,setErr] = useState('');
+    const [err ] = useState('');
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
     const [pageCount,setPageCount] = useState(1);

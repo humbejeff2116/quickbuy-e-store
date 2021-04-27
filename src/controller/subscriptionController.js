@@ -1,7 +1,8 @@
 
 const SubscriptionsModel = require('../models/subscriptionsModel');
-const config = require('../config/config');
-const emailService = require('../libs/mail')(config);
+// TODO... un comment code when ready to use email service functionality
+// const config = require('../config/config');
+// const emailService = require('../libs/mail')(config);
 const { validationResult } = require('express-validator');
 
 function Subscription() {

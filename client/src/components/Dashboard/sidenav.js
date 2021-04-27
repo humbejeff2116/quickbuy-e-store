@@ -1,5 +1,5 @@
 
-import React, {useEffect,useState}  from 'react';
+import React, { useEffect }  from 'react';
 import logo from '../../images/logo.png';
 import Avatar from './sidenavAvatar';
 import Link from '../Link/link';
@@ -8,10 +8,11 @@ import './sidenav.css';
 
 
 
-export default function SideNav(props){
+export default function SideNav() {
     const sideNavLinks = ApplicationData.getSideNavLinks()
-    const [loading, setLoading] = useState(false);
-    const [user, setUser] =  useState([]);
+    // TODO... implement functionality to get user data from database 
+    // const [loading, setLoading] = useState(false);
+    // const [user, setUser] =  useState([]);
 
     useEffect(()=>{
         // const user = localStorage.getItem('user');
@@ -20,7 +21,7 @@ export default function SideNav(props){
     })
     return (
         <section className="side-nav">
-        <Avatar logo={logo} user={user} className='profile-image' />
+        <Avatar logo={logo}  className='profile-image' />
         <nav>
             {
                 sideNavLinks.map((link, i)=>

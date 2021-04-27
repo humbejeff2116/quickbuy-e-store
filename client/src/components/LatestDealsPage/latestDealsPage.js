@@ -1,10 +1,10 @@
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
-import {getLatestDeals} from '../../services/ecormerce.service';
+import { getLatestDeals } from '../../services/ecormerce.service';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import {Loader} from '../Loader/loader';
-import {PageTemplate} from '../PageTemplate/pageTemplate';
+import { Loader } from '../Loader/loader';
+import { PageTemplate } from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
 import BackButton from '../BackButton/backButton';
 import './latestDeals.css';
@@ -12,10 +12,10 @@ import './latestDeals.css';
 window.React = React;
 
      
-export default function LatestDealsPage(props) {
+export default function LatestDealsPage( ) {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
-    const [err,setErr] = useState('');
+    const [err ] = useState('');
     const [skip,setSkip] = useState(0);
     const [limit] = useState(20);
     const [pageCount,setPageCount] = useState(1);

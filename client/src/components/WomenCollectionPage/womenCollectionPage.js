@@ -14,7 +14,7 @@ window.React = React;
 export default function WomenCollectionsPage() {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
-    const [err, setErr] = useState('');
+    const [err ] = useState('');
     const [skip, setSkip] = useState(0);
     const [limit] = useState(20);
     const [pageCount, setPageCount] = useState(1);

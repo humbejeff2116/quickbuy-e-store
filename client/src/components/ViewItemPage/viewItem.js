@@ -3,7 +3,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}/>
 // import PropTypes from 'prop-types'
-// TODO... add components proptypr validation
+// TODO... add components proptype validation
  export class ViewItem extends React.Component {
     // static propTypes = {
     //     src:PropTypes.string.isRequired,

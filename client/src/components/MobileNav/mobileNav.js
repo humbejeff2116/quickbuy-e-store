@@ -5,7 +5,7 @@ import './mobileNav.css';
 
 
 
-export function MobileNav(props) {
+export function MobileNav( ) {
     const mobileNavLinks = ApplicationData.getMobileNavLinks()
     return(
         <div className="mobile-nav">
