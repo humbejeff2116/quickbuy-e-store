@@ -1,17 +1,13 @@
 
 import React from 'react';
 
-
-
-
-function CartItem(props){
+function CartItem(props) {
   const { product } = props;
   return(
-   
     <div className="card" >
         <div className="card-body">
           <div className="card-item-image">
-            <image src={product.src} width="80%" height="80%" />
+            <img src={product.src} alt="cart item" width="100%" height="100%" />
           </div>
           <div className="card-item-details">
             <div className="card-item-text" >
@@ -36,46 +32,4 @@ function CartItem(props){
 
   )
 }
-export default CartItem
-
-
-
-
-
-
-//class CartItem extends React.Component {
-
-  //   constructor(props) {  
-  //     super(props);
-  //     this.state = {
-  //         quantity: 1
-  //     }
-  //   }
-  
-  //   render() {
-  //     const { product } = this.props;
-  //     return (
-  //       <div className="card" >
-  //         <div className="card-body">
-  //           <div className="card-item-image">
-  //             <image src={this.props.src} width="80%" height="80%" />
-  //           </div>
-  //           <div className="card-item-details">
-  //             <p className="card-title">Name: {product.name}</p>
-  //             <p className="card-text">Price: ${product.price}</p>
-  //             <p className="card-text ">Quantity: {product.qty}</p>
-  //             {
-  //               product.productTotal ?  <p className="card-text ">Quantity: {product.productTotal}</p>: ''
-              
-  //             }
-  //             <button className="btn btn-sm btn-warning float-right" 
-  //             onClick={()=>this.props.removeFromCart(product)}
-  //             >
-  //               Remove from cart
-  //             </button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //      )
-  //   }
-  // }
+export default CartItem;

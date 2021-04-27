@@ -1,12 +1,5 @@
 
-
-
-
-
-import React from 'react'
-
-
-
+import React from 'react';
 
 
 export default function CheckoutItem(props) {
@@ -14,7 +7,7 @@ export default function CheckoutItem(props) {
         <div className="checkout-item-container" >
             <div className="checkout-item-panel">
                 <div className="checkout-item-image">
-                    <image src={props.src} width="80%" height="80%" />
+                    <img src={props.src} alt="checkout item" width="100%" height="100%" />
                 </div>
                 <div  className="checkout-product" >
                     <p className="text-primary"><span>product name:</span> {props.name}</p>
@@ -26,4 +19,3 @@ export default function CheckoutItem(props) {
       </div>
     )
 }
-

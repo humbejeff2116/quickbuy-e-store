@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React from 'react';
 import CartTemplate from './cartTemplate';
 import CartItem from './cartItem';
 import { AlertBox } from '../AlertBox/alertBox';
@@ -21,11 +21,8 @@ export default function FullCart(props) {
                         <p> Please wait and try again.</p>
                     </div>
                 </AlertBox>
-
-
                 )
             }
-
         <div className="full-cart">
           <div className="full-cart-header">
           <h2 className="full-cart-title">Bag</h2> 

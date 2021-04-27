@@ -1,22 +1,22 @@
 
-import React,{useEffect,useState} from 'react';
+import React,{ useEffect, useState } from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
-import {getPopularCollections} from '../../services/ecormerce.service';
+import { getPopularCollections } from '../../services/ecormerce.service';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import {PageTemplate} from '../PageTemplate/pageTemplate';
+import { PageTemplate } from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
-import {Loader} from '../Loader/loader';
+import { Loader } from '../Loader/loader';
 import BackButton from '../BackButton/backButton';
-import './popularCollection.css'
+import './popularCollection.css';
 
 
 
-export default function PopularCollectionsPage(props) {
+export default function PopularCollectionsPage( ) {
     const [loading, setLoading] = useState(false);
     const [products,setProducts] = useState([]);
-    const [err, setErr] = useState('');
+    const [err] = useState('');
     const [skip, setSkip] = useState(0);
-    const [limit,setLimit] = useState(20);
+    const [limit] = useState(20);
     const [pageCount, setPageCount] = useState(1);
 
     useEffect(() => {
@@ -48,7 +48,7 @@ export default function PopularCollectionsPage(props) {
         .catch(err => console.error(err));      
     } 
       
-    if( (!err && products.length < 1) || loading) {
+    if ((!err && products.length < 1) || loading) {
         return(
           <PageTemplate>
           <Loader/>

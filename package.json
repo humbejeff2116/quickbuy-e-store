@@ -8,9 +8,13 @@
         "dev:start": "nodemon ./server-build/server.js",
         "dev": "npm-run-all --parallel build dev:*",
         "build": "babel ./server -d dist-server",
-        "start": " yarn run clusters",
+        "start": "yarn run clusters",
         "clusters": "node serverCluster.js",
-        "heroku-postbuild": "cd client && yarn && yarn run build"
+        "heroku-postbuild": "cd client && yarn && yarn run build",
+        "install-client": "cd client && yarn install",
+        "install-server": "yarn install",
+        "start-server": "yarn run clusters",
+        "start-client": "cd client && yarn run start"
     },
     "dependencies": {
         "babel-loader": "^8.1.0",

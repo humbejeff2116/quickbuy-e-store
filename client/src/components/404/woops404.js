@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect} from 'react';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import './404.css';
 
@@ -6,7 +6,7 @@ import './404.css';
 const Woops404 =( props) => {
     const address = window.location.href;
     useEffect(()=> {
-        window.scrollTo(0,0)
+        window.scrollTo(0,0);
     },[])
 
     return(
@@ -33,4 +33,4 @@ export function NotFound(props) {
         </div>
     )
 }
-export default Woops404
+export default Woops404;

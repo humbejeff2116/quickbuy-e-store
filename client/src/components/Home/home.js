@@ -1,24 +1,14 @@
 
-
-
-
-
-
-
-
-
-import React,{useEffect} from 'react';
+import React,{ useEffect } from 'react';
 import  ErrorBoundary  from '../ErrorBoundary/errorBoundary';
 import { Collection } from '../Collection/index';
-import { DoubleCollection} from '../DoubleCollection/index';
+import { DoubleCollection } from '../DoubleCollection/index';
 import DataComponent from '../HOC/dataComponent';
-import {PageTemplate} from '../PageTemplate/pageTemplate'
+import { PageTemplate } from '../PageTemplate/pageTemplate';
 
 
 const host = 'localhost';
 const port = 4000;
-// import {getLatestDeals, getWomenCollections, getMenCollections, getPopularCollections} from '../../services/ecormerce.service'
-
 const LatestDeals = DataComponent(Collection, `http://${host}:${port}/api/v1/latest-deals?limit=${4}`)
 const WomenCollections = DataComponent(Collection,`http://${host}:${port}/api/v1/women-collections?limit=${4}`)
 const PopularCollections = DataComponent(DoubleCollection, `http://${host}:${port}/api/v1/popular-collections?limit=${12}`)

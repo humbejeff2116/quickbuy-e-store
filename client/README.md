@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# quick buy e-shopping store
 
-## Available Scripts
+This is an E-commerce online clothing store built using MERN (MongoDB, Express.js, React.js, Node.js) stack.
+This is basically a prototype which concentrations have been placed more on the core functionalities of an e-store. This web app is still undergoing iterations and have been built with the constant thought of high peformance and scalability in mind (a good reason for picking MERN as the applications stack), thus creating room for easy implementations/additions of more complex functionalities or extension of already existing functionalities if need arise. Imagine what could be built on top of this.  
 
-In the project directory, you can run:
+## Installation and running project
 
-### `yarn start`
+you need to have node.js installed on your system to be able to run this web application.
+if you dont have node.js kindly follow this link to download and install Node.js (<https://nodejs.org>)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### cloning & Installing dependencies
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+*Clone the repository and change directory into:
 
-### `yarn test`
+```console
+git clone https://github.com/humbejeff2116/quickbuy-e-store.git
+cd quick-buy-e-store 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `yarn build`
+This project uses yarn as its package manager. You can install yarn using [npm](https://yarnpkg.com):
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```console
+npm install -g yarn
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project uses the client server architecture. This architecture is language agnostic and although the same language (Javascript) has been used for both frontend and backend development, client and server still have seperate package.json files, making them to be easily decoupled/detached if the need arises, and are basically only aware of each other through an agreed communication channel which in this case is HTTP.
 
-### `yarn eject`
+Install `dependencies` with [yarn](https://yarnpkg.com)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+After installing dependencies, make sure to set all enviroment variables used before starting app. A good place to look would be the config file.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In projects root:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Run `yarn install-server` to install server dependencies
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Run `yarn install-client` to install client dependencies
 
-## Learn More
+3. Start the server `yarn start-server`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Start the client `yarn start-client`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Open your browser and go to [http://localhost:3000/](http://localhost:3000/) to view your app
 
-### Code Splitting
+if you wish to use [npm](https://www.npmjs.com/) as your package manager, you could delete
+the yarn.lock file, change all appearances of yarn to npm under scripts in package.json file and instead
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+In pojects root:
 
-### Analyzing the Bundle Size
+1. Run `npm install-server` to install server dependencies
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+2. Run `npm install-client` to install client dependencies
 
-### Making a Progressive Web App
+3. Start the server `npm start-server`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+4. Start the client `npm start-client`

@@ -1,20 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .full-cart-container{
     background-color: #ffffff;
     min-height: 50vh; 
@@ -31,7 +15,6 @@
     position: relative;
     margin-top:2%;
     margin-bottom:2%;
-    /* box-shadow:0 0 5px rgba(117, 116, 116, 0.8); */
 }
 
 .full-cart-header{
@@ -86,6 +69,7 @@
 }
 
 .card-item-details{
+    /* border: 1px solid black; */
     width:50%;
     min-height:50vh;
     display:flex;
@@ -107,10 +91,8 @@
 }
 
 .card-remove-button{
-    /* border:1px solid black; */
     display:flex;
     width:100%;
-
 }
 .card-remove-button button{
     margin-top:auto;
@@ -119,16 +101,11 @@
     border:0;
     background-color: rgb(218, 152, 218);
     color: #ffffff;
-    /* background-color:#242729; 
-    color:rgb(212, 108, 212); */
-    /* border:1px solid rgb(212, 108, 212); */
     font-size: 1em;
     font-family:'acme';
     font-weight: bold; 
     margin-right: auto;
      transition:all 0.3s ease;
-    /* border:1px solid black; */
-
 }
 
 .full-cart-total{
@@ -151,8 +128,7 @@
     font-size: 1em;
     font-family:'acme';
     font-weight: bold;
-    transition:all 0.3s ease;
-    
+    transition:all 0.3s ease;  
 }
 .full-cart-button{
     margin:6px;
@@ -188,28 +164,15 @@
 .total-header span{
     font-weight: bold;
 }
-
-
-
-
-
-
-
-
-
 .card-add-button{
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
-    /* border:1px solid black; */
     margin-bottom: -2%; 
     width: 80%;
     margin-right: auto;
 }
 .card-add-button button{
     width:50%;  
-    /* margin-left:auto; */
-    /* margin-right:auto; */
     height:45px;
     position:relative;
     transition:all 0.3s ease-in-out;
@@ -217,12 +180,7 @@
     background-color:#ffffff;
     color:rgb(218, 152, 218);
     border:1px solid rgb(218, 152, 218);
-    /* border-radius: 6%; */
     font-weight: bold;
-   
-    /* margin:2px; */
-  
-
 }
 .card-add-button button:first-child{
     border-right: 0;
@@ -230,15 +188,8 @@
 .card-add-button button:hover{
     cursor: pointer;
     color:#ffffff;
-    background-color: rgb(212, 108, 212);
-   
-   
+    background-color: rgb(212, 108, 212); 
 }
-
-
-
-
-
 
 
 

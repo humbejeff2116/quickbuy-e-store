@@ -1,23 +1,18 @@
-import React,{useState, useEffect} from 'react';
+
+import React from 'react';
 import logo from '../../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  NavLink } from 'react-router-dom';
 
 
 
-
-
-
 export function NavSearchBar(props) {
-    
     const search = <FontAwesomeIcon icon={['fas', "search"]}  />
     const user = <FontAwesomeIcon  icon={['fas', "user"]}  />
-
     const logOut = ( ) => {
         localStorage.removeItem('x-access-token');
         localStorage.removeItem('user');
     }
-
     return(
         <div className="search">
             <div className="logo">
@@ -36,17 +31,12 @@ export function NavSearchBar(props) {
     )
 }
 
-
-
 function LogInNav(props) {
-   
-   
     const authNavLinks = [
         {href:'/checkout',name:'Checkout'},
         {href:'/users/dashboard',name:'Dashboard'}
     ]
-
-    if(props.auth) {
+    if (props.auth) {
        
         
         return(

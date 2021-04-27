@@ -1,17 +1,10 @@
 
 
-
-
-
 import React from 'react';
-import {PageTemplate} from '../PageTemplate/pageTemplate';
+import { PageTemplate } from '../PageTemplate/pageTemplate';
 import  ErrorBoundary  from '../ErrorBoundary/errorBoundary';
 
-
-
-
-
-export default function EmptyCart(props) {
+export default function EmptyCart() {
     return(       
         <PageTemplate>                     
         <ErrorBoundary>

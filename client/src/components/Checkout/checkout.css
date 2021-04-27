@@ -17,6 +17,10 @@
 }
 .checkout-title{
     color: rgb(218, 152, 218);
+    text-align: center;
+}
+.checkout-title h2 {
+    color: rgb(218, 152, 218);
     margin:6px;
     border-radius: 4px;
     padding:6px;
@@ -27,7 +31,7 @@
 
 .checkout-item-container{
     margin:3% 3% 0 3%;
-    padding:3px;
+    padding:8px; 
     box-shadow:0 0 2px rgba(117, 116, 116, 0.8);
 }
 
@@ -48,22 +52,11 @@
     padding:8px;
     width: 50%;
     min-height:50vh;
-    margin-left:auto;
-    margin-right: auto;
-    padding:0 0 4% 5%;
+    padding:0 0 4% 2%;
 }
 
-/* .text-primary{
-
-} */
-
-/* .checkout-data{
-    color:rgb(218, 152, 218);
-} */
-
 .checkout-product span{
-    font-weight:bold;
-   
+    font-weight:bold; 
 }
 
 .checkout-total{
@@ -73,8 +66,7 @@
     padding:8px;
 }
 .checkout-total span{
-    font-weight:bold;
-   
+    font-weight:bold;  
 }
 
 .checkout-btn{

@@ -1,11 +1,11 @@
 
-import React,{useEffect} from 'react'
-import './sellProduct.css'
+import React, { useEffect } from 'react';
+import './sellProduct.css';
 
 
 
 
-export const SellProductPage = (props) => {
+export const SellProductPage = ( ) => {
     useEffect(()=> {
         window.scrollTo(0,0)
     },[]);

@@ -1,16 +1,11 @@
 
-
-
-
-
-
-import React from 'react'
+import React from 'react';
 import CartTemplate from './cartTemplate';
 
 
 export default function ErrCart(props) {
     return(
-          <CartTemplate>
+        <CartTemplate>
             <div>
                 <p>{props.err}</p>
             </div>

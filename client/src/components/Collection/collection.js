@@ -1,36 +1,33 @@
 
-import React,{useState} from 'react';
-import ErrorBoundary from '../ErrorBoundary/errorBoundary'
-import logo from '../../images/logo.png'
-import azz_black from '../../images/azz_black_xl.webp'
-import { Redirect, useLocation, useHistory} from 'react-router-dom/';
+import React,{ useState } from 'react';
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
+import { Redirect, useLocation, useHistory } from 'react-router-dom/';
 
 
   export function CollectionItem(props) {
+    const [redirect, setRedirect] = useState('');
+
     let location = useLocation();
     let history = useHistory();
-    
-    const [redirect, setRedirect] = useState('');
-    const {src, name, price, description, available, id} = props;
-   
-    const view = (src, name, price, description, id, available) => { 
+    const {src, name, price, description, available, id, productSizes} = props;
+    const view = (src, name, price, description, id, available, productSizes) => { 
       history.push(location.pathname);
       let item = [];
-      item.push({ src, name, price,description, id,available });
+      item.push({src,name,price,description,id,available,productSizes});
       localStorage.setItem('view', JSON.stringify(item));
       setRedirect('/view-item');
     }
-    if(redirect){
+    if (redirect) {
       return(
         <Redirect to={redirect} />
       )
     }
     return(
       <ErrorBoundary>  
-      <div className="items-picture"  onClick={()=>view(src,name,price,description,id,available)} > 
+      <div className="items-picture"  onClick={()=>view(src,name,price,description,id,available,productSizes)} > 
           <div className="items-details"> 
-          {/* TODO change image src back to product src props */}
-              <img src={azz_black} width="80%" height="80%" alt="img" /><br />      
+         
+              <img src={src} width="80%" height="80%" alt="img" /><br />      
              <span className="product-title">name:</span> {name}<br />
              <span className="product-price">price:</span> ${price}<br />
           </div> 
@@ -41,7 +38,7 @@ import { Redirect, useLocation, useHistory} from 'react-router-dom/';
                 *Out of stock* 
               </p>
             </div> : <div className="product-bttn">
-                          <button  onClick={()=>view(src,name,price,description,id,available)} >
+                          <button  onClick={()=>view(src,name,price,description,id,available,productSizes)} >
                               {/* <i> <FaRegEye className="contact-bttn-icon"/></i> */}
                             View 
                           </button>

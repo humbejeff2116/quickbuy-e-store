@@ -1,11 +1,11 @@
 
-import React,{ useState,useEffect } from 'react';
-import { postSubscription} from '../../services/ecormerce.service';
-import {FooterMainCompChild}  from './footerMainComp';
-import ApplicationData from '../../data/appData'
+import React,{ useState } from 'react';
+import { postSubscription } from '../../services/ecormerce.service';
+import {FooterMainCompChild }  from './footerMainComp';
+import ApplicationData from '../../data/appData';
 
 
-export const FooterFormComp = (props) => {
+export const FooterFormComp = () => {
   const [valErrs,setValErrs] = useState([]);
   const [errMssg, setErrMssg] = useState('');
   const [mssg,setMssg] = useState('');
@@ -20,13 +20,14 @@ export const FooterFormComp = (props) => {
     postSubscription(data)
     .then(response =>  response.data )
     .then(subscriptionData => {
-        if(subscriptionData.status !== 201) {
-          if(subscriptionData.message) {
-              setErrMssg(subscriptionData.message) 
+        if (subscriptionData.status !== 201) {
+          if (subscriptionData.message) {
+              setErrMssg(subscriptionData.message) ;
               setValErrs([]);
+              // TODO remove alert and use custom pop up modal
+              alert(errMssg);
             return;
-          }
-            
+          }  
           _subEmail.current.focus();
           setErrMssg('') 
           setValErrs(subscriptionData.valErrors)
@@ -35,6 +36,7 @@ export const FooterFormComp = (props) => {
         setMssg(subscriptionData.message);
         _subEmail.current.value ='';
         _subEmail.current.focus();
+        alert(mssg);
         return subscriptionData;
     })
     .catch(err => {
@@ -43,7 +45,7 @@ export const FooterFormComp = (props) => {
   }
 
   const toggleBlur = (e) => {
-      if(e.target.value.length > 0) {
+      if (e.target.value.length > 0) {
         return e.target.classList.add('not-empty'); 
       }
       return e.target.classList.remove('not-empty')            

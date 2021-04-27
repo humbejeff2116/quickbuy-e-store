@@ -1,29 +1,29 @@
-import React, {useState} from 'react';
-import { Redirect, useLocation, useHistory} from 'react-router-dom/';
+import React, { useState } from 'react';
+import { Redirect, useLocation, useHistory } from 'react-router-dom/';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import './singleCollection.css'
+import './singleCollection.css';
 
 
 export function SingleCollectionItem(props) {
     const [redirect, setRedirect] = useState('');
     let location = useLocation();
     let history = useHistory();
-    const {src, name, price, description, available, id} = props;
-    const view = (src, name, price, description, id, available) => {
+    const {src, name, price, description, available, id, productSizes} = props;
+    const view = (src, name, price, description, id, available, productSizes) => {
       history.push(location.pathname);
       let item = [];
-      item.push({ src, name, price,description, id, available });
+      item.push({ src, name, price,description, id, available,productSizes });
       localStorage.setItem('view', JSON.stringify(item));
       setRedirect('/view-item');
     }
-    if(redirect) {
+    if (redirect) {
       return(
         <Redirect to={redirect} />
       )
     }
     return(
       <ErrorBoundary>
-      <div className="items-picture"  onClick={()=>view(src,name,price,description,id,available)}>
+      <div className="items-picture"  onClick={()=>view(src, name, price, description, id, available, productSizes)}>
           <img src={src} alt="img"/>      
           <p className="product-title">{name}</p>
           <p className="product-price"><small>price: </small>${price}</p>
@@ -31,7 +31,7 @@ export function SingleCollectionItem(props) {
           {  
            (available ) ?
            <div className="product-bttn">
-              <button  onClick={()=>view(src,name,price,description,id,available)} >
+              <button  onClick={()=>view(src,name,price,description,id,available, productSizes)} >
                   {/* <i> <FaRegEye className="contact-bttn-icon"/></i> */}
                 View 
               </button>

@@ -4,11 +4,8 @@ import React from 'react';
 
 
 
-
-
-
 export default function Avatar (props) {
-    if(props.user.length > 0) {
+    if(props.user && props.user.length > 0) {
         return(
             <>
             {

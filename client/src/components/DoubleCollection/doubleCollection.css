@@ -1,16 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
 .six-sale-items{
     display:inline-flex;
     justify-content: space-between;  
@@ -53,9 +41,6 @@
 }
 
 .items-six-details{
-  /* display:flex;
-  flex-direction: column;
-  flex-wrap: nowrap; */
   margin-top: 2px;
   margin-bottom:2px;
   width:90%; 

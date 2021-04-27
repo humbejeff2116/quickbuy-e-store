@@ -1,4 +1,4 @@
-import http from '../Http-common/http-common'
+import http from '../Http-common/http-common';
 
 
 

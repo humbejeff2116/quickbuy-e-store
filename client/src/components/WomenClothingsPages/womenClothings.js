@@ -1,18 +1,18 @@
-import React,{useEffect,useState} from 'react';
+import React,{ useEffect, useState } from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
-import {getWomenCollections} from '../../services/ecormerce.service';
+import { getWomenCollections } from '../../services/ecormerce.service';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import {Loader} from '../Loader/loader';
-import {PageTemplate} from '../PageTemplate/pageTemplate';
+import { Loader } from '../Loader/loader';
+import { PageTemplate } from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
 import './womenClothings.css';
 
 window.React = React;
 
-export default function WomenClothingsPage(props) {
+export default function WomenClothingsPage( ) {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
-    const [err, setErr] = useState('');
+    const [ err ] = useState('');
     const [skip, setSkip] = useState(0);
     const [limit] = useState(20);
     const [pageCount, setPageCount] = useState(1);
@@ -63,7 +63,7 @@ export default function WomenClothingsPage(props) {
             <div  className="women-clothings-items-container">
                 <div className="women-clothings-items">
                     { 
-                        products.map((product, i)=>
+                        products.map((product, i) =>
                             < SeeAllComp  key ={i} {...product} />
                         )       
                     }

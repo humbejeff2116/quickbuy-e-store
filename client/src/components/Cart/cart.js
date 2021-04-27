@@ -1,12 +1,11 @@
 
 import React from 'react';
-import {Redirect, useLocation } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import CartLoader from './cartLoader';
 import EmptyCart from './emptyCart';
 import FullCart from  './fullCart';
-import ErrCart from './errCart';
-import './cart.css'
-import './fullcart.css'
+import './cart.css';
+import './fullcart.css';
 
 
 export function Cart (props) {

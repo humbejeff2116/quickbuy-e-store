@@ -1,12 +1,9 @@
 
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
-import PropTypes from 'prop-types'
-
-
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}/>
+// import PropTypes from 'prop-types'
+// TODO... add components proptype validation
  export class ViewItem extends React.Component {
     // static propTypes = {
     //     src:PropTypes.string.isRequired,
@@ -15,7 +12,7 @@ import PropTypes from 'prop-types'
     //     id:PropTypes.string.isRequired
     //   };
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state={
             quantity: 1,
@@ -31,7 +28,7 @@ import PropTypes from 'prop-types'
         let buying_quantity
         let stateQnty = this.state.quantity;
         let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
-        if(stateQnty < 1) {
+        if (stateQnty < 1) {
             let err ='quantity is not expected to be less than 1';
             this.setState({
             err,

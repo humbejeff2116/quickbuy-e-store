@@ -17,8 +17,7 @@ const ProductSchema =  mongoose.Schema({
     available: {type: Boolean , required: true },
     category: {type: String, required: true},
     description: {type: String, required: true},
-    thumbnails: [{type: String}],
-    productSizes:[{type: Number}],
+    productSizes:[{}],
     tags: [String],
     createdAt: {type: Date, default: Date.now} 
 });

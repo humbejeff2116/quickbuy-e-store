@@ -1,10 +1,9 @@
 
-import React from 'react'
-import {Header} from '../Header/index'
-import { Banner } from '../Banner/banner';
+import React from 'react';
+import { Header } from '../Header/index';
 import { Footer } from '../Footer/index';
 import { MobileSearch }   from '../Slider/index';
-import ErrorBoundary from '../ErrorBoundary/errorBoundary'
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 
 
 export const PageTemplate = ({children}) =>

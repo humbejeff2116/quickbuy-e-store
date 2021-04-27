@@ -1,12 +1,6 @@
 
-
-
-
-
-
-
 import React from 'react';
-import {PageTemplate} from '../PageTemplate/pageTemplate'
+import { PageTemplate } from '../PageTemplate/pageTemplate'
 import  ErrorBoundary  from '../ErrorBoundary/errorBoundary';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import CheckoutItem from './checkoutItem';
@@ -57,5 +51,5 @@ export default function FullCheckout(props) {
           </div>
         </ErrorBoundary>
         </PageTemplate> 
-      );
+    )
 }

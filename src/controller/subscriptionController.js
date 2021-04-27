@@ -1,19 +1,8 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
 const SubscriptionsModel = require('../models/subscriptionsModel');
-const config = require('../config/config');
-const emailService = require('../libs/mail')(config);
+// TODO... un comment code when ready to use email service functionality
+// const config = require('../config/config');
+// const emailService = require('../libs/mail')(config);
 const { validationResult } = require('express-validator');
 
 function Subscription() {
@@ -29,6 +18,7 @@ function Subscription() {
       await SubscriptionsModel.update({email: email},{$push: {tags: tags}})
       .then(data => {
          const body = 'thank you for your supscription to quick buy service';
+         // TODO... uncomment the code below when ready to use email service API
          //  emailService.send(email,'quickbuy products supscription',body)
          return res.status(201).json({status: 201, message: 'subscription successful'});
       })

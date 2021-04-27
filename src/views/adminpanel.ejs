@@ -1,0 +1,101 @@
+
+
+
+
+
+
+
+<%- include('_header') %>
+
+<div class="admin-panel-container">
+    <div>
+        <div>
+            <div>
+                <h2 style="text-align: center;">Upload Product</h2>
+            </div>
+            <div>
+                <form action="/admin/" method="POST" enctype="multipart/form-data">
+                        <div class="signup-form-group">
+                            <label for="product name" >Product name<span class="compulsory" >*</span></label>
+                            <input name="productname" type="text" class="form-control "  placeholder="product name" >
+                        </div>
+                       
+                       <div class="signup-form-group">
+                      
+                        <label for="product image" >select product image <span class="compulsory" >*</span></label>
+                        <input type="file" name="imagesrc"  class="form-control" id="fle">
+                        </div>
+                        <div class="signup-form-group">
+                            <label for="product price" >Product Price<span class="compulsory" >*</span></label>
+                            <input type="number" name="price"  class="form-control" placeholder="product price" id="price" >
+        
+                        </div>
+                        <!-- TODO availlable should be a tick/checkbox box -->
+                        <div class="">
+                            <h3>is product availlable?</h3>
+                            <div>
+                                <label for="product availability" >availability<span class="compulsory" >*</span></label>
+                                <select name="available">
+                                    <option value= 'true' >true</option>
+                                    <option value= 'false' >false</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="signup-form-group">
+                            <label for="product category" >product category. Eg men clothings or women clothings or latest deals etc<span class="compulsory" >*</span></label>
+                            <input type="text" name="category"  class="form-control" placeholder="product category">
+        
+                        </div>
+                        <div class="signup-form-group">
+                            <label for="product description" >Product description<span class="compulsory" >*</span></label>
+                            <input type="text" name="description"  class="form-control" placeholder="product description">
+        
+                        </div>
+                        <div class="signup-form-group">
+                            <!-- size array -->
+                            <p>if product has more than one size, it should be entered and seperated using a comma symbol. eg 1,2,3,4</p>
+                            <label >enter product sizes.<span class="compulsory" >*</span></label>
+                            <input type="text" name="productsizes"  class="form-control" placeholder="product sizes" >
+        
+                        </div>
+                        <div class="signup-form-group">
+
+                            <p>if product tags are more than one, they should be entered and seperated using a comma symbol. eg latest deals,women collections,men clothings</p>
+                            <label >enter product tags<span class="compulsory" >*</span></label>
+                            <!-- tags array -->
+                            <input type="text" name="tags"  class="form-control" placeholder="product tags" >
+        
+                        </div>
+
+                        <div class="signup-form-group">
+
+                            <button type="submit">submit</button>
+        
+                        </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div>
+
+    </div>
+</div>
+</div>
+<div class="signup-form-group">
+                                           
+    <label for="product image" >display product image</label>
+    <img alt="productimage" id="img" width="80%" height="80%"/>
+    <button type="button" id="showImage">show product</button>
+    
+    </div>
+
+<script type="text/javascript" src="/admin/admin.js">
+        
+</script>
+
+<%- include('_footer') %> 
