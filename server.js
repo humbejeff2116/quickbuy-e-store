@@ -27,7 +27,7 @@ const { validationResult } = require('express-validator');
 
 
 require('dotenv').config();
-const port = config.app.port || process.env.PORT || 5000;
+const port = config.app.port || process.env.PORT || 4000;
 const mongoConfig = {
     devDbURI: config.db.testURI,
     dbOptions: config.db.dbOptions
@@ -76,12 +76,9 @@ app.use('/admin', (req, res, next) => {
 });
 app.use('/admin', express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRouter);
-
-
-
-app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use('/api/v1/', apiRouter);
-app.get('*',(req, res)=> {
+app.use(express.static(path.join(__dirname, 'client','build')));
+app.get('/*',(req, res)=> {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 app.use(( req, res, next)=> {
