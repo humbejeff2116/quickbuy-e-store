@@ -33,7 +33,7 @@ const mongoConfig = {
     dbOptions: config.db.dbOptions
 }
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:4000',
     optionsSuccessStatus: 200 
 }
 const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'));
@@ -74,13 +74,20 @@ app.use('/admin', (req, res, next) => {
     res.locals.valErrors = validationResult(req).array()
     next();
 });
+
+
 app.use('/admin', express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRouter);
 app.use('/api/v1/', apiRouter);
-app.use(express.static(path.join(__dirname, 'client','build')));
-app.get('/*',(req, res)=> {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
+
+
+ if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')));
+    
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+ }
 app.use(( req, res, next)=> {
     res.status(404).json({Error: true, message: 'API endpoint does not exist'});
 })
