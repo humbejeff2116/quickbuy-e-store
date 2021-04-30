@@ -75,19 +75,14 @@ app.use('/admin', (req, res, next) => {
     next();
 });
 
-
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.use('/admin', express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRouter);
 app.use('/api/v1/', apiRouter);
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
-
- if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
-    
-    app.get('*', function(req, res) {
-      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
- }
 app.use(( req, res, next)=> {
     res.status(404).json({Error: true, message: 'API endpoint does not exist'});
 })

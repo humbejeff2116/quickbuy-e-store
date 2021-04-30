@@ -2,8 +2,6 @@
 
 
 import React from 'react';
-import { BreadCrumb} from './slider';
-import Carousel from './slider2';
 import './slider.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -14,9 +12,3 @@ export const MobileSearch = (props) =>
         <span className="mobile-search-icon"><i className="fa fa-search fa-lg">{search}</i></span>    
     </div>
 
-
- export const Slider = (props) =>
-    <div className="slider-container">
-        <Carousel/>
-        <BreadCrumb/>
-    </div>

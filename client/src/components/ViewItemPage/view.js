@@ -25,7 +25,6 @@ export function View( ) {
 
     useEffect(()=> {
         const viewItem =  localStorage.getItem('view') ? JSON.parse(localStorage.getItem('view')) : [];
-         console.log(viewItem)
         setViewProduct(viewItem);
         window.scrollTo(0,0);
 
@@ -41,7 +40,6 @@ export function View( ) {
     }
     const handleInputChange = e => {
         if (isNaN(e.target.value) || !e.target.value) {
-            console.log(true)
             setErr(true);
             setErrMssg('quantity is expected to be a number');
             return;       
