@@ -39,7 +39,7 @@ const corsOptions = {
 const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'));
 const app = express();
 app.disable('x-powered-by');
-app.use(helmet());
+app.use(helmet( { contentSecurityPolicy: false } ));
 connectToMongodb(mongoose, mongoConfig);
 setUpPassport();
 app.set('views', path.join(__dirname, 'src', 'views'));
@@ -79,11 +79,12 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use('/admin', express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRouter);
 app.use('/api/v1/', apiRouter);
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+app.get('*', (req, res)=> {
+    res.set("Content-Security-Policy", "default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'unsafe-inline'")
+    .sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-app.use(( req, res, next)=> {
+app.use(( req, res)=> {
     res.status(404).json({Error: true, message: 'API endpoint does not exist'});
 })
 app.use((err, req, res, next)=> {
