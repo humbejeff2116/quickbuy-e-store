@@ -32,13 +32,12 @@ const mongoConfig = {
     devDbURI: config.db.testURI,
     dbOptions: config.db.dbOptions
 }
-
-const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'));
-const app = express();
 const corsOptions = {
-    origin: `http://localhost:${app.get('env')}`,
+    origin: 'http://localhost:4000',
     optionsSuccessStatus: 200 
 }
+const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'));
+const app = express();
 app.disable('x-powered-by');
 app.use(helmet( { contentSecurityPolicy: false } ));
 connectToMongodb(mongoose, mongoConfig);
