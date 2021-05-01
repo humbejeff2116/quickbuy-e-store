@@ -7,6 +7,7 @@
 const config = {
     app: {
         port: parseInt(process.env.API_PORT) ,
+        serverPort:parseInt(process.env.PORT),
         url:process.env.SITE_URL  
     },
     db: { 

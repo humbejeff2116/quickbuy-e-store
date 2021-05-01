@@ -27,17 +27,18 @@ const { validationResult } = require('express-validator');
 
 
 require('dotenv').config();
-const port = config.app.port || process.env.PORT || 4000;
+const port = config.app.serverPort || 4000;
 const mongoConfig = {
     devDbURI: config.db.testURI,
     dbOptions: config.db.dbOptions
 }
-const corsOptions = {
-    origin: 'http://localhost:4000',
-    optionsSuccessStatus: 200 
-}
+
 const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'));
 const app = express();
+const corsOptions = {
+    origin: `http://localhost:${app.get('env')}`,
+    optionsSuccessStatus: 200 
+}
 app.disable('x-powered-by');
 app.use(helmet( { contentSecurityPolicy: false } ));
 connectToMongodb(mongoose, mongoConfig);
