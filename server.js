@@ -33,7 +33,7 @@ const mongoConfig = {
     dbOptions: config.db.dbOptions
 }
 const corsOptions = {
-    origin: 'http://localhost:4000',
+    origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 
 }
 const swaggerDocumentationSpecs = swaggerJsdoc(require('./src/documentation/options'));

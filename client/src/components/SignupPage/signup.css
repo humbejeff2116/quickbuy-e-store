@@ -29,10 +29,11 @@
 .signup-form-container{
     display:flex;
     flex-direction:column;
+    justify-content: center;
     margin:4px;
     background-color:#ffffff;
     padding:4px;
-    min-height: 50vh;
+    min-height: 75vh;
 }
 
 .signup-form-panel{
@@ -43,9 +44,9 @@
     margin-left:auto;
     margin-right: auto;
     position:relative;
-    margin-top:3%;
-    margin-bottom:40px;
-    box-shadow:0 0 5px rgba(117, 116, 116, 0.6);
+    /* margin-top:3%;
+    margin-bottom:40px; */
+    box-shadow:0 0 3px rgba(117, 116, 116, 0.6);
     background-color: #ffffff;
 }
 
@@ -63,7 +64,7 @@
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    background-color:#ffffff
+    background-color:#ffffff;
 }
 
 .signup-form-panel-body form{
@@ -170,11 +171,33 @@
 }
 
 @media only screen  and (max-width:910px){
-    .signup-form-panel{       
-        width:90%; 
-        top:30px;        
+    .signup-form-container{
+        margin-top: auto;
+        margin-bottom: auto; 
     }
-  
+    .signup-form-panel{       
+        width:60%;         
+    }
+}
+@media only screen  and (max-width: 600px) {
+    .signup-form-panel{       
+        width:95%;           
+    }
+    .signup-form-panel-body form{
+        width:100%;
+    }
+    .signup-form-group{ 
+        font-size: 0.95em;
+        padding-top: 2%;
+        margin-bottom:5%;
+        width:49%;
+    }
+    .signup-bttn{
+        width:98%; 
+    }
+    .signup-form-panel button{
+        border-radius: 4px;            
+    }
 }
 
 @media only screen  and (max-width:414px){
@@ -192,9 +215,8 @@
      }
    
      .signup-form-panel button{
-         width:100%;    
-        
-        left:0;     
+         width:100%;
+         border-radius: 4px;            
      }
    
 }

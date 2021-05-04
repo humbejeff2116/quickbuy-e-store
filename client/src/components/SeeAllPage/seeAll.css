@@ -59,3 +59,21 @@
     margin-left: auto;
     bottom: 2px;
 }
+
+@media only screen  and (max-width: 910px){
+ 
+   
+}
+  
+  @media only screen  and (max-width: 600px) {
+    .all-items-picture{
+        width:32%;
+      
+        
+    }
+
+  }
+  
+  @media only screen  and (max-width: 414px) { 
+ 
+  }

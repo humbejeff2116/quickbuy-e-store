@@ -203,13 +203,34 @@
    cursor:pointer;  
 }
 
+
+@media only screen  and (max-width: 910px){
+    .login-container{   
+        min-height: 75vh;
+        margin-top: auto;
+        margin-bottom: auto;       
+     }
+     .login-panel{       
+         width:60%;         
+     }  
+}
+  
+@media only screen  and (max-width: 600px) {
+    .login-panel{       
+        width:80%;         
+    }
+
+}
+  
+
 @media only screen  and (max-width:414px){
     .login-container{   
-       min-height: 75vh;       
+        min-height: 75vh;
+        margin-top: auto;
+        margin-bottom: auto;       
     }
     .login-panel{       
-        width:90%; 
-        top:30px;        
+        width:90%;     
     }
     .login-form-group input{
         width:95%;

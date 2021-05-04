@@ -4,7 +4,7 @@
     flex-direction:row; 
     background-color: #ffffff;
     min-height: 70vh;
-    margin:6px;
+    margin:6px;  
 }
 
 .div1{ 
@@ -16,6 +16,7 @@
     width:29%; 
     min-height: 40vh;   
 }
+
 .cart{
     min-height: 40vh;
     width:40%;
@@ -27,7 +28,9 @@
     box-shadow:0 0 5px rgba(117, 116, 116, 0.8);
     background-repeat: no-repeat;
     background-position:center; 
+    
 }
+
 .cart-header{
     display:flex;
     flex-direction:row;
@@ -35,8 +38,8 @@
     border:1px solid black;
   
 }
-.cart-title{
-   
+
+.cart-title{ 
     display:flex;
     flex:1;
     text-align: center;
@@ -46,6 +49,7 @@
    position:relative;
    margin-right:1%;
 }
+
 .cart-refresh button{   
     border:0;
     background-color:#fff;
@@ -54,13 +58,13 @@
     margin-top:20%;
     color:rgb(218, 152, 218);
 }
+
 .cart-refresh button:hover{
     cursor:pointer;
     text-decoration: underline;
 }
 
 .cart-body{
-   
     display:flex;
     flex-direction: column;
     justify-content: space-between;
@@ -77,6 +81,7 @@
     font-family:'acme';
     
 }
+
 .cart-title h3{
     color: rgb(218, 152, 218);
     margin:6px;
@@ -85,7 +90,6 @@
     margin-right: 25%;
     margin-left:auto; 
 }
-
 
 .cart-warning{
     text-align: center;
@@ -124,7 +128,8 @@
 }
 
 .cart-img{
-    background-color: rgb(230, 230, 230);
+    /* background-color: rgb(235, 235, 235); */
+    background-color: #ccc;
     width:50%;
     height:250px;
     margin-right: auto;
@@ -150,7 +155,42 @@
     color:rgb(212, 108, 212);
 }
 
-@media only screen and (max-width:414px){
+@media only screen  and (max-width: 910px) {
+    .cart-container{     
+      /* border: 1px solid red; */
+      margin-top: auto;
+      margin-bottom: auto;
+   }
+    .div1{ 
+        display:none;
+    }
+    .div3{ 
+        display:none;
+    }
+    .cart{
+        width:60%;  
+    }
+    .cart-img{
+        width:60%;
+    }
+}
+
+@media only screen  and (max-width: 600px) {
+    .div1{ 
+        display:none;
+    }
+    .div3{ 
+        display:none;
+    }
+    .cart{
+        width:80%;
+    }
+    .cart-img {      
+        width:70%;
+    }
+}
+
+@media only screen and (max-width:414px) {
     .cart-title{
         width:80%;
     }
@@ -163,7 +203,7 @@
     }
 }
 
-@media only screen and (max-width:360px){
+@media only screen and (max-width:360px) {
     .cart-img {      
         width:80%;
         height: 250px;
@@ -173,7 +213,7 @@
     }
 }
 
-@media only screen and (max-width:305px){
+@media only screen and (max-width:305px) {
     .cart-img {      
         width:80%;
         height: 235px;

@@ -1,7 +1,8 @@
 # quick buy e-shopping store
 
 This is an E-commerce online clothing store built using MERN (MongoDB, Express.js, React.js, Node.js) stack.
-This is basically a prototype which concentrations have been placed more on the core functionalities of an e-store. This web app is still undergoing iterations and have been built with the constant thought of high peformance and scalability in mind (a good reason for picking MERN as the applications stack), thus creating room for easy implementations/additions of more complex functionalities or extension of already existing functionalities if need arise. Imagine what could be built on top of this.  
+This is basically a prototype which concentrations have been placed more on the core functionalities of an e-store. This web app is still undergoing iterations and have been built with the constant thought of high peformance and scalability in mind (a good reason for picking MERN as the applications stack), thus creating room for easy implementations or additions of more complex functionalities or extension of already existing functionalities if need arise. Imagine what could be built on top of this.
+You can view live at [https://quickibuy.herokuapp.com/](https://quickibuy.herokuapp.com/)
 
 ## Installation and running project
 

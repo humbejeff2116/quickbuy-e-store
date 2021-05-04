@@ -13,20 +13,48 @@ export function NavSearchBar(props) {
         localStorage.removeItem('x-access-token');
         localStorage.removeItem('user');
     }
+    function setUnicode(unicode) {
+        let dummy;
+        let decoded;
+        if(!unicode){
+            return decoded ="";             
+        }
+        dummy = document.createElement('textarea');
+        dummy.innerHTML = unicode;
+        decoded = dummy.value;
+        return decoded;
+    }
+
+    const open = setUnicode('&#9776;')
+    const close = setUnicode('&times;') 
     return(
         <div className="search">
             <div className="logo">
-            <a href="/"><img width="90px" height="40px;" src={logo} alt="logo" title="quickbuy" /></a>
+            <a href="/"><img width="90px" height="40px" src={logo} alt="logo" title="quickbuy" /></a>
             </div>
             <div className="search-bar">
                 <form onSubmit = {props.searchProducts} className="search-bar-form" method="GET" action="/search-product" >
-                    <input type="search" name="search" ref={props.searchValue} onKeyUp = {props.searchProducts}  placeholder="Search for clothing brands and collections"  /><span><i></i></span>
+                    <input type="search" name="search" ref={props.searchValue} onKeyUp = {props.searchProducts}  placeholder="Search for clothings..."  /><span><i></i></span>
                     <button type="submit" ><i className="fa fa-search fa-lg">{search}</i></button>
                 </form>
             </div>
             <div className="header-login">
                 <LogInNav auth={props.auth} logOut={logOut} user={user} />              
-            </div>              
+            </div> 
+
+            {
+                (props.openMobileNav) ? 
+                <div  className="mobile-navv"> 
+                <button className="nav-open-icon closebtn" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)}>
+                    {close}
+                </button>
+                </div> :
+               <div  className="mobile-navv">
+                <span className="nav-open-icon" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)} >
+                    {open}
+                </span> 
+                </div> 
+            }                
         </div>
     )
 }
