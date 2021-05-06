@@ -12,13 +12,13 @@ export default function FooterLegalComp( ) {
 
     return(
       <section className="footer-legal">
-        <ul className="footer-legal-list">
+        <div className="footer-legal-list">
           {
             footerLegalLinks.map((links, i)=>
             <FooterLinks key={i} {...links} />
             )
           }  
-        </ul>
+        </div>
       </section>
     )
 }      

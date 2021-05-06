@@ -257,6 +257,10 @@
 } */
 
 @media only screen  and (max-width:910px){
+    .scrolled{
+        position:sticky;
+        top:0;
+    }
     .top-nav-bar{
         min-height: 65px;
     }
@@ -320,7 +324,6 @@
     .logo{
         display:flex;
         padding:0;
-        /* border: 1px solid blue;  */
     }
     .search-bar{ 
         display:flex;
@@ -328,8 +331,6 @@
         margin-bottom:0;
         padding:5px;
         width:100%;
-        /* margin-right: auto;  */
-        /* border: 1px solid red; */
     }
     .search-bar form{
         width:100%; 
@@ -353,12 +354,10 @@
     }
     .logo img{
         width:70px;
-        height:40px;
-       
+        height:40px;   
     }
     .search-bar{ 
-        display:none;
-       
+        display:none;  
     }
    
     .search-bar-form{
@@ -378,5 +377,4 @@
   .main-navigation{
       display:none;  
   }
- 
 }

@@ -90,7 +90,7 @@ const data = {
 
           footerMainLinks :[
             {
-              title:'About quick buy', 
+              title:'quick buy', 
               links:[{href:'/about', name:'About us'},
                    {href:'/services', name:'Our services'},
                    {href:'/customers', name:'Customers'},
@@ -136,7 +136,7 @@ const data = {
 
            footerContentLinks : [
             {
-              title:'About quick buy', 
+              title:' quick buy', 
               links:[{href:'/about', name:'About us'},
                    {href:'/services', name:'Our services'},
                    {href:'/customers', name:'Customers'},

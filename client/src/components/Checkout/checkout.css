@@ -90,3 +90,32 @@
     font-family:'acme';
     font-weight: bold;
 }
+
+
+@media only screen  and (max-width: 910px) {
+    .checkout{
+        width:60%;
+        margin: 2% auto 2% auto;
+    }  
+}
+
+@media only screen  and (max-width: 600px) {
+    .checkout{
+        width:85%;
+        margin: 2% auto 2% auto;
+    }
+}
+
+@media only screen and (max-width:414px) {
+    .checkout{
+        width:95%;
+    } 
+}
+
+@media only screen and (max-width:360px) {
+   
+}
+
+@media only screen and (max-width:305px) {
+   
+}

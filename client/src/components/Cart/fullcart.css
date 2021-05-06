@@ -52,6 +52,7 @@
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position:center; 
+    
 }
 
 .card-body{
@@ -117,6 +118,7 @@
     display:flex;
     flex-direction: row;
     width:100%;
+    
 }
 
 .full-cart-total button{
@@ -192,6 +194,40 @@
 }
 
 
+
+@media only screen  and (max-width: 910px) {
+    .full-cart{
+        width:60%;
+        margin-top:2%;
+        margin-bottom:2%;
+    }
+    .card-remove-button button{
+        margin-top:auto;
+        width:100%;
+    }
+    .card-add-button{
+        margin-bottom: 2%; 
+        width: 100%;
+    }
+
+}
+
+@media only screen  and (max-width: 600px) {  
+    .full-cart{
+        width:90%;
+        margin-top:2%;
+        margin-bottom:2%;
+    }
+    .card-remove-button button{
+        margin-top:auto;
+        width:100%;
+    }
+    .card-add-button{
+        margin-bottom: 2%; 
+        width: 100%;
+    }
+  
+}
 
 @media only screen and (max-width:414px){
     .full-cart-title{

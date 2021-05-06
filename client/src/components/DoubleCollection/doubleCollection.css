@@ -82,13 +82,7 @@
   .items-picture-six{
     width:30%;
   }
-  .items-picture-six img{
-    width: 40%;
-    position:relative;
-    left:15px;
-    max-width: 100%;
-    height: auto;
-  }
+  
   .view-six button{     
     width:100%; 
     margin-bottom: -2px; 
