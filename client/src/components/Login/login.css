@@ -204,7 +204,7 @@
 }
 
 
-@media only screen  and (max-width: 910px){
+@media only screen  and (max-width: 910px) {
     .login-container{   
         min-height: 75vh;
         margin-top: auto;
@@ -221,9 +221,10 @@
     }
 
 }
+
   
 
-@media only screen  and (max-width:414px){
+@media only screen  and (max-width:414px) {
     .login-container{   
         min-height: 75vh;
         margin-top: auto;
@@ -248,4 +249,17 @@
         text-align:center;      
     }
 
+}
+@media only screen  and (max-width:412px) {
+
+    .login-form-group input{
+        padding:2%;  
+    }
+    .login-form-group input.not-empty + .placeholder,
+.login-form-group  input:focus + .placeholder{
+    top:12px;
+    font-size: 11.5px;
+    color:#222;   
+}
+    
 }

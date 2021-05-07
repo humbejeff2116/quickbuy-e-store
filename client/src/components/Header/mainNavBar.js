@@ -23,6 +23,7 @@ export const  MainNavBar = (props) => {
             auth={props.auth}
             openMobileNav={props.openMobileNav}
             setOpenMobileNav={props.setOpenMobileNav}
+            logOut={props.logOut}
             />
             <MyContext.Consumer>
             {context => (

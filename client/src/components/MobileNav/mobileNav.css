@@ -1,14 +1,18 @@
+
+
+
 .mobile-nav{
     display:flex;
     flex-direction: column;
-    height:75%;
+    height:65vh;
     width:50%;
     position:fixed;
     z-index:1;
     top:15%;
     left:0;
     background-color:#242729;
-    overflow-x:hidden;  
+    overflow-x:hidden; 
+    overflow-y: scroll; 
     border-radius: 0 6px 6px 0;
     animation-name:animatenav;
     animation-duration:0.6s;

@@ -8,7 +8,6 @@
 }
 
 .latest-deals-items-header{
-/* border:1px solid black; */
 display:flex;
 flex-direction:row;
 /* justify-content:center; */
@@ -20,9 +19,11 @@ margin-bottom:0.15%;
 .latest-deals-title{
   display:flex;
   flex-direction:row;
+  flex: 1;
   background-color:#ffffff;
   color:black;
   margin-bottom:0.15%;
+  justify-content: center;
 }
 
 
@@ -45,14 +46,36 @@ margin-top:0.3%;
 }
 
 @media only screen  and (max-width: 910px){
+  .latest-deals-title h3{
+    width:100%;
+   text-indent: 35%;
+ }
+ 
  
 }
 
 @media only screen  and (max-width: 600px) {
+    
+    .latest-deals-title{
+      justify-content: unset;
+    }
+    .latest-deals-title h3{
+      text-indent: 31%;
+    }
  
+
+}
+@media only screen  and (max-width: 500px) { 
+  .latest-deals-title h3{
+    text-indent: 27%;
+  }
 
 }
 
 @media only screen  and (max-width: 414px) { 
+  .latest-deals-title h3{
+    text-indent: 20%;
+   
+  }
 
 }

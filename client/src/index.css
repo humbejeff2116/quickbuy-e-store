@@ -208,6 +208,16 @@ a,button{
   .items-picture{
     width:23%;  
   }
+  .pages-back-bttn{
+    display:flex;
+    justify-content: unset;
+  }
+  
+  .pages-back-bttn button{
+    height:40px;
+    margin-top:9%;
+  }
+ 
 }
 @media only screen  and (max-width:600px){
   .sale-items{
@@ -220,10 +230,28 @@ a,button{
     display:flex;    
     justify-content: none; 
   }
+  .pages-back-bttn{
+    display:flex;
+    justify-content: unset;
+  }
+  
+  .pages-back-bttn button{
+    height:40px;
+    margin-top:18%;
+  }
 }
 
 @media only screen  and (max-width:360px){
   .main-container{
       width:100%;  
+  }
+  .pages-back-bttn{
+    display:flex;
+    justify-content: unset;
+  }
+  
+  .pages-back-bttn button{
+    height:40px;
+    margin-top:18%;
   }
 }

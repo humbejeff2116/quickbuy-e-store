@@ -7,7 +7,16 @@ import { searchProduct } from '../../services/ecormerce.service';
 import SearchResult from './SearchComponent/searchResults';
 import ApplicationData from '../../data/appData';
 import { isAuthenticated } from '../../services/ecormerce.service';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './header.css';
+const user = <FontAwesomeIcon  icon={['fas', "user"]}  />
+const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
+
+
+
+
+
+
 
 
 
@@ -23,6 +32,7 @@ export const Header = ( ) => {
     const [openMobileNav, setOpenMobileNav] = useState(false);
     let _searchValue = React.createRef();
     let _toggleSearchContainer = React.createRef();
+    let _toggleMobileNav = React.createRef();
     const navGifsLinks =  ApplicationData.getNavGifsLinks();
     const navLinks = ApplicationData.getNavLinks();
     const socialLinks =ApplicationData.getSocialLinks();
@@ -32,9 +42,11 @@ export const Header = ( ) => {
     useEffect(()=> {
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('click', closeSearchResultComponent);
+        window.addEventListener('click', closeMobileNav);
         return ()=> {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('click', closeSearchResultComponent);
+            window.removeEventListener('click', closeMobileNav);
         }
     });
 
@@ -92,6 +104,15 @@ export const Header = ( ) => {
             setErrMssg('');     
         }  
     }
+    const closeMobileNav = (e) => {    
+        if (openMobileNav && !_toggleMobileNav.current.contains(e.target)) {      
+            setOpenMobileNav(false);
+        }  
+    }
+    const logOut = ( ) => {
+        localStorage.removeItem('x-access-token');
+        localStorage.removeItem('user');
+    }
   
     if (scrolled) {
         navbarClasses.push('scrolled');
@@ -111,12 +132,20 @@ export const Header = ( ) => {
             searchValue={_searchValue}
             navLinks={navLinks}
             auth={auth}
+            logOut={logOut}
             />
             {
-                (openMobileNav) && <MobileNav />
+                (openMobileNav) && (
+                    <MobileNav 
+                    MobileNavRef={_toggleMobileNav}
+                    auth={auth}
+                    logOut={logOut}
+                    userIcon={user}
+                    cart={cart}
+                    />
+                )
             }    
-        </nav>
-         
+        </nav> 
         {
             (searchIsOpen ) && (
                 <div  ref={_toggleSearchContainer} className="search-result-container">
@@ -125,13 +154,11 @@ export const Header = ( ) => {
                         searchedProd.map((prod ,i)=>
                             <SearchResult key={i} {...prod} onClick={viewItem} />
                         )
-
                     }  
                     </div>                           
-            </div>
+                </div>
             ) 
-        }
-       
+        }  
         </>
     )
 } 

@@ -9,10 +9,6 @@ import {  NavLink } from 'react-router-dom';
 export function NavSearchBar(props) {
     const search = <FontAwesomeIcon icon={['fas', "search"]}  />
     const user = <FontAwesomeIcon  icon={['fas', "user"]}  />
-    const logOut = ( ) => {
-        localStorage.removeItem('x-access-token');
-        localStorage.removeItem('user');
-    }
     function setUnicode(unicode) {
         let dummy;
         let decoded;
@@ -39,18 +35,18 @@ export function NavSearchBar(props) {
                 </form>
             </div>
             <div className="header-login">
-                <LogInNav auth={props.auth} logOut={logOut} user={user} />              
+                <LogInNav auth={props.auth} logOut={props.logOut} user={user} />              
             </div> 
 
             {
                 (props.openMobileNav) ? 
                 <div  className="mobile-navv"> 
-                <button className="nav-open-icon closebtn" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)}>
+                <button className="nav-open-icon closebtn" onClick={()=>props.setOpenMobileNav(false)}>
                     {close}
                 </button>
                 </div> :
                <div  className="mobile-navv">
-                <span className="nav-open-icon" onClick={()=>props.setOpenMobileNav(prevState=> !prevState)} >
+                <span className="nav-open-icon" onClick={()=>props.setOpenMobileNav(true)}>
                     {open}
                 </span> 
                 </div> 

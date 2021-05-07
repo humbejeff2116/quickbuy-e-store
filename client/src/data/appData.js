@@ -15,13 +15,11 @@ import  instagramIcon from '../images/instagram.svg'
 import linkedinIcon from '../images/linkedin.svg'
 import twitterIcon from '../images/twitter.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-const user = <FontAwesomeIcon  icon={['fas', "user"]}  />
 const about = <FontAwesomeIcon  icon={['fas', "info-circle"]}  />
 const female = <FontAwesomeIcon  icon={['fas', "female"]}  />
 const male = <FontAwesomeIcon  icon={['fas', "male"]}  />
 const jewelries = <FontAwesomeIcon  icon={['fas', "gem"]}  />
 const accessories = <FontAwesomeIcon  icon={['fas', "hat-wizard"]}  />
-const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 const home = <FontAwesomeIcon  icon={['fas', "home"]}  />
 
 let _firstnameValue = React.createRef();
@@ -82,10 +80,8 @@ const data = {
             { name:"Men Clothings", href:"/men-clothings", icon:male },
             { name:"Jewelries", href:"/jewelries", icon:jewelries },
             { name:"Accessories", href:"/accessories", icon:accessories },
-            { name:"Shopping Cart", href:"/cart", icon:cart },
-            { name:"Signup/Login", href:"/login", icon:user },
             
-          ],
+        ],
 
 
           footerMainLinks :[

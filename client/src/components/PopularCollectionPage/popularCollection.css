@@ -35,3 +35,49 @@
     justify-content:space-between;
     margin-top:0.3%;
 }
+
+@media only screen and (max-width: 910px){
+    .popular-collections-title{
+      
+        justify-content: unset;
+    }
+   
+    .popular-collections-title h3{
+    width:100%;
+    text-indent: 29.5%;
+  }
+  
+   }
+  
+   @media only screen  and (max-width: 600px) {
+      
+    .popular-collections-title{
+      justify-content: unset;
+    }
+    .popular-collections-title h3{
+    width:100%;
+    text-indent: 22%;
+  }
+  
+  
+  }
+  @media only screen  and (max-width: 500px) { 
+    .popular-collections-title{
+      justify-content: unset;
+    }
+    .popular-collections-title h3{
+    width:100%;
+    text-indent: 19.5%;
+  }
+  
+  }
+  
+  @media only screen  and (max-width: 414px) { 
+    .popular-collections-title{
+      justify-content: unset;
+    }
+    .popular-collections-title h3{
+    width:100%;
+    text-indent: 8%;
+  }
+  }

@@ -43,3 +43,49 @@
     justify-content: center;
   
   }
+
+  @media only screen and (max-width: 910px){
+    .men-collections-title{
+      
+        justify-content: unset;
+    }
+   
+    .men-collections-title h3{
+    width:100%;
+    text-indent: 29.5%;
+  }
+  
+   }
+  
+   @media only screen  and (max-width: 600px) {
+      
+    .men-collections-title{
+      justify-content: unset;
+    }
+    .men-collections-title h3{
+    width:100%;
+    text-indent: 22%;
+  }
+  
+  
+  }
+  @media only screen  and (max-width: 500px) { 
+    .men-collections-title{
+      justify-content: unset;
+    }
+    .men-collections-title h3{
+    width:100%;
+    text-indent: 19.5%;
+  }
+  
+  }
+  
+  @media only screen  and (max-width: 414px) { 
+    .men-collections-title{
+      justify-content: unset;
+    }
+    .men-collections-title h3{
+    width:100%;
+    text-indent: 12%;
+  }
+  }

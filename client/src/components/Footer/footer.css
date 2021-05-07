@@ -187,13 +187,14 @@ footer li{
     .footer-legal{
         margin-top:2%;
         padding: 3%;
+        /* border:1px solid yellow; */
+        justify-content: center;
     }
     
     .footer-legal-list {
         display: flex;
         flex-wrap: wrap;
         justify-content:space-between;
-        /* border:1px solid yellow; */
         width: 100%;
     }
 
