@@ -133,26 +133,29 @@ a,button{
   display:flex;
   flex-direction:row;
   justify-content:space-between;
+  align-items: center;
   background-color:#ffffff;
   margin-bottom:2px;
-  box-shadow:0 1px 1px  rgba(117, 116, 116, 0.6);
-  padding:6px;
+  box-shadow:0 0 1px 1px  rgba(117, 116, 116, 0.6);
+  /* border-bottom:1px solid red; */
+  /* padding:6px; */
 }
 
 .items-header h3{
   padding:1%;
   min-height:45px;
   min-width:18%;
-  text-align:center;
+  /* text-align:center; */
   font-family:'acme';
+  color:rgb(218, 152, 218);
+  /* border:1px solid red; */
 }
 
 .items-header a{
   text-decoration: none;
   font-size:1.1em;
-  margin-right:2px;
-  padding:10px;
-  color:rgb(190, 87, 190);
+  margin-right:2%;
+  color:rgb(218, 152, 218);
   font-family:'acme';
   font-weight:bold;
   height:35px;

@@ -8,8 +8,8 @@ import { PageTemplate } from '../PageTemplate/pageTemplate';
 
 
 
-// let URI = `http://localhost:4000`;
-const URI = `https://quickibuy.herokuapp.com`;
+let URI = `http://localhost:4000`;
+// const URI = `https://quickibuy.herokuapp.com`;
 const LatestDeals = DataComponent(Collection, `${URI}/api/v1/latest-deals?limit=${4}`)
 const WomenCollections = DataComponent(Collection,`${URI}/api/v1/women-collections?limit=${4}`)
 const PopularCollections = DataComponent(DoubleCollection, `${URI}/api/v1/popular-collections?limit=${12}`)

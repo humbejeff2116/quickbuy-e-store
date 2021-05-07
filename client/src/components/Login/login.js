@@ -49,6 +49,7 @@ export default class Login extends React.Component {
             if (loginData.message) {
                 return this.setState({
                         errMessage: loginData.message,
+                        loginIn:false,
                         valErrors:[]
                       })
             }

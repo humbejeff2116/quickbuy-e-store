@@ -18,6 +18,7 @@
     display:flex;
     flex:1;
     justify-content: center;
+    color:rgb(218, 152, 218);
 }
 
 .popular-collections-items-container{
