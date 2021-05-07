@@ -213,7 +213,9 @@ footer li{
     }
 
     .footer-form form{
-        width:80%;
+        flex-direction: column;
+        width:60%;
+        /* border:1px solid white; */
         margin-left: auto;
         margin-right: auto;
     }
@@ -224,13 +226,21 @@ footer li{
         text-align: center;
     }
 
-    .footer-form form input[type="text"] {
-        margin-left:2%;
+    .footer-form form input[type="text"] { 
+        width:100%;
     }
 
     .footer-form form button {
-        margin-left:2%;
-    }    
+        margin-top:2%;
+        width:30%;
+        margin-left:auto;
+    } 
+    /* .sub-err-cont {
+       border:1px solid black;
+    }  */
+    .sub-err-cont p{ 
+        color:rgb(248, 10, 10);
+    }  
 }
 
 @media only screen  and (max-width: 600px) {
@@ -293,31 +303,61 @@ footer li{
         border-top:1px solid #38393a;
         width:100%;
     }
-
+    .footer-form  form{
+        flex-direction: column;
+    }
     .footer-form p{
         color: rgb(218, 152, 218);
         font-size: 0.9em;
-        /* border:1px solid red; */
         text-align: center;
     }
 
-    .footer-form form input[type="text"] {
-        margin-left:2%;
+    .footer-form form input[type="text"]{
+        width: 100%;
     }
 
     .footer-form form button {
-        margin-left:2%;
+        margin-top:2%;
+        width:30%;
+        margin-left:auto;
+    }
+     /* .sub-err-cont {
+       border:1px solid black;
+    }  */
+    .sub-err-cont p{ 
+        color:rgb(248, 10, 10);
     } 
+}
+@media only screen and (max-width:500px) {
+    .footer-form form{
+        width:70%;
+    }
+     
 }
 
 @media only screen and (max-width:414px) {
+    .footer-form form{
+        flex-direction: column;
+        width:80%;
+        /* border:1px solid white; */
+        margin-left: auto;
+        margin-right: auto;
+    }
      
 }
 
 @media only screen and (max-width:360px) {
    
+   
 }
 
 @media only screen and (max-width:305px) {
+    .footer-form form{
+        flex-direction: column;
+        width:95%;
+        /* border:1px solid white; */
+        margin-left: auto;
+        margin-right: auto;
+    }
 
 }

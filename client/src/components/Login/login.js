@@ -67,7 +67,7 @@ export default class Login extends React.Component {
           if(token) {
             if(checkoutRoute){
               return this.setState({
-                redirect:`/${checkoutRoute}`,
+                redirect:`/checkout`,
                 loginIn:false
               })
             }
