@@ -15,10 +15,13 @@ export default function AppCart() {
         const accessTokenExpirationTime = localStorage.getItem('x-access-token-expiration');
         if (!token ) {
             localStorage.setItem('checkout-message','please log in to complete action');
-            return setRedirect('/login');   
+            localStorage.setItem('checkoutRoute', '/checkout');
+            return setRedirect('/login');
+              
         }
         if (token && (accessTokenExpirationTime < Date.now())) {
             localStorage.setItem('checkout-message','please log in to complete action');
+            localStorage.setItem('checkoutRoute', '/checkout');
             return setRedirect('/login');   
         } 
         validateToken(token)

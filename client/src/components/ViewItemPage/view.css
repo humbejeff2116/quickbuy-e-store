@@ -576,7 +576,6 @@ display: none;
 
 @media only screen and (max-width:414px) {
     .view-item-container{
-        
         width:90%;
         min-height:70vh;
         margin:1.4% auto 1.4% auto ;
@@ -588,16 +587,14 @@ display: none;
        
 
       
-  }
-  .view-quantity{
-    width: 47%;
-    margin-right: 0.3%;
-    border:1px solid black;
-}
-.view-add-to-cart{
-    width: 47%;
-    border:1px solid black;
-}
+    }
+    .view-quantity{
+        width: 47%;
+        margin-right: 0.3%;
+    }
+    .view-add-to-cart{
+        width: 47%;
+    }
    
 }
 

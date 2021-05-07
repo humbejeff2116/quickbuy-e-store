@@ -17,7 +17,8 @@ export default class Login extends React.Component {
             valErrors:[],
             errMessage:'',
             blur:false,
-            redirect:''
+            redirect:'',
+            loginIn:false
         }
      }
 
@@ -25,35 +26,38 @@ export default class Login extends React.Component {
         this.setState({[e.target.name]: e.target.value})
 
       toggleBlur = (e) => {
-
         if (e.target.value.length > 0) {
-        return e.target.classList.add('not-empty');
+          return e.target.classList.add('not-empty');
         }
-       return e.target.classList.remove('not-empty')           
+        return e.target.classList.remove('not-empty');           
       }
 
       submitLogin = (e) => {
         e.preventDefault();
         const checkoutAction = localStorage.getItem('checkout-message');
+        const checkoutRoute = localStorage.getItem('checkoutRoute');
         if (checkoutAction) {
-            localStorage.removeItem('checkout-action')
+            localStorage.removeItem('checkout-message');
         }
+        this.setState({
+          loginIn:true
+        });
         login(this.state)
         .then( response => response.data)
         .then(loginData => {
-            if (loginData.status !== 200) {
-              if (loginData.message) {
-                  return this.setState({
-                          errMessage: loginData.message,
-                          valErrors:[]
-                        })
-              }
-              window.scrollTo(0,0);
-              return this.setState({
-                        valErrors:loginData.valErrors,
-                        errMessage:''
+          if (loginData.status !== 200) {
+            if (loginData.message) {
+                return this.setState({
+                        errMessage: loginData.message,
+                        valErrors:[]
                       })
             }
+            window.scrollTo(0,0);
+            return this.setState({
+                      valErrors:loginData.valErrors,
+                      errMessage:''
+                    })
+          }
           localStorage.setItem('x-access-token', loginData.token);
           localStorage.setItem('x-access-token-expiration',  Date.now() + 2 * 60 * 60 * 1000);
           localStorage.setItem('user',JSON.stringify(loginData.data));
@@ -61,19 +65,28 @@ export default class Login extends React.Component {
         })
         .then( token => {
           if(token) {
+            if(checkoutRoute){
+              return this.setState({
+                redirect:`/${checkoutRoute}`,
+                loginIn:false
+              })
+            }
             return this.setState({
-              redirect:'/'
+              redirect:'/',
+              loginIn:false
             })
             // return window.location = '/'
           }
         })
         .catch( err => {
-          console.error('error :'+ err)
-        });
-        
+          console.error('error :'+ err);
+          return this.setState({
+            loginIn:false
+          })
+        });    
       }
    
-     componentDidMount() {
+      componentDidMount() {
         window.scrollTo(0,0);
         const checkoutMessage = localStorage.getItem('checkout-message');
         const authMessage = localStorage.getItem('route-auth-message');
@@ -83,11 +96,12 @@ export default class Login extends React.Component {
         if(authMessage) {
           alert(authMessage);
         }    
-     }
+      }  
     
-     componentWillUnmount() {
+      componentWillUnmount() {
         const checkoutMessage = localStorage.getItem('checkout-message');
         const authMessage = localStorage.getItem('route-auth-message');
+        const checkoutRoute = localStorage.getItem('checkoutRoute');
         if (checkoutMessage){
           localStorage.removeItem('checkout-message');
           
@@ -95,7 +109,10 @@ export default class Login extends React.Component {
         if (authMessage) {
           localStorage.removeItem('route-auth-message');
         }
-     }
+        if (checkoutRoute){
+          localStorage.removeItem('checkoutRoute'); 
+        }
+      }
      
      render() {
        if (this.state.redirect) {
@@ -137,7 +154,9 @@ export default class Login extends React.Component {
                       <p>forgot your password?</p>
                     </div>
                     <div>
-                      <button type="submit" className="btn btn-success">Submit</button>
+                      <button type="submit" className="btn btn-success">
+                       {this.state.loginIn ? 'please wait...' : 'Log in'}
+                      </button>
                     </div>
                   </form>
                   <div className="signup-link">

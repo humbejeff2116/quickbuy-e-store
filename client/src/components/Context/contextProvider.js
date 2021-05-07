@@ -82,7 +82,7 @@ export default function ContextProvider(props) {
             setCartQuantity(cartTotalQty)
             setMssg(true);
             setErr(false);
-            setCartMssg('item added to bag sucessfully');
+            setCartMssg('Added to bag');
             localStorage.removeItem('cartProducts');
             localStorage.setItem('cartProducts',JSON.stringify(products));
             return; 
@@ -98,7 +98,7 @@ export default function ContextProvider(props) {
         setCartQuantity(cartTotalQty);
         setMssg(true);
         setErr(false);
-        setCartMssg('item added to bag sucessfully'); 
+        setCartMssg('Added to bag');   
         localStorage.removeItem('cartProducts');
         localStorage.setItem('cartProducts', JSON.stringify(newCartproduct)); 
     }
@@ -177,7 +177,7 @@ export default function ContextProvider(props) {
         const checkoutTotalSum = cartTotalSum;
         console.log("Your payment has been made successful!", payment);
         postOrders(payment, user, products, checkoutTotalSum )
-        .then(response => console.log('orders posted successfully') )
+        .then(response => console.log('orders posted successfully'))
         .catch(err => console.error(err));
     }
 

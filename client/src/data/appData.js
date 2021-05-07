@@ -1,13 +1,4 @@
 
-
-
-
-
-
-
-
-
-
 import React from 'react'
 import facebookIcon from '../images/facebook.svg'
 import googlePlusIcon from '../images/google-plus.svg'
@@ -31,20 +22,19 @@ let _password2Value = React.createRef();
 
 
 
-const ApplicationData= function(){ };
-// function to inject unicode to html using javascript
-function setUnicode(unicode){
-    let dummy;
-         let decoded
-         if(!unicode){
-            return decoded ="";
 
-         }
-          dummy = document.createElement('textarea');
-          dummy.innerHTML = unicode;
-          decoded = dummy.value;
-          return decoded;
- }
+// function to inject unicode to html using javascript
+function setUnicode(unicode) {
+    let dummy;
+    let decoded;
+        if (!unicode) {
+            return decoded = "";
+        }
+        dummy = document.createElement('textarea');
+        dummy.innerHTML = unicode;
+        decoded = dummy.value;
+    return decoded;
+}
  const and =setUnicode('&amp;');
  const copyright =setUnicode('&copy;');
 
@@ -127,7 +117,7 @@ const data = {
             {href:'/terms-and-conditions', name:`Terms ${and} Conditions`},
             {href:'/privacy', name:'Privacy Policy'},
             {href:'/', name:'Developed by Humbe Jeffrey'},
-            {href:'/hujesoft.com', name:`${copyright} ${new Date().getFullYear()} Copyright Huje Soft Inc.`},
+            {href:'/hujesoft.com', name:`${copyright} ${new Date().getFullYear()} Copyright @Jeff.codes `},
            ],
 
            footerContentLinks : [
@@ -187,41 +177,34 @@ const data = {
     ]
    
 }
-
-
-
-
-
-
-
+const ApplicationData= function( ){ };
 ApplicationData.prototype.data = data;
-
-ApplicationData.prototype.getNavLinks = function(){
+ApplicationData.prototype.getNavLinks = function( ) {
     return this.data.links.navLinks;
 }
-ApplicationData.prototype.getNavGifsLinks = function(){
+ApplicationData.prototype.getNavGifsLinks = function( ) {
     return this.data.links.navGifsLinks;
 }
-ApplicationData.prototype.getSocialLinks = function(){
+ApplicationData.prototype.getSocialLinks = function( ) {
     return this.data.links.socialLinks;
 }
-ApplicationData.prototype.getSideNavLinks = function(){
+ApplicationData.prototype.getSideNavLinks = function( ){ 
     return this.data.links.sideNavLinks;
 }
-ApplicationData.prototype.getMobileNavLinks = function(){
+ApplicationData.prototype.getMobileNavLinks = function( ) {
     return this.data.links.mobileNavLinks;
 }
 
-ApplicationData.prototype.getFooterMainLinks = function(){
+ApplicationData.prototype.getFooterMainLinks = function( ) {
     return this.data.links.footerMainLinks;
 }
-ApplicationData.prototype.getFooterContentLinks = function(){
+ApplicationData.prototype.getFooterContentLinks = function( ) {
     return this.data.links.footerContentLinks;
 }
-ApplicationData.prototype.getFooterLegalLinks= function(){
+ApplicationData.prototype.getFooterLegalLinks= function( ) {
     return this.data.links.footerLegalLinks;
 }
-ApplicationData.prototype.getSignupFormData = function(){
+ApplicationData.prototype.getSignupFormData = function( ) {
     return this.data.signupFormData;
 }
 

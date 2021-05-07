@@ -29,7 +29,7 @@ export const Header = ( ) => {
     const [searchIsOpen, setSearchIsOpen] = useState(false);
     const [errMssg, setErrMssg] = useState('');
     const [scrolled, setScrolled] = useState(false);
-    const [openMobileNav, setOpenMobileNav] = useState(false);
+    const [openMobileNav, setOpenMobileNav] = useState(null);
     let _searchValue = React.createRef();
     let _toggleSearchContainer = React.createRef();
     let _toggleMobileNav = React.createRef();
@@ -104,10 +104,15 @@ export const Header = ( ) => {
             setErrMssg('');     
         }  
     }
-    const closeMobileNav = (e) => {    
-        if (openMobileNav && !_toggleMobileNav.current.contains(e.target)) {      
-            setOpenMobileNav(false);
-        }  
+    const closeMobileNav = (e) => { 
+        if(_toggleMobileNav.current){
+            closeNav();
+        } 
+        function closeNav(){
+            if (openMobileNav && !_toggleMobileNav.current.contains(e.target)) {      
+               return setOpenMobileNav(false);
+            }  
+        }   
     }
     const logOut = ( ) => {
         localStorage.removeItem('x-access-token');
