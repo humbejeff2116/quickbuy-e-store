@@ -89,6 +89,21 @@
     font-size: 1em;
     font-family:'acme';
     font-weight: bold;
+    cursor:pointer;
+}
+.full-checkout-button .cancel-btn{
+    border: 1px solid rgb(218, 152, 218);
+    background-color: #ffffff;
+    color: rgb(218, 152, 218);
+    transition:all 0.3s ease;
+}
+.full-checkout-button .cancel-btn:hover{
+    border:none;
+    background-color: rgb(212, 108, 212);
+    color: #ffffff;
+}
+.full-checkout-button button:hover{
+    background-color: rgb(212, 108, 212); 
 }
 
 

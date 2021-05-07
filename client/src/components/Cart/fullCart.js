@@ -47,12 +47,12 @@ export default function FullCart(props) {
                   </p>
                 </div>           
                 <div className="cart-btn-ctnr" >  
-                  <div  className="full-cart-button">                        
-                    <button onClick={ props.checkout} >Checkout </button>                    
-                  </div>
                   <div  className="full-cart-button" >
                     <button className="clear-cart-btn" onClick={props.clearCart} >Clear Bag</button>
-                  </div>                 
+                  </div> 
+                  <div  className="full-cart-button">                        
+                    <button onClick={ props.checkout} >Checkout </button>                    
+                  </div>                
                 </div>
             </div>
           </div>
