@@ -1,5 +1,9 @@
 
-import React from 'react';
+
+
+
+
+import React, {useEffect} from 'react';
 import { Cart } from './cart';
 import { validateToken } from '../../services/ecormerce.service';
 import MyContext from '../Context/context';
@@ -9,6 +13,9 @@ import MyContext from '../Context/context';
 export default function AppCart() {
     const [err, setErr] = React.useState('');
     const [redirect, setRedirect] = React.useState('');
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    })
   
     const checkout = () => {
         const token = localStorage.getItem('x-access-token');

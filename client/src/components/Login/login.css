@@ -216,6 +216,12 @@
 }
   
 @media only screen  and (max-width: 600px) {
+    .login-err-cont{
+        width:85%;
+        /* position: absolute; */
+        top:80%;
+        /* z-index: 1; */
+    }
     .login-panel{       
         width:80%;         
     }

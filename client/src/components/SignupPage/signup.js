@@ -93,8 +93,10 @@ export default class Signup extends React.Component {
                 {
                     (this.state.valErrors.length > 0) && ( 
                         this.state.valErrors.map((err,i)=>
+                        <div className="signup-err-container">
                         <div key={i} className="signup-err-cont" > 
                             <p className="signup-err"> {err.msg} </p>
+                        </div>
                         </div>
                     ))
                 }

@@ -56,6 +56,7 @@ export default class Login extends React.Component {
             window.scrollTo(0,0);
             return this.setState({
                       valErrors:loginData.valErrors,
+                      loginIn:false,
                       errMessage:''
                     })
           }

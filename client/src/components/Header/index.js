@@ -153,11 +153,16 @@ export const Header = ( ) => {
         </nav> 
         {
             (searchIsOpen ) && (
-                <div  ref={_toggleSearchContainer} className="search-result-container">
-                    <div className="search-content">
+                <div className="search-result-container">
+                    <div ref={_toggleSearchContainer} className="search-content">
                     {
                         searchedProd.map((prod ,i)=>
-                            <SearchResult key={i} {...prod} onClick={viewItem} />
+                            <SearchResult 
+                            key={i} 
+                            {...prod} 
+                            onClick={viewItem}
+                            className={"search-results"}
+                            />
                         )
                     }  
                     </div>                           

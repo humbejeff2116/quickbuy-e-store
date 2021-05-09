@@ -42,7 +42,6 @@
     line-height: 200px;
     font-size: 80px;
     color:white;
-
 }
 
 @media only screen  and (max-width:414px){
@@ -51,24 +50,23 @@
         margin-top: 3px;
     }
     .mobile-search input[type="search"]{
-
-    font-size:0.99em;
-    font-weight: bold;
-    text-transform:lowercase;
-    background-color:white;
-    padding:3px;
-    height:35px;
-    width:95%;
-    color:black;
-    border-radius:3px;
-    margin-right:-2px;
-    margin-left:4px;
-    border-top: 1px solid rgb(160, 158, 158);
-    border-right: none;
-    border-bottom:1px solid rgb(160, 158, 158);
-    border-left:  1px solid rgb(160, 158, 158);
-    transition:all 0.5s ease-in-out;
-    font-family: 'abel';
+        font-size:0.99em;
+        font-weight: bold;
+        text-transform:lowercase;
+        background-color:white;
+        padding:3px;
+        height:35px;
+        width:95%;
+        color:rgb(0, 0, 0);
+        border-radius:3px;
+        margin-right:-2px;
+        margin-left:4px;
+        border-top: 1px solid rgb(160, 158, 158);
+        border-right: none;
+        border-bottom:1px solid rgb(160, 158, 158);
+        border-left:  1px solid rgb(160, 158, 158);
+        transition:all 0.5s ease-in-out;
+        font-family: 'abel';
     }
     .mobile-search input[type="search"]:focus{
         font-family:'abel';
@@ -82,8 +80,7 @@
         border-left: none;
         border-top: 1px solid rgb(160, 158, 158);
         border-left: none;
-        border-bottom:1px solid rgb(160, 158, 158);
-        border-right:  1px solid rgb(160, 158, 158);
+          border-right:  1px solid rgb(160, 158, 158);
         font-size:0.9em;
         border-radius:0 4px 4px 0;
         margin-right:5px;

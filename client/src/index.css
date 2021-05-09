@@ -243,6 +243,11 @@ a,button{
     margin-top:18%;
   }
 }
+@media only screen  and (max-width:414px){
+  .pages-back-bttn button{ 
+    margin-left:4%;
+  }
+}
 
 @media only screen  and (max-width:360px){
   .main-container{
@@ -251,10 +256,12 @@ a,button{
   .pages-back-bttn{
     display:flex;
     justify-content: unset;
+    margin-left:1%;
   }
   
   .pages-back-bttn button{
     height:40px;
     margin-top:18%;
+    margin-left:1%;
   }
 }
