@@ -15,7 +15,7 @@ export default function FormGroup(props) {
                 className="form-control" 
                 name={props.name} 
                 onChange={props.handleInputChange}
-                ref={props.ref}
+                ref={props.inputRef}
                 />
                 <span className="placeholder">{props.placeholder}</span>
                 </label>

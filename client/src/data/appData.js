@@ -157,20 +157,20 @@ const data = {
         {
           
             formInputs : [
-                { type: "text",placeholder: "Firstname", name: 'firstname', ref: _firstnameValue, capitalize: true },
-                { type: "text",placeholder: "Lastname", name: 'lastname',  ref: _lastnameValue, capitalize: true },
+                { type: "text",placeholder: "Firstname", name: 'firstname', inputRef: _firstnameValue, capitalize: true },
+                { type: "text",placeholder: "Lastname", name: 'lastname', inputRef: _lastnameValue, capitalize: true },
             ]
         },
         {
             formInputs : [
-                { type:"email",placeholder:"Email Address", ref: _emailValue, name:'email', },
-                { type:"text",placeholder:"Phone Number",  ref: _phonenumberValue, name:'phonenumber',},
+                { type:"email",placeholder:"Email Address", inputRef: _emailValue, name:'email', },
+                { type:"text",placeholder:"Phone Number",  inputRef: _phonenumberValue, name:'phonenumber',},
             ]
         },
         {
             formInputs : [
-                { type:"password",placeholder:"Password",  ref: _passwordValue, name:'password', },
-                { type:"password",placeholder:"Repeat Password",  ref: _password2Value, name:'password2', },
+                { type:"password",placeholder:"Password",  inputRef: _passwordValue, name:'password', },
+                { type:"password",placeholder:"Repeat Password",  inputRef: _password2Value, name:'password2', },
             ]
         }
         

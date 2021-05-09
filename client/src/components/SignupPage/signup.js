@@ -14,14 +14,19 @@ export default class Signup extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            valErrors:[],
-            firstname:'',
-            lastname:'',
-            email:'',
-            phonenumber:null,
-            password:null,
-            password2:null,
-            errMessage:''
+            valErrors: [],
+            firstname: '',
+            lastname: '',
+            email: '',
+            phonenumber: null,
+            password: null,
+            password2: null,
+            errMessage: '',
+            firstNameError: '',
+            lastNameError: '',
+            emailError: '',
+            phonenumberError: '',
+            password: '',     
         }    
     }
     handleInputChange = (e) => {
@@ -48,9 +53,22 @@ export default class Signup extends React.Component {
                     valErrors:[]
                     });
                 }
+
+                // TODO... remove console.log
+               let firstNameError = signupData.valErrors.filter(err => err.param === "firstname");
+               let lastNameError = signupData.valErrors.filter(err => err.param === "lastname");
+               let emailError = signupData.valErrors.filter(err => err.param === "email");
+               let phonenumberError = signupData.valErrors.filter(err => err.param === "phonenumber");
+               let password = signupData.valErrors.filter(err => err.param === "password");
+                 console.log(error)
                 return this.setState({
                   valErrors:signupData.valErrors,
-                  errMessage:''
+                  errMessage:'',
+                  firstNameError,
+                  lastNameError,
+                  emailError,
+                  phonenumberError,
+                  password,
                 });
             }
             localStorage.setItem('x-access-token', signupData.token);
@@ -92,9 +110,9 @@ export default class Signup extends React.Component {
             <div className="signup-form-container">
                 {
                     (this.state.valErrors.length > 0) && ( 
-                        this.state.valErrors.map((err,i)=>
-                        <div className="signup-err-container">
-                        <div key={i} className="signup-err-cont" > 
+                        this.state.valErrors.map((err, i)=>
+                        <div key={i} className="signup-err-container">
+                        <div  className="signup-err-cont" > 
                             <p className="signup-err"> {err.msg} </p>
                         </div>
                         </div>
@@ -112,6 +130,14 @@ export default class Signup extends React.Component {
                         <h2>Sign up</h2>
                     </div>
                     <div className="signup-form-panel-body">
+                        {/* TODO... return inputs back so as to pass error message */}
+                        {
+                             (emailError.length > 0 && emailError.length < 2) ? 
+                                ( <span>{emailError[0].msg}</span> ) : 
+                                emailError.map((err, i) =>
+                                    <span key={i} >{err.msg}</span>
+                                )
+                        }
                         <form onSubmit={this.handleSubmit} method="POST" autoComplete="off" >
                             {
                             signUpFormData.map((data, i) =>
@@ -121,7 +147,7 @@ export default class Signup extends React.Component {
                                 handleInputChange={this.handleInputChange}
                                 onInput={this.capitalize} 
                                 />
-                                )
+                            )
                             }
                             <Button divClassName='signup-bttn' buttonClassName='btn' buttonText='Submit' />
                         </form>
@@ -133,7 +159,7 @@ export default class Signup extends React.Component {
     }
 }
 
-// TODO... use the changed signup component so as to be able to plug in the backbutton hook based component
+// TODO... use the function signup component so as to be able to plug in the backbutton hook component
 // function SignupComp(props) {
 //     const [valErrors, setValErrors] =useState([]);
 //     const [ firstname,setFirstName] = useState('');
