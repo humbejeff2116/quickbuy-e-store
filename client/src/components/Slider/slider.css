@@ -80,7 +80,8 @@
         border-left: none;
         border-top: 1px solid rgb(160, 158, 158);
         border-left: none;
-          border-right:  1px solid rgb(160, 158, 158);
+        border-right:  1px solid rgb(160, 158, 158);
+        border-bottom:  1px solid rgb(160, 158, 158);
         font-size:0.9em;
         border-radius:0 4px 4px 0;
         margin-right:5px;

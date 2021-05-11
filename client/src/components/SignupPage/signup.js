@@ -2,19 +2,18 @@
 import React from 'react';
 import { signup } from '../../services/ecormerce.service';
 import { PageTemplate } from '../PageTemplate/pageTemplate';
-import ApplicationData from '../../data/appData';
-import FormRow from './formRow';
 import Button from '../Button/button';
 // import BackButton from '../BackButton/backButton';
 // import { Redirect, useLocation, useHistory} from 'react-router-dom/';
 import './signup.css';
 
-// TODO... change Signup component from class to function  so as to be able to use th backbutton hook;
+// TODO... change Signup component from class to function and use the backbutton hook;
 export default class Signup extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             valErrors: [],
+           signingUp: false,
             firstname: '',
             lastname: '',
             email: '',
@@ -26,7 +25,7 @@ export default class Signup extends React.Component {
             lastNameError: '',
             emailError: '',
             phonenumberError: '',
-            password: '',     
+            passwordError: '',     
         }    
     }
     handleInputChange = (e) => {
@@ -41,35 +40,46 @@ export default class Signup extends React.Component {
     }
 
     handleSubmit = (e) => {
-        window.scrollTo(0,0);
+        // window.scrollTo(0,0);
+        this.setState({
+            signingUp:true
+        });
         e.preventDefault();
         signup(this.state)
-        .then(response =>  response.data)
+        .then(response => response.data)
         .then(signupData => {
             if (signupData.status !== 200) {
+                this.setState({
+                    signingUp:false
+                });
                 if (signupData.message) {
-                    return this.setState({
-                    errMessage: signupData.message,
-                    valErrors:[]
+                    this.setState({
+                        errMessage: signupData.message,
+                        valErrors:[],
+                        signingUp:false
                     });
+                    window.scrollTo(0,0);
+                    return;
                 }
 
-                // TODO... remove console.log
                let firstNameError = signupData.valErrors.filter(err => err.param === "firstname");
                let lastNameError = signupData.valErrors.filter(err => err.param === "lastname");
                let emailError = signupData.valErrors.filter(err => err.param === "email");
                let phonenumberError = signupData.valErrors.filter(err => err.param === "phonenumber");
-               let password = signupData.valErrors.filter(err => err.param === "password");
-                 console.log(error)
-                return this.setState({
+               let passwordError = signupData.valErrors.filter(err => err.param === "password");
+        
+                 this.setState({
                   valErrors:signupData.valErrors,
+                  signingUp:false,
                   errMessage:'',
                   firstNameError,
                   lastNameError,
                   emailError,
                   phonenumberError,
-                  password,
+                  passwordError,
                 });
+                window.scrollTo(0,0);
+                return;
             }
             localStorage.setItem('x-access-token', signupData.token);
             localStorage.setItem('x-access-token-expiration',  Date.now() + 2 * 60 * 60 * 1000);
@@ -77,11 +87,17 @@ export default class Signup extends React.Component {
         })
         .then(token => {
             if  (token) {
+                this.setState({
+                    signingUp:false,
+                });
                 return window.location = '/'
             }
         }) 
         .catch(err => {
-            console.error(err)
+            console.error(err);
+            this.setState({
+                signingUp:false,
+            });
         });
     }
     capitalize = (e) => {
@@ -101,27 +117,18 @@ export default class Signup extends React.Component {
     componentDidMount() {
         window.scrollTo(0,0);
     }
+    componentDidUpdate() {
+        // window.scrollTo(0,0);
+    }
      
     render() {
-        const signUpFormData = ApplicationData.getSignupFormData();
-        
         return(
             <PageTemplate>
-            <div className="signup-form-container">
-                {
-                    (this.state.valErrors.length > 0) && ( 
-                        this.state.valErrors.map((err, i)=>
-                        <div key={i} className="signup-err-container">
-                        <div  className="signup-err-cont" > 
-                            <p className="signup-err"> {err.msg} </p>
-                        </div>
-                        </div>
-                    ))
-                }
+            <div className="signup-form-container">             
                 {
                     (this.state.errMessage ) && (
                     <div className="signup-err-cont" >
-                        <p className="signup-err">{this.state.errMessage}</p>
+                        <p className="signup-err1">{this.state.errMessage}</p>
                     </div>
                     )
                 }
@@ -129,27 +136,146 @@ export default class Signup extends React.Component {
                     <div className="signup-form-panel-head">
                         <h2>Sign up</h2>
                     </div>
-                    <div className="signup-form-panel-body">
-                        {/* TODO... return inputs back so as to pass error message */}
-                        {
-                             (emailError.length > 0 && emailError.length < 2) ? 
-                                ( <span>{emailError[0].msg}</span> ) : 
-                                emailError.map((err, i) =>
-                                    <span key={i} >{err.msg}</span>
-                                )
-                        }
+                    <div className="signup-form-panel-body">   
                         <form onSubmit={this.handleSubmit} method="POST" autoComplete="off" >
+                            <div className="form-row  column">  
+                            <div className="signup-form-group-container mobile">
+                                    {
+                                        (this.state.firstNameError.length > 0 && this.state.firstNameError.length < 2) ? 
+                                        (   
+                                            <div className="err-mssg">
+                                            <span  className="signup-err" >{this.state.firstNameError[0].msg}</span>
+                                            </div>
+                                        ) : 
+                                        (this.state.firstNameError.length > 1) ? 
+                                        this.state.firstNameError.map((err, i) =>
+                                            <span key={i}  className="signup-err">{err.msg}</span>
+                                        ) : ''
+                                    }
+                                    <div className="signup-form-group">
+                                        <label>
+                                        <input type="text" onBlur={ this.toggleBlur }  onInput ={this.capitalize}  name="firstname" onChange={this.handleInputChange} />
+                                        <span className="placeholder">Firstname</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div className="signup-form-group-container mobile">
+                                    {
+                                        (this.state.lastNameError.length > 0 && this.state.lastNameError.length < 2) ? 
+                                        (   
+                                            <div className="err-mssg">
+                                            <span  className="signup-err" >{this.state.lastNameError[0].msg}</span>
+                                            </div>
+                                        ) : 
+                                        (this.state.lastNameError.length > 1) ?
+                                        this.state.lastNameError.map((err, i) =>
+                                            <span key={i}  className="signup-err">{err.msg}</span>
+                                        ) : ''
+                                    }
+                                    <div className="signup-form-group">                                       
+                                        <label>
+                                        <input type="text" onBlur={ this.toggleBlur }  onInput ={this.capitalize}  className="form-control" name="lastname" onChange={this.handleInputChange}  />
+                                        <span className="placeholder">Lastname</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="form-row column">
+                                <div className="signup-form-group-container mobile">
+                                    {
+                                        (this.state.emailError.length > 0 && this.state.emailError.length < 2) ? 
+                                        (   <div className="err-mssg">
+                                            <span  className="signup-err" >{this.state.emailError[0].msg}</span>
+                                            </div>
+                                        ) :
+                                        (this.state.emailError.length > 1) ? 
+                                            this.state.emailError.map((err, i) =>
+                                            <div className="err-mssg" key={i}>
+                                                <span  className="signup-err">{err.msg}</span>
+                                            </div>
+                                        ) : ''
+                                    }
+                                    <div className="signup-form-group">                                       
+                                        <label>
+                                        <input type="text" onBlur={ this.toggleBlur } className="form-control" name="email" onChange={this.handleInputChange}  />
+                                        <span className="placeholder">Email Address</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                    
+                                    <div className="signup-form-group-container  mobile">
+                                    {
+                                        (this.state.phonenumberError.length > 0 && this.state.phonenumberError.length < 2) ? 
+                                        (   
+                                            <div className="err-mssg">
+                                            <span  className="signup-err" >{this.state.phonenumberError[0].msg}</span>
+                                            </div>
+                                        ) :
+                                        ( this.state.phonenumberError.length > 1) ? 
+                                            this.state.phonenumberError.map((err, i) =>
+                                            <span key={i}  className="signup-err">{err.msg}</span>
+                                        )  : ''
+                                    }
+                                    <div className="signup-form-group">                                       
+                                        <label>
+                                        <input type="text" onBlur={ this.toggleBlur } className="form-control" name="phonenumber" onChange={this.handleInputChange}  />
+                                        <span className="placeholder">Phone Number</span>
+                                        </label>
+                                    </div>
+                                    </div>
+
+                            </div >
+
+
+
+
+                            <div  className="form-password">
                             {
-                            signUpFormData.map((data, i) =>
-                                < FormRow  key={i} 
-                                {...data}
-                                toggleBlur={this.toggleBlur}
-                                handleInputChange={this.handleInputChange}
-                                onInput={this.capitalize} 
-                                />
-                            )
+                                (this.state.passwordError.length > 0 && this.state.passwordError.length < 2) ? 
+                                (   
+                                    <div className="err-mssg" >
+                                    <span  className="signup-err">{this.state.passwordError[0].msg}</span>
+                                    </div> 
+                                ) :
+                                (this.state.passwordError.length > 1) ? 
+                                this.state.passwordError.map((err, i) =>
+                                    <div className="err-mssg" key={i}>
+                                        <span  className="signup-err">{err.msg}</span>
+                                    </div>
+                                ) : ''
                             }
-                            <Button divClassName='signup-bttn' buttonClassName='btn' buttonText='Submit' />
+                            <div className="form-row">
+                                <div className="signup-form-group-container">
+                               
+                                    <div className="signup-form-group">
+                                        <label>
+                                        <input type="password" onBlur={ this.toggleBlur } className="form-control" name="password" onChange={this.handleInputChange}/>
+                                        <span className="placeholder">Password</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                {/* new div */}
+                                <div className="signup-form-group-container">
+                                    <div className="signup-form-group">
+                                        <label>                  
+                                        <input type="password" onBlur={ this.toggleBlur } className="form-control" name="password2" onChange={this.handleInputChange} />
+                                        <span className="placeholder">Repeat Password</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </div>
+                           
+                            <Button 
+                            action={this.state.signingUp} 
+                            actionText='Signing Up...' 
+                            divClassName='signup-bttn' 
+                            buttonClassName='btn' 
+                            buttonText='Sign Up' 
+                            />
                         </form>
                     </div>
                 </div>

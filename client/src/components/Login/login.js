@@ -77,7 +77,6 @@ export default class Login extends React.Component {
               redirect:'/',
               loginIn:false
             })
-            // return window.location = '/'
           }
         })
         .catch( err => {

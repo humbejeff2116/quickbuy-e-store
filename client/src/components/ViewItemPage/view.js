@@ -27,11 +27,23 @@ export function View( ) {
         const viewItem =  localStorage.getItem('view') ? JSON.parse(localStorage.getItem('view')) : [];
         setViewProduct(viewItem);
         window.scrollTo(0,0);
-
-        return ()=> {
-            localStorage.removeItem('view');
+        if(err) {
+            closeError();
         }
-    },[]);
+        if(mssg) {
+            closeMessageModal();
+        }
+        // return ()=> {
+        //     localStorage.removeItem('view');
+        // }
+    },[err,mssg]);
+    const closeError = ( ) => { 
+         setTimeout(()=>setErr(false),4000);   
+    }
+    const  closeMessageModal = ( ) => {
+        setTimeout(()=>setMssg(false),4000);
+
+    }
     const hideModal = ( ) => {
         setErr(false);
         setMssg(false);

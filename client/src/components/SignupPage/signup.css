@@ -4,6 +4,20 @@
     flex-direction: row;
     justify-content: space-around;
     width:100%;
+    /* border:1px solid green; */
+}
+.form-password{
+    display:flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    width:100%;
+    /* border:1px solid green; */
+
+}
+.form-password .err-mssg {
+    width:99%;
+    margin-left:auto;
+    /* text-align: center; */
 }
 
 .signup-err-cont{
@@ -19,8 +33,19 @@
     font-family:  'Open Sans', 'Helvetica Neue', sans-serif;  
 }
 
-.signup-err{
+.signup-err1{
     text-align:center;
+}
+.signup-err{
+    color:rgb(173, 30, 30);
+    /* border:1px solid green; */
+    width:100%;
+}
+.err-mssg{
+    /* border:1px solid yellow; */
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .signup-form-container{
@@ -65,17 +90,24 @@
 .signup-form-panel-body form{
     width:90%;
 }
+.signup-form-group-container{
+    width:45%;
+    /* border:2px solid green; */
+    margin-top:auto;
+    margin-bottom: 1%;
+}
 
 .signup-form-group{
     position: relative;
     font-size: 0.95em;
     padding-top: 2%;
     margin-bottom:5%;
-    width:40%;
+    width:100%;
     --transition-duration:0.3s;
     --draw-color:#222;
     --draw-line-width:2px;
     --draw-easing:linear;
+    /* border:2px solid black; */
 }
 
 .signup-form-group input{
@@ -97,7 +129,7 @@
 
 .signup-form-group .placeholder{
     position: absolute;
-    left: 2%;
+    left: 3%;
     top: calc(60% );
     transform: translateY(-50%);
     color:#aaa;
@@ -176,8 +208,19 @@
     }
 }
 @media only screen  and (max-width: 600px) {
-    .signup-err-container{
+    .form-password .err-mssg {
+        width:97%;
+       
     }
+    .column{
+        flex-direction: column;
+    }
+    .mobile{
+        width:95%;
+        margin-left: auto;
+        margin-right:auto;
+    }
+
     .signup-err-cont{       
         width:80%;
     }
@@ -185,7 +228,9 @@
         min-height: 65vh;       
      }
     .signup-form-panel{       
-        width:95%;           
+        width:90%; 
+        /* border:1px solid black; */
+        margin: 5% auto 5% auto;          
     }
     .signup-form-panel-body form{
         width:100%;
@@ -194,7 +239,7 @@
         font-size: 0.95em;
         padding-top: 2%;
         margin-bottom:5%;
-        width:49%;
+        width:100%;
     }
     .signup-bttn{
         width:90%; 
@@ -222,4 +267,17 @@
          width:100%;
          border-radius: 4px;            
      }
+     .err-mssg{
+        /* border:1px solid yellow; */
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+     .signup-err{
+        color:rgb(173, 30, 30);
+        /* border:1px solid green; */
+        width:95%;
+       
+    }
 }

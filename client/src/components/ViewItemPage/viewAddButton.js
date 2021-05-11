@@ -8,7 +8,7 @@ export default function ViewAddButton(props) {
         <div className="view-add-section" >
             <div className="view-quantity">
             <div className="view-add-qty">    
-                <button onClick={()=>props.setQuantity(prevState => prevState - 1)}> reduce </button>
+                <button onClick={()=>props.setQuantity(prevState => (prevState < 2) ? 1 : prevState - 1)}> reduce </button>
                 <input type="number" value={props.quantity} name="quantity" 
                 onChange={props.handleInputChange} className="float-right"  
                 />

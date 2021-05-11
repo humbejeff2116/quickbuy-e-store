@@ -6,14 +6,14 @@ export default function Button(props) {
         return(
             <div className ={props.divClassName}>
                 <button type="submit" className={props.buttonClassName ? props.buttonClassName :''} >
-                   {props.buttonText}
+                   {(props.action)? props.actionText : props.buttonText}
                 </button>
             </div>
         )
     }
     return(
         <button type="submit" className={props.buttonClassName ? props.buttonClassName :''} >
-            {props.buttonText}
+            {(props.action) ? props.actionText : props.buttonText}
         </button>
     )  
 }
