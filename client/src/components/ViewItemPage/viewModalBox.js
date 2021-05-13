@@ -12,7 +12,7 @@ export default function ViewAlertBox(props) {
                     <span className="view-modal-close" onClick={props.hideModal}> &times; </span>
                 </div>
                 <div className="view-modal-content">
-                    <p> {props.message} </p>                              
+                    <span> {props.message} </span>                              
                 </div>
             </section>
         </div>
@@ -26,7 +26,7 @@ export function ViewOkAlertBox(props) {
                     <span className="view-modal-ok-close" onClick={props.hideModal}> &times; </span>
                 </div>
                 <div className="view-modal-ok-content">
-                    <p> {props.message} </p>                              
+                <span> {props.message} </span>                             
                 </div>
             </section>
         </div>

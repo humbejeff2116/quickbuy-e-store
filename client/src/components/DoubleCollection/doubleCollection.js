@@ -27,25 +27,27 @@ export function DoubleCollectionItem(props) {
   } 
   return (
     <ErrorBoundary>
-     <div className="items-picture-six"  onClick={()=>view(src, name, price, description, id, available, productSizes)} >   
+    <div className="items-picture-six"  onClick={()=>view(src, name, price, description, id, available, productSizes)} >   
       <div className="items-six-details">
-          <img src={src} width="80%" height="80%" alt="img" /><br />      
-          <span className="product-title">name:</span> {name}<br />
-          <span className="product-price">price:</span> ${price}<br />
-        </div>
-          { (!available) ? 
-          <div className="product-bttn">
-            <p className="product-text-danger"> 
-              *Out of stock* 
-            </p>
-          </div> : <div className="product-bttn">
-                        <button  onClick={()=>view(src, name, price, description, id, available, productSizes)} >
-                            {/* <i> <FaRegEye className="contact-bttn-icon"/></i> */}
-                          View 
-                        </button>
-                      </div>  
-          }            
+        <img src={src} width="80%" height="80%" alt="img" />     
       </div>
+      <div className="product-info">      
+        <span>{name}</span> <br />
+        <span className="product-price">price:</span> ${price}<br />
+      </div>
+        { (!available) ? 
+        <div className="product-bttn">
+          <p className="product-text-danger"> 
+            *Out of stock* 
+          </p>
+        </div> : <div className="product-bttn">
+                      <button  onClick={()=>view(src, name, price, description, id, available, productSizes)} >
+                          {/* <i> <FaRegEye className="contact-bttn-icon"/></i> */}
+                        View 
+                      </button>
+                    </div>  
+          }            
+    </div>
     </ErrorBoundary>
   )
 }

@@ -25,12 +25,14 @@ import { Redirect, useLocation, useHistory } from 'react-router-dom/';
     return(
       <ErrorBoundary>  
       <div className="items-picture"  onClick={()=>view(src,name,price,description,id,available,productSizes)} > 
-          <div className="items-details"> 
-         
-              <img src={src} width="80%" height="80%" alt="img" /><br />      
-             <span className="product-title">name:</span> {name}<br />
-             <span className="product-price">price:</span> ${price}<br />
+          <div className="items-details">         
+              <img src={src} width="80%" height="80%" alt="img" /><br />
+             
           </div> 
+          <div className="product-info">      
+                <span>{name}</span> <br />
+                <span className="product-price">price:</span> ${price}<br />
+             </div>
           { 
             (!available) ?
             <div className="product-bttn">

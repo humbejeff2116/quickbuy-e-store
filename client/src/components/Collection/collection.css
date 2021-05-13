@@ -12,10 +12,6 @@
   text-decoration: none;
   color:black;
 }
-.items-details span{
-  font-weight: bold;
-}
-
 
 @media only screen  and (max-width:910px){
 

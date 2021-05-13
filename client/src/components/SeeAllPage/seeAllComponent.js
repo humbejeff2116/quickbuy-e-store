@@ -29,11 +29,13 @@ import './seeAll.css';
       <div className="all-items-picture"  onClick={()=>view(src, name, price, description, id, available, productSizes)} >
           <div className="see-all-items-details">
            
-            <img src={src} width="80%" height="80%" alt="img"/><br />            
-            <span className="product-title">Name:</span> {name}<br />
-            <span className="product-price">Price:</span> ${price}<br />
-          
+            <img src={src} width="80%" height="80%" alt="img"/>           
+        
           </div> 
+          <div className="product-info">      
+            <span>{name}</span> <br />
+            <span className="product-price">price:</span> ${price}<br />
+          </div>
           { 
             (!available) ?
             <div className="product-bttn">

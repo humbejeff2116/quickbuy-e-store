@@ -80,6 +80,7 @@ export function View( ) {
                 <div className="view-container">
                 <BackButton buttonDivClassName="view-back-bttn"/>
                     <div className="view-item-container">
+                    <BackButton buttonDivClassName="mobile-view-back-bttn"/>
                     {
                         viewProduct.map((product, i) =>
                             <ViewItemCard 
@@ -101,25 +102,31 @@ export function View( ) {
                     }
                     </div>
                     <div className="view-item-alert">
+                   
                     {
                     (err) && (
+                       
                         <ViewAlertBox 
                         show={err}
                         hideModal={hideModal}
                         message={errMssg}
                         />
+                        
                     )
                 }
                 {
                     (mssg && !err) && (
+                        
                         <ViewOkAlertBox
                         show={mssg }
                         hideModal={hideModal}
                         message={cartMssg}
                         />
+                      
                     )
                 }
-                    </div>    
+                 </div>
+                   
                 </div>
                 </PageTemplate>
 

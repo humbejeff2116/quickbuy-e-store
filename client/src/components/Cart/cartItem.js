@@ -19,7 +19,7 @@ function CartItem(props) {
             {/* TODO  */}
             <div className="card-add-button">
               <button onClick={()=>props.reduceQuantity(product.id)}> reduce </button>
-              <button onClick={()=>props.addQuantity(product.id)}> add </button>
+              <button id="add-bttn" onClick={()=>props.addQuantity(product.id)}> add </button>
             </div>
             
             <div className="card-remove-button">

@@ -66,10 +66,24 @@ a,button{
 .active{
  border:1px solid black;
 }
-
-.product-bttn{
+.product-info{
+  /* border:1px solid black; */
   margin-top:auto;
+  width:90%;  
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 2%;
+   padding:3%;
+
 }
+.product-price{
+  font-weight: bold;
+
+}
+
+/* .product-bttn{
+ 
+} */
 
 .product-bttn button{
   border:none;
