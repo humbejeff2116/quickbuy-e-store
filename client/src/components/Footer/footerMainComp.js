@@ -22,9 +22,9 @@ export default  function FooterMainComp() {
 export function FooterMainCompChild(props) {
     return(
        <div className="ft-main-item">
-          <h3 className="ft-title">{props.title}</h3>
+          <h4 className="ft-title">{props.title}</h4>
          <div className="ft-main-links">
-            {
+            {(props.links) &&
               props.links.map((link, i) =>
               <FooterLinks key={i} {...link}/>
               )

@@ -76,38 +76,38 @@ const data = {
 
           footerMainLinks :[
             {
-              title:'quick buy', 
-              links:[{href:'/about', name:'About us'},
+              title:'QUICK BUY', 
+              links:[{href:'/about-us', name:'About us'},
+                   {href:'/about-us', name:'About us'},
+                   {href:'/customers', name:'Customers'},
+                   {href:'/careers', name:'Careers'}
+            
+              ]
+            },
+            {
+              title:'CONTACT US', 
+              links:[{href:'/track-order', name:'Track order'},
                    {href:'/services', name:'Our services'},
                    {href:'/customers', name:'Customers'},
+                   {href:'/contact-us', name:'Contact us'}
+            
+              ]
+            },
+            {
+              title:'SUPPORT', 
+              links:[{href:'/help', name:'Help'},
+                   {href:'/offer-and-updates', name:'Offer and Updates'},
+                   {href:'/discount', name:'Discount'},
                    {href:'/pricing', name:'Pricing'}
             
               ]
             },
             {
-              title:'Contact us', 
-              links:[{href:'/about', name:'About us'},
-                   {href:'/services', name:'Our services'},
-                   {href:'/customers', name:'Customers'},
-                   {href:'/pricing', name:'Pricing'}
-            
-              ]
-            },
-            {
-              title:'Support', 
-              links:[{href:'/about', name:'About us'},
-                   {href:'/services', name:'Our services'},
-                   {href:'/customers', name:'Customers'},
-                   {href:'/pricing', name:'Pricing'}
-            
-              ]
-            },
-            {
-              title:'Resources', 
-              links:[{href:'/about', name:'About us'},
-                   {href:'/services', name:'Our services'},
-                   {href:'/customers', name:'Customers'},
-                   {href:'/pricing', name:'Pricing'}
+              title:'RESOURCES', 
+              links:[{href:'/delivery', name:'Delivery'},
+                   {href:'/terms-and-conditions', name:'Terms & conditions'},
+                   {href:'/about-cookies', name:'About cookies'},
+                   {href:'/privacy', name:'Privacy'}
             
               ]
             }
@@ -117,29 +117,19 @@ const data = {
             {href:'/terms-and-conditions', name:`Terms ${and} Conditions`},
             {href:'/privacy', name:'Privacy Policy'},
             {href:'/', name:'Developed by Humbe Jeffrey'},
-            {href:'/hujesoft.com', name:`${copyright} ${new Date().getFullYear()} Copyright @Jeff.codes `},
+            {href:'/2hundred.com', name:`${copyright} ${new Date().getFullYear()} Copyright @Jeff.codes `},
            ],
 
            footerContentLinks : [
             {
-              title:' quick buy', 
-              links:[{href:'/about', name:'About us'},
-                   {href:'/services', name:'Our services'},
-                   {href:'/customers', name:'Customers'},
-                   {href:'/pricing', name:'Pricing'}
-            
-              ]
+              title:' DOWNLOAD APP', 
             },
             {
-              title:'Contact us', 
-              links:[{href:'/about', name:'About us'},
-                   {href:'/services', name:'Our services'},
-                   {href:'/customers', name:'Customers'},
-                   {href:'/pricing', name:'Pricing'}
-            
+              title:'QUICKBUY GIFT CARD', 
+              links:[{href:'/buy-gift-card', name:'Buy quickbuy Gift Card'},
+                   {href:'/gift-card-faqs', name:'quickbuy Gift Card FAQs'},
               ]
-            },
-           
+            },     
           ],
           sideNavLinks :[
 

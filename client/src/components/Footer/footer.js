@@ -58,7 +58,7 @@ export const FooterFormComp = () => {
           )
       }
       <div className="footer-form" >
-        <p>Subscribe to our newsletter to get  latest deals</p>
+        <p>Subscribe to our newsletter to get exclusive offers</p>
         <form action="" method="POST" onSubmit={subscribe}  autoComplete="none">
           {
             (valErrs.length > 0) && (valErrs.map( (err, i)=>
