@@ -33,9 +33,6 @@ export function View( ) {
         if(mssg) {
             closeMessageModal();
         }
-        // return ()=> {
-        //     localStorage.removeItem('view');
-        // }
     },[err,mssg]);
     const closeError = ( ) => { 
          setTimeout(()=>setErr(false),4000);   

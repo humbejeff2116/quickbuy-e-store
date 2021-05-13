@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
 import {getWomenCollections} from '../../services/ecormerce.service';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import {Loader} from '../Loader/loader';
+import {Loader2} from '../Loader/loader';
 import {PageTemplate} from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
 import BackButton from '../BackButton/backButton';
@@ -51,7 +51,7 @@ export default function WomenCollectionsPage() {
     if(( !err && products.length < 1) || loading) {
         return(
           <PageTemplate>
-          <Loader/>
+          <Loader2/>
           </PageTemplate>
         )
     

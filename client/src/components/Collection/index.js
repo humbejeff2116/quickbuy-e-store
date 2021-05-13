@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { CollectionItem } from './collection';
-import { PageLoader } from '../Loader/loader';
 import { Link } from 'react-router-dom';
 import './collection.css';
 

@@ -1,7 +1,7 @@
 
 import React from 'react'
 import CartTemplate from './cartTemplate';
-import { Loader } from '../Loader/loader';
+import { Loader2 } from '../Loader/loader';
 
 
 
@@ -10,7 +10,7 @@ import { Loader } from '../Loader/loader';
 export default function CartLoader() {
     return(
         <CartTemplate>
-            <Loader/> 
+            <Loader2/> 
         </CartTemplate> 
     )
 }

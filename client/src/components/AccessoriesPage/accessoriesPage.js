@@ -1,7 +1,7 @@
 
 import React,{ useEffect, useState } from 'react';
 import SeeAllComp from '../SeeAllPage/seeAllComponent';
-import { Loader } from '../Loader/loader';
+import { Loader2 } from '../Loader/loader';
 import { getAccessories } from '../../services/ecormerce.service'
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import { PageTemplate } from '../PageTemplate/pageTemplate';
@@ -59,11 +59,11 @@ export default function AccssoriesPage (props) {
             setLoading(false); 
         });   
     } 
-// implement  a skeleton screen
+//TODO... implement  a skeleton screen
     if((!err && products.length < 1) || loading) {
         return(
         <PageTemplate>
-            <Loader/>
+            <Loader2/>
         </PageTemplate>
         )
     } 

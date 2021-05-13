@@ -4,7 +4,7 @@ import { getMenCollections } from '../../services/ecormerce.service';
 import ErrorBoundary from '../ErrorBoundary/errorBoundary';
 import { PageTemplate } from '../PageTemplate/pageTemplate';
 import ReactPaginate from 'react-paginate';
-import { Loader } from '../Loader/loader';
+import { Loader2 } from '../Loader/loader';
 import './menClothings.css';
 
 
@@ -50,7 +50,7 @@ export default function MenClothingsPage( ) {
     if ((!err && products.length < 1) || loading) {
         return(
           <PageTemplate>
-          <Loader/>
+          <Loader2/>
           </PageTemplate>
         )
     } 

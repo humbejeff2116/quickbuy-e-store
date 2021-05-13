@@ -3,14 +3,14 @@ import React,{ useEffect, useState } from 'react';
 import  ErrorBoundary  from '../ErrorBoundary/errorBoundary';
 import { Collection } from '../Collection/index';
 import { DoubleCollection } from '../DoubleCollection/index';
-import { Loader } from '../Loader/loader';
+import { Loader2 } from '../Loader/loader';
 import { PageTemplate } from '../PageTemplate/pageTemplate';
 import axios from 'axios';
 
 
 
-let URI = `http://localhost:4000`;
-// const URI = `https://quickibuy.herokuapp.com`;
+// let URI = `http://localhost:4000`;
+const URI = `https://quickibuy.herokuapp.com`;
 const URLS = [
   `${URI}/api/v1/latest-deals?limit=${4}`,
   `${URI}/api/v1/women-collections?limit=${4}`,
@@ -32,17 +32,17 @@ const URLS = [
 
    const loadHomeProducts = function loadData(urls, updateProducts) {
       setLoading(true);    
-      let requests = urls.map(url=> axios.get(url));
+      let requests = urls.map(url => axios.get(url));
       Promise.all(requests)
-      .then(([response1,response2,response3,response4])=> [response1.data,response2.data,response3.data,response4.data] )
-      .then(([latestDeals, womenCollections, popularCollections, menCollections])=> {
+      .then(([response1, response2, response3, response4]) => [response1.data, response2.data, response3.data, response4.data])
+      .then(([latestDeals, womenCollections, popularCollections, menCollections]) => {
         return updateProducts(latestDeals.data, womenCollections.data, popularCollections.data, menCollections.data);
       })
       .catch(err => console.error(err)); 
   }
   const updateProducts = function updateProducts(data1, data2, data3, data4) {
     Promise.all([data1, data2, data3, data4])
-    .then(([data1, data2, data3, data4])=> {
+    .then(([data1, data2, data3, data4]) => {
       setLatestDeals(data1);
       setWomenCollections(data2);
       setPopularCollections(data3);
@@ -52,10 +52,10 @@ const URLS = [
     .catch(err => console.error(err));
   }
 
-    if(loading || latestDeals.length ===0) {
+    if(loading || latestDeals.length === 0) {
       return (
         <PageTemplate>
-          <Loader />
+          <Loader2 />
         </PageTemplate>
       )
     }

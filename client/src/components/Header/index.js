@@ -17,13 +17,6 @@ const cart = <FontAwesomeIcon  icon={['fas', "shopping-cart"]}  />
 
 
 
-
-
-
-
-
-
-
 export const Header = ( ) => {
     const [searchedProd,setSearchedProd] = useState([]);
     const [searchIsOpen, setSearchIsOpen] = useState(false);

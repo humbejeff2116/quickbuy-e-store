@@ -17,3 +17,12 @@ export function Loader( ) {
         </div>
     )
 }
+
+
+export  function Loader2( ) {
+    return (
+        <div className="cloud-Loader-container">
+            <div className="help"></div>     
+        </div>
+    )
+}
