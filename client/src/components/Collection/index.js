@@ -13,7 +13,7 @@ import './collection.css';
             <Link to={props.href}>See All</Link>
         </div>
         <div  className="sale-items">
-            {(props.data.length === 0) ? < PageLoader/> :
+            {
                 props.data.map( (product, i) =>
                     < CollectionItem  key ={i} {...product} />
                     )

@@ -14,7 +14,7 @@ import './doubleCollection.css';
             <Link to={href}>See All</Link>
         </div>
         <div className="six-sale-items">
-            {(data.length === 0  ) ? < PageLoader/>:
+            {
                 data.map((product,i)=>
                     < DoubleCollectionItem key ={i} {...product} />
                     )
