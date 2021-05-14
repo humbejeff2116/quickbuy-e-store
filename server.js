@@ -79,7 +79,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use('/admin', express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRouter);
 app.use('/api/v1/', apiRouter);
-app.get('*', (req, res)=> {
+app.get('/*', (req, res)=> {
     res.set("Content-Security-Policy", "default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'unsafe-inline'")
     .sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });

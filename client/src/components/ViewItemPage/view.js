@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ViewItemCard from './viewItemCard';
 import { PageTemplate } from '../PageTemplate/pageTemplate';
-import { Loader } from '../Loader/loader';
+import { Loader2 } from '../Loader/loader';
 import ViewAlertBox from './viewModalBox';
 import { ViewOkAlertBox } from './viewModalBox';
 import BackButton from '../BackButton/backButton';
@@ -62,7 +62,7 @@ export function View( ) {
             <div className="view-container">
                 <BackButton buttonDivClassName="view-back-bttn"/>
                 <div className="view-item-container">
-                    <Loader/> 
+                    <Loader2/> 
                 </div>               
                 <div className="view-item-alert">
                 </div>

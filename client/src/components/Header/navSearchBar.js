@@ -1,8 +1,8 @@
 
 import React from 'react';
-import logo from '../../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  NavLink } from 'react-router-dom';
+import quickbuyLogo from '../../images/quickbuylogo2.png';
 
 
 
@@ -26,7 +26,7 @@ export function NavSearchBar(props) {
     return(
         <div className="search">
             <div className="logo">
-            <a href="/"><img width="90px" height="40px" src={logo} alt="logo" title="quickbuy" /></a>
+            <a href="/"><img width="110px" height="45px" src={quickbuyLogo} alt="logo" title="quickbuy" /></a>
             </div>
             <div className="search-bar">
                 <form onSubmit = {props.searchProducts} className="search-bar-form" method="GET" action="/search-product" >

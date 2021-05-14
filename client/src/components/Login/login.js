@@ -156,7 +156,7 @@ export default class Login extends React.Component {
                     </div>
                     <div>
                       <button type="submit" className="btn btn-success">
-                       {this.state.loginIn ? 'please wait...' : 'Log in'}
+                       {this.state.loginIn ? 'Login in...' : 'Log in'}
                       </button>
                     </div>
                   </form>

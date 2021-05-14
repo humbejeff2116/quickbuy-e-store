@@ -345,7 +345,7 @@
     .top-nav-bar{
         min-height: 60px;
     }
-    
+        
     .gifs-bar{
         display:none;
     }
@@ -359,22 +359,28 @@
     .search-bar{ 
         display:none;  
     }
-   
+
     .search-bar-form{
         display:none;
     }
-  .top-nav-bar{
-    height: 65px;
-    padding:4px;
-    border-radius:0 0 0 0;
-  }
-  .logo{
-    margin-top:5px;
-  }
-  .login{
-    display:none;
-  }
-  .main-navigation{
-      display:none;  
-  }
+    .top-nav-bar{
+        height: 65px;
+        padding:4px;
+        border-radius:0 0 0 0;
+    }
+    .logo{
+        margin-top:5px;
+        margin-left:1%;
+        padding:0px; 
+    }
+    .logo img{
+        width:100px;
+    }
+
+    .login{
+        display:none;
+    }
+    .main-navigation{
+        display:none;  
+    }
 }
