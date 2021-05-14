@@ -10,12 +10,13 @@ import { NavGifsLinks, SocialNav } from './navLinks';
 export const NavGifsBar = (props) => {
     return(
         <div className="gifs-bar">
+            {/* TODO... add gifs image */}
             <div>
-                ist gif bar
+                {/* ist gif bar */}
             </div>
             <div className="gifs">
                 <div>
-                    gifs go here
+                    {/* gifs go here */}
                 </div>
                 <div className="gifs-top-nav">
                     {
