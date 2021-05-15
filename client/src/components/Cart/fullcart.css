@@ -241,6 +241,17 @@
 }
 
 @media only screen and (max-width:414px){
+    .card-body{
+        margin:3% 2% 0 2%;
+        padding:4px;  
+    }
+    .card-item-image{
+        width:52%;
+    }
+    
+    .card-item-details{
+        width:48%;
+    }
     .card-item-image{
         min-height:55vh;
         margin-top:auto;
@@ -267,13 +278,12 @@
         border-right: 1px solid rgb(218, 152, 218);
     }
     .full-cart{
-        width:100%; 
+        width:100%;
     }
-    .cart-img {      
-        width:80%;
-        height: 235px;
+    .card-item-image{
+        min-height:55vh;
+        margin-top:auto;
+        margin-bottom:auto;
     }
-    .cart-img img{
-        top:25px;
-    }
+   
 }

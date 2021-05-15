@@ -542,11 +542,38 @@
         width:60%;
     }
     .view-img{
-      width: 100%;;
-    }  
+      width: 100%;
+    } 
+    .view-add-bttn h4{
+        margin-left:15%;
+     }
 }
 
 @media only screen and (max-width:414px) {
+    .view-info{
+        flex-direction: column;
+        min-height:80vh;
+        width:90%;
+    }
+
+    .view-product-img{
+        width:100%;
+        padding:1%;
+    }
+    .view-img{
+        width: 85%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .view-item-details-cntr{
+        margin-left: auto;
+        width:100%;
+    }
+    .view-item-details{
+        width: 89%;
+        margin-left:auto;
+    }
+
     .view-item-alert{
         top: 11%;
         left: 40%;
